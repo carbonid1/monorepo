@@ -1,13 +1,17 @@
 {
   "name": "book-hub",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "analyze": "ANALYZE=true next dev",
     "start": "next start"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.4.0",
+    "@next/bundle-analyzer": "^10.0.5",
+    "antd": "^4.11.2",
     "next": "10.0.5",
     "next-pwa": "^5.0.4",
     "react": "17.0.1",
