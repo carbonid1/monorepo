@@ -16,6 +16,6 @@
     "importsNotUsedAsValues": "error",
     "sourceMap": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "apollo/client.js"],
   "exclude": ["node_modules"]
 }
