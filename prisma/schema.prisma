@@ -11,10 +11,10 @@ generator client {
 }
 
 model Book {
-  author    String
-  createdAt DateTime @default(now())
   id        Int      @default(autoincrement()) @id
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  author    String
   publishedIn Int?
   title     String
-  updatedAt DateTime @updatedAt
 }
