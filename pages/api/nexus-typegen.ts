@@ -44,10 +44,10 @@ export interface NexusGenScalars {
 
 export interface NexusGenObjects {
   Book: { // root type
-    author?: string | null; // String
-    id?: string | null; // ID
+    author: string; // String!
+    id: string; // ID!
     publishedIn?: number | null; // Int
-    title?: string | null; // String
+    title: string; // String!
   }
   Mutation: {};
   Query: {};
@@ -65,10 +65,10 @@ export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
   Book: { // field return type
-    author: string | null; // String
-    id: string | null; // ID
+    author: string; // String!
+    id: string; // ID!
     publishedIn: number | null; // Int
-    title: string | null; // String
+    title: string; // String!
   }
   Mutation: { // field return type
     deleteBook: NexusGenRootTypes['Book'] | null; // Book
@@ -101,7 +101,7 @@ export interface NexusGenArgTypes {
   }
   Query: {
     book: { // args
-      bookId: number; // Int!
+      bookId: string; // String!
     }
   }
 }

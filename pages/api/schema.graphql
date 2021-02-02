@@ -3,10 +3,10 @@
 
 
 type Book {
-  author: String
-  id: ID
+  author: String!
+  id: ID!
   publishedIn: Int
-  title: String
+  title: String!
 }
 
 """
@@ -19,5 +19,5 @@ type Mutation {
 }
 
 type Query {
-  book(bookId: Int!): Book
+  book(bookId: String!): Book
 }
