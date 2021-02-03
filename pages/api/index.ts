@@ -1,6 +1,6 @@
 import { ApolloServer } from 'apollo-server-micro';
 import { GraphQLDate } from 'graphql-iso-date';
-import { asNexusMethod, makeSchema, nonNull, objectType, intArg, stringArg } from 'nexus';
+import { asNexusMethod, makeSchema, objectType, intArg } from 'nexus';
 import path from 'path';
 import prisma from '../../lib/prisma';
 
@@ -11,7 +11,7 @@ const Book = objectType({
   nonNullDefaults: { output: true },
   definition(t) {
     t.string('author');
-    t.id('id');
+    t.int('id');
     t.nullable.int('publishedIn');
     t.string('title');
   },
@@ -23,7 +23,7 @@ const Query = objectType({
   definition(t) {
     t.field('book', {
       type: 'Book',
-      args: { bookId: stringArg() }, // TODO: int arg?
+      args: { bookId: intArg() },
       resolve: (_, { bookId }) => prisma.book.findUnique({ where: { id: Number(bookId) } }),
     });
   },
@@ -35,7 +35,7 @@ const Mutation = objectType({
   definition(t) {
     t.nullable.field('deleteBook', {
       type: 'Book',
-      args: { bookId: intArg() }, // TODO: string arg?
+      args: { bookId: intArg() },
       resolve: (_, { bookId }) => prisma.book.delete({ where: { id: Number(bookId) } }),
     });
   },
@@ -49,11 +49,7 @@ export const schema = makeSchema({
   },
 });
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
+export const config = { api: { bodyParser: false } };
 
 export default new ApolloServer({ schema }).createHandler({
   path: '/api',
