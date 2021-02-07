@@ -47,6 +47,7 @@ export interface NexusGenObjects {
     author: string; // String!
     id: number; // Int!
     publishedIn?: number | null; // Int
+    slug: string; // String!
     title: string; // String!
   }
   Mutation: {};
@@ -76,6 +77,7 @@ export interface NexusGenFieldTypes {
   }
   Query: { // field return type
     book: NexusGenRootTypes['Book'] | null; // Book
+    books: Array<NexusGenRootTypes['Book'] | null>; // [Book]!
   }
 }
 
@@ -92,6 +94,7 @@ export interface NexusGenFieldTypeNames {
   }
   Query: { // field return type name
     book: 'Book'
+    books: 'Book'
   }
 }
 
