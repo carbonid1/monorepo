@@ -17,5 +17,5 @@
     "sourceMap": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "apollo/client.js"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "pages/api/nexus-typegen.ts"]
 }
