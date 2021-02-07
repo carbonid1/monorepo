@@ -3,6 +3,7 @@ import { GraphQLDate } from 'graphql-iso-date';
 import { asNexusMethod, makeSchema, objectType, intArg } from 'nexus';
 import path from 'path';
 import prisma from '../../lib/prisma';
+import slugify from 'slugify';
 
 export const GQLDate = asNexusMethod(GraphQLDate, 'date');
 
@@ -12,6 +13,9 @@ const Book = objectType({
   definition(t) {
     t.string('author');
     t.int('id');
+    t.string('slug', {
+      resolve: book => slugify(book.title),
+    });
     t.nullable.int('publishedIn');
     t.string('title');
   },

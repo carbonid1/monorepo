@@ -68,6 +68,7 @@ export interface NexusGenFieldTypes {
     author: string; // String!
     id: number; // Int!
     publishedIn: number | null; // Int
+    slug: string; // String!
     title: string; // String!
   }
   Mutation: { // field return type
@@ -83,6 +84,7 @@ export interface NexusGenFieldTypeNames {
     author: 'String'
     id: 'Int'
     publishedIn: 'Int'
+    slug: 'String'
     title: 'String'
   }
   Mutation: { // field return type name

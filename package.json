@@ -9,6 +9,8 @@
     "start": "next start",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
+    "migrate": "npx prisma migrate dev --preview-feature",
+    "studio": "npx prisma studio",
     "generate": "npm -s run generate:prisma && npm -s run generate:nexus",
     "generate:prisma": "prisma generate",
     "generate:nexus": "ts-node --transpile-only -P nexus.tsconfig.json pages/api"
@@ -34,6 +36,7 @@
     "react-apollo": "^3.1.5",
     "react-dom": "17.0.1",
     "react-markdown": "^5.0.3",
+    "slugify": "^1.4.6",
     "ts-node": "^9.1.1"
   },
   "devDependencies": {
