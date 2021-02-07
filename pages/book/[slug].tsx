@@ -5,8 +5,8 @@ import { useQuery } from '@apollo/react-hooks';
 import { NotFound } from '../../components/NotFound';
 
 const BookQ = gql`
-  query BookQ($bookId: Int!) {
-    book(bookId: $bookId) {
+  query BookQ($slug: String!) {
+    book(slug: $slug) {
       id
       title
       publishedIn
@@ -16,8 +16,8 @@ const BookQ = gql`
 `;
 
 const Book: React.FC = () => {
-  const bookId = Number(useRouter().query.slug);
-  const { loading, error, data } = useQuery(BookQ, { variables: { bookId } });
+  const slug = useRouter().query.slug;
+  const { loading, error, data } = useQuery(BookQ, { variables: { slug } });
   const { book } = data ?? {};
 
   if (loading) return null;

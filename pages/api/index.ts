@@ -1,6 +1,6 @@
 import { ApolloServer } from 'apollo-server-micro';
 import { GraphQLDate } from 'graphql-iso-date';
-import { asNexusMethod, makeSchema, objectType, intArg } from 'nexus';
+import { asNexusMethod, makeSchema, objectType, intArg, stringArg } from 'nexus';
 import path from 'path';
 import prisma from '../../lib/prisma';
 import slugify from 'slugify';
@@ -27,8 +27,8 @@ const Query = objectType({
   definition(t) {
     t.field('book', {
       type: 'Book',
-      args: { bookId: intArg() },
-      resolve: (_, { bookId }) => prisma.book.findUnique({ where: { id: Number(bookId) } }),
+      args: { slug: stringArg() },
+      resolve: (_, { slug }) => prisma.book.findFirst({ where: { slug } }),
     });
   },
 });
