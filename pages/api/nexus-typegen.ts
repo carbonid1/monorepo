@@ -103,7 +103,7 @@ export interface NexusGenArgTypes {
   }
   Query: {
     book: { // args
-      bookId: number; // Int!
+      slug: string; // String!
     }
   }
 }
