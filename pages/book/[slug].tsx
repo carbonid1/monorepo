@@ -4,21 +4,27 @@ import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
 import { NotFound } from '../../components/NotFound';
 import Link from 'next/link';
+import type { IBook } from '../../types/interfaces';
+
+interface IBookQData {
+  book: Pick<IBook, 'id' | 'author' | 'publishedIn' | 'title'>;
+}
+interface IBookQVars extends Pick<IBook, 'slug'> {}
 
 const BookQ = gql`
   query BookQ($slug: String!) {
     book(slug: $slug) {
       id
-      title
-      publishedIn
       author
+      publishedIn
+      title
     }
   }
 `;
 
 const Book: React.FC = () => {
-  const slug = useRouter().query.slug;
-  const { data, loading, error } = useQuery(BookQ, { variables: { slug } });
+  const slug = useRouter().query.slug as string;
+  const { data, loading, error } = useQuery<IBookQData, IBookQVars>(BookQ, { variables: { slug } });
   const { book } = data ?? {};
 
   if (loading || error) return null;
