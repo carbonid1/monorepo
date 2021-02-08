@@ -27,7 +27,7 @@ const Home: React.FC = () => {
     <div>
       {books.map(book => (
         <div key={book.slug}>
-          <Link href={`${ROUTE.book}/${book.slug}`}>
+          <Link href={`/${ROUTE.book}/${book.slug}`}>
             <a>
               <b>{book.author}: </b>
               {book.title}
