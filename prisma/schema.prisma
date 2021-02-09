@@ -24,7 +24,7 @@ model Book {
 model Author {
   id          Int       @default(autoincrement()) @id
   updatedAt   DateTime  @updatedAt
+  books       Book[]
   fullName    String
   slug        String
-  books       Book[]
 }
