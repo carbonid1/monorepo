@@ -14,10 +14,9 @@ const Book = objectType({
     t.string('slug');
     t.nullable.int('publishedIn');
     t.string('title');
-    t.nullable.int('authorId');
-    t.nullable.field('author', {
+    t.list.field('authors', {
       type: 'Author',
-      resolve: ({ id }) => prisma.book.findUnique({ where: { id } }).author(),
+      resolve: ({ id }) => prisma.book.findUnique({ where: { id } }).authors(),
     });
   },
 });
@@ -31,7 +30,7 @@ const Author = objectType({
     t.string('slug');
     t.list.field('books', {
       type: 'Book',
-      resolve: ({ id }) => prisma.book.findUnique({ where: { id } }).author(),
+      resolve: ({ id }) => prisma.author.findUnique({ where: { id } }).books(),
     });
   },
 });

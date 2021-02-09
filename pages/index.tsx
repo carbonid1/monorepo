@@ -12,7 +12,7 @@ interface IBooksQData {
 const BooksQ = gql`
   query Books {
     books {
-      author {
+      authors {
         fullName
       }
       slug
@@ -27,12 +27,12 @@ const Home: React.FC = () => {
 
   return (
     <div>
-      {books.map(book => (
-        <div key={book.slug}>
-          <Link href={`/${ROUTE.book}/${book.slug}`}>
+      {books.map(({ slug, authors, title }) => (
+        <div key={slug}>
+          <Link href={`/${ROUTE.book}/${slug}`}>
             <a>
-              {book.author?.fullName && <b>{book.author.fullName}: </b>}
-              {book.title}
+              {!!authors.length && <b>{authors.map(({ fullName }) => fullName).join(', ')}: </b>}
+              {title}
             </a>
           </Link>
         </div>

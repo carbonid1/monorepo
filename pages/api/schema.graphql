@@ -10,8 +10,7 @@ type Author {
 }
 
 type Book {
-  author: Author
-  authorId: Int
+  authors: [Author!]!
   id: Int!
   publishedIn: Int
   slug: String!

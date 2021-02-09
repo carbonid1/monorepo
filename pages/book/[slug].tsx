@@ -15,7 +15,7 @@ const BookQ = gql`
   query BookQ($slug: String!) {
     book(slug: $slug) {
       id
-      author {
+      authors {
         fullName
       }
       publishedIn
@@ -38,7 +38,7 @@ const Book: React.FC = () => {
         {book.id}
         {book.title}
         {book.publishedIn}
-        {book.author?.fullName}
+        {book.authors?.map(({ fullName }) => fullName).join(', ')}
       </div>
       <Link href="/">Back Home</Link>
     </div>
