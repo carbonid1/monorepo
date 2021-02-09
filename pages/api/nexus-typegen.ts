@@ -43,14 +43,18 @@ export interface NexusGenScalars {
 }
 
 export interface NexusGenObjects {
+  Author: { // root type
+    fullName: string; // String!
+    id: number; // Int!
+    slug: string; // String!
+  }
   Book: { // root type
-    author: string; // String!
+    authorId?: number | null; // Int
     id: number; // Int!
     publishedIn?: number | null; // Int
     slug: string; // String!
     title: string; // String!
   }
-  Mutation: {};
   Query: {};
 }
 
@@ -65,15 +69,19 @@ export type NexusGenRootTypes = NexusGenObjects
 export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
+  Author: { // field return type
+    books: NexusGenRootTypes['Book'][]; // [Book!]!
+    fullName: string; // String!
+    id: number; // Int!
+    slug: string; // String!
+  }
   Book: { // field return type
-    author: string; // String!
+    author: NexusGenRootTypes['Author'] | null; // Author
+    authorId: number | null; // Int
     id: number; // Int!
     publishedIn: number | null; // Int
     slug: string; // String!
     title: string; // String!
-  }
-  Mutation: { // field return type
-    deleteBook: NexusGenRootTypes['Book'] | null; // Book
   }
   Query: { // field return type
     book: NexusGenRootTypes['Book'] | null; // Book
@@ -82,15 +90,19 @@ export interface NexusGenFieldTypes {
 }
 
 export interface NexusGenFieldTypeNames {
+  Author: { // field return type name
+    books: 'Book'
+    fullName: 'String'
+    id: 'Int'
+    slug: 'String'
+  }
   Book: { // field return type name
-    author: 'String'
+    author: 'Author'
+    authorId: 'Int'
     id: 'Int'
     publishedIn: 'Int'
     slug: 'String'
     title: 'String'
-  }
-  Mutation: { // field return type name
-    deleteBook: 'Book'
   }
   Query: { // field return type name
     book: 'Book'
@@ -99,11 +111,6 @@ export interface NexusGenFieldTypeNames {
 }
 
 export interface NexusGenArgTypes {
-  Mutation: {
-    deleteBook: { // args
-      bookId: number; // Int!
-    }
-  }
   Query: {
     book: { // args
       slug: string; // String!
