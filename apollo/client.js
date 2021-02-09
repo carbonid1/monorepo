@@ -132,6 +132,8 @@ function createApolloClient(initialState = {}) {
 
 function createIsomorphLink() {
   const { HttpLink } = require('apollo-link-http');
-  const uri = VERCEL_URL ? `https://${VERCEL_URL}/api` : 'http://localhost:3002/api';
+  const uri = process.env.NEXT_PUBLIC_VERCEL_URL
+    ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api`
+    : 'http://localhost:3000/api';
   return new HttpLink({ uri, credentials: 'same-origin' });
 }
