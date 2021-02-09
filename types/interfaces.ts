@@ -2,8 +2,7 @@ export interface IBook {
   id: number;
   createdAt: string;
   updatedAt: string;
-  author?: IAuthor;
-  authorId?: IAuthor['id'];
+  authors: IAuthor[];
   publishedIn?: string;
   slug: string;
   title: string;
