@@ -1,6 +1,6 @@
 import { ApolloServer } from 'apollo-server-micro';
 import { GraphQLDate } from 'graphql-iso-date';
-import { asNexusMethod, makeSchema, objectType, intArg, stringArg, list, nonNull } from 'nexus';
+import { asNexusMethod, makeSchema, objectType, stringArg, list, nonNull } from 'nexus';
 import path from 'path';
 import prisma from '../../lib/prisma';
 
@@ -10,11 +10,29 @@ const Book = objectType({
   name: 'Book',
   nonNullDefaults: { output: true },
   definition(t) {
-    t.string('author');
     t.int('id');
     t.string('slug');
     t.nullable.int('publishedIn');
     t.string('title');
+    t.nullable.int('authorId');
+    t.nullable.field('author', {
+      type: 'Author',
+      resolve: ({ id }) => prisma.book.findUnique({ where: { id } }).author(),
+    });
+  },
+});
+
+const Author = objectType({
+  name: 'Author',
+  nonNullDefaults: { output: true },
+  definition(t) {
+    t.int('id');
+    t.string('fullName');
+    t.string('slug');
+    t.list.field('books', {
+      type: 'Book',
+      resolve: ({ id }) => prisma.book.findUnique({ where: { id } }).author(),
+    });
   },
 });
 
@@ -36,20 +54,14 @@ const Query = objectType({
   },
 });
 
-const Mutation = objectType({
-  name: 'Mutation',
-  nonNullDefaults: { input: true },
-  definition(t) {
-    t.nullable.field('deleteBook', {
-      type: 'Book',
-      args: { bookId: intArg() },
-      resolve: (_, { bookId }) => prisma.book.delete({ where: { id: Number(bookId) } }),
-    });
-  },
-});
+// const Mutation = objectType({
+//   name: 'Mutation',
+//   nonNullDefaults: { input: true },
+//   definition(t) {},
+// });
 
 export const schema = makeSchema({
-  types: [Query, Mutation, GQLDate, Book],
+  types: [Query, GQLDate, Book, Author],
   outputs: {
     typegen: path.join(process.cwd(), 'pages/api/nexus-typegen.ts'),
     schema: path.join(process.cwd(), 'pages/api/schema.graphql'),

@@ -11,11 +11,20 @@ generator client {
 }
 
 model Book {
-  id          Int      @default(autoincrement()) @id
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  author      String
+  id          Int       @default(autoincrement()) @id
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  author      Author?   @relation(fields: [authorId], references: [id])
+  authorId    Int?
   publishedIn Int?
   slug        String
   title       String
+}
+
+model Author {
+  id          Int       @default(autoincrement()) @id
+  updatedAt   DateTime  @updatedAt
+  fullName    String
+  slug        String
+  books       Book[]
 }
