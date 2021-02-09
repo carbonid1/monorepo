@@ -12,7 +12,9 @@ interface IBooksQData {
 const BooksQ = gql`
   query Books {
     books {
-      author
+      author {
+        fullName
+      }
       slug
       title
     }
@@ -29,7 +31,7 @@ const Home: React.FC = () => {
         <div key={book.slug}>
           <Link href={`/${ROUTE.book}/${book.slug}`}>
             <a>
-              <b>{book.author}: </b>
+              {book.author?.fullName && <b>{book.author.fullName}: </b>}
               {book.title}
             </a>
           </Link>

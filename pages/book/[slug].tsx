@@ -4,10 +4,13 @@ import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
 import { NotFound } from '../../components/NotFound';
 import Link from 'next/link';
-import type { IBook } from '../../types/interfaces';
+import type { IAuthor, IBook } from '../../types/interfaces';
 
+interface IBookQ extends Pick<IBook, 'id' | 'publishedIn' | 'title'> {
+  author?: Pick<IAuthor, 'fullName'>;
+}
 interface IBookQData {
-  book: Pick<IBook, 'id' | 'author' | 'publishedIn' | 'title'>;
+  book: IBookQ;
 }
 interface IBookQVars extends Pick<IBook, 'slug'> {}
 
@@ -15,7 +18,9 @@ const BookQ = gql`
   query BookQ($slug: String!) {
     book(slug: $slug) {
       id
-      author
+      author {
+        fullName
+      }
       publishedIn
       title
     }
@@ -36,7 +41,7 @@ const Book: React.FC = () => {
         {book.id}
         {book.title}
         {book.publishedIn}
-        {book.author}
+        {book.author?.fullName}
       </div>
       <Link href="/">Back Home</Link>
     </div>
