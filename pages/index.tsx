@@ -6,7 +6,7 @@ import { ROUTE } from '../consts/routes';
 import type { IBook } from '../types/interfaces';
 
 interface IBooksQData {
-  books: Pick<IBook, 'author' | 'slug' | 'title'>[];
+  books: IBook[];
 }
 
 const BooksQ = gql`

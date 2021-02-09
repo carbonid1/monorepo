@@ -4,13 +4,10 @@ import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
 import { NotFound } from '../../components/NotFound';
 import Link from 'next/link';
-import type { IAuthor, IBook } from '../../types/interfaces';
+import type { IBook } from '../../types/interfaces';
 
-interface IBookQ extends Pick<IBook, 'id' | 'publishedIn' | 'title'> {
-  author?: Pick<IAuthor, 'fullName'>;
-}
 interface IBookQData {
-  book: IBookQ;
+  book: IBook;
 }
 interface IBookQVars extends Pick<IBook, 'slug'> {}
 
