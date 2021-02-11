@@ -2,9 +2,10 @@ import { useRouter } from 'next/router';
 import { withApollo } from '../../apollo/client';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
-import { NotFound } from '../../components/NotFound';
+import { NotFound } from '../../components/errors/NotFound';
 import Link from 'next/link';
 import type { IBook } from '../../types/interfaces';
+import { GenericError } from '../../components/errors/GenericError';
 
 interface IBookQData {
   book: IBook;
@@ -25,11 +26,12 @@ const BookQ = gql`
 `;
 
 const Book: React.FC = () => {
-  const slug = useRouter().query.slug as string;
+  const slug = (Number(useRouter().query.slug) as unknown) as string;
   const { data, loading, error } = useQuery<IBookQData, IBookQVars>(BookQ, { variables: { slug } });
   const { book } = data ?? {};
 
-  if (loading || error) return null;
+  if (loading) return null;
+  if (error) return <GenericError />;
   if (!book) return <NotFound />;
 
   return (
