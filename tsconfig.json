@@ -14,7 +14,8 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "importsNotUsedAsValues": "error",
-    "sourceMap": true
+    "sourceMap": true,
+    "baseUrl": "."
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "apollo/client.js"],
   "exclude": ["node_modules", "pages/api/nexus-typegen.ts"]

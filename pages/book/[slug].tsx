@@ -1,11 +1,11 @@
 import { useRouter } from 'next/router';
-import { withApollo } from '../../apollo/client';
+import { withApollo } from 'apollo/client';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
-import { NotFound } from '../../components/errors/NotFound';
+import { NotFound } from 'components/errors/NotFound';
 import Link from 'next/link';
-import type { IBook } from '../../types/interfaces';
-import { GenericError } from '../../components/errors/GenericError';
+import type { IBook } from 'types/interfaces';
+import { GenericError } from 'components/errors/GenericError';
 
 interface IBookQData {
   book: IBook;

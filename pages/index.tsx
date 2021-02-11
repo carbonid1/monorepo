@@ -1,10 +1,10 @@
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
-import { withApollo } from '../apollo/client';
+import { withApollo } from 'apollo/client';
 import Link from 'next/link';
-import { ROUTE } from '../consts/routes';
-import type { IBook } from '../types/interfaces';
-import { GenericError } from '../components/errors/GenericError';
+import { ROUTE } from 'consts/routes';
+import type { IBook } from 'types/interfaces';
+import { GenericError } from 'components/errors/GenericError';
 
 interface IBooksQData {
   books: IBook[];
