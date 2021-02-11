@@ -13,9 +13,9 @@ function MyApp({ Component, pageProps }: AppProps) {
           name="viewport"
           content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
         />
-        <meta name="Description" content="Your most beautiful bookshelf" />
-        <meta name="Keywords" content="books bookshelf review quotes" />
         <title>BookHub</title>
+        <meta name="description" content="Your most beautiful bookshelf" />
+        <meta name="keywords" content="books bookshelf review quotes" />
         <link rel="manifest" href="/manifest.json" />
         <link href="/icons/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16" />
         <link href="/icons/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32" />
