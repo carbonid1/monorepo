@@ -1,13 +1,11 @@
-import { Button, Result } from 'antd';
+import { Button, Result, ResultProps } from 'antd';
 import React from 'react';
 import Link from 'next/link';
 
-export const NotFound: React.FC = () => {
+export const BaseError: React.FC<ResultProps> = props => {
   return (
     <Result
-      status="404"
-      title="404"
-      subTitle="Sorry, the page you visited does not exist."
+      {...props}
       extra={
         <Link href="/">
           <Button type="primary">Back Home</Button>
