@@ -26,7 +26,7 @@ const BookQ = gql`
 `;
 
 const Book: React.FC = () => {
-  const slug = (Number(useRouter().query.slug) as unknown) as string;
+  const slug = useRouter().query.slug as string;
   const { data, loading, error } = useQuery<IBookQData, IBookQVars>(BookQ, { variables: { slug } });
   const { book } = data ?? {};
 
