@@ -20,6 +20,7 @@ const BookQ = gql`
       authors {
         fullName
       }
+      description
       publishedIn
       title
     }
@@ -37,12 +38,13 @@ const Book: React.FC = () => {
 
   return (
     <div>
-      <CustomHead title={book.title} />
+      <CustomHead title={book.title} description={book.description} />
       <div>
         {book.id}
         {book.title}
         {book.publishedIn}
         {book.authors?.map(({ fullName }) => fullName).join(', ')}
+        <div>{book.description}</div>
       </div>
       <Link href="/">Back Home</Link>
     </div>
