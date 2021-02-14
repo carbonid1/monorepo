@@ -48,11 +48,9 @@ const Book: React.FC = () => {
           {fullName}
         </div>
         <ul>
-          {books.map(book => (
-            <li>
-              <Link href={`/${ROUTE.book}/${book.slug}`}>
-                <a>{book.title}</a>
-              </Link>
+          {books.map((book, index) => (
+            <li key={book.slug + index}>
+              <Link href={`/${ROUTE.book}/${book.slug}`}>{book.title}</Link>
               <div>{book.description}</div>
             </li>
           ))}
