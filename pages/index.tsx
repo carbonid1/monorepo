@@ -4,7 +4,7 @@ import { withApollo } from 'apollo/client';
 import Link from 'next/link';
 import { ROUTE } from 'consts/routes';
 import type { IBook } from 'types/interfaces';
-import { GenericError } from 'components/errors/GenericError';
+import { BaseError } from 'components/errors/BaseError';
 
 interface IBooksQData {
   books: IBook[];
@@ -27,7 +27,7 @@ const Home: React.FC = () => {
   const { data, error } = useQuery<IBooksQData>(BooksQ);
   const { books = [] } = data ?? {};
 
-  if (error) return <GenericError />;
+  if (error) return <BaseError />;
 
   return (
     <ul>

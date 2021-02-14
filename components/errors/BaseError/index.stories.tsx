@@ -1,16 +1,11 @@
 import React from 'react';
 import type { Story, Meta } from '@storybook/react';
-import { BaseError } from '.';
+import { BaseError, IBaseError } from '.';
 
 export default {
   title: 'errors/BaseError',
   component: BaseError,
 } as Meta;
 
-const Template: Story = args => <BaseError {...args} />;
-
+const Template: Story<IBaseError> = args => <BaseError {...args} />;
 export const Default = Template.bind({});
-Default.args = {
-  status: 'error',
-  title: 'Opps...',
-};
