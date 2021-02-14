@@ -51,6 +51,13 @@ const Query = objectType({
       type: nonNull(list('Book')),
       resolve: () => prisma.book.findMany(),
     });
+    t.field('author', {
+      type: 'Author',
+      args: { slug: stringArg() },
+      resolve: (_, { slug }) => {
+        return prisma.author.findFirst({ where: { slug } });
+      },
+    });
   },
 });
 
