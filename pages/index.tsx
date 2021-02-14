@@ -31,15 +31,13 @@ const Home: React.FC = () => {
 
   return (
     <ul>
-      {books.map(({ slug, authors, title }) => (
-        <li key={slug}>
+      {books.map(({ slug, authors, title }, index) => (
+        <li key={slug + index}>
           {authors?.map(({ fullName, slug }, index) => (
-            <>
-              <Link href={`/${ROUTE.author}/${slug}`} key={slug + index}>
-                {fullName}
-              </Link>
+            <span key={slug + index}>
+              <Link href={`/${ROUTE.author}/${slug}`}>{fullName}</Link>
               {authors.length - 1 === index ? ': ' : ', '}
-            </>
+            </span>
           ))}
           <Link href={`/${ROUTE.book}/${slug}`}>{title}</Link>
         </li>
