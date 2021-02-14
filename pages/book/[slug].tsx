@@ -53,7 +53,7 @@ const Book: React.FC = () => {
         )}
         {book.authors?.map(({ fullName, slug }) => (
           <Link href={`/${ROUTE.author}/${slug}`}>
-            <a style={{ display: 'block' }}>{fullName}</a>
+            <a className="block">{fullName}</a>
           </Link>
         ))}
         {book.description && <div>{book.description}</div>}

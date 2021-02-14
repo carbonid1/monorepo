@@ -14,12 +14,12 @@ export const BaseError: React.FC<IBaseError> = ({
   status = 500,
 }) => {
   return (
-    <div style={{ display: 'grid', gap: 24, placeItems: 'center' }}>
+    <div className="grid gap-4 place-items-center">
       <Image src={`/assets/errors/${status}.svg`} alt="a person scratching his head" width="252" height="294" />
-      <div>{title}</div>
-      <div>{subTitle}</div>
+      <div className="text-2xl">{title}</div>
+      <div className="text-gray-400">{subTitle}</div>
       <Link href="/">
-        <button>Back Home</button>
+        <button className="bg-green-700 p-3 text-white hover:opacity-90 rounded-md">Back Home</button>
       </Link>
     </div>
   );
