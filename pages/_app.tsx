@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           name="viewport"
           content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
         />
-        <title>BookHub</title>
+        <title key="title">BookHub</title>
         <meta name="description" content="Your most beautiful bookshelf" />
         <meta name="keywords" content="books bookshelf review quotes" />
         <link rel="manifest" href="/manifest.json" />
