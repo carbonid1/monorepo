@@ -2,7 +2,7 @@ import { ApolloServer } from 'apollo-server-micro';
 import { GraphQLDate } from 'graphql-iso-date';
 import { asNexusMethod, makeSchema, objectType, stringArg, list, nonNull } from 'nexus';
 import path from 'path';
-import prisma from 'lib/prisma';
+import prisma from '../../lib/prisma';
 
 export const GQLDate = asNexusMethod(GraphQLDate, 'date');
 
@@ -13,6 +13,7 @@ const Book = objectType({
     t.int('id');
     t.string('slug');
     t.nullable.int('publishedIn');
+    t.nullable.string('description');
     t.string('title');
     t.list.field('authors', {
       type: 'Author',
