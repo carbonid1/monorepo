@@ -8,6 +8,7 @@ import type { IAuthor } from 'types/interfaces';
 import { BaseError } from 'components/errors/BaseError';
 import { CustomHead } from 'components/CustomHead';
 import { ROUTE } from 'consts/routes';
+import { Button } from 'components/controls/Button';
 
 interface IAuthorQData {
   author: IAuthor;
@@ -56,7 +57,9 @@ const Book: React.FC = () => {
           ))}
         </ul>
       </div>
-      <Link href="/">Back Home</Link>
+      <Link href="/">
+        <Button>Back Home</Button>
+      </Link>
     </div>
   );
 };
