@@ -6,6 +6,7 @@ import { NotFound } from 'components/errors/NotFound';
 import Link from 'next/link';
 import type { IBook } from 'types/interfaces';
 import { GenericError } from 'components/errors/GenericError';
+import { CustomHead } from 'components/CustomHead';
 
 interface IBookQData {
   book: IBook;
@@ -36,6 +37,7 @@ const Book: React.FC = () => {
 
   return (
     <div>
+      <CustomHead title={book.title} />
       <div>
         {book.id}
         {book.title}
