@@ -8,6 +8,7 @@ import type { IBook } from 'types/interfaces';
 import { BaseError } from 'components/errors/BaseError';
 import { CustomHead } from 'components/CustomHead';
 import { ROUTE } from 'consts/routes';
+import { Button } from 'components/controls/Button';
 
 interface IBookQData {
   book: IBook;
@@ -58,7 +59,9 @@ const Book: React.FC = () => {
         ))}
         {book.description && <div>{book.description}</div>}
       </div>
-      <Link href="/">Back Home</Link>
+      <Link href="/">
+        <Button>Back Home</Button>
+      </Link>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Button } from 'components/controls/Button';
 
 export interface IBaseError {
   title?: React.ReactNode;
@@ -19,7 +20,7 @@ export const BaseError: React.FC<IBaseError> = ({
       <div className="text-2xl">{title}</div>
       <div className="text-gray-400">{subTitle}</div>
       <Link href="/">
-        <button className="bg-green-700 p-3 text-white hover:opacity-90 rounded-md">Back Home</button>
+        <Button>Back Home</Button>
       </Link>
     </div>
   );
