@@ -7,6 +7,7 @@ import Link from 'next/link';
 import type { IBook } from 'types/interfaces';
 import { GenericError } from 'components/errors/GenericError';
 import { CustomHead } from 'components/CustomHead';
+import { ROUTE } from 'consts/routes';
 
 interface IBookQData {
   book: IBook;
@@ -16,9 +17,9 @@ interface IBookQVars extends Pick<IBook, 'slug'> {}
 const BookQ = gql`
   query BookQ($slug: String!) {
     book(slug: $slug) {
-      id
       authors {
         fullName
+        slug
       }
       description
       publishedIn
@@ -40,11 +41,22 @@ const Book: React.FC = () => {
     <div>
       <CustomHead title={book.title} description={book.description} />
       <div>
-        {book.id}
-        {book.title}
-        {book.publishedIn}
-        {book.authors?.map(({ fullName }) => fullName).join(', ')}
-        <div>{book.description}</div>
+        <div>
+          <b>Title: </b>
+          {book.title}
+        </div>
+        {book.publishedIn && (
+          <div>
+            <b>Date Published: </b>
+            {book.publishedIn}
+          </div>
+        )}
+        {book.authors?.map(({ fullName, slug }) => (
+          <Link href={`/${ROUTE.author}/${slug}`}>
+            <a style={{ display: 'block' }}>{fullName}</a>
+          </Link>
+        ))}
+        {book.description && <div>{book.description}</div>}
       </div>
       <Link href="/">Back Home</Link>
     </div>

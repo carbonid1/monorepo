@@ -24,6 +24,7 @@ A date string, such as 2007-12-03, compliant with the `full-date` format outline
 scalar Date
 
 type Query {
+  author(slug: String!): Author
   book(slug: String!): Book
   books: [Book]!
 }
