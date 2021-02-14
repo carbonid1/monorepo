@@ -11,6 +11,7 @@ type Author {
 
 type Book {
   authors: [Author!]!
+  description: String
   id: Int!
   publishedIn: Int
   slug: String!

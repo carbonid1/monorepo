@@ -15,6 +15,7 @@ model Book {
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
   authors     Author[]
+  description String?
   publishedIn Int?
   slug        String
   title       String

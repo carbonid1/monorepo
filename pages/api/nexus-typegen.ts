@@ -49,6 +49,7 @@ export interface NexusGenObjects {
     slug: string; // String!
   }
   Book: { // root type
+    description?: string | null; // String
     id: number; // Int!
     publishedIn?: number | null; // Int
     slug: string; // String!
@@ -76,6 +77,7 @@ export interface NexusGenFieldTypes {
   }
   Book: { // field return type
     authors: NexusGenRootTypes['Author'][]; // [Author!]!
+    description: string | null; // String
     id: number; // Int!
     publishedIn: number | null; // Int
     slug: string; // String!
@@ -96,6 +98,7 @@ export interface NexusGenFieldTypeNames {
   }
   Book: { // field return type name
     authors: 'Author'
+    description: 'String'
     id: 'Int'
     publishedIn: 'Int'
     slug: 'String'
