@@ -5,7 +5,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { NotFound } from 'components/errors/NotFound';
 import Link from 'next/link';
 import type { IBook } from 'types/interfaces';
-import { GenericError } from 'components/errors/GenericError';
+import { BaseError } from 'components/errors/BaseError';
 import { CustomHead } from 'components/CustomHead';
 import { ROUTE } from 'consts/routes';
 
@@ -34,7 +34,7 @@ const Book: React.FC = () => {
   const { book } = data ?? {};
 
   if (loading) return null;
-  if (error) return <GenericError />;
+  if (error) return <BaseError />;
   if (!book) return <NotFound />;
 
   return (

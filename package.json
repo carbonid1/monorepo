@@ -7,7 +7,7 @@
     "build": "next build",
     "analyze": "ANALYZE=true next dev",
     "start": "next start",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -s ./public -p 6006",
     "build-storybook": "build-storybook",
     "migrate": "npx prisma migrate dev --preview-feature",
     "studio": "npx prisma studio",

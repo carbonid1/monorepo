@@ -8,5 +8,4 @@ export default {
 } as Meta;
 
 const Template: Story = args => <NotFound {...args} />;
-
 export const Default = Template.bind({});
