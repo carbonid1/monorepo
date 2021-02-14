@@ -3,6 +3,7 @@ export interface IBook {
   createdAt: string;
   updatedAt: string;
   authors: IAuthor[];
+  description?: string;
   publishedIn?: string;
   slug: string;
   title: string;
