@@ -3,7 +3,7 @@ import type { Story, Meta } from '@storybook/react';
 import { BaseError, IBaseError } from '.';
 
 export default {
-  title: 'errors/BaseError',
+  title: 'errors/Base Error',
   component: BaseError,
 } as Meta;
 
