@@ -4,9 +4,7 @@ import '../styles/globals.css';
 // use <img> instead of Next.js <Image />
 Object.defineProperty(nextImage, 'default', {
   configurable: true,
-  value: props => {
-    return <img {...props} />;
-  },
+  value: props => <img {...props} />,
 });
 
 export const parameters = {
