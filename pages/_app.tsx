@@ -1,6 +1,7 @@
 import 'styles/globals.css';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
+import { AppHeader } from 'modules/AppHeader';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -22,6 +23,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="theme-color" content="#317EFB" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <AppHeader />
       <Component {...pageProps} />
     </>
   );
