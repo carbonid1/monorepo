@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Button } from '../../../components/controls/Button';
+import { Button } from 'components/controls/Button';
 
 export interface IBaseError {
   title?: React.ReactNode;
