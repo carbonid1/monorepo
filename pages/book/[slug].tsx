@@ -3,12 +3,10 @@ import { withApollo } from 'apollo/client';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
 import { NotFound } from 'components/errors/NotFound';
-import NextLink from 'next/link';
 import type { IBook } from 'types/interfaces';
 import { BaseError } from 'components/errors/BaseError';
 import { CustomHead } from 'components/CustomHead';
 import { ROUTE } from 'consts/routes';
-import { Button } from 'components/controls/Button';
 import { Link } from 'components/controls/Link';
 
 interface IBookQData {
@@ -61,9 +59,6 @@ const Book: React.FC = () => {
         ))}
         {book.description && <div>{book.description}</div>}
       </div>
-      <NextLink href="/">
-        <Button>Back Home</Button>
-      </NextLink>
     </div>
   );
 };
