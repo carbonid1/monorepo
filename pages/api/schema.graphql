@@ -6,7 +6,6 @@ type Author {
   books: [Book!]!
   fullName: String!
   id: Int!
-  slug: String!
 }
 
 type Book {
@@ -14,7 +13,6 @@ type Book {
   description: String
   id: Int!
   publishedIn: Int
-  slug: String!
   title: String!
 }
 
@@ -24,7 +22,7 @@ A date string, such as 2007-12-03, compliant with the `full-date` format outline
 scalar Date
 
 type Query {
-  author(slug: String!): Author
-  book(slug: String!): Book
+  author(id: ID!): Author
+  book(id: ID!): Book
   books: [Book]!
 }

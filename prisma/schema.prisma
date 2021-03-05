@@ -17,7 +17,6 @@ model Book {
   authors     Author[]
   description String?
   publishedIn Int?
-  slug        String
   title       String
 }
 
@@ -26,5 +25,4 @@ model Author {
   updatedAt   DateTime  @updatedAt
   books       Book[]
   fullName    String
-  slug        String
 }
