@@ -8,18 +8,19 @@ import { BaseError } from 'components/errors/BaseError';
 import { CustomHead } from 'components/CustomHead';
 import { ROUTE } from 'consts/routes';
 import { Link } from 'components/controls/Link';
+import extractIdFromSlug from 'utils/extractIdFromSlug';
 
 interface IBookQData {
   book: IBook;
 }
-interface IBookQVars extends Pick<IBook, 'slug'> {}
+interface IBookQVars extends Pick<IBook, 'id'> {}
 
 const BookQ = gql`
-  query BookQ($slug: String!) {
-    book(slug: $slug) {
+  query BookQ($id: ID!) {
+    book(id: $id) {
       authors {
         fullName
-        slug
+        id
       }
       description
       publishedIn
@@ -30,7 +31,8 @@ const BookQ = gql`
 
 const Book: React.FC = () => {
   const slug = useRouter().query.slug as string;
-  const { data, loading, error } = useQuery<IBookQData, IBookQVars>(BookQ, { variables: { slug } });
+  const id = extractIdFromSlug(slug);
+  const { data, loading, error } = useQuery<IBookQData, IBookQVars>(BookQ, { variables: { id } });
   const { book } = data ?? {};
 
   if (loading) return null;
@@ -51,11 +53,13 @@ const Book: React.FC = () => {
             {book.publishedIn}
           </div>
         )}
-        {book.authors?.map(({ fullName, slug }, index) => (
-          <>
-            <Link href={`/${ROUTE.author}/${slug}`}>{fullName}</Link>
+        {book.authors?.map(({ fullName, id }, index) => (
+          <div key={id}>
+            <Link path={`/${ROUTE.author}/${id}`} slug={fullName}>
+              {fullName}
+            </Link>
             {book.authors.length - 1 === index ? '' : ', '}
-          </>
+          </div>
         ))}
         {book.description && <div>{book.description}</div>}
       </div>

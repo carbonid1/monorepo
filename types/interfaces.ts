@@ -5,7 +5,6 @@ export interface IBook {
   authors: IAuthor[];
   description?: string;
   publishedIn?: string;
-  slug: string;
   title: string;
 }
 
@@ -14,5 +13,4 @@ export interface IAuthor {
   updatedAt: string;
   books: IBook[];
   fullName: string;
-  slug: string;
 }

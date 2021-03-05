@@ -15,9 +15,9 @@ const BooksQ = gql`
     books {
       authors {
         fullName
-        slug
+        id
       }
-      slug
+      id
       title
     }
   }
@@ -31,15 +31,19 @@ const Home: React.FC = () => {
 
   return (
     <ul>
-      {books.map(({ slug, authors, title }, index) => (
-        <li key={slug + index}>
-          {authors?.map(({ fullName, slug }, index) => (
-            <span key={slug + index}>
-              <Link href={`/${ROUTE.author}/${slug}`}>{fullName}</Link>
+      {books.map(({ id, authors, title }, index) => (
+        <li key={id + index}>
+          {authors?.map(({ fullName, id }, index) => (
+            <span key={id + index}>
+              <Link path={`/${ROUTE.author}/${id}`} slug={fullName}>
+                {fullName}
+              </Link>
               {authors.length - 1 === index ? ': ' : ', '}
             </span>
           ))}
-          <Link href={`/${ROUTE.book}/${slug}`}>{title}</Link>
+          <Link path={`/${ROUTE.book}/${id}`} slug={title}>
+            {title}
+          </Link>
         </li>
       ))}
     </ul>

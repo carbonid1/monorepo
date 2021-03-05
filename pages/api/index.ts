@@ -1,6 +1,6 @@
 import { ApolloServer } from 'apollo-server-micro';
 import { GraphQLDate } from 'graphql-iso-date';
-import { asNexusMethod, makeSchema, objectType, stringArg, list, nonNull } from 'nexus';
+import { asNexusMethod, makeSchema, objectType, idArg, list, nonNull } from 'nexus';
 import path from 'path';
 import prisma from '../../lib/prisma';
 
@@ -11,7 +11,6 @@ const Book = objectType({
   nonNullDefaults: { output: true },
   definition(t) {
     t.int('id');
-    t.string('slug');
     t.nullable.int('publishedIn');
     t.nullable.string('description');
     t.string('title');
@@ -28,7 +27,6 @@ const Author = objectType({
   definition(t) {
     t.int('id');
     t.string('fullName');
-    t.string('slug');
     t.list.field('books', {
       type: 'Book',
       resolve: ({ id }) => prisma.author.findUnique({ where: { id } }).books(),
@@ -42,9 +40,9 @@ const Query = objectType({
   definition(t) {
     t.field('book', {
       type: 'Book',
-      args: { slug: stringArg() },
-      resolve: (_, { slug }) => {
-        return prisma.book.findFirst({ where: { slug } });
+      args: { id: idArg() },
+      resolve: (_, { id }) => {
+        return prisma.book.findFirst({ where: { id: +id } });
       },
     });
     t.field('books', {
@@ -53,9 +51,9 @@ const Query = objectType({
     });
     t.field('author', {
       type: 'Author',
-      args: { slug: stringArg() },
-      resolve: (_, { slug }) => {
-        return prisma.author.findFirst({ where: { slug } });
+      args: { id: idArg() },
+      resolve: (_, { id }) => {
+        return prisma.author.findFirst({ where: { id: +id } });
       },
     });
   },
