@@ -1,3 +1,6 @@
-export default (slug: string) => Number(slug.split('.')[0]);
-// true type string | string[] | undefined
-// handle string instead of ID
+const extractIdFromSlug = (slug: string): number | null => {
+  const id = Number(slug.split('.')[0]);
+  return id || null;
+};
+
+export default extractIdFromSlug;

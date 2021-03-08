@@ -13,10 +13,12 @@ import extractIdFromSlug from 'utils/extractIdFromSlug';
 interface IAuthorQData {
   author: IAuthor;
 }
-interface IAuthorQVars extends Pick<IAuthor, 'id'> {}
+interface IAuthorQVars {
+  id: number | null;
+}
 
 const AuthorQ = gql`
-  query AuthorQ($id: ID!) {
+  query AuthorQ($id: ID) {
     author(id: $id) {
       fullName
       id

@@ -1,6 +1,6 @@
 import { ApolloServer } from 'apollo-server-micro';
 import { GraphQLDate } from 'graphql-iso-date';
-import { asNexusMethod, makeSchema, objectType, idArg, list, nonNull } from 'nexus';
+import { asNexusMethod, makeSchema, objectType, idArg, list, nonNull, nullable } from 'nexus';
 import path from 'path';
 import prisma from '../../lib/prisma';
 
@@ -36,7 +36,6 @@ const Author = objectType({
 
 const Query = objectType({
   name: 'Query',
-  nonNullDefaults: { input: true },
   definition(t) {
     t.field('book', {
       type: 'Book',

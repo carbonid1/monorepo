@@ -109,10 +109,10 @@ export interface NexusGenFieldTypeNames {
 export interface NexusGenArgTypes {
   Query: {
     author: { // args
-      id: string; // ID!
+      id?: string | null; // ID
     }
     book: { // args
-      id: string; // ID!
+      id?: string | null; // ID
     }
   }
 }
