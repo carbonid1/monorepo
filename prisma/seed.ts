@@ -104,6 +104,20 @@ async function main() {
       title: 'The Long Mars',
     },
   });
+
+  await prisma.book.upsert({
+    where: { id: 4 },
+    update: {
+      description: `The vengeful King Schahriar agrees to stave off the execution of Queen Scheherazade until she finishes a particularly compelling story. Her plan? Bleed one tale into another. Through fanciful histories, romances, tragedies, comedies, poems, riddles, and songs, Scheherazade prolongs her life by holding the king’s rapt attention.
+      With origins in Persian and Eastern Indian folklore, the stories of The Arabian Nights have been reworked, reshaped, revised, collected, and supplemented throughout the centuries by various authors and scholars - and are continually redefined by the modern translations of the Western world.`,
+      title: 'The Arabian Nights',
+    },
+    create: {
+      description: `The vengeful King Schahriar agrees to stave off the execution of Queen Scheherazade until she finishes a particularly compelling story. Her plan? Bleed one tale into another. Through fanciful histories, romances, tragedies, comedies, poems, riddles, and songs, Scheherazade prolongs her life by holding the king’s rapt attention.
+      With origins in Persian and Eastern Indian folklore, the stories of The Arabian Nights have been reworked, reshaped, revised, collected, and supplemented throughout the centuries by various authors and scholars - and are continually redefined by the modern translations of the Western world.`,
+      title: 'The Arabian Nights',
+    },
+  });
 }
 
 main()
