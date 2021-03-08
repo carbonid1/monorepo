@@ -72,6 +72,38 @@ async function main() {
       title: 'A Game of Thrones',
     },
   });
+
+  await prisma.book.upsert({
+    where: { id: 3 },
+    update: {
+      authors: {
+        connectOrCreate: [
+          { where: { id: 3 }, create: { fullName: 'Terry Pratchett' } },
+          { where: { id: 4 }, create: { fullName: 'Stephen Baxter' } },
+        ],
+      },
+      description: `The third novel in Terry Pratchett and Stephen Baxter’s “Long Earth” series, which Io9 calls “a brilliant science fiction collaboration.”
+      2040-2045: In the years after the cataclysmic Yellowstone eruption there is massive economic dislocation as populations flee Datum Earth to myriad Long Earth worlds. Sally, Joshua, and Lobsang are all involved in this perilous rescue work when, out of the blue, Sally is contacted by her long-vanished father and inventor of the original Stepper device, Willis Linsay. He tells her he is planning a fantastic voyage across the Long Mars and wants her to accompany him. But Sally soon learns that Willis has an ulterior motive for his request. . . .
+      Meanwhile U. S. Navy Commander Maggie Kauffman has embarked on an incredible journey of her own, leading an expedition to the outer limits of the far Long Earth.
+      For Joshua, the crisis he faces is much closer to home. He becomes embroiled in the plight of the Next: the super-bright post-humans who are beginning to emerge from their “long childhood” in the community called Happy Landings, located deep in the Long Earth. Ignorance and fear have caused “normal” human society to turn against the Next. A dramatic showdown seems inevitable. . . . `,
+      publishedIn: 2014,
+      title: 'The Long Mars',
+    },
+    create: {
+      authors: {
+        connectOrCreate: [
+          { where: { id: 3 }, create: { fullName: 'Terry Pratchett' } },
+          { where: { id: 4 }, create: { fullName: 'Stephen Baxter' } },
+        ],
+      },
+      description: `The third novel in Terry Pratchett and Stephen Baxter’s “Long Earth” series, which Io9 calls “a brilliant science fiction collaboration.”
+      2040-2045: In the years after the cataclysmic Yellowstone eruption there is massive economic dislocation as populations flee Datum Earth to myriad Long Earth worlds. Sally, Joshua, and Lobsang are all involved in this perilous rescue work when, out of the blue, Sally is contacted by her long-vanished father and inventor of the original Stepper device, Willis Linsay. He tells her he is planning a fantastic voyage across the Long Mars and wants her to accompany him. But Sally soon learns that Willis has an ulterior motive for his request. . . .
+      Meanwhile U. S. Navy Commander Maggie Kauffman has embarked on an incredible journey of her own, leading an expedition to the outer limits of the far Long Earth.
+      For Joshua, the crisis he faces is much closer to home. He becomes embroiled in the plight of the Next: the super-bright post-humans who are beginning to emerge from their “long childhood” in the community called Happy Landings, located deep in the Long Earth. Ignorance and fear have caused “normal” human society to turn against the Next. A dramatic showdown seems inevitable. . . . `,
+      publishedIn: 2014,
+      title: 'The Long Mars',
+    },
+  });
 }
 
 main()
