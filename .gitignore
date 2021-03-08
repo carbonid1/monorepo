@@ -19,6 +19,7 @@
 .DS_Store
 *.pem
 /prisma/dev.db
+/public/sw.js.map
 
 # debug
 npm-debug.log*
