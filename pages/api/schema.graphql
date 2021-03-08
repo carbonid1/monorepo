@@ -13,6 +13,7 @@ type Book {
   description: String
   id: Int!
   publishedIn: Int
+  reviews: [Review!]!
   title: String!
 }
 
@@ -25,4 +26,9 @@ type Query {
   author(id: ID): Author
   book(id: ID): Book
   books: [Book]!
+}
+
+type Review {
+  body: String
+  id: Int!
 }
