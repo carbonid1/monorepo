@@ -10,19 +10,27 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model Book {
-  id          Int       @default(autoincrement()) @id
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-  authors     Author[]
-  description String?
-  publishedIn Int?
-  title       String
+model Author {
+  id                     Int                         @default(autoincrement()) @id
+  createdAt              DateTime                    @default(now())
+  updatedAt              DateTime                    @updatedAt
+  books                  Book[]
+  fullName               String
 }
 
-model Author {
-  id          Int       @default(autoincrement()) @id
-  updatedAt   DateTime  @updatedAt
-  books       Book[]
-  fullName    String
+model Book {
+  id                     Int                         @default(autoincrement()) @id
+  createdAt              DateTime                    @default(now())
+  updatedAt              DateTime                    @updatedAt
+  authors                Author[]
+  description            String?
+  publishedIn            Int?
+  title                  String
+}
+
+model Review {
+  id                     Int                         @default(autoincrement()) @id
+  createdAt              DateTime                    @default(now())
+  updatedAt              DateTime                    @updatedAt
+  body                   String
 }
