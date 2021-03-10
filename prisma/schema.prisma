@@ -12,27 +12,33 @@ generator client {
 
 model Author {
   books                  Book[]
-  createdAt              DateTime                    @default(now())
   fullName               String
   id                     Int                         @default(autoincrement()) @id
   updatedAt              DateTime                    @updatedAt
 }
 
 model Book {
-  authors                Author[]
-  createdAt              DateTime                    @default(now())
+  authors                Author[] // should I have them for every edition?
+  editions               Edition[]
+  id                     Int                         @default(autoincrement()) @id
+  publishedIn            Int?
+  reviews                Review[]
+}
+
+model Edition {
+  book                   Book                        @relation(fields: [bookId], references: [id])
+  bookId                 Int
   description            String?
   id                     Int                         @default(autoincrement()) @id
   publishedIn            Int?
-  reviews                Review[]     
   title                  String
   updatedAt              DateTime                    @updatedAt
 }
 
 model Review {
   body                   String
-  book                   Book                       @relation(fields: [bookId], references: [id])
-  bookId                 Int                         
+  book                   Book                        @relation(fields: [bookId], references: [id])
+  bookId                 Int
   createdAt              DateTime                    @default(now())
   id                     Int                         @default(autoincrement()) @id
   updatedAt              DateTime                    @updatedAt
