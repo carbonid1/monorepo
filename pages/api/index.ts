@@ -27,6 +27,10 @@ const Book = objectType({
       type: 'Author',
       resolve: ({ id }) => prisma.book.findUnique({ where: { id } }).authors(),
     });
+    t.list.field('editions', {
+      type: 'Edition',
+      resolve: ({ id }) => prisma.book.findUnique({ where: { id } }).editions(),
+    });
     t.int('id');
     t.nullable.int('publishedIn');
     t.list.field('reviews', {
@@ -56,7 +60,7 @@ const Review = objectType({
   nonNullDefaults: { output: true },
   definition(t) {
     t.int('id');
-    t.nullable.string('body');
+    t.string('body');
   },
 });
 

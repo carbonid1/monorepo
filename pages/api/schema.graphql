@@ -10,6 +10,7 @@ type Author {
 
 type Book {
   authors: [Author!]!
+  editions: [Edition!]!
   id: Int!
   publishedIn: Int
   reviews: [Review!]!
@@ -36,6 +37,6 @@ type Query {
 }
 
 type Review {
-  body: String
+  body: String!
   id: Int!
 }

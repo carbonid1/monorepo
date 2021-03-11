@@ -11,7 +11,6 @@
     "build-storybook": "build-storybook",
     "studio": "npx prisma studio",
     "migrate": "npx prisma migrate dev --preview-feature",
-    "seed": "npm run reset && npx prisma db seed  --preview-feature",
     "reset": "npx prisma migrate reset --preview-feature",
     "generate": "npm -s run generate:prisma && npm -s run generate:nexus",
     "generate:prisma": "prisma generate",
