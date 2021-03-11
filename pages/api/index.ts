@@ -32,7 +32,7 @@ const Book = objectType({
       resolve: ({ id }) => prisma.book.findUnique({ where: { id } }).editions(),
     });
     t.int('id');
-    t.nullable.int('publishedIn');
+    t.nullable.string('publishedIn');
     t.list.field('reviews', {
       type: 'Review',
       resolve: ({ id }) => prisma.book.findUnique({ where: { id } }).reviews(),
@@ -46,7 +46,7 @@ const Edition = objectType({
   definition(t) {
     t.nullable.string('description');
     t.int('id');
-    t.nullable.int('publishedIn');
+    t.nullable.string('publishedIn');
     t.string('title');
     t.field('book', {
       type: 'Book',

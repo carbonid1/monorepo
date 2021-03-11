@@ -12,7 +12,7 @@ type Book {
   authors: [Author!]!
   editions: [Edition!]!
   id: Int!
-  publishedIn: Int
+  publishedIn: String
   reviews: [Review!]!
 }
 
@@ -25,7 +25,7 @@ type Edition {
   book: Book!
   description: String
   id: Int!
-  publishedIn: Int
+  publishedIn: String
   title: String!
 }
 

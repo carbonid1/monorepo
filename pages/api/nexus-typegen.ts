@@ -49,12 +49,12 @@ export interface NexusGenObjects {
   }
   Book: { // root type
     id: number; // Int!
-    publishedIn?: number | null; // Int
+    publishedIn?: string | null; // String
   }
   Edition: { // root type
     description?: string | null; // String
     id: number; // Int!
-    publishedIn?: number | null; // Int
+    publishedIn?: string | null; // String
     title: string; // String!
   }
   Query: {};
@@ -84,14 +84,14 @@ export interface NexusGenFieldTypes {
     authors: NexusGenRootTypes['Author'][]; // [Author!]!
     editions: NexusGenRootTypes['Edition'][]; // [Edition!]!
     id: number; // Int!
-    publishedIn: number | null; // Int
+    publishedIn: string | null; // String
     reviews: NexusGenRootTypes['Review'][]; // [Review!]!
   }
   Edition: { // field return type
     book: NexusGenRootTypes['Book']; // Book!
     description: string | null; // String
     id: number; // Int!
-    publishedIn: number | null; // Int
+    publishedIn: string | null; // String
     title: string; // String!
   }
   Query: { // field return type
@@ -116,14 +116,14 @@ export interface NexusGenFieldTypeNames {
     authors: 'Author'
     editions: 'Edition'
     id: 'Int'
-    publishedIn: 'Int'
+    publishedIn: 'String'
     reviews: 'Review'
   }
   Edition: { // field return type name
     book: 'Book'
     description: 'String'
     id: 'Int'
-    publishedIn: 'Int'
+    publishedIn: 'String'
     title: 'String'
   }
   Query: { // field return type name
