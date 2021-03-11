@@ -1,16 +1,26 @@
-export interface IBook {
+export interface IAuthor {
+  books: IBook[];
   id: number;
-  createdAt: string;
-  updatedAt: string;
+  fullName: string;
+}
+
+export interface IBook {
   authors: IAuthor[];
+  id: number;
+  publishedIn?: number;
+  editions: IEdition[];
+  reviews: IReview[];
+}
+
+export interface IEdition {
+  book: IBook;
   description?: string;
-  publishedIn?: string;
+  id: number;
+  publishedIn?: number;
   title: string;
 }
 
-export interface IAuthor {
+export interface IReview {
   id: number;
-  updatedAt: string;
-  books: IBook[];
-  fullName: string;
+  body: string;
 }

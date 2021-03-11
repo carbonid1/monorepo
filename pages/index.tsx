@@ -17,8 +17,10 @@ const BooksQ = gql`
         fullName
         id
       }
+      editions {
+        title
+      }
       id
-      title
     }
   }
 `;
@@ -28,10 +30,9 @@ const Home: React.FC = () => {
   const { books = [] } = data ?? {};
 
   if (error) return <BaseError />;
-
   return (
     <ul>
-      {books.map(({ id, authors, title }, index) => (
+      {books.map(({ id, authors, editions }, index) => (
         <li key={id + index}>
           {authors?.map(({ fullName, id }, index) => (
             <span key={id + index}>
@@ -41,8 +42,8 @@ const Home: React.FC = () => {
               {authors.length - 1 === index ? ': ' : ', '}
             </span>
           ))}
-          <Link path={`/${ROUTE.book}/${id}`} slug={title}>
-            {title}
+          <Link path={`/${ROUTE.book}/${id}`} slug={editions[0].title}>
+            {editions[0].title}
           </Link>
         </li>
       ))}

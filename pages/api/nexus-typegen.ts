@@ -59,7 +59,7 @@ export interface NexusGenObjects {
   }
   Query: {};
   Review: { // root type
-    body?: string | null; // String
+    body: string; // String!
     id: number; // Int!
   }
 }
@@ -82,6 +82,7 @@ export interface NexusGenFieldTypes {
   }
   Book: { // field return type
     authors: NexusGenRootTypes['Author'][]; // [Author!]!
+    editions: NexusGenRootTypes['Edition'][]; // [Edition!]!
     id: number; // Int!
     publishedIn: number | null; // Int
     reviews: NexusGenRootTypes['Review'][]; // [Review!]!
@@ -100,7 +101,7 @@ export interface NexusGenFieldTypes {
     edition: NexusGenRootTypes['Edition'] | null; // Edition
   }
   Review: { // field return type
-    body: string | null; // String
+    body: string; // String!
     id: number; // Int!
   }
 }
@@ -113,6 +114,7 @@ export interface NexusGenFieldTypeNames {
   }
   Book: { // field return type name
     authors: 'Author'
+    editions: 'Edition'
     id: 'Int'
     publishedIn: 'Int'
     reviews: 'Review'
