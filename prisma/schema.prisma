@@ -9,7 +9,7 @@ generator client {
 
 model Author {
   books                  Book[]
-  fullName               String
+  fullName               String                      @db.VarChar(255)
   id                     Int                         @default(autoincrement()) @id
   updatedAt              DateTime                    @updatedAt
 }
@@ -28,7 +28,7 @@ model Edition {
   description            String?
   id                     Int                         @default(autoincrement()) @id
   publishedIn            Int?
-  title                  String
+  title                  String                      @db.VarChar(255)
   updatedAt              DateTime                    @updatedAt
 }
 
