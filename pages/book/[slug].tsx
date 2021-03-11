@@ -24,9 +24,12 @@ const BookQ = gql`
         fullName
         id
       }
-      description
+      editions {
+        description
+        publishedIn
+        title
+      }
       publishedIn
-      title
     }
   }
 `;
@@ -41,29 +44,32 @@ const Book: React.FC = () => {
   if (error) return <BaseError />;
   if (!book) return <NotFound />;
 
+  const { editions, publishedIn, authors } = book;
+  const { title, description } = editions[0];
+
   return (
     <div>
-      <CustomHead title={book.title} description={book.description} />
+      <CustomHead title={title} description={description} />
       <div>
         <div>
           <b>Title: </b>
-          {book.title}
+          {title}
         </div>
-        {book.publishedIn && (
+        {publishedIn && (
           <div>
             <b>Date Published: </b>
-            {book.publishedIn}
+            {publishedIn}
           </div>
         )}
-        {book.authors?.map(({ fullName, id }, index) => (
-          <div key={id}>
+        {authors?.map(({ fullName, id }, index) => (
+          <span key={id}>
             <Link path={`/${ROUTE.author}/${id}`} slug={fullName}>
               {fullName}
             </Link>
-            {book.authors.length - 1 === index ? '' : ', '}
-          </div>
+            {authors.length - 1 === index ? '' : ', '}
+          </span>
         ))}
-        {book.description && <div>{book.description}</div>}
+        {description && <div>{description}</div>}
       </div>
     </div>
   );
