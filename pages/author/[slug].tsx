@@ -23,8 +23,10 @@ const AuthorQ = gql`
       fullName
       id
       books {
-        title
-        description
+        editions {
+          title
+          description
+        }
         id
       }
     }
@@ -52,14 +54,17 @@ const Book: React.FC = () => {
           {fullName}
         </div>
         <ul>
-          {books.map(({ id, title, description }, index) => (
-            <li key={id + index}>
-              <Link path={`/${ROUTE.book}/${id}`} slug={title}>
-                {title}
-              </Link>
-              <div>{description}</div>
-            </li>
-          ))}
+          {books.map(({ editions, id }, index) => {
+            const { title, description } = editions[0];
+            return (
+              <li key={id + index}>
+                <Link path={`/${ROUTE.book}/${id}`} slug={title}>
+                  {title}
+                </Link>
+                <div>{description}</div>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </div>
