@@ -10,11 +10,9 @@ type Author {
 
 type Book {
   authors: [Author!]!
-  description: String
   id: Int!
   publishedIn: Int
   reviews: [Review!]!
-  title: String!
 }
 
 """
@@ -22,10 +20,19 @@ A date string, such as 2007-12-03, compliant with the `full-date` format outline
 """
 scalar Date
 
+type Edition {
+  book: Book!
+  description: String
+  id: Int!
+  publishedIn: Int
+  title: String!
+}
+
 type Query {
   author(id: ID): Author
   book(id: ID): Book
   books: [Book]!
+  edition(id: ID): Edition
 }
 
 type Review {
