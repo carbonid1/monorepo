@@ -23,17 +23,30 @@ const Book = objectType({
   name: 'Book',
   nonNullDefaults: { output: true },
   definition(t) {
-    t.int('id');
-    t.nullable.int('publishedIn');
-    t.nullable.string('description');
-    t.string('title');
     t.list.field('authors', {
       type: 'Author',
       resolve: ({ id }) => prisma.book.findUnique({ where: { id } }).authors(),
     });
+    t.int('id');
+    t.nullable.int('publishedIn');
     t.list.field('reviews', {
       type: 'Review',
       resolve: ({ id }) => prisma.book.findUnique({ where: { id } }).reviews(),
+    });
+  },
+});
+
+const Edition = objectType({
+  name: 'Edition',
+  nonNullDefaults: { output: true },
+  definition(t) {
+    t.nullable.string('description');
+    t.int('id');
+    t.nullable.int('publishedIn');
+    t.string('title');
+    t.field('book', {
+      type: 'Book',
+      resolve: ({ id }) => prisma.edition.findUnique({ where: { id } }).book(),
     });
   },
 });
@@ -50,23 +63,25 @@ const Review = objectType({
 const Query = objectType({
   name: 'Query',
   definition(t) {
+    t.field('author', {
+      type: 'Author',
+      args: { id: idArg() },
+      resolve: (_, { id }) => prisma.author.findFirst({ where: { id: +id } }),
+    });
+
     t.field('book', {
       type: 'Book',
       args: { id: idArg() },
-      resolve: (_, { id }) => {
-        return prisma.book.findFirst({ where: { id: +id } });
-      },
+      resolve: (_, { id }) => prisma.book.findFirst({ where: { id: +id } }),
     });
     t.field('books', {
       type: nonNull(list('Book')),
       resolve: () => prisma.book.findMany(),
     });
-    t.field('author', {
-      type: 'Author',
+    t.field('edition', {
+      type: 'Edition',
       args: { id: idArg() },
-      resolve: (_, { id }) => {
-        return prisma.author.findFirst({ where: { id: +id } });
-      },
+      resolve: (_, { id }) => prisma.edition.findFirst({ where: { id: +id } }),
     });
   },
 });
@@ -78,7 +93,7 @@ const Query = objectType({
 // });
 
 export const schema = makeSchema({
-  types: [Query, GQLDate, Author, Book, Review],
+  types: [Query, GQLDate, Author, Book, Edition, Review],
   outputs: {
     typegen: path.join(process.cwd(), 'pages/api/nexus-typegen.ts'),
     schema: path.join(process.cwd(), 'pages/api/schema.graphql'),
