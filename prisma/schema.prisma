@@ -18,7 +18,7 @@ model Book {
   authors                Author[]
   editions               Edition[]
   id                     Int                         @default(autoincrement()) @id
-  publishedIn            Int?
+  publishedIn            DateTime?                        
   reviews                Review[]
 }
 
@@ -27,7 +27,7 @@ model Edition {
   bookId                 Int
   description            String?
   id                     Int                         @default(autoincrement()) @id
-  publishedIn            Int?
+  publishedIn            DateTime?
   title                  String                      @db.VarChar(255)
   updatedAt              DateTime                    @updatedAt
 }
