@@ -59,8 +59,15 @@ const Review = objectType({
   name: 'Review',
   nonNullDefaults: { output: true },
   definition(t) {
-    t.int('id');
     t.string('body');
+    t.field('book', {
+      type: 'Book',
+      args: { id: idArg() },
+      resolve: ({ id }) => prisma.review.findFirst({ where: { id } }).book(),
+    });
+    t.string('createdAt');
+    t.int('id');
+    t.string('updatedAt');
   },
 });
 
@@ -72,7 +79,6 @@ const Query = objectType({
       args: { id: idArg() },
       resolve: (_, { id }) => prisma.author.findFirst({ where: { id: +id } }),
     });
-
     t.field('book', {
       type: 'Book',
       args: { id: idArg() },
@@ -86,6 +92,11 @@ const Query = objectType({
       type: 'Edition',
       args: { id: idArg() },
       resolve: (_, { id }) => prisma.edition.findFirst({ where: { id: +id } }),
+    });
+    t.field('review', {
+      type: 'Review',
+      args: { id: idArg() },
+      resolve: (_, { id }) => prisma.review.findFirst({ where: { id: +id } }),
     });
   },
 });
