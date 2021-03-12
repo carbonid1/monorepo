@@ -34,9 +34,13 @@ type Query {
   book(id: ID): Book
   books: [Book]!
   edition(id: ID): Edition
+  review(id: ID): Review
 }
 
 type Review {
   body: String!
+  book(id: ID): Book!
+  createdAt: String!
   id: Int!
+  updatedAt: String!
 }
