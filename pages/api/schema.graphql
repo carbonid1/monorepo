@@ -13,7 +13,6 @@ type Book {
   editions: [Edition!]!
   id: Int!
   publishedIn: String
-  reviews: [Review!]!
 }
 
 """
@@ -26,6 +25,7 @@ type Edition {
   description: String
   id: Int!
   publishedIn: String
+  reviews: [Review!]!
   title: String!
 }
 
@@ -39,8 +39,8 @@ type Query {
 
 type Review {
   body: String!
-  book(id: ID): Book!
   createdAt: String!
+  edition(id: ID): Edition!
   id: Int!
   updatedAt: String!
 }

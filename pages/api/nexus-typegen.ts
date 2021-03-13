@@ -87,13 +87,13 @@ export interface NexusGenFieldTypes {
     editions: NexusGenRootTypes['Edition'][]; // [Edition!]!
     id: number; // Int!
     publishedIn: string | null; // String
-    reviews: NexusGenRootTypes['Review'][]; // [Review!]!
   }
   Edition: { // field return type
     book: NexusGenRootTypes['Book']; // Book!
     description: string | null; // String
     id: number; // Int!
     publishedIn: string | null; // String
+    reviews: NexusGenRootTypes['Review'][]; // [Review!]!
     title: string; // String!
   }
   Query: { // field return type
@@ -105,8 +105,8 @@ export interface NexusGenFieldTypes {
   }
   Review: { // field return type
     body: string; // String!
-    book: NexusGenRootTypes['Book']; // Book!
     createdAt: string; // String!
+    edition: NexusGenRootTypes['Edition']; // Edition!
     id: number; // Int!
     updatedAt: string; // String!
   }
@@ -123,13 +123,13 @@ export interface NexusGenFieldTypeNames {
     editions: 'Edition'
     id: 'Int'
     publishedIn: 'String'
-    reviews: 'Review'
   }
   Edition: { // field return type name
     book: 'Book'
     description: 'String'
     id: 'Int'
     publishedIn: 'String'
+    reviews: 'Review'
     title: 'String'
   }
   Query: { // field return type name
@@ -141,8 +141,8 @@ export interface NexusGenFieldTypeNames {
   }
   Review: { // field return type name
     body: 'String'
-    book: 'Book'
     createdAt: 'String'
+    edition: 'Edition'
     id: 'Int'
     updatedAt: 'String'
   }
@@ -164,7 +164,7 @@ export interface NexusGenArgTypes {
     }
   }
   Review: {
-    book: { // args
+    edition: { // args
       id?: string | null; // ID
     }
   }
