@@ -19,7 +19,6 @@ model Book {
   editions               Edition[]
   id                     Int                         @default(autoincrement()) @id
   publishedIn            DateTime?                        
-  reviews                Review[]
 }
 
 model Edition {
@@ -28,14 +27,15 @@ model Edition {
   description            String?
   id                     Int                         @default(autoincrement()) @id
   publishedIn            DateTime?
+  reviews                Review[]
   title                  String                      @db.VarChar(255)
   updatedAt              DateTime                    @updatedAt
 }
 
 model Review {
   body                   String
-  book                   Book                        @relation(fields: [bookId], references: [id])
-  bookId                 Int
+  edition                Edition                     @relation(fields: [editionId], references: [id])
+  editionId              Int
   createdAt              DateTime                    @default(now())
   id                     Int                         @default(autoincrement()) @id
   updatedAt              DateTime                    @updatedAt

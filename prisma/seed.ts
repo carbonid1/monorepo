@@ -15,15 +15,15 @@ async function main() {
           David Epstein examined the world's most successful athletes, artists, musicians, inventors, forecasters and scientists. He discovered that in most fields--especially those that are complex and unpredictable--generalists, not specialists, are primed to excel. Generalists often find their path late, and they juggle many interests rather than focusing on one. They're also more creative, more agile, and able to make connections their more specialized peers can't see.
           Provocative, rigorous, and engrossing, Range makes a compelling case for actively cultivating inefficiency. Failing a test is the best way to learn. Frequent quitters end up with the most fulfilling careers. The most impactful inventors cross domains rather than deepening their knowledge in a single area. As experts silo themselves further while computers master more of the skills once reserved for highly focused humans, people who think broadly and embrace diverse experiences and perspectives will increasingly thrive.`,
           publishedIn: new Date('2019-05-28'),
+          reviews: {
+            create: {
+              body: `This book looks at how an emphasis on specialization can actually hamper our ability to really excel at something. It aligns with what I try to do when I am coaching, in my stories, and what we’re doing with Mamba Sports Academy—create all-around athletes who can think critically and make assessments in real time to enhance their play rather than rely only on a narrow set of skills.`,
+            },
+          },
           title: 'Range: Why Generalists Triumph in a Specialized World',
         },
       },
       publishedIn: new Date('2019-05-28'),
-      reviews: {
-        create: {
-          body: `This book looks at how an emphasis on specialization can actually hamper our ability to really excel at something. It aligns with what I try to do when I am coaching, in my stories, and what we’re doing with Mamba Sports Academy—create all-around athletes who can think critically and make assessments in real time to enhance their play rather than rely only on a narrow set of skills.`,
-        },
-      },
     },
   });
 

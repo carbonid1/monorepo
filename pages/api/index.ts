@@ -33,10 +33,6 @@ const Book = objectType({
     });
     t.int('id');
     t.nullable.string('publishedIn');
-    t.list.field('reviews', {
-      type: 'Review',
-      resolve: ({ id }) => prisma.book.findUnique({ where: { id } }).reviews(),
-    });
   },
 });
 
@@ -44,14 +40,18 @@ const Edition = objectType({
   name: 'Edition',
   nonNullDefaults: { output: true },
   definition(t) {
-    t.nullable.string('description');
-    t.int('id');
-    t.nullable.string('publishedIn');
-    t.string('title');
     t.field('book', {
       type: 'Book',
       resolve: ({ id }) => prisma.edition.findUnique({ where: { id } }).book(),
     });
+    t.nullable.string('description');
+    t.int('id');
+    t.nullable.string('publishedIn');
+    t.list.field('reviews', {
+      type: 'Review',
+      resolve: ({ id }) => prisma.edition.findUnique({ where: { id } }).reviews(),
+    });
+    t.string('title');
   },
 });
 
@@ -60,10 +60,10 @@ const Review = objectType({
   nonNullDefaults: { output: true },
   definition(t) {
     t.string('body');
-    t.field('book', {
-      type: 'Book',
+    t.field('edition', {
+      type: 'Edition',
       args: { id: idArg() },
-      resolve: ({ id }) => prisma.review.findFirst({ where: { id } }).book(),
+      resolve: ({ id }) => prisma.review.findFirst({ where: { id } }).edition(),
     });
     t.string('createdAt');
     t.int('id');
