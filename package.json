@@ -48,6 +48,7 @@
     "@storybook/addon-links": "^6.1.15",
     "@storybook/preset-ant-design": "0.0.1",
     "@storybook/react": "^6.1.15",
+    "@tailwindcss/jit": "^0.1.5",
     "@tailwindcss/postcss7-compat": "^2.0.3",
     "@types/graphql": "^14.5.0",
     "@types/graphql-iso-date": "^3.4.0",
