@@ -9,7 +9,6 @@ import { CustomHead } from 'components/CustomHead';
 import { ROUTE } from 'consts/routes';
 import { Link } from 'components/controls/Link';
 import extractIdFromSlug from 'utils/extractIdFromSlug';
-import formatDate from 'utils/formatDate';
 
 interface IEditionQData {
   edition: IEdition;
@@ -62,7 +61,7 @@ const Book: React.FC = () => {
         {publishedIn && (
           <div>
             <b>Date Published: </b>
-            {formatDate(publishedIn)}
+            {publishedIn}
           </div>
         )}
         <div>

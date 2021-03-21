@@ -9,7 +9,6 @@ import { CustomHead } from 'components/CustomHead';
 import { ROUTE } from 'consts/routes';
 import { Link } from 'components/controls/Link';
 import extractIdFromSlug from 'utils/extractIdFromSlug';
-import formatDate from 'utils/formatDate';
 
 interface IBookQData {
   book: IBook;
@@ -63,7 +62,7 @@ const Book: React.FC = () => {
             {book.authors.length - 1 === index ? '' : ', '}
           </span>
         ))}
-        {publishedIn && <div>First published in {formatDate(publishedIn)}</div>}
+        {publishedIn && <div>First published in {publishedIn}</div>}
         <div className="mt-2">
           {editions.map(edition => (
             <div key={edition.id} className="mb-2">
@@ -72,7 +71,7 @@ const Book: React.FC = () => {
               </Link>
               <div>
                 <b>Published in: </b>
-                {formatDate(edition.publishedIn)}
+                {edition.publishedIn}
               </div>
               <div>
                 <b>Edition language: </b>
