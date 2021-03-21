@@ -3,6 +3,7 @@ import { GraphQLDate } from 'graphql-iso-date';
 import ISO6391 from 'iso-639-1';
 import { asNexusMethod, makeSchema, objectType, idArg, list, nonNull } from 'nexus';
 import path from 'path';
+import formatDate from '../../utils/formatDate';
 import prisma from '../../lib/prisma';
 
 export const GQLDate = asNexusMethod(GraphQLDate, 'date');
@@ -33,7 +34,10 @@ const Book = objectType({
       resolve: ({ id }) => prisma.book.findUnique({ where: { id } }).editions(),
     });
     t.int('id');
-    t.nullable.string('publishedIn');
+    t.field('publishedIn', {
+      type: 'String',
+      resolve: ({ publishedIn }) => formatDate(publishedIn),
+    });
   },
 });
 
@@ -51,7 +55,10 @@ const Edition = objectType({
       type: 'String',
       resolve: ({ lang }) => ISO6391.getName(lang),
     });
-    t.nullable.string('publishedIn');
+    t.field('publishedIn', {
+      type: 'String',
+      resolve: ({ publishedIn }) => formatDate(publishedIn),
+    });
     t.list.field('reviews', {
       type: 'Review',
       resolve: ({ id }) => prisma.edition.findUnique({ where: { id } }).reviews(),
