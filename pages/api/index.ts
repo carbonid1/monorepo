@@ -46,6 +46,7 @@ const Edition = objectType({
     });
     t.nullable.string('description');
     t.int('id');
+    t.string('lang');
     t.nullable.string('publishedIn');
     t.list.field('reviews', {
       type: 'Review',
@@ -60,13 +61,14 @@ const Review = objectType({
   nonNullDefaults: { output: true },
   definition(t) {
     t.string('body');
+    t.string('createdAt');
     t.field('edition', {
       type: 'Edition',
       args: { id: idArg() },
       resolve: ({ id }) => prisma.review.findFirst({ where: { id } }).edition(),
     });
-    t.string('createdAt');
     t.int('id');
+    t.string('lang');
     t.string('updatedAt');
   },
 });
