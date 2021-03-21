@@ -1,4 +1,5 @@
 export enum ROUTE {
-  book = 'book',
   author = 'author',
+  book = 'book',
+  editions = 'editions',
 }

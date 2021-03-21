@@ -3,7 +3,7 @@ import { withApollo } from 'apollo/client';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
 import { NotFound } from 'components/errors/NotFound';
-import type { IEdition } from 'types/interfaces';
+import type { IBook } from 'types/interfaces';
 import { BaseError } from 'components/errors/BaseError';
 import { CustomHead } from 'components/CustomHead';
 import { ROUTE } from 'consts/routes';
@@ -11,30 +11,27 @@ import { Link } from 'components/controls/Link';
 import extractIdFromSlug from 'utils/extractIdFromSlug';
 import formatDate from 'utils/formatDate';
 
-interface IEditionQData {
-  edition: IEdition;
+interface IBookQData {
+  book: IBook;
 }
-interface IEditionQVars {
+interface IBookQVars {
   id: number | null;
 }
 
-const EditionQ = gql`
-  query EditionQ($id: ID) {
-    edition(id: $id) {
-      book {
-        authors {
-          fullName
-          id
-        }
-        editions {
-          title
-        }
+const BookQ = gql`
+  query BookQ($id: ID) {
+    book(id: $id) {
+      authors {
+        fullName
         id
       }
-      description
-      lang
+      editions {
+        publishedIn
+        title
+        lang
+        id
+      }
       publishedIn
-      title
     }
   }
 `;
@@ -42,33 +39,22 @@ const EditionQ = gql`
 const Book: React.FC = () => {
   const slug = useRouter().query.slug as string;
   const id = extractIdFromSlug(slug);
-  const { data, loading, error } = useQuery<IEditionQData, IEditionQVars>(EditionQ, { variables: { id } });
-  const { edition } = data ?? {};
+  const { data, loading, error } = useQuery<IBookQData, IBookQVars>(BookQ, { variables: { id } });
+  const { book } = data ?? {};
 
   if (loading) return null;
   if (error) return <BaseError />;
-  if (!edition) return <NotFound />;
+  if (!book) return <NotFound />;
 
-  const { title, description, publishedIn, book, lang } = edition;
+  const { editions, publishedIn } = book;
+  const { title, description } = editions[0];
 
   return (
     <div>
       <CustomHead title={title} description={description} />
       <div>
-        <div>
-          <b>Title: </b>
-          {title}
-        </div>
-        {publishedIn && (
-          <div>
-            <b>Date Published: </b>
-            {formatDate(publishedIn)}
-          </div>
-        )}
-        <div>
-          <b>Edition Language: </b>
-          {lang}
-        </div>
+        <b>{title}</b>
+        <span> by </span>
         {book.authors?.map(({ fullName, id }, index) => (
           <span key={id}>
             <Link path={`/${ROUTE.author}/${id}`} slug={fullName}>
@@ -77,10 +63,24 @@ const Book: React.FC = () => {
             {book.authors.length - 1 === index ? '' : ', '}
           </span>
         ))}
-        {description && <div>{description}</div>}
-        <Link path={`/${ROUTE.editions}/${book.id}`} slug={book.editions[0].title}>
-          All Editions
-        </Link>
+        {publishedIn && <div>First published in {formatDate(publishedIn)}</div>}
+        <div className="mt-2">
+          {editions.map(edition => (
+            <div key={edition.id} className="mb-2">
+              <Link path={`/${ROUTE.book}/${edition.id}`} slug={edition.title}>
+                {edition.title}
+              </Link>
+              <div>
+                <b>Published in: </b>
+                {formatDate(edition.publishedIn)}
+              </div>
+              <div>
+                <b>Edition language: </b>
+                {edition.lang}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
