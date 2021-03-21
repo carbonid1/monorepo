@@ -18,9 +18,11 @@ export interface IEdition {
   id: number;
   publishedIn?: string;
   title: string;
+  lang: string;
 }
 
 export interface IReview {
   id: number;
   body: string;
+  lang: string;
 }
