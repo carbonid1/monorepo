@@ -24,6 +24,7 @@ type Edition {
   book: Book!
   description: String
   id: Int!
+  lang: String!
   publishedIn: String
   reviews: [Review!]!
   title: String!
@@ -42,5 +43,6 @@ type Review {
   createdAt: String!
   edition(id: ID): Edition!
   id: Int!
+  lang: String!
   updatedAt: String!
 }
