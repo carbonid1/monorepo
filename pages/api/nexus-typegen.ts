@@ -54,7 +54,6 @@ export interface NexusGenObjects {
   Edition: { // root type
     description?: string | null; // String
     id: number; // Int!
-    lang: string; // String!
     publishedIn?: string | null; // String
     title: string; // String!
   }

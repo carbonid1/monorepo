@@ -28,8 +28,9 @@ const EditionQ = gql`
         }
       }
       description
-      title
+      lang
       publishedIn
+      title
     }
   }
 `;
@@ -44,7 +45,7 @@ const Book: React.FC = () => {
   if (error) return <BaseError />;
   if (!edition) return <NotFound />;
 
-  const { title, description, publishedIn, book } = edition;
+  const { title, description, publishedIn, book, lang } = edition;
 
   return (
     <div>
@@ -60,6 +61,10 @@ const Book: React.FC = () => {
             {formatDate(publishedIn)}
           </div>
         )}
+        <div>
+          <b>Edition Language: </b>
+          {lang}
+        </div>
         {book.authors?.map(({ fullName, id }, index) => (
           <span key={id}>
             <Link path={`/${ROUTE.author}/${id}`} slug={fullName}>
