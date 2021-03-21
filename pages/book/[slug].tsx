@@ -3,7 +3,7 @@ import { withApollo } from 'apollo/client';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
 import { NotFound } from 'components/errors/NotFound';
-import type { IBook } from 'types/interfaces';
+import type { IEdition } from 'types/interfaces';
 import { BaseError } from 'components/errors/BaseError';
 import { CustomHead } from 'components/CustomHead';
 import { ROUTE } from 'consts/routes';
@@ -11,25 +11,24 @@ import { Link } from 'components/controls/Link';
 import extractIdFromSlug from 'utils/extractIdFromSlug';
 import formatDate from 'utils/formatDate';
 
-interface IBookQData {
-  book: IBook;
+interface IEditionQData {
+  edition: IEdition;
 }
-interface IBookQVars {
+interface IEditionQVars {
   id: number | null;
 }
 
-const BookQ = gql`
-  query BookQ($id: ID) {
-    book(id: $id) {
-      authors {
-        fullName
-        id
+const EditionQ = gql`
+  query EditionQ($id: ID) {
+    edition(id: $id) {
+      book {
+        authors {
+          fullName
+          id
+        }
       }
-      editions {
-        description
-        publishedIn
-        title
-      }
+      description
+      title
       publishedIn
     }
   }
@@ -38,15 +37,14 @@ const BookQ = gql`
 const Book: React.FC = () => {
   const slug = useRouter().query.slug as string;
   const id = extractIdFromSlug(slug);
-  const { data, loading, error } = useQuery<IBookQData, IBookQVars>(BookQ, { variables: { id } });
-  const { book } = data ?? {};
+  const { data, loading, error } = useQuery<IEditionQData, IEditionQVars>(EditionQ, { variables: { id } });
+  const { edition } = data ?? {};
 
   if (loading) return null;
   if (error) return <BaseError />;
-  if (!book) return <NotFound />;
+  if (!edition) return <NotFound />;
 
-  const { editions, publishedIn, authors } = book;
-  const { title, description } = editions[0];
+  const { title, description, publishedIn, book } = edition;
 
   return (
     <div>
@@ -62,12 +60,12 @@ const Book: React.FC = () => {
             {formatDate(publishedIn)}
           </div>
         )}
-        {authors?.map(({ fullName, id }, index) => (
+        {book.authors?.map(({ fullName, id }, index) => (
           <span key={id}>
             <Link path={`/${ROUTE.author}/${id}`} slug={fullName}>
               {fullName}
             </Link>
-            {authors.length - 1 === index ? '' : ', '}
+            {book.authors.length - 1 === index ? '' : ', '}
           </span>
         ))}
         {description && <div>{description}</div>}

@@ -26,6 +26,7 @@ const AuthorQ = gql`
         editions {
           title
           description
+          id
         }
         id
       }
@@ -55,10 +56,10 @@ const Book: React.FC = () => {
         </div>
         <ul>
           {books.map(({ editions, id }, index) => {
-            const { title, description } = editions[0];
+            const { title, description, id: editionId } = editions[0];
             return (
               <li key={id + index}>
-                <Link path={`/${ROUTE.book}/${id}`} slug={title}>
+                <Link path={`/${ROUTE.book}/${editionId}`} slug={title}>
                   {title}
                 </Link>
                 <div>{description}</div>

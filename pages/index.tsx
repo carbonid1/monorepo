@@ -19,6 +19,7 @@ const BooksQ = gql`
       }
       editions {
         title
+        id
       }
       id
     }
@@ -42,7 +43,7 @@ const Home: React.FC = () => {
               {authors.length - 1 === index ? ': ' : ', '}
             </span>
           ))}
-          <Link path={`/${ROUTE.book}/${id}`} slug={editions[0].title}>
+          <Link path={`/${ROUTE.book}/${editions[0].id}`} slug={editions[0].title}>
             {editions[0].title}
           </Link>
         </li>
