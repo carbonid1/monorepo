@@ -26,7 +26,7 @@ model Edition {
   bookId                 Int
   description            String?
   id                     Int                         @default(autoincrement()) @id
-  lang                   String?                      @default("en")
+  lang                   String?                     @default("en")
   publishedIn            DateTime?
   reviews                Review[]
   title                  String                      @db.VarChar(255)
@@ -39,6 +39,6 @@ model Review {
   edition                Edition                     @relation(fields: [editionId], references: [id])
   editionId              Int
   id                     Int                         @default(autoincrement()) @id
-  lang                   String?                      @default("en")
+  lang                   String?                     @default("en")
   updatedAt              DateTime                    @updatedAt
 }
