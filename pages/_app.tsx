@@ -1,9 +1,15 @@
 import 'styles/globals.css';
+import { useEffect } from 'react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { AppHeader } from 'modules/AppHeader';
+import trackingService from 'services/tracking.service';
 
 function MyApp({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    trackingService.init();
+  }, []);
+
   return (
     <>
       <Head>
