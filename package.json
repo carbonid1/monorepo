@@ -19,6 +19,7 @@
   "dependencies": {
     "@apollo/react-hooks": "^4.0.0",
     "@apollo/react-ssr": "^4.0.0",
+    "@splitbee/web": "^0.2.4",
     "apollo-boost": "^0.4.9",
     "apollo-link-http": "^1.5.17",
     "apollo-link-schema": "^1.2.5",
