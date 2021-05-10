@@ -30,7 +30,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AppHeader />
-      <Component {...pageProps} />
+      <div className="p-4 max-w-5xl mx-auto">
+        <Component {...pageProps} />
+      </div>
     </>
   );
 }
