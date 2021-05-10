@@ -45,7 +45,7 @@ const Book: React.FC = () => {
   if (error) return <BaseError />;
   if (!book) return <NotFound />;
 
-  const { editions, publishedIn } = book;
+  const { editions, publishedIn, authors } = book;
   const { title, description } = editions[0];
 
   return (
@@ -53,13 +53,13 @@ const Book: React.FC = () => {
       <CustomHead title={title} description={description} />
       <div>
         <b>{title}</b>
-        <span> by </span>
-        {book.authors?.map(({ fullName, id }, index) => (
+        {!!authors.length && <span> by </span>}
+        {authors.map(({ fullName, id }, index) => (
           <span key={id}>
             <Link path={`/${ROUTE.author}/${id}`} slug={fullName}>
               {fullName}
             </Link>
-            {book.authors.length - 1 === index ? '' : ', '}
+            {authors.length - 1 === index ? '' : ', '}
           </span>
         ))}
         {publishedIn && <div>First published in {publishedIn}</div>}
