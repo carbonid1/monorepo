@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  stories: ['../components/**/*.stories.mdx', '../{components,modules}/**/*.stories.@(js|jsx|ts|tsx)'],
+  stories: ['../{components,modules}/**/*.stories.@(tsx|mdx)', './docs/**/*.stories.@(tsx|mdx)'],
   addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
   webpackFinal: config => ({
     ...config,
