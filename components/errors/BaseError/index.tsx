@@ -16,7 +16,7 @@ export const BaseError: React.FC<IBaseError> = ({
     <div className="grid gap-4 place-items-center m-8">
       <Image src={`/assets/errors/${status}.svg`} alt="a person scratching his head" width="252" height="294" />
       <div className="text-2xl">{title}</div>
-      <div className="text-gray-400">{subTitle}</div>
+      <div className="text-grey-400">{subTitle}</div>
     </div>
   );
 };
