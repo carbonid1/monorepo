@@ -10,5 +10,8 @@ module.exports = withBundleAnalyzer(
       dest: 'public',
       runtimeCaching,
     },
+    future: {
+      webpack5: true,
+    },
   })
 );
