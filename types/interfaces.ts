@@ -25,4 +25,5 @@ export interface IReview {
   id: number;
   body: string;
   lang: string;
+  edition: IEdition;
 }
