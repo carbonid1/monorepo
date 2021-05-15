@@ -10,6 +10,7 @@ import { ROUTE } from 'consts/routes';
 import { Link } from 'components/@controls/Link';
 import extractIdFromSlug from 'utils/extractIdFromSlug';
 import { Authors } from 'components/Authors';
+import { BookReviews } from 'modules/BookReviews';
 
 interface IEditionQData {
   edition: IEdition;
@@ -28,6 +29,12 @@ const EditionQ = gql`
         }
         editions {
           title
+          reviews {
+            body
+            lang
+            id
+            createdAt
+          }
         }
         id
       }
@@ -74,6 +81,7 @@ const Book: React.FC = () => {
         <Link path={`/${ROUTE.editions}/${book.id}`} slug={book.editions[0].title}>
           All Editions
         </Link>
+        <BookReviews editions={book.editions} />
       </div>
     </div>
   );

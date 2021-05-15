@@ -71,16 +71,25 @@ const Review = objectType({
   name: 'Review',
   nonNullDefaults: { output: true },
   definition(t) {
+    t.int('id');
+    t.field('createdAt', {
+      type: 'String',
+      resolve: ({ createdAt }) => formatDate(createdAt),
+    });
+    t.field('updatedAt', {
+      type: 'String',
+      resolve: ({ updatedAt }) => formatDate(updatedAt),
+    });
     t.string('body');
-    t.string('createdAt');
     t.field('edition', {
       type: 'Edition',
       args: { id: idArg() },
       resolve: ({ id }) => prisma.review.findFirst({ where: { id } }).edition(),
     });
-    t.int('id');
-    t.string('lang');
-    t.string('updatedAt');
+    t.field('lang', {
+      type: 'String',
+      resolve: ({ lang }) => ISO6391.getName(lang),
+    });
   },
 });
 

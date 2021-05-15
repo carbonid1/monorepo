@@ -58,10 +58,7 @@ export interface NexusGenObjects {
   Query: {};
   Review: { // root type
     body: string; // String!
-    createdAt: string; // String!
     id: number; // Int!
-    lang: string; // String!
-    updatedAt: string; // String!
   }
 }
 
