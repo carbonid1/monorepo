@@ -1,3 +1,7 @@
+#### Links:
+
+[DB Diagram](https://drawsql.app/coriander/diagrams/bookhub#)
+
 #### Migrate DB:
 
 ```bash
