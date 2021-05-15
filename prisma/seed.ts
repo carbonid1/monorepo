@@ -15,6 +15,7 @@ async function main() {
             publishedIn: new Date('2019-05-28'),
             reviews: {
               create: {
+                createdAt: new Date('2021-03-11'),
                 body: `This book looks at how an emphasis on specialization can actually hamper our ability to really excel at something. It aligns with what I try to do when I am coaching, in my stories, and what we’re doing with Mamba Sports Academy—create all-around athletes who can think critically and make assessments in real time to enhance their play rather than rely only on a narrow set of skills.`,
               },
             },
@@ -26,6 +27,8 @@ async function main() {
             publishedIn: new Date('2020-11-18'),
             reviews: {
               create: {
+                lang: 'ru',
+                createdAt: new Date('2021-02-24'),
                 body:
                   'Отличная книжка (и не только про/для консультантов, хотя BCG & McK по разу упоминаются). Мне больше всего понравилось про "поздний старт" в новой деятельности, почему он может быть успешным и вообще про смену карьеры, и глава с развенчанием мифа про grit и persistence (не Angela Duckworth единой, в общем). Находящиеся в процессе смены вида деятельности (aka career changers) могут цитировать куски на собеседованиях, если вдруг кто усомнится в пользе их прошлого опыта ("no experience is wasted"). И родителям тоже полезно (Рихтер начал брать нормальные уроки музыки в 22 и вполне себе преуспел, можно не мучить ребенка сольфеджио и скрипкой в 8).',
               },

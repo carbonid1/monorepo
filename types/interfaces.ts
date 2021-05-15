@@ -1,28 +1,29 @@
 export interface IAuthor {
-  books: IBook[];
   id: number;
+  books: IBook[];
   fullName: string;
 }
 
 export interface IBook {
-  authors: IAuthor[];
   id: number;
+  authors: IAuthor[];
   publishedIn?: string;
   editions: IEdition[];
-  reviews: IReview[];
 }
 
 export interface IEdition {
+  id: number;
   book: IBook;
   description?: string;
-  id: number;
   publishedIn?: string;
   title: string;
   lang: string;
+  reviews: IReview[];
 }
 
 export interface IReview {
   id: number;
+  createdAt: string;
   body: string;
   lang: string;
   edition: IEdition;
