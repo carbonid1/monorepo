@@ -2,13 +2,14 @@ import { useRouter } from 'next/router';
 import { withApollo } from 'apollo/client';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
-import { NotFound } from 'components/errors/NotFound';
+import { NotFound } from 'components/@errors/NotFound';
 import type { IEdition } from 'types/interfaces';
-import { BaseError } from 'components/errors/BaseError';
+import { BaseError } from 'components/@errors/BaseError';
 import { CustomHead } from 'components/CustomHead';
 import { ROUTE } from 'consts/routes';
-import { Link } from 'components/controls/Link';
+import { Link } from 'components/@controls/Link';
 import extractIdFromSlug from 'utils/extractIdFromSlug';
+import { Authors } from 'components/Authors';
 
 interface IEditionQData {
   edition: IEdition;
@@ -68,14 +69,7 @@ const Book: React.FC = () => {
           <b>Edition Language: </b>
           {lang}
         </div>
-        {book.authors?.map(({ fullName, id }, index) => (
-          <span key={id}>
-            <Link path={`/${ROUTE.author}/${id}`} slug={fullName}>
-              {fullName}
-            </Link>
-            {book.authors.length - 1 === index ? '' : ', '}
-          </span>
-        ))}
+        <Authors authors={book.authors} />
         {description && <div>{description}</div>}
         <Link path={`/${ROUTE.editions}/${book.id}`} slug={book.editions[0].title}>
           All Editions
