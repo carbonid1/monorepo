@@ -2,12 +2,12 @@ import { useRouter } from 'next/router';
 import { withApollo } from 'apollo/client';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
-import { NotFound } from 'components/errors/NotFound';
+import { NotFound } from 'components/@errors/NotFound';
 import type { IAuthor } from 'types/interfaces';
-import { BaseError } from 'components/errors/BaseError';
+import { BaseError } from 'components/@errors/BaseError';
 import { CustomHead } from 'components/CustomHead';
 import { ROUTE } from 'consts/routes';
-import { Link } from 'components/controls/Link';
+import { Link } from 'components/@controls/Link';
 import extractIdFromSlug from 'utils/extractIdFromSlug';
 
 interface IAuthorQData {

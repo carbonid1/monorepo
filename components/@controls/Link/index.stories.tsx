@@ -3,7 +3,7 @@ import type { Story, Meta } from '@storybook/react';
 import { ILink, Link } from '.';
 
 export default {
-  title: 'controls/Link',
+  title: '@controls/Link',
   component: Link,
 } as Meta;
 

@@ -10,6 +10,7 @@ module.exports = {
       alias: {
         ...config.resolve.alias,
         components: path.resolve(__dirname, '../components'),
+        consts: path.resolve(__dirname, '../consts'),
       },
     },
   }),
