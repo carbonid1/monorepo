@@ -13,7 +13,7 @@ export const BookReviews: React.FC<IBookReviews> = ({ editions }) => {
   return (
     <div className="grid py-4 gap-2">
       {allReviews.map(review => (
-        <div>
+        <div key={review.id}>
           <div>{review.createdAt}</div>
           <div>{review.body}</div>
         </div>
