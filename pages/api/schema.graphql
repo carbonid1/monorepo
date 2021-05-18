@@ -36,6 +36,7 @@ type Query {
   books: [Book]!
   edition(id: ID): Edition
   review(id: ID): Review
+  reviews(bookId: ID, editionId: ID, lang: String): [Review]!
 }
 
 type Review {

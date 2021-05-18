@@ -1,7 +1,6 @@
 import { useRouter } from 'next/router';
 import { withApollo } from 'apollo/client';
-import gql from 'graphql-tag';
-import { useQuery } from '@apollo/react-hooks';
+import { gql, useQuery } from '@apollo/react-hooks';
 import { NotFound } from 'components/@errors/NotFound';
 import type { IEdition } from 'types/interfaces';
 import { BaseError } from 'components/@errors/BaseError';
@@ -54,7 +53,7 @@ const Book: React.FC = () => {
 
   if (loading) return null;
   if (error) return <BaseError />;
-  if (!edition) return <NotFound />;
+  if (!edition || id === null) return <NotFound />;
 
   const { title, description, publishedIn, book, lang } = edition;
 
@@ -81,7 +80,7 @@ const Book: React.FC = () => {
         <Link path={`/${ROUTE.editions}/${book.id}`} slug={book.editions[0].title}>
           All Editions
         </Link>
-        <BookReviews editions={book.editions} />
+        <BookReviews bookId={book.id} editionId={id} />
       </div>
     </div>
   );
