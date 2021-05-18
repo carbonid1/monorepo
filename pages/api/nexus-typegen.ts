@@ -99,6 +99,7 @@ export interface NexusGenFieldTypes {
     books: Array<NexusGenRootTypes['Book'] | null>; // [Book]!
     edition: NexusGenRootTypes['Edition'] | null; // Edition
     review: NexusGenRootTypes['Review'] | null; // Review
+    reviews: Array<NexusGenRootTypes['Review'] | null>; // [Review]!
   }
   Review: { // field return type
     body: string; // String!
@@ -137,6 +138,7 @@ export interface NexusGenFieldTypeNames {
     books: 'Book'
     edition: 'Edition'
     review: 'Review'
+    reviews: 'Review'
   }
   Review: { // field return type name
     body: 'String'
@@ -161,6 +163,11 @@ export interface NexusGenArgTypes {
     }
     review: { // args
       id?: string | null; // ID
+    }
+    reviews: { // args
+      bookId?: string | null; // ID
+      editionId?: string | null; // ID
+      lang?: string | null; // String
     }
   }
   Review: {

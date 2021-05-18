@@ -1,7 +1,7 @@
 import { ApolloServer } from 'apollo-server-micro';
 import { GraphQLDate } from 'graphql-iso-date';
 import ISO6391 from 'iso-639-1';
-import { asNexusMethod, makeSchema, objectType, idArg, list, nonNull } from 'nexus';
+import { asNexusMethod, makeSchema, objectType, idArg, list, nonNull, stringArg } from 'nexus';
 import path from 'path';
 import formatDate from '../../utils/formatDate';
 import prisma from '../../lib/prisma';
@@ -119,6 +119,29 @@ const Query = objectType({
       type: 'Review',
       args: { id: idArg() },
       resolve: (_, { id }) => prisma.review.findFirst({ where: { id: +id } }),
+    });
+    t.field('reviews', {
+      type: nonNull(list('Review')),
+      args: { bookId: idArg(), editionId: idArg(), lang: stringArg() },
+      resolve: async (_, { bookId, editionId, lang }) => {
+        return prisma.book
+          .findFirst({
+            where: { id: +bookId },
+            select: {
+              editions: {
+                select: { reviews: { where: { lang: lang ?? undefined } } },
+                where: { id: editionId === null ? undefined : +editionId },
+              },
+            },
+          })
+          .then(
+            book =>
+              // @ts-ignore
+              book?.editions.reduce((reviews, edition) => {
+                return [...reviews, ...edition.reviews];
+              }, []) || []
+          );
+      },
     });
   },
 });
