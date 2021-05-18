@@ -1,12 +1,12 @@
 import React, { useMemo } from 'react';
-import type { IEdition, IReview } from 'types/interfaces';
+import type { IEdition } from 'types/interfaces';
 
 export interface IBookReviews {
   editions: IEdition[];
 }
 export const BookReviews: React.FC<IBookReviews> = ({ editions }) => {
   const allReviews = useMemo(
-    () => editions.reduce((reviews, edition) => [...reviews, ...edition.reviews], [] as IReview[]),
+    () => editions.reduce((reviews: typeof edition.reviews, edition) => [...reviews, ...edition.reviews], []),
     [editions]
   );
 

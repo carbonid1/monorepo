@@ -5,6 +5,7 @@ import { asNexusMethod, makeSchema, objectType, idArg, list, nonNull, stringArg 
 import path from 'path';
 import formatDate from '../../utils/formatDate';
 import prisma from '../../lib/prisma';
+import type { IReview } from 'types/interfaces';
 
 export const GQLDate = asNexusMethod(GraphQLDate, 'date');
 
@@ -136,10 +137,10 @@ const Query = objectType({
           })
           .then(
             book =>
-              // @ts-ignore
-              book?.editions.reduce((reviews, edition) => {
-                return [...reviews, ...edition.reviews];
-              }, []) || []
+              book?.editions.reduce(
+                (reviews: typeof edition.reviews, edition) => [...reviews, ...edition.reviews],
+                []
+              ) || []
           );
       },
     });
