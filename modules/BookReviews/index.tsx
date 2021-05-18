@@ -20,7 +20,7 @@ export const BookReviews: React.FC<IBookReviews> = ({ bookId, editionId }) => {
       <select
         name="languages"
         id="lang-select"
-        className="border-grey-400 border-2 rounded-lg mr-2"
+        className="mr-2"
         onChange={({ target: { value } }) => {
           if (value === '') return setLang(null);
           else setLang(value);
