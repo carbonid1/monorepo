@@ -1,6 +1,7 @@
 import { gql, useQuery } from '@apollo/client';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import type { IBook, IEdition, IReview } from 'types/interfaces';
+import ISO6391 from 'iso-639-1';
 
 export interface IBookReviews {
   bookId: IBook['id'];
@@ -28,26 +29,41 @@ const ReviewsQ = gql`
 
 export const BookReviews: React.FC<IBookReviews> = ({ bookId, editionId }) => {
   const [thisEditionOnly, setThisEditionOnly] = useState(false);
+  const [lang, setLang] = useState<string | null>(null);
   const { data } = useQuery<IQData, IQVars>(ReviewsQ, {
-    variables: { bookId, editionId: thisEditionOnly ? editionId : null, lang: null },
+    variables: { bookId, editionId: thisEditionOnly ? editionId : null, lang },
   });
 
-  if (!data?.reviews.length) return null;
+  const options = useMemo(() => {
+    const allOption = <option value="">All Languages</option>;
+    const langsOpts = data?.reviews.map(({ lang }) => <option value={lang}>{ISO6391.getName(lang)}</option>);
+    return [allOption, langsOpts];
+  }, []);
 
   return (
     <div>
       <div className="font-bold text-2xl py-4">Reviews:</div>
-      <label htmlFor="this-edition-toggle">
+      <select
+        name="languages"
+        id="lang-select"
+        className="border-grey-400 border-2 rounded-lg mr-2"
+        onChange={({ target: { value } }) => {
+          if (value === '') return setLang(null);
+          else setLang(value);
+        }}
+      >
+        {options}
+      </select>
+      <label>
         <input
           type="checkbox"
           checked={thisEditionOnly}
-          id="this-edition-toggle"
           onChange={e => setThisEditionOnly(e.target.checked)}
           className="mr-2"
         />
         This Edition
       </label>
-      <div className="grid gap-2">
+      <div className="grid gap-2 mt-4">
         {data?.reviews.map(review => (
           <div key={review.id}>
             <div>{review.createdAt}</div>

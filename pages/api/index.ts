@@ -5,7 +5,6 @@ import { asNexusMethod, makeSchema, objectType, idArg, list, nonNull, stringArg 
 import path from 'path';
 import formatDate from '../../utils/formatDate';
 import prisma from '../../lib/prisma';
-import type { IReview } from 'types/interfaces';
 
 export const GQLDate = asNexusMethod(GraphQLDate, 'date');
 
@@ -87,10 +86,7 @@ const Review = objectType({
       args: { id: idArg() },
       resolve: ({ id }) => prisma.review.findFirst({ where: { id } }).edition(),
     });
-    t.field('lang', {
-      type: 'String',
-      resolve: ({ lang }) => ISO6391.getName(lang),
-    });
+    t.string('lang');
   },
 });
 

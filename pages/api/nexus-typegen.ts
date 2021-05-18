@@ -59,6 +59,7 @@ export interface NexusGenObjects {
   Review: { // root type
     body: string; // String!
     id: number; // Int!
+    lang: string; // String!
   }
 }
 
