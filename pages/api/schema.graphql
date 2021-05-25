@@ -22,6 +22,7 @@ scalar Date
 
 type Edition {
   book: Book!
+  cover: String
   description: String
   id: Int!
   lang: String!
