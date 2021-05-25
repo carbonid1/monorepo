@@ -19,6 +19,7 @@ export interface IEdition {
   title: string;
   lang: string;
   reviews: IReview[];
+  cover?: string;
 }
 
 export interface IReview {
