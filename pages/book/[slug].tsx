@@ -21,26 +21,18 @@ interface IEditionQVars {
 const EditionQ = gql`
   query EditionQ($id: ID) {
     edition(id: $id) {
+      lang
+      cover
+      title
+      description
+      publishedIn
       book {
+        id
         authors {
           fullName
           id
         }
-        editions {
-          title
-          reviews {
-            body
-            lang
-            id
-            createdAt
-          }
-        }
-        id
       }
-      description
-      lang
-      publishedIn
-      title
     }
   }
 `;
@@ -62,7 +54,7 @@ const Book: React.FC = () => {
       <CustomHead title={edition.title} description={edition.description} />
       <div>
         <Edition edition={edition} />
-        <Link path={`/${ROUTE.editions}/${book.id}`} slug={book.editions[0].title}>
+        <Link path={`/${ROUTE.editions}/${book.id}`} slug={edition.title}>
           All Editions
         </Link>
         <BookReviews bookId={book.id} editionId={id} />
