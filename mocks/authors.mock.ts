@@ -1,7 +1,7 @@
 import type { IAuthor } from 'types/interfaces';
 
 type TBooks = 'EpsteinD';
-const authors: Record<TBooks, IAuthor> = {
+const authorsMock: Record<TBooks, IAuthor> = {
   EpsteinD: {
     id: 1,
     fullName: 'David Epstein',
@@ -9,4 +9,4 @@ const authors: Record<TBooks, IAuthor> = {
   },
 };
 
-export default authors;
+export default authorsMock;

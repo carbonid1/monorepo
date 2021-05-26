@@ -10,6 +10,7 @@ import { ROUTE } from 'consts/routes';
 import { Link } from 'components/@controls/Link';
 import extractIdFromSlug from 'utils/extractIdFromSlug';
 import { Authors } from 'components/Authors';
+import languageService from 'services/language.service';
 
 interface IBookQData {
   book: IBook;
@@ -67,10 +68,12 @@ const Book: React.FC = () => {
                 <b>Published in: </b>
                 {edition.publishedIn}
               </div>
-              <div>
-                <b>Edition language: </b>
-                {edition.lang}
-              </div>
+              {edition.lang && (
+                <div>
+                  <b>Edition language: </b>
+                  {languageService.getName(edition.lang)}
+                </div>
+              )}
             </div>
           ))}
         </div>

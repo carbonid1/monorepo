@@ -54,13 +54,14 @@ export interface NexusGenObjects {
     cover?: string | null; // String
     description?: string | null; // String
     id: number; // Int!
+    lang?: string | null; // String
     title: string; // String!
   }
   Query: {};
   Review: { // root type
     body: string; // String!
     id: number; // Int!
-    lang: string; // String!
+    lang?: string | null; // String
   }
 }
 
@@ -91,7 +92,7 @@ export interface NexusGenFieldTypes {
     cover: string | null; // String
     description: string | null; // String
     id: number; // Int!
-    lang: string; // String!
+    lang: string | null; // String
     publishedIn: string; // String!
     reviews: NexusGenRootTypes['Review'][]; // [Review!]!
     title: string; // String!
@@ -109,7 +110,7 @@ export interface NexusGenFieldTypes {
     createdAt: string; // String!
     edition: NexusGenRootTypes['Edition']; // Edition!
     id: number; // Int!
-    lang: string; // String!
+    lang: string | null; // String
     updatedAt: string; // String!
   }
 }

@@ -2,6 +2,7 @@ import { Authors } from 'components/Authors';
 import { EditionCover } from 'components/EditionCover';
 import type { IEdition } from 'types/interfaces';
 import cn from 'classnames';
+import languageService from 'services/language.service';
 
 export interface IEditionProps {
   className?: string;
@@ -29,7 +30,7 @@ export const Edition: React.FC<IEditionProps> = ({ className, edition }) => {
         {lang && (
           <div>
             <b>Edition Language: </b>
-            {lang}
+            {languageService.getName(lang)}
           </div>
         )}
         {description && <div className="max-w-prose">{description}</div>}
