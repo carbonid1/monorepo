@@ -1,9 +1,8 @@
-import React from 'react';
 import type { Story, Meta } from '@storybook/react';
 import { AppHeader } from '.';
 
 export default {
-  title: 'modules/App Header',
+  title: 'modules/AppHeader',
   component: AppHeader,
 } as Meta;
 

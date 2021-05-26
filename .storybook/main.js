@@ -16,6 +16,7 @@ module.exports = {
         ...config.resolve.alias,
         components: path.resolve(__dirname, '../components'),
         consts: path.resolve(__dirname, '../consts'),
+        mocks: path.resolve(__dirname, '../mocks'),
       },
     },
   }),
