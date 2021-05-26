@@ -26,6 +26,7 @@ model Edition {
   updatedAt              DateTime                    @updatedAt
   book                   Book                        @relation(fields: [bookId], references: [id])
   bookId                 Int
+  cover                  String?
   description            String?
   lang                   String?                     @default("en")
   publishedIn            DateTime?

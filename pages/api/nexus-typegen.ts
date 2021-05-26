@@ -51,6 +51,7 @@ export interface NexusGenObjects {
     id: number; // Int!
   }
   Edition: { // root type
+    cover?: string | null; // String
     description?: string | null; // String
     id: number; // Int!
     title: string; // String!
@@ -87,6 +88,7 @@ export interface NexusGenFieldTypes {
   }
   Edition: { // field return type
     book: NexusGenRootTypes['Book']; // Book!
+    cover: string | null; // String
     description: string | null; // String
     id: number; // Int!
     lang: string; // String!
@@ -126,6 +128,7 @@ export interface NexusGenFieldTypeNames {
   }
   Edition: { // field return type name
     book: 'Book'
+    cover: 'String'
     description: 'String'
     id: 'Int'
     lang: 'String'

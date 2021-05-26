@@ -64,6 +64,7 @@ const Edition = objectType({
       resolve: ({ id }) => prisma.edition.findUnique({ where: { id } }).reviews(),
     });
     t.string('title');
+    t.nullable.string('cover');
   },
 });
 
