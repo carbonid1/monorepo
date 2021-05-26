@@ -1,4 +1,3 @@
-import React from 'react';
 import type { IEdition } from 'types/interfaces';
 
 export interface IEditionCover extends Pick<IEdition, 'cover' | 'title'> {}

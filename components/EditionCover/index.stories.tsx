@@ -1,12 +1,7 @@
-import React from 'react';
 import type { Story, Meta } from '@storybook/react';
 import { EditionCover, IEditionCover } from '.';
 
-export default {
-  title: 'EditionCover',
-  component: EditionCover,
-} as Meta;
-
+export default { title: 'EditionCover', component: EditionCover } as Meta;
 const Template: Story<IEditionCover> = args => <EditionCover {...args} />;
 
 export const Default = Template.bind({});
