@@ -28,7 +28,7 @@ model Edition {
   bookId                 Int
   cover                  String?
   description            String?
-  lang                   String?                     @default("en")
+  lang                   String?
   publishedIn            DateTime?
   reviews                Review[]
   title                  String                      @db.VarChar(255)
@@ -41,5 +41,5 @@ model Review {
   body                   String
   edition                Edition                     @relation(fields: [editionId], references: [id])
   editionId              Int
-  lang                   String?                     @default("en")
+  lang                   String?
 }

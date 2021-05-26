@@ -26,6 +26,6 @@ export interface IReview {
   id: number;
   createdAt: string;
   body: string;
-  lang: string;
+  lang?: string;
   edition: IEdition;
 }

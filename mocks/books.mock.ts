@@ -2,7 +2,7 @@ import type { IBook } from 'types/interfaces';
 import authors from './authors.mock';
 
 type TBooks = 'range';
-const books: Record<TBooks, IBook> = {
+const booksMock: Record<TBooks, IBook> = {
   range: {
     id: 1,
     publishedIn: 'May 28th 2019',
@@ -11,4 +11,4 @@ const books: Record<TBooks, IBook> = {
   },
 };
 
-export default books;
+export default booksMock;

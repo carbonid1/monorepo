@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
+import languageService from 'services/language.service';
 import type { IReview } from 'types/interfaces';
-import ISO6391 from 'iso-639-1';
 
 interface ILangOpt {
   count: number;
@@ -8,7 +8,9 @@ interface ILangOpt {
 }
 const makeLangOptions = (reviews: IReview[]) => {
   return reviews.reduce((acc: ILangOpt[], { lang }) => {
+    if (!lang) return acc;
     const index = acc.findIndex(opt => opt.lang === lang);
+
     if (index >= 0) {
       acc[index] = { lang, count: acc[index].count + 1 };
       return acc;
@@ -21,7 +23,7 @@ export const useReviewLangOptions = (reviews: IReview[]) => {
     const languagesOpts = makeLangOptions(reviews);
     const selectOptions = languagesOpts.map(({ lang, count }) => (
       <option value={lang}>
-        {ISO6391.getName(lang)}({count})
+        {languageService.getName(lang)}({count})
       </option>
     ));
     return [<option value="">All Languages</option>, ...selectOptions];

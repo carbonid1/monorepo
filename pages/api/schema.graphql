@@ -25,7 +25,7 @@ type Edition {
   cover: String
   description: String
   id: Int!
-  lang: String!
+  lang: String
   publishedIn: String!
   reviews: [Review!]!
   title: String!
@@ -45,6 +45,6 @@ type Review {
   createdAt: String!
   edition(id: ID): Edition!
   id: Int!
-  lang: String!
+  lang: String
   updatedAt: String!
 }

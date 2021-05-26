@@ -1,6 +1,5 @@
 import { ApolloServer } from 'apollo-server-micro';
 import { GraphQLDate } from 'graphql-iso-date';
-import ISO6391 from 'iso-639-1';
 import { asNexusMethod, makeSchema, objectType, idArg, list, nonNull, stringArg } from 'nexus';
 import path from 'path';
 import formatDate from '../../utils/formatDate';
@@ -51,10 +50,7 @@ const Edition = objectType({
     });
     t.nullable.string('description');
     t.int('id');
-    t.field('lang', {
-      type: 'String',
-      resolve: ({ lang }) => ISO6391.getName(lang),
-    });
+    t.nullable.string('lang');
     t.field('publishedIn', {
       type: 'String',
       resolve: ({ publishedIn }) => formatDate(publishedIn),
@@ -87,7 +83,7 @@ const Review = objectType({
       args: { id: idArg() },
       resolve: ({ id }) => prisma.review.findFirst({ where: { id } }).edition(),
     });
-    t.string('lang');
+    t.nullable.string('lang');
   },
 });
 
