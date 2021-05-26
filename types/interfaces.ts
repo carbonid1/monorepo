@@ -17,7 +17,7 @@ export interface IEdition {
   description?: string;
   publishedIn?: string;
   title: string;
-  lang: string;
+  lang?: string;
   reviews: IReview[];
   cover?: string;
 }
