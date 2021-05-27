@@ -1,11 +1,8 @@
 import type { Story, Meta } from '@storybook/react';
 import { Edition, IEditionProps } from '.';
-console.log('adfas =======>>>>>>>');
 import mocks from 'mocks';
 
-console.log('start =======>>>>>>>');
-const edition = mocks.editions.rangeEng;
-console.log('edition =======>>>>>>>', edition);
+const edition = mocks.editions.rangeEng(false);
 
 export default {
   title: 'modules/Edition',
