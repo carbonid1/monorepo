@@ -3,9 +3,9 @@ import booksMock from './books.mock';
 import editionsMock from './editions.mock';
 
 const mocks = {
-  authorsMock,
-  booksMock,
-  editionsMock,
+  authors: authorsMock,
+  books: booksMock,
+  editions: editionsMock,
 };
 
 export default mocks;
