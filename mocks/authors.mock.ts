@@ -1,11 +1,13 @@
 import type { IAuthor } from 'types/interfaces';
+import booksMock from './books.mock';
 
-type TBooks = 'EpsteinD';
-const authorsMock: Record<TBooks, IAuthor> = {
+type TAuthors = 'EpsteinD';
+
+const authorsMock: Record<TAuthors, IAuthor> = {
   EpsteinD: {
     id: 1,
     fullName: 'David Epstein',
-    books: [],
+    books: [booksMock.range(true)],
   },
 };
 

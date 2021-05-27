@@ -1,6 +1,11 @@
 import type { Story, Meta } from '@storybook/react';
 import { Edition, IEditionProps } from '.';
+console.log('adfas =======>>>>>>>');
 import mocks from 'mocks';
+
+console.log('start =======>>>>>>>');
+const edition = mocks.editions.rangeEng;
+console.log('edition =======>>>>>>>', edition);
 
 export default {
   title: 'modules/Edition',
@@ -17,25 +22,25 @@ const Template: Story<IEditionProps> = args => <Edition {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  edition: mocks.editions.rangeEng,
+  edition,
 } as IEditionProps;
 
 export const NoPublishedDate = Template.bind({});
 NoPublishedDate.args = {
-  edition: { ...mocks.editions.rangeEng, publishedIn: undefined },
+  edition: { ...edition, publishedIn: undefined },
 } as IEditionProps;
 
 export const NoLanguage = Template.bind({});
 NoLanguage.args = {
-  edition: { ...mocks.editions.rangeEng, lang: undefined },
+  edition: { ...edition, lang: undefined },
 } as IEditionProps;
 
 export const NoDescription = Template.bind({});
 NoDescription.args = {
-  edition: { ...mocks.editions.rangeEng, description: undefined },
+  edition: { ...edition, description: undefined },
 } as IEditionProps;
 
 export const NoAuthours = Template.bind({});
 NoAuthours.args = {
-  edition: { ...mocks.editions.rangeEng, book: { ...mocks.editions.rangeEng.book, authors: [] } },
+  edition: { ...edition, book: { ...edition.book, authors: [] } },
 } as IEditionProps;

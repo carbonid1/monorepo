@@ -1,14 +1,16 @@
 import type { IBook } from 'types/interfaces';
-import authors from './authors.mock';
+import authorsMock from './authors.mock';
+import editionsMock from './editions.mock';
 
 type TBooks = 'range';
-const booksMock: Record<TBooks, IBook> = {
-  range: {
+
+const booksMock: Record<TBooks, (mock: boolean) => IBook> = {
+  range: mock => ({
     id: 1,
     publishedIn: 'May 28th 2019',
-    authors: [authors.EpsteinD],
-    editions: [],
-  },
+    authors: mock ? [] : [authorsMock.EpsteinD],
+    editions: mock ? [] : [editionsMock.rangeEng],
+  }),
 };
 
 export default booksMock;
