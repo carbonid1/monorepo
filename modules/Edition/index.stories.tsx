@@ -2,7 +2,7 @@ import type { Story, Meta } from '@storybook/react';
 import { Edition, IEditionProps } from '.';
 import mocks from 'mocks';
 
-const edition = mocks.editions.rangeEng(false);
+const edition = mocks.editions().rangeEng;
 
 export default {
   title: 'modules/Edition',

@@ -3,13 +3,13 @@ import authorsMock from './authors.mock';
 import editionsMock from './editions.mock';
 
 type TBook = 'range';
-const booksMock: Record<TBook, (mock: boolean) => IBook> = {
-  range: mock => ({
+const booksMock: (stopTraversing?: boolean) => Record<TBook, IBook> = (stopTraversing = false) => ({
+  range: {
     id: 1,
     publishedIn: 'May 28th 2019',
-    authors: mock ? [] : [authorsMock.EpsteinD(true)],
-    editions: mock ? [] : [editionsMock.rangeEng(true)],
-  }),
-};
+    authors: stopTraversing ? [] : [authorsMock(true).EpsteinD],
+    editions: stopTraversing ? [] : [editionsMock(true).rangeEng],
+  },
+});
 
 export default booksMock;
