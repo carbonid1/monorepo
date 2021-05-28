@@ -1,8 +1,9 @@
+import type { IEdition } from 'types/interfaces';
 import type { Story, Meta } from '@storybook/react';
 import { Edition, IEditionProps } from '.';
 import mocks from 'mocks';
 
-const edition = mocks.editions().rangeEng;
+const edition: IEdition = { ...mocks.editions.rangeEng, book: mocks.books.range };
 
 export default {
   title: 'modules/Edition',

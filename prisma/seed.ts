@@ -2,146 +2,36 @@ import { PrismaClient } from '@prisma/client';
 import mocks from '../mocks';
 
 const prisma = new PrismaClient();
-const { authors, editions } = mocks;
 
 async function main() {
-  await prisma.book.create({
-    data: {
-      authors: {
-        connectOrCreate: [{ where: { id: authors.EpsteinD.id }, create: { fullName: authors.EpsteinD.fullName } }],
-      },
-      editions: {
-        create: [
-          {
-            lang: editions.rangeEng.lang,
-            description: editions.rangeEng.description,
-            publishedIn: new Date('2019-05-28'),
-            reviews: {
-              create: {
-                lang: 'en',
-                createdAt: new Date('2021-02-11'),
-                body: `This book looks at how an emphasis on specialization can actually hamper our ability to really excel at something. It aligns with what I try to do when I am coaching, in my stories, and what we’re doing with Mamba Sports Academy—create all-around athletes who can think critically and make assessments in real time to enhance their play rather than rely only on a narrow set of skills.`,
-              },
-            },
-            title: editions.rangeEng.title,
-            cover: editions.rangeEng.cover,
-          },
-          {
-            description: `Эта книга перевернет ваши представления о пути к профессиональному успеху! Революционный подход Дэвида Эпштейна, магистра экологических наук и журналистики, ставит под сомнение идею 10 000 часов. Он исследовал примеры самых успешных спортсменов, художников, музыкантов, нобелевских лауреатов и ученых и обнаружил, что в большинстве областей ранняя и узкая специализация – не синоним результата. Именно универсалы — изобретательные и гибкие люди с широким кругозором и большим жизненным опытом — рулят в мире больших скоростей.`,
-            lang: 'ru',
+  const books = Object.values(mocks.books);
+  for (const { authors, editions } of books) {
+    await prisma.book.create({
+      data: {
+        publishedIn: new Date('2019-05-28'),
+        authors: {
+          connectOrCreate: authors.map(({ id, fullName }) => ({ where: { id }, create: { fullName } })),
+        },
+        editions: {
+          create: editions.map(({ publishedIn, reviews, lang, description, title, cover }) => ({
+            lang,
+            description,
+            title,
+            cover,
             publishedIn: new Date('2020-11-18'),
             reviews: {
-              create: [
-                {
-                  lang: 'ru',
-                  createdAt: new Date('2021-02-24'),
-                  body:
-                    'Отличная книжка (и не только про/для консультантов, хотя BCG & McK по разу упоминаются). Мне больше всего понравилось про "поздний старт" в новой деятельности, почему он может быть успешным и вообще про смену карьеры, и глава с развенчанием мифа про grit и persistence (не Angela Duckworth единой, в общем). Находящиеся в процессе смены вида деятельности (aka career changers) могут цитировать куски на собеседованиях, если вдруг кто усомнится в пользе их прошлого опыта ("no experience is wasted"). И родителям тоже полезно (Рихтер начал брать нормальные уроки музыки в 22 и вполне себе преуспел, можно не мучить ребенка сольфеджио и скрипкой в 8).',
-                },
-                {
-                  lang: 'en',
-                  createdAt: new Date('2021-03-20'),
-                  body:
-                    "Do I think it's a five-star book? It's very hard for me to say, as I wrote the thing. By the time I'm done working on a book, I have such a strong insider view of the project that it's difficult to be objective. I will say this: I worked extremely hard on it, and as a writer, researcher, and reader, I found it to be much more interesting than my first book. Most readers enjoyed that first book--at least according to Goodreads ratings--so I hope most readers will (as I have) enjoy this one even more.",
-                },
-              ],
+              create: reviews.map(({ lang, body }) => ({
+                lang,
+                body,
+                createdAt: new Date('2021-02-24'),
+              })),
             },
-            title: 'Универсалы. Как талантливые дилетанты становятся победителями по жизни',
-            cover: 'https://res.cloudinary.com/book-hub/image/upload/v1621965192/covers/sm/range_f2gjvq.jpg',
-          },
-        ],
-      },
-      publishedIn: new Date('2019-05-28'),
-    },
-  });
-
-  await prisma.book.create({
-    data: {
-      authors: {
-        connectOrCreate: [{ where: { id: 2 }, create: { fullName: 'George R.R. Martin' } }],
-      },
-      publishedIn: new Date('1996-08-06'),
-      editions: {
-        create: {
-          lang: 'en',
-          description: `Long ago, in a time forgotten, a preternatural event threw the seasons out of balance. In a land where summers can last decades and winters a lifetime, trouble is brewing. The cold is returning, and in the frozen wastes to the north of Winterfell, sinister and supernatural forces are massing beyond the kingdom’s protective Wall. At the center of the conflict lie the Starks of Winterfell, a family as harsh and unyielding as the land they were born to. Sweeping from a land of brutal cold to a distant summertime kingdom of epicurean plenty, here is a tale of lords and ladies, soldiers and sorcerers, assassins and bastards, who come together in a time of grim omens.
-          Here an enigmatic band of warriors bear swords of no human metal; a tribe of fierce wildlings carry men off into madness; a cruel young dragon prince barters his sister to win back his throne; and a determined woman undertakes the most treacherous of journeys. Amid plots and counterplots, tragedy and betrayal, victory and terror, the fate of the Starks, their allies, and their enemies hangs perilously in the balance, as each endeavors to win that deadliest of conflicts: the game of thrones.`,
-          publishedIn: new Date('2005-08'),
-          title: 'A Game of Thrones',
-          cover: 'https://res.cloudinary.com/book-hub/image/upload/v1621965264/covers/sm/13496_lmqry2.jpg',
+          })),
         },
       },
-    },
-  });
-
-  await prisma.book.create({
-    data: {
-      authors: {
-        connectOrCreate: [
-          { where: { id: 3 }, create: { fullName: 'Terry Pratchett' } },
-          { where: { id: 4 }, create: { fullName: 'Stephen Baxter' } },
-        ],
-      },
-      publishedIn: new Date('2014-06-19'),
-      editions: {
-        create: {
-          lang: 'en',
-          description: `The third novel in Terry Pratchett and Stephen Baxter’s “Long Earth” series, which Io9 calls “a brilliant science fiction collaboration.”
-          2040-2045: In the years after the cataclysmic Yellowstone eruption there is massive economic dislocation as populations flee Datum Earth to myriad Long Earth worlds. Sally, Joshua, and Lobsang are all involved in this perilous rescue work when, out of the blue, Sally is contacted by her long-vanished father and inventor of the original Stepper device, Willis Linsay. He tells her he is planning a fantastic voyage across the Long Mars and wants her to accompany him. But Sally soon learns that Willis has an ulterior motive for his request. . . .
-          Meanwhile U. S. Navy Commander Maggie Kauffman has embarked on an incredible journey of her own, leading an expedition to the outer limits of the far Long Earth.
-          For Joshua, the crisis he faces is much closer to home. He becomes embroiled in the plight of the Next: the super-bright post-humans who are beginning to emerge from their “long childhood” in the community called Happy Landings, located deep in the Long Earth. Ignorance and fear have caused “normal” human society to turn against the Next. A dramatic showdown seems inevitable. . . . `,
-          publishedIn: new Date('2014-06-19'),
-          title: 'The Long Mars',
-          cover: 'https://res.cloudinary.com/book-hub/image/upload/v1621965325/covers/sm/18586487_gk7e1k.jpg',
-        },
-      },
-    },
-  });
-
-  await prisma.book.create({
-    data: {
-      publishedIn: new Date('800'),
-      editions: {
-        create: {
-          lang: 'en',
-          description: `The vengeful King Schahriar agrees to stave off the execution of Queen Scheherazade until she finishes a particularly compelling story. Her plan? Bleed one tale into another. Through fanciful histories, romances, tragedies, comedies, poems, riddles, and songs, Scheherazade prolongs her life by holding the king’s rapt attention. With origins in Persian and Eastern Indian folklore, the stories of The Arabian Nights have been reworked, reshaped, revised, collected, and supplemented throughout the centuries by various authors and scholars - and are continually redefined by the modern translations of the Western world.`,
-          publishedIn: new Date('2004-06'),
-          title: 'The Arabian Nights',
-          cover: 'https://res.cloudinary.com/book-hub/image/upload/v1621965401/covers/sm/93101._SY475__adpv95.jpg',
-        },
-      },
-    },
-  });
+    });
+  }
 }
-
-// async function main() {
-//   Object.values(mocks.books).forEach(async ({ authors, editions }) => {
-//     await prisma.book.create({
-//       data: {
-//         publishedIn: new Date('2019-05-28'),
-//         authors: {
-//           connectOrCreate: authors().map(({ id, fullName }) => ({ where: { id }, create: { fullName } })),
-//         },
-//         editions: {
-//           create: editions().map(({ publishedIn, reviews, lang, description, title, cover }) => ({
-//             lang,
-//             description,
-//             title,
-//             cover,
-//             publishedIn: new Date('2020-11-18'),
-//             reviews: {
-//               create: reviews.map(({ lang, body }) => ({
-//                 lang,
-//                 body,
-//                 createdAt: new Date('2021-02-24'),
-//               })),
-//             },
-//           })),
-//         },
-//       },
-//     });
-//   });
-// }
 
 main()
   .catch(e => {
