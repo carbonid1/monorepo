@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { IBook, IEdition } from 'types/interfaces';
+import formatDate from 'utils/formatDate';
 import { useReviewLangOptions } from './hooks';
 import { useReviewsQuery } from './queries';
 
@@ -40,7 +41,7 @@ export const BookReviews: React.FC<IBookReviews> = ({ bookId, editionId }) => {
       <div className="grid gap-2 mt-4">
         {reviews.map(review => (
           <div key={review.id}>
-            <div>{review.createdAt}</div>
+            <div>{formatDate(review.createdAt)}</div>
             <div>{review.body}</div>
           </div>
         ))}
