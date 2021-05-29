@@ -1,6 +1,7 @@
 import type { IBook } from 'types/interfaces';
 import authorsMock from './authors.mock';
 import editionsMock from './editions.mock';
+import getTime from 'date-fns/getTime';
 
 type TBook = 'range' | 'goT' | 'LongMars' | 'ArabianN';
 type TBooksMock = Record<TBook, IBook>;
@@ -8,25 +9,25 @@ type TBooksMock = Record<TBook, IBook>;
 const booksMock: TBooksMock = {
   range: {
     id: 1,
-    publishedIn: 'May 28th 2019', // new Date('2019-05-28')
+    publishedIn: getTime(new Date('2019-05-28')).toString(),
     authors: [authorsMock.EpsteinD],
     editions: [editionsMock.rangeEng, editionsMock.rangeRu],
   },
   goT: {
     id: 2,
-    publishedIn: '', // new Date('1996-08-06'),
+    publishedIn: getTime(new Date('1996-08-06')).toString(),
     authors: [authorsMock.MartinG],
     editions: [editionsMock.goT],
   },
   LongMars: {
     id: 3,
-    publishedIn: '', // new Date('2014-06-19'),
+    publishedIn: getTime(new Date('2014-06-19')).toString(),
     authors: [authorsMock.PratchettT, authorsMock.BaxterS],
     editions: [editionsMock.LongMars],
   },
   ArabianN: {
     id: 4,
-    publishedIn: '', // new Date('800'),
+    publishedIn: getTime(new Date('800')).toString(),
     authors: [],
     editions: [editionsMock.ArabianN],
   },

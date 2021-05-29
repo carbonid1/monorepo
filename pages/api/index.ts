@@ -2,7 +2,6 @@ import { ApolloServer } from 'apollo-server-micro';
 import { GraphQLDate } from 'graphql-iso-date';
 import { asNexusMethod, makeSchema, objectType, idArg, list, nonNull, stringArg } from 'nexus';
 import path from 'path';
-import formatDate from '../../utils/formatDate';
 import prisma from '../../lib/prisma';
 
 export const GQLDate = asNexusMethod(GraphQLDate, 'date');
@@ -33,10 +32,7 @@ const Book = objectType({
       resolve: ({ id }) => prisma.book.findUnique({ where: { id } }).editions(),
     });
     t.int('id');
-    t.field('publishedIn', {
-      type: 'String',
-      resolve: ({ publishedIn }) => formatDate(publishedIn),
-    });
+    t.string('publishedIn');
   },
 });
 
@@ -51,10 +47,7 @@ const Edition = objectType({
     t.nullable.string('description');
     t.int('id');
     t.nullable.string('lang');
-    t.field('publishedIn', {
-      type: 'String',
-      resolve: ({ publishedIn }) => formatDate(publishedIn),
-    });
+    t.string('publishedIn');
     t.list.field('reviews', {
       type: 'Review',
       resolve: ({ id }) => prisma.edition.findUnique({ where: { id } }).reviews(),
@@ -69,14 +62,8 @@ const Review = objectType({
   nonNullDefaults: { output: true },
   definition(t) {
     t.int('id');
-    t.field('createdAt', {
-      type: 'String',
-      resolve: ({ createdAt }) => formatDate(createdAt),
-    });
-    t.field('updatedAt', {
-      type: 'String',
-      resolve: ({ updatedAt }) => formatDate(updatedAt),
-    });
+    t.string('createdAt');
+    t.string('updatedAt');
     t.string('body');
     t.field('edition', {
       type: 'Edition',

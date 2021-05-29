@@ -3,6 +3,7 @@ import { EditionCover } from 'components/EditionCover';
 import type { IEdition } from 'types/interfaces';
 import cn from 'classnames';
 import languageService from 'services/language.service';
+import formatDate from 'utils/formatDate';
 
 export interface IEditionProps {
   className?: string;
@@ -24,7 +25,7 @@ export const Edition: React.FC<IEditionProps> = ({ className, edition }) => {
         {publishedIn && (
           <div>
             <b>Date Published: </b>
-            {publishedIn}
+            {formatDate(publishedIn)}
           </div>
         )}
         {lang && (
