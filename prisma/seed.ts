@@ -1,14 +1,18 @@
 import { PrismaClient } from '@prisma/client';
 import mocks from '../mocks';
+import fromUnixTime from 'date-fns/fromUnixTime';
 
 const prisma = new PrismaClient();
 
+const getDate = (timestamp: string | undefined): Date | undefined =>
+  timestamp ? fromUnixTime(+timestamp / 1000) : undefined;
+
 async function main() {
   const books = Object.values(mocks.books);
-  for (const { authors, editions } of books) {
+  for (const { authors, editions, publishedIn } of books) {
     await prisma.book.create({
       data: {
-        publishedIn: new Date('2019-05-28'),
+        publishedIn: getDate(publishedIn),
         authors: {
           connectOrCreate: authors.map(({ id, fullName }) => ({ where: { id }, create: { fullName } })),
         },
@@ -18,12 +22,12 @@ async function main() {
             description,
             title,
             cover,
-            publishedIn: new Date('2020-11-18'),
+            publishedIn: getDate(publishedIn),
             reviews: {
-              create: reviews.map(({ lang, body }) => ({
+              create: reviews.map(({ lang, body, createdAt }) => ({
                 lang,
                 body,
-                createdAt: new Date('2021-02-24'),
+                createdAt: getDate(createdAt),
               })),
             },
           })),

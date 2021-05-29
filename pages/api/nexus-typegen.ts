@@ -49,19 +49,23 @@ export interface NexusGenObjects {
   }
   Book: { // root type
     id: number; // Int!
+    publishedIn: string; // String!
   }
   Edition: { // root type
     cover?: string | null; // String
     description?: string | null; // String
     id: number; // Int!
     lang?: string | null; // String
+    publishedIn: string; // String!
     title: string; // String!
   }
   Query: {};
   Review: { // root type
     body: string; // String!
+    createdAt: string; // String!
     id: number; // Int!
     lang?: string | null; // String
+    updatedAt: string; // String!
   }
 }
 
