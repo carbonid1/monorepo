@@ -1,16 +1,20 @@
 import type { IAuthor } from 'types/interfaces';
 
 type TAuthors = 'EpsteinD' | 'MartinG' | 'PratchettT' | 'BaxterS';
-interface IAuthorMock extends Omit<IAuthor, 'books'> {}
+interface IAuthorMock extends Omit<IAuthor, 'books' | 'id'> {}
 
 const initialMock: Record<TAuthors, IAuthorMock> = {
-  EpsteinD: { fullName: 'David Epstein', id: 1 },
-  MartinG: { fullName: 'George R.R. Martin', id: 2 },
-  PratchettT: { fullName: 'Terry Pratchett', id: 3 },
-  BaxterS: { fullName: 'Stephen Baxter', id: 4 },
+  EpsteinD: { fullName: 'David Epstein' },
+  MartinG: { fullName: 'George R.R. Martin' },
+  PratchettT: { fullName: 'Terry Pratchett' },
+  BaxterS: { fullName: 'Stephen Baxter' },
 };
 
-const fillMock = (mock: IAuthorMock): IAuthor => ({ ...mock, books: [] });
+let count = 0;
+const fillMock = (mock: IAuthorMock): IAuthor => {
+  count++;
+  return { ...mock, books: [], id: count };
+};
 
 const authorsMock: Record<TAuthors, IAuthor> = {
   EpsteinD: fillMock(initialMock.EpsteinD),
