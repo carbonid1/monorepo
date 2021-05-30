@@ -1,3 +1,4 @@
+import { Toggle } from 'components/@controls/Toggle';
 import { useState } from 'react';
 import type { IBook, IEdition } from 'types/interfaces';
 import formatDate from 'utils/formatDate';
@@ -18,26 +19,20 @@ export const BookReviews: React.FC<IBookReviews> = ({ bookId, editionId }) => {
   return (
     <div>
       <div className="font-bold text-2xl py-4">Reviews:</div>
-      <select
-        name="languages"
-        id="lang-select"
-        className="mr-2"
-        onChange={({ target: { value } }) => {
-          if (value === '') return setLang(null);
-          else setLang(value);
-        }}
-      >
-        {langOptions}
-      </select>
-      <label>
-        <input
-          type="checkbox"
-          checked={thisEditionOnly}
-          onChange={e => setThisEditionOnly(e.target.checked)}
+      <div className="flex gap-x-4">
+        <select
+          name="languages"
+          id="lang-select"
           className="mr-2"
-        />
-        This Edition
-      </label>
+          onChange={({ target: { value } }) => {
+            if (value === '') return setLang(null);
+            else setLang(value);
+          }}
+        >
+          {langOptions}
+        </select>
+        <Toggle isChecked={thisEditionOnly} onChange={setThisEditionOnly} label="This Edition Only" />
+      </div>
       <div className="grid gap-2 mt-4">
         {reviews.map(review => (
           <div key={review.id}>
