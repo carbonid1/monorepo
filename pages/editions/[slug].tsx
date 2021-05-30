@@ -9,9 +9,9 @@ import { CustomHead } from 'components/CustomHead';
 import { ROUTE } from 'consts/routes';
 import { Link } from 'components/@controls/Link';
 import extractIdFromSlug from 'utils/extractIdFromSlug';
-import { Authors } from 'components/Authors';
 import languageService from 'services/language.service';
 import formatDate from 'utils/formatDate';
+import { ByAuthors } from 'components/Authors/ByAuthors';
 
 interface IBookQData {
   book: IBook;
@@ -56,8 +56,7 @@ const Book: React.FC = () => {
       <CustomHead title={title} description={description} />
       <div>
         <b>{title}</b>
-        {!!authors.length && <span> by </span>}
-        <Authors authors={authors} />
+        <ByAuthors authors={authors} />
         {publishedIn && <div>First published in {formatDate(publishedIn)}</div>}
         <div className="mt-2">
           {editions.map(edition => (
