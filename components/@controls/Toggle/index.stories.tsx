@@ -9,7 +9,7 @@ const Template: Story<IToggle> = props => {
 };
 
 export const Default = Template.bind({});
-Default.args = { isChecked: true, srLabel: 'Show All' };
+Default.args = { isChecked: true, srLabel: 'Show All', labelPosition: 'right' };
 
 export const WithLabel = Template.bind({});
 WithLabel.args = { ...Default.args, label: 'Show All' };
