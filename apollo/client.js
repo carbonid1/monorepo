@@ -131,7 +131,8 @@ function createApolloClient(initialState = {}) {
 }
 
 function createIsomorphLink() {
+  console.log(location.protocol, location.host, location);
   const { HttpLink } = require('apollo-link-http');
-  const uri = process.env.NODE_ENV === 'production' ? `https://book-hub.vercel.app/api` : 'http://localhost:3000/api';
+  const uri = process.env.NODE_ENV === 'production' ? `https://${location.host}/api` : 'http://localhost:3000/api';
   return new HttpLink({ uri, credentials: 'same-origin' });
 }
