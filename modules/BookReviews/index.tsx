@@ -24,7 +24,7 @@ export const BookReviews: React.FC<IBookReviews> = ({ bookId, editionId }) => {
         <Select options={langOptions} value={lang} onChange={setLang} />
         <Toggle isChecked={thisEditionOnly} onChange={setThisEditionOnly} label="This Edition Only" />
       </div>
-      <div className="grid gap-2 mt-4">
+      <div className="grid gap-2 auto-rows-max mt-4 min-h-[400px]">
         {reviews.map(review => (
           <div key={review.id}>
             <div>{formatDate(review.createdAt)}</div>
