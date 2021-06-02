@@ -7,7 +7,7 @@ interface ISelectOption<V> {
   label: string;
   value: V;
 }
-export interface ISelect<V = number> {
+export interface ISelect<V> {
   options: ISelectOption<V>[];
   placeholder?: string;
   value: ISelectOption<V>['value'];
