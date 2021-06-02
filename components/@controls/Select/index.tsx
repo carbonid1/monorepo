@@ -1,26 +1,30 @@
-import { Fragment, ReactText, useState } from 'react';
+import { Fragment, useMemo } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid';
 import cn from 'classnames';
 
-interface ISelectOption {
+interface ISelectOption<V> {
   label: string;
-  value: ReactText;
+  value: V;
 }
-export interface ISelect {
-  options: ISelectOption[];
-  placeholder: string;
+export interface ISelect<V = number> {
+  options: ISelectOption<V>[];
+  placeholder?: string;
+  value: ISelectOption<V>['value'];
+  onChange: (value: ISelectOption<V>['value']) => void;
 }
 
-export const Select: React.FC<ISelect> = ({ options, placeholder }) => {
-  const [selected, setSelected] = useState<ISelectOption['value']>();
+export const Select = <V,>({ options, placeholder = 'Select an Option', onChange, value }: ISelect<V>) => {
+  const selectedOption = useMemo(() => {
+    return options.find(option => option.value === value);
+  }, [options, value]);
 
   return (
-    <Listbox value={selected} onChange={setSelected}>
-      <div className="relative">
+    <Listbox value={value} onChange={onChange}>
+      <div className="relative w-52">
         <Listbox.Button className="relative w-full py-2 pl-3 pr-10 text-left bg-white rounded-lg shadow-md cursor-default focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400 sm:text-sm">
-          {selected ? (
-            <span className="block truncate">{selected}</span>
+          {selectedOption ? (
+            <span className="block truncate">{selectedOption.label}</span>
           ) : (
             <span className="block truncate text-grey-400">{placeholder}</span>
           )}
