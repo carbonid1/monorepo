@@ -1,4 +1,5 @@
 import type { Story, Meta } from '@storybook/react';
+import { useState } from 'react';
 import { Select, ISelect } from '.';
 
 export default {
@@ -12,7 +13,11 @@ export default {
     ),
   ],
 } as Meta;
-const Template: Story<ISelect> = props => <Select {...props} />;
+
+const Template: Story<ISelect<string | undefined>> = props => {
+  const [value, onChange] = useState<string | undefined>();
+  return <Select {...props} value={value} onChange={onChange} />;
+};
 
 const people = [
   { name: 'Wade Cooper' },
