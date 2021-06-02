@@ -21,6 +21,7 @@
     "@apollo/react-hooks": "^4.0.0",
     "@apollo/react-ssr": "^4.0.0",
     "@headlessui/react": "^1.2.0",
+    "@heroicons/react": "^1.0.1",
     "@splitbee/web": "^0.2.4",
     "apollo-boost": "^0.4.9",
     "apollo-link-http": "^1.5.17",
