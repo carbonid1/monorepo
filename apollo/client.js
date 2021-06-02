@@ -130,11 +130,22 @@ function createApolloClient(initialState = {}) {
   });
 }
 
+const getURIConfig = () => {
+  switch (process.env.NEXT_PUBLIC_VERCEL_ENV) {
+    case 'production':
+      return { host: 'book-hub.vercel.app', protocol: 'https' };
+    case 'preview':
+      return { host: process.env.NEXT_PUBLIC_VERCEL_URL, protocol: 'https' };
+    case 'development':
+    default:
+      return { host: 'localhost:3000', protocol: 'http' };
+  }
+};
+
 function createIsomorphLink() {
   const { HttpLink } = require('apollo-link-http');
-  const uri =
-    process.env.NODE_ENV === 'production'
-      ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api`
-      : 'http://localhost:3000/api';
+  const { host, protocol } = getURIConfig();
+  const uri = `${protocol}://${host}/api`;
+
   return new HttpLink({ uri, credentials: 'same-origin' });
 }
