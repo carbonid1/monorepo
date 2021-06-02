@@ -22,8 +22,12 @@ const ReviewsQ = gql`
   }
 `;
 
-export const useReviewsQuery = (variables: IQVars) => {
+const useReviewsQuery = (variables: IQVars) => {
   const { data } = useQuery<IQData, IQVars>(ReviewsQ, { variables });
   const { reviews } = data ?? { reviews: [] };
   return { reviews };
+};
+
+export default {
+  useReviewsQuery,
 };

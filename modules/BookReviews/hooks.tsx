@@ -1,3 +1,4 @@
+import type { ISelect } from 'components/@controls/Select';
 import { useMemo } from 'react';
 import languageService from 'services/language.service';
 import type { IReview } from 'types/interfaces';
@@ -18,19 +19,24 @@ const makeLangOptions = (reviews: IReview[]) => {
   }, []);
 };
 
-export const useReviewLangOptions = (reviews: IReview[]) => {
+const useLangOptions = (reviews: IReview[]): ISelect<string | null>['options'] => {
   const options = useMemo(() => {
     const languagesOpts = makeLangOptions(reviews);
-    const selectOptions = languagesOpts.map(({ lang, count }) => (
-      <option value={lang}>
-        {languageService.getName(lang)}({count})
-      </option>
-    ));
-    return [<option value="">All Languages</option>, ...selectOptions];
+
+    const selectOptions = languagesOpts.map(({ lang, count }) => ({
+      value: lang,
+      label: `${languageService.getName(lang)} (${count})`,
+    }));
+
+    return [{ value: null, label: 'All Languages' }, ...selectOptions];
   }, []);
   // reviews not included as deps deliberately
   // when filtered they would broke the options
   // needs a better idea
 
   return options;
+};
+
+export default {
+  useLangOptions,
 };
