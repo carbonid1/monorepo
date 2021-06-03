@@ -1,0 +1,6 @@
+/.github
+/.next
+/public
+/pages/api/nexus-typegen.ts
+/pages/api/schema.graphql
+package-lock.json
