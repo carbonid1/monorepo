@@ -119,8 +119,8 @@ const Query = objectType({
             book =>
               book?.editions.reduce(
                 (reviews: typeof edition.reviews, edition) => [...reviews, ...edition.reviews],
-                []
-              ) || []
+                [],
+              ) || [],
           );
       },
     });

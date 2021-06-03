@@ -68,7 +68,7 @@ export function withApollo(PageComponent, { ssr = true } = {}) {
                   ...pageProps,
                   apolloClient,
                 }}
-              />
+              />,
             );
           } catch (error) {
             // Prevent Apollo Client GraphQL errors from crashing SSR.
