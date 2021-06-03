@@ -10,7 +10,6 @@
     "migrate": "npx prisma migrate dev --preview-feature",
     "reset": "npx prisma migrate reset --force --preview-feature",
     "generate": "npm -s run generate:prisma && npm -s run generate:nexus",
-    "chromatic": "chromatic",
     "✋___comment__✋": "internal scripts ⏬",
     "build": "next build",
     "start": "next start",
