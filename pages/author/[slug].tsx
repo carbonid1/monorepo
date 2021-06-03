@@ -9,6 +9,7 @@ import { CustomHead } from 'components/CustomHead';
 import { ROUTE } from 'consts/routes';
 import { Link } from 'components/@controls/Link';
 import extractIdFromSlug from 'utils/extractIdFromSlug';
+import { Paragraph } from 'components/@typography/Paragraph';
 
 interface IAuthorQData {
   author: IAuthor;
@@ -62,7 +63,7 @@ const Book: React.FC = () => {
                 <Link path={`/${ROUTE.book}/${editionId}`} slug={title}>
                   {title}
                 </Link>
-                <div>{description}</div>
+                <Paragraph ellipsis={{ rows: 5, expandable: false }}>{description}</Paragraph>
               </li>
             );
           })}

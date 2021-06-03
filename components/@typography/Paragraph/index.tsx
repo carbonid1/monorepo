@@ -19,7 +19,7 @@ interface IExtendedEllipsisConfig extends IEllipsisConfig {
 const getEllipsisConfig = (prop: IParagraph['ellipsis']): IExtendedEllipsisConfig => {
   const defaultConfig: IExtendedEllipsisConfig = { rows: 1, expandable: false, active: false };
   if (typeof prop === 'object') {
-    return { ...defaultConfig, ...prop, active: true };
+    return { ...defaultConfig, expandable: true, ...prop, active: true };
   } else if (typeof prop === 'boolean') {
     return { ...defaultConfig, active: true };
   } else return defaultConfig;
@@ -36,15 +36,12 @@ export const Paragraph: React.FC<IParagraph> = ({ className, children, ellipsis 
   const eConfig = getEllipsisConfig(ellipsis);
 
   return (
-    <div>
-      <span className={cn(getLineClampCN(eConfig, expanded), className)}>{children}</span>
+    <div className="max-w-prose">
+      <p className={cn(getLineClampCN(eConfig, expanded), className)}>{children}</p>
       {eConfig.expandable && (
         <button
           aria-expanded={expanded}
-          className={cn(
-            expanded && 'ml-2',
-            'text-blue-500 hover:underline focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400 rounded-full'
-          )}
+          className="text-blue-500 hover:underline focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400 rounded-full"
           onClick={() => setExpanded(expanded => !expanded)}
         >
           {expanded ? 'Show less' : 'Read more'}
