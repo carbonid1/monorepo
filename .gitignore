@@ -20,7 +20,6 @@
 *.pem
 /prisma/dev.db
 /public/sw.js.map
-buid-storybook.log
 
 # debug
 npm-debug.log*
