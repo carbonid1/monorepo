@@ -665,7 +665,7 @@ define('./workbox-6b19f60b.js', ['exports'], function (exports) {
             logger.debug(
               `The regular expression '${regExp}' only partially matched ` +
                 `against the cross-origin URL '${url}'. RegExpRoute's will only ` +
-                `handle cross-origin requests if they match the entire URL.`
+                `handle cross-origin requests if they match the entire URL.`,
             );
           }
 
@@ -804,7 +804,7 @@ define('./workbox-6b19f60b.js', ['exports'], function (exports) {
               }); // TODO(philipwalton): TypeScript errors without this typecast for
               // some reason (probably a bug). The real type here should work but
               // doesn't: `Array<Promise<Response> | undefined>`.
-            })
+            }),
           ); // TypeScript
 
           event.waitUntil(requestPromises); // If a MessageChannel was used, reply to the message on success.
@@ -874,7 +874,7 @@ define('./workbox-6b19f60b.js', ['exports'], function (exports) {
       if (!handler && this._defaultHandlerMap.has(method)) {
         {
           debugMessages.push(
-            `Failed to find a matching route. Falling ` + `back to the default handler for ${method}.`
+            `Failed to find a matching route. Falling ` + `back to the default handler for ${method}.`,
           );
         }
 
@@ -929,7 +929,7 @@ define('./workbox-6b19f60b.js', ['exports'], function (exports) {
               // Still include URL here as it will be async from the console group
               // and may not make sense without the URL
               logger.groupCollapsed(
-                `Error thrown when responding to: ` + ` ${getFriendlyURL(url)}. Falling back to route's Catch Handler.`
+                `Error thrown when responding to: ` + ` ${getFriendlyURL(url)}. Falling back to route's Catch Handler.`,
               );
               logger.error(`Error thrown by:`, route);
               logger.error(err);
@@ -953,7 +953,7 @@ define('./workbox-6b19f60b.js', ['exports'], function (exports) {
               // Still include URL here as it will be async from the console group
               // and may not make sense without the URL
               logger.groupCollapsed(
-                `Error thrown when responding to: ` + ` ${getFriendlyURL(url)}. Falling back to global Catch Handler.`
+                `Error thrown when responding to: ` + ` ${getFriendlyURL(url)}. Falling back to global Catch Handler.`,
               );
               logger.error(`Error thrown by:`, route);
               logger.error(err);
@@ -1010,7 +1010,7 @@ define('./workbox-6b19f60b.js', ['exports'], function (exports) {
                 `While routing ${getFriendlyURL(url)}, an async ` +
                   `matchCallback function was used. Please convert the ` +
                   `following route to use a synchronous matchCallback function:`,
-                route
+                route,
               );
             }
           } // See https://github.com/GoogleChrome/workbox/issues/2079
@@ -1216,7 +1216,7 @@ define('./workbox-6b19f60b.js', ['exports'], function (exports) {
           logger.debug(
             `The '$capture' parameter contains an Express-style wildcard ` +
               `character (${wildcards}). Strings are now always interpreted as ` +
-              `exact matches; use a RegExp for partial or wildcard matches.`
+              `exact matches; use a RegExp for partial or wildcard matches.`,
           );
         }
       }
@@ -1227,7 +1227,7 @@ define('./workbox-6b19f60b.js', ['exports'], function (exports) {
             logger.debug(
               `${capture} only partially matches the cross-origin URL ` +
                 `${url}. This route will only handle cross-origin requests ` +
-                `if they match the entire URL.`
+                `if they match the entire URL.`,
             );
           }
         }
@@ -1655,7 +1655,7 @@ define('./workbox-6b19f60b.js', ['exports'], function (exports) {
           logger.debug(
             `Network request for ` +
               `'${getFriendlyURL(request.url)}' returned a response with ` +
-              `status '${fetchResponse.status}'.`
+              `status '${fetchResponse.status}'.`,
           );
         }
 
@@ -1812,13 +1812,13 @@ define('./workbox-6b19f60b.js', ['exports'], function (exports) {
             cache,
             effectiveRequest.clone(),
             ['__WB_REVISION__'],
-            matchOptions
+            matchOptions,
           )
         : null;
 
       {
         logger.debug(
-          `Updating the '${cacheName}' cache with a new Response ` + `for ${getFriendlyURL(effectiveRequest.url)}.`
+          `Updating the '${cacheName}' cache with a new Response ` + `for ${getFriendlyURL(effectiveRequest.url)}.`,
         );
       }
 
@@ -1868,7 +1868,7 @@ define('./workbox-6b19f60b.js', ['exports'], function (exports) {
               request: effectiveRequest,
               event: this.event,
               params: this.params,
-            })
+            }),
           );
         }
 
@@ -2032,13 +2032,13 @@ define('./workbox-6b19f60b.js', ['exports'], function (exports) {
                 logger.warn(
                   `The response for '${this.request.url}' ` +
                     `is an opaque response. The caching strategy that you're ` +
-                    `using will not cache opaque responses by default.`
+                    `using will not cache opaque responses by default.`,
                 );
               } else {
                 logger.debug(
                   `The response for '${this.request.url}' ` +
                     `returned a status code of '${response.status}' and won't ` +
-                    `be cached as a result.`
+                    `be cached as a result.`,
                 );
               }
             }
@@ -2231,7 +2231,7 @@ define('./workbox-6b19f60b.js', ['exports'], function (exports) {
           logger.log(
             `While responding to '${getFriendlyURL(request.url)}', ` +
               `an ${error} error occurred. Using a fallback response provided by ` +
-              `a handlerDidError plugin.`
+              `a handlerDidError plugin.`,
           );
         }
       }
@@ -2437,7 +2437,7 @@ define('./workbox-6b19f60b.js', ['exports'], function (exports) {
             // have to check to see if it's still "in flight".
             (await networkPromise)
           );
-        })()
+        })(),
       );
 
       {

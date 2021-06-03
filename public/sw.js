@@ -67,7 +67,7 @@ if (!self.define) {
             default:
               return singleRequire(depName);
           }
-        })
+        }),
       ).then(deps => {
         const facValue = factory(...deps);
         if (!exports.default) {
@@ -116,7 +116,7 @@ define('./sw.js', ['./workbox-6b19f60b'], function (workbox) {
         },
       ],
     }),
-    'GET'
+    'GET',
   );
   workbox.registerRoute(
     /.*/i,
@@ -124,7 +124,7 @@ define('./sw.js', ['./workbox-6b19f60b'], function (workbox) {
       cacheName: 'dev',
       plugins: [],
     }),
-    'GET'
+    'GET',
   );
 });
 //# sourceMappingURL=sw.js.map

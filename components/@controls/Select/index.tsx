@@ -40,7 +40,7 @@ export const Select = <V,>({ options, placeholder = 'Select an Option', onChange
                 className={({ active }) =>
                   cn(
                     active ? 'text-blue-500 bg-blue-100' : 'text-grey-900',
-                    'cursor-default select-none relative py-2 pl-10 pr-4'
+                    'cursor-default select-none relative py-2 pl-10 pr-4',
                   )
                 }
                 value={option.value}
