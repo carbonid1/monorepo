@@ -12,7 +12,7 @@ export const Paragraph: React.FC<IParagraph> = ({ className, children, ellipsis 
   const { lineClampClassName, paragraphRef, expanded, isActive, onExpand } = hooks.useEllipsis(ellipsis);
 
   return (
-    <div className="">
+    <div className="max-w-prose">
       <p className={cn(lineClampClassName, className)} ref={paragraphRef}>
         {children}
       </p>
