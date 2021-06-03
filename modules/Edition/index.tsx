@@ -4,6 +4,7 @@ import cn from 'classnames';
 import languageService from 'services/language.service';
 import formatDate from 'utils/formatDate';
 import { ByAuthors } from 'components/Authors/ByAuthors';
+import { Paragraph } from 'components/@typography/Paragraph';
 
 export interface IEditionProps {
   className?: string;
@@ -33,7 +34,7 @@ export const Edition: React.FC<IEditionProps> = ({ className, edition }) => {
             {languageService.getName(lang)}
           </div>
         )}
-        {description && <div className="max-w-prose">{description}</div>}
+        {description && <Paragraph ellipsis={{ rows: 5 }}>{description}</Paragraph>}
       </div>
     </div>
   );

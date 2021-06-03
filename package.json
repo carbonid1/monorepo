@@ -23,6 +23,7 @@
     "@headlessui/react": "^1.2.0",
     "@heroicons/react": "^1.0.1",
     "@splitbee/web": "^0.2.4",
+    "@tailwindcss/line-clamp": "^0.2.1",
     "apollo-boost": "^0.4.9",
     "apollo-link-http": "^1.5.17",
     "apollo-link-schema": "^1.2.5",
