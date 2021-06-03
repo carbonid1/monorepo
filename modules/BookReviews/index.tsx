@@ -1,5 +1,6 @@
 import { ISelect, Select } from 'components/@controls/Select';
 import { Toggle } from 'components/@controls/Toggle';
+import { Paragraph } from 'components/@typography/Paragraph';
 import { useState } from 'react';
 import type { IBook, IEdition } from 'types/interfaces';
 import formatDate from 'utils/formatDate';
@@ -27,8 +28,8 @@ export const BookReviews: React.FC<IBookReviews> = ({ bookId, editionId }) => {
       <div className="grid gap-2 auto-rows-max mt-4 min-h-[400px]">
         {reviews.map(review => (
           <div key={review.id}>
-            <div>{formatDate(review.createdAt)}</div>
-            <div>{review.body}</div>
+            <div className="font-bold">{formatDate(review.createdAt)}</div>
+            <Paragraph ellipsis={{ rows: 5 }}>{review.body}</Paragraph>
           </div>
         ))}
       </div>
