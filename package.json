@@ -6,6 +6,7 @@
     "test": "jest",
     "lint": "eslint . --ext .ts --ext .tsx",
     "dev": "next dev",
+    "ts": "tsc --noEmit",
     "analyze": "ANALYZE=true next dev",
     "storybook": "start-storybook -s ./public -p 6006",
     "studio": "npx prisma studio",
