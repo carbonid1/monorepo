@@ -1,5 +1,7 @@
 import { gql, useQuery } from '@apollo/client';
+import { useMemo } from 'react';
 import type { IReview } from 'types/interfaces';
+import helpers from './helpers';
 
 interface IQData {
   reviews: IReview[];
@@ -28,6 +30,20 @@ const useReviewsQuery = (variables: IQVars) => {
   return { reviews };
 };
 
+const LangsQ = gql`
+  query EditionQ($bookId: ID, $editionId: ID) {
+    reviews(bookId: $bookId, editionId: $editionId) {
+      lang
+    }
+  }
+`;
+
+const useLangsQuery = (variables: IQVars) => {
+  const { data } = useQuery<IQData, IQVars>(LangsQ, { variables });
+  return useMemo(() => helpers.makeLangOptions(data?.reviews), [data?.reviews]);
+};
+
 export default {
   useReviewsQuery,
+  useLangsQuery,
 };
