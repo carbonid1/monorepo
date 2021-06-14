@@ -2,16 +2,16 @@
 
 [DB Diagram](https://drawsql.app/coriander/diagrams/bookhub#)
 
-#### Migrate DB:
+#### Comments rules
 
-```bash
-npx prisma migrate dev --preview-feature
-```
+[Better Comments](https://github.com/aaron-bond/better-comments) extension
 
-#### Run Prisma Studio:
-
-```bash
-npx prisma studio
+```javascript
+// * a highlight
+// ! a danger
+// ? wtf is this
+// TODO refactor this thing
+//// a bad smelly code
 ```
 
 #### Update Env Vars:

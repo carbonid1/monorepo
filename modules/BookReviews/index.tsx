@@ -6,9 +6,10 @@ import type { NBookReviews } from './interface';
 import { ISelect, Select } from 'components/@controls/Select';
 import { Toggle } from 'components/@controls/Toggle';
 import { Paragraph } from 'components/@typography/Paragraph';
+import { useToggler } from 'hooks/useToggler';
 
 export const BookReviews: React.FC<NBookReviews.Props> = ({ bookId, editionId }) => {
-  const [thisEditionOnly, setThisEditionOnly] = useState(false);
+  const [thisEditionOnly, setThisEditionOnly] = useToggler();
   const [lang, setLang] = useState<ISelect<NBookReviews.SelectedLanguage>['value']>(null);
   const { reviews } = queries.useReviewsQuery({ bookId, editionId: thisEditionOnly ? editionId : null, lang });
   const reviewLangs = queries.useLangsQuery({ bookId, editionId: thisEditionOnly ? editionId : null, lang: null });
@@ -20,12 +21,12 @@ export const BookReviews: React.FC<NBookReviews.Props> = ({ bookId, editionId })
       <div className="flex gap-x-4">
         <Select options={langOptions} value={lang} onChange={setLang} />
         <Toggle
-          isChecked={thisEditionOnly}
-          onChange={isChecked => {
-            setLang(null);
-            setThisEditionOnly(isChecked);
-          }}
           label="This Edition Only"
+          isChecked={thisEditionOnly}
+          onChange={() => {
+            setLang(null);
+            setThisEditionOnly();
+          }}
         />
       </div>
       <div className="grid gap-2 auto-rows-max mt-4 min-h-[400px]">
