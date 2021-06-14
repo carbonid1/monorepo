@@ -6,14 +6,14 @@ export namespace NBookReviews {
     editionId: IEdition['id'];
   }
 
-  interface ILangOpt {
+  interface SelectedLanguageOption {
     count: number;
     lang: string;
   }
 
-  export type LangOptions = ILangOpt[];
+  export type LangOptions = SelectedLanguageOption[];
 
-  export type ActiveLanguage = string | null;
+  export type SelectedLanguage = string | null;
 
   export interface QData {
     reviews: IReview[];

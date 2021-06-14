@@ -9,7 +9,7 @@ import { Paragraph } from 'components/@typography/Paragraph';
 
 export const BookReviews: React.FC<NBookReviews.Props> = ({ bookId, editionId }) => {
   const [thisEditionOnly, setThisEditionOnly] = useState(false);
-  const [lang, setLang] = useState<ISelect<NBookReviews.ActiveLanguage>['value']>(null);
+  const [lang, setLang] = useState<ISelect<NBookReviews.SelectedLanguage>['value']>(null);
   const { reviews } = queries.useReviewsQuery({ bookId, editionId: thisEditionOnly ? editionId : null, lang });
   const reviewLangs = queries.useLangsQuery({ bookId, editionId: thisEditionOnly ? editionId : null, lang: null });
   const langOptions = hooks.useLangOptions(reviewLangs);
