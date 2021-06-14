@@ -1,9 +1,9 @@
-import type { ISelect } from 'components/@controls/Select';
 import { useMemo } from 'react';
+import type { ISelect } from 'components/@controls/Select';
 import languageService from 'services/language.service';
-import type { TSelectLanguageOptions } from './helpers';
+import type { NBookReviews } from './interface';
 
-const useLangOptions = (languagesOpts: TSelectLanguageOptions): ISelect<string | null>['options'] => {
+const useLangOptions = (languagesOpts: NBookReviews.LangOptions): ISelect<string | null>['options'] => {
   return useMemo(() => {
     const selectOptions = languagesOpts.map(({ lang, count }) => ({
       value: lang,
