@@ -1,14 +1,7 @@
-import type { IReview } from 'types/interfaces';
+import type { NBookReviews } from './interface';
 
-interface ILangOpt {
-  count: number;
-  lang: string;
-}
-
-export type TSelectLanguageOptions = ILangOpt[];
-
-const makeLangOptions = (reviews: IReview[] = []): TSelectLanguageOptions => {
-  return reviews.reduce((acc: TSelectLanguageOptions, { lang }) => {
+const makeLangOptions = (reviews: NBookReviews.QData['reviews'] = []): NBookReviews.LangOptions => {
+  return reviews.reduce((acc: NBookReviews.LangOptions, { lang }) => {
     if (!lang) return acc;
     const index = acc.findIndex(opt => opt.lang === lang);
 

@@ -1,17 +1,7 @@
-import { gql, useQuery } from '@apollo/client';
-import { useMemo } from 'react';
-import type { IReview } from 'types/interfaces';
 import helpers from './helpers';
-
-interface IQData {
-  reviews: IReview[];
-}
-
-interface IQVars {
-  bookId: number | null;
-  editionId: number | null;
-  lang: string | null;
-}
+import { useMemo } from 'react';
+import { gql, useQuery } from '@apollo/client';
+import type { NBookReviews } from './interface';
 
 const ReviewsQ = gql`
   query EditionQ($bookId: ID, $editionId: ID, $lang: String) {
@@ -24,8 +14,8 @@ const ReviewsQ = gql`
   }
 `;
 
-const useReviewsQuery = (variables: IQVars) => {
-  const { data } = useQuery<IQData, IQVars>(ReviewsQ, { variables });
+const useReviewsQuery = (variables: NBookReviews.QVars) => {
+  const { data } = useQuery<NBookReviews.QData, NBookReviews.QVars>(ReviewsQ, { variables });
   const { reviews } = data ?? { reviews: [] };
   return { reviews };
 };
@@ -38,8 +28,8 @@ const LangsQ = gql`
   }
 `;
 
-const useLangsQuery = (variables: IQVars) => {
-  const { data } = useQuery<IQData, IQVars>(LangsQ, { variables });
+const useLangsQuery = (variables: NBookReviews.QVars) => {
+  const { data } = useQuery<NBookReviews.QData, NBookReviews.QVars>(LangsQ, { variables });
   return useMemo(() => helpers.makeLangOptions(data?.reviews), [data?.reviews]);
 };
 
