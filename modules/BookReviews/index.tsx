@@ -39,3 +39,5 @@ export const BookReviews: React.FC<NBookReviews.Props> = ({ bookId, editionId })
     </div>
   );
 };
+
+export default BookReviews;

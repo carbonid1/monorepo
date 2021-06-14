@@ -8,8 +8,10 @@ import { CustomHead } from 'components/CustomHead';
 import { ROUTE } from 'consts/routes';
 import { Link } from 'components/@controls/Link';
 import extractIdFromSlug from 'utils/extractIdFromSlug';
-import { BookReviews } from 'modules/BookReviews';
 import { Edition } from 'modules/Edition';
+import { lazy, Suspense } from 'react';
+
+const BookReviews = lazy(() => import('../../modules/BookReviews'));
 
 interface IEditionQData {
   edition: IEdition;
@@ -57,7 +59,9 @@ const Book: React.FC = () => {
         <Link path={`/${ROUTE.editions}/${book.id}`} slug={edition.title}>
           All Editions
         </Link>
-        <BookReviews bookId={book.id} editionId={id} />
+        <Suspense fallback="Loading...">
+          <BookReviews bookId={book.id} editionId={id} />
+        </Suspense>
       </div>
     </div>
   );
