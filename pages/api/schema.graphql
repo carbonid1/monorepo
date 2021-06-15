@@ -6,6 +6,7 @@ type Author {
   books: [Book!]!
   fullName: String!
   id: Int!
+  imageUrl: String
 }
 
 type Book {
