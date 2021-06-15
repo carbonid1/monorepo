@@ -2,6 +2,7 @@ export interface IAuthor {
   id: number;
   books: IBook[];
   fullName: string;
+  imageUrl?: string;
 }
 
 export interface IBook {

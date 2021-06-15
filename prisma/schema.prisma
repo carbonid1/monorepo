@@ -12,6 +12,7 @@ model Author {
   fullName               String                      @db.VarChar(255)
   id                     Int                         @default(autoincrement()) @id
   updatedAt              DateTime                    @updatedAt
+  imageUrl               String?
 }
 
 model Book {
