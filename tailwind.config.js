@@ -15,7 +15,8 @@ module.exports = {
       green: colors.teal,
     },
     zIndex: {
-      header: '1',
+      1: 1,
+      header: 2,
     },
   },
   variants: {
