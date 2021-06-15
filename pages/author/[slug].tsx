@@ -10,7 +10,7 @@ import { ROUTE } from 'consts/routes';
 import { Link } from 'components/@controls/Link';
 import extractIdFromSlug from 'utils/extractIdFromSlug';
 import { Paragraph } from 'components/@typography/Paragraph';
-import { EditionCover } from 'components/EditionCover';
+import { CoverImage } from 'components/CoverImage';
 
 interface IAuthorQData {
   author: IAuthor;
@@ -53,7 +53,7 @@ const Book: React.FC = () => {
     <div>
       <CustomHead title={fullName} />
       <div className="grid justify-start grid-flow-col gap-x-10">
-        <EditionCover title={fullName} cover={imageUrl} />
+        <CoverImage alt={fullName} src={imageUrl} />
         <div>
           <div>
             <b>Name: </b>
