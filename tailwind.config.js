@@ -14,6 +14,9 @@ module.exports = {
       blue: colors.lightBlue,
       green: colors.teal,
     },
+    zIndex: {
+      header: '1',
+    },
   },
   variants: {
     extend: {},
