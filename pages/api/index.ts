@@ -12,6 +12,7 @@ const Author = objectType({
   definition(t) {
     t.int('id');
     t.string('fullName');
+    t.nullable.string('imageUrl');
     t.list.field('books', {
       type: 'Book',
       resolve: ({ id }) => prisma.author.findUnique({ where: { id } }).books(),

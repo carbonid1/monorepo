@@ -1,4 +1,4 @@
-import { EditionCover } from 'components/EditionCover';
+import { CoverImage } from 'components/CoverImage';
 import type { IEdition } from 'types/interfaces';
 import cn from 'classnames';
 import languageService from 'services/language.service';
@@ -16,7 +16,7 @@ export const Edition: React.FC<IEditionProps> = ({ className, edition }) => {
 
   return (
     <div className={cn('grid justify-start grid-flow-col gap-x-10', className)}>
-      <EditionCover cover={cover} title={title} className="row-span-6" />
+      <CoverImage src={cover} alt={title} className="row-span-6" />
       <div className="">
         <div>
           <b>{title}</b>
