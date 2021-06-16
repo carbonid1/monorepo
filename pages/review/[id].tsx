@@ -2,11 +2,10 @@ import { useRouter } from 'next/router';
 import { withApollo } from 'apollo/client';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
-import { NotFound } from 'components/@errors/NotFound';
 import type { IReview } from 'types/interfaces';
-import { ServerError } from 'components/@errors/ServerError';
 import { CustomHead } from 'components/CustomHead';
 import { Authors } from 'components/Authors';
+import { Errors } from 'components/@errors';
 
 interface IReviewQData {
   review: IReview;
@@ -38,8 +37,8 @@ const Review: React.FC = () => {
   const { review } = data ?? {};
 
   if (loading) return null;
-  if (error) return <ServerError />;
-  if (!review) return <NotFound />;
+  if (error) return <Errors.ServerError />;
+  if (!review) return <Errors.NotFound />;
 
   const { body, edition } = review;
   const { title } = edition;

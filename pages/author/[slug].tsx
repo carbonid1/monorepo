@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router';
 import { withApollo } from 'apollo/client';
-import { NotFound } from 'components/@errors/NotFound';
 import { CustomHead } from 'components/CustomHead';
 import { ROUTE } from 'consts/routes';
 import { Link } from 'components/@controls/Link';
@@ -8,7 +7,7 @@ import extractIdFromSlug from 'utils/extractIdFromSlug';
 import { Paragraph } from 'components/@typography/Paragraph';
 import { CoverImage } from 'components/CoverImage';
 import queries from './queries';
-import { ServerError } from 'components/@errors/ServerError';
+import { Errors } from 'components/@errors';
 
 const Book: React.FC = () => {
   const slug = useRouter().query.slug as string;
@@ -17,8 +16,8 @@ const Book: React.FC = () => {
   const { author } = data ?? {};
 
   if (loading) return null;
-  if (error) return <ServerError />;
-  if (!author) return <NotFound />;
+  if (error) return <Errors.ServerError />;
+  if (!author) return <Errors.NotFound />;
 
   const { fullName, books, imageUrl } = author;
 
