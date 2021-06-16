@@ -23,11 +23,12 @@ Empty.args = {
   ...Loading.args,
   loading: false,
   empty: true,
+  title: 'We are sorry :(',
+  subTitle: 'There are no reviews yet. But you may submit the first one!',
 };
 
 export const Default = Template.bind({});
 Default.args = {
   ...Loading.args,
   loading: false,
-  empty: false,
 };

@@ -30,7 +30,12 @@ export const BookReviews: React.FC<NBookReviews.Props> = ({ bookId, editionId })
           }}
         />
       </div>
-      <LoadingContent className="mt-4" loading={loading} empty={!reviews.length}>
+      <LoadingContent
+        className="mt-4"
+        loading={loading}
+        empty={!reviews.length}
+        subTitle="There are no reviews yet. You can submit the first one!"
+      >
         <div className="grid gap-2 auto-rows-max">
           {reviews.map(review => (
             <div key={review.id}>
