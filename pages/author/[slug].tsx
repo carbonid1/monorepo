@@ -1,9 +1,6 @@
 import { useRouter } from 'next/router';
 import { withApollo } from 'apollo/client';
-import gql from 'graphql-tag';
-import { useQuery } from '@apollo/react-hooks';
 import { NotFound } from 'components/@errors/NotFound';
-import type { IAuthor } from 'types/interfaces';
 import { BaseError } from 'components/@errors/BaseError';
 import { CustomHead } from 'components/CustomHead';
 import { ROUTE } from 'consts/routes';
@@ -11,36 +8,12 @@ import { Link } from 'components/@controls/Link';
 import extractIdFromSlug from 'utils/extractIdFromSlug';
 import { Paragraph } from 'components/@typography/Paragraph';
 import { CoverImage } from 'components/CoverImage';
-
-interface IAuthorQData {
-  author: IAuthor;
-}
-interface IAuthorQVars {
-  id: number | null;
-}
-
-const AuthorQ = gql`
-  query AuthorQ($id: ID) {
-    author(id: $id) {
-      id
-      fullName
-      imageUrl
-      books {
-        editions {
-          title
-          description
-          id
-        }
-        id
-      }
-    }
-  }
-`;
+import queries from './queries';
 
 const Book: React.FC = () => {
   const slug = useRouter().query.slug as string;
   const id = extractIdFromSlug(slug);
-  const { data, loading, error } = useQuery<IAuthorQData, IAuthorQVars>(AuthorQ, { variables: { id } });
+  const { data, loading, error } = queries.useAuthorQuery({ id });
   const { author } = data ?? {};
 
   if (loading) return null;
