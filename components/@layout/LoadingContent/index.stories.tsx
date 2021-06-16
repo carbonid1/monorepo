@@ -13,10 +13,16 @@ const Template: Story<ILoadingContent> = props => (
   </LoadingContent>
 );
 
+export const Default = Template.bind({});
+Default.args = {
+  loading: false,
+  empty: false,
+};
+
 export const Loading = Template.bind({});
 Loading.args = {
+  ...Default.args,
   loading: true,
-  empty: false,
 };
 
 export const CustomLoader = Template.bind({});
@@ -31,17 +37,16 @@ CustomLoader.args = {
   ),
 };
 
+export const InitiallyLoadedLoading = Template.bind({});
+InitiallyLoadedLoading.args = {
+  ...Loading.args,
+  initiallyLoaded: true,
+};
+
 export const Empty = Template.bind({});
 Empty.args = {
-  ...Loading.args,
-  loading: false,
+  ...Default.args,
   empty: true,
   title: 'We are sorry :(',
   subTitle: 'There are no reviews yet. But you may submit the first one!',
-};
-
-export const Default = Template.bind({});
-Default.args = {
-  ...Loading.args,
-  loading: false,
 };

@@ -5,5 +5,5 @@ export interface ISkeleton {
 }
 
 export const Skeleton: React.FC<ISkeleton> = ({ className }) => {
-  return <div className={cn('skeleton rounded-lg h-20', className)} />;
+  return <div className={cn('rounded-lg h-20 bg-blue-300', className)} />;
 };
