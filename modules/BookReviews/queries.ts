@@ -15,9 +15,9 @@ const ReviewsQ = gql`
 `;
 
 const useReviewsQuery = (variables: NBookReviews.QVars) => {
-  const { data } = useQuery<NBookReviews.QData, NBookReviews.QVars>(ReviewsQ, { variables });
+  const { data, loading } = useQuery<NBookReviews.QData, NBookReviews.QVars>(ReviewsQ, { variables });
   const { reviews } = data ?? { reviews: [] };
-  return { reviews };
+  return { reviews, loading };
 };
 
 const LangsQ = gql`

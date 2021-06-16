@@ -51,7 +51,7 @@ export const Select = <V,>({ options, placeholder = 'Select an Option', onChange
                       {option.label}
                     </span>
                     {selected && (
-                      <span className="text-blue-600 absolute inset-y-0 left-0 flex items-center pl-3">
+                      <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-blue-600">
                         <CheckIcon className="w-5 h-5" aria-hidden="true" />
                       </span>
                     )}
