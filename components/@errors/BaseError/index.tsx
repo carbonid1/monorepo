@@ -1,20 +1,15 @@
-import React from 'react';
-import Image from 'next/image';
+import type { FC, ReactNode } from 'react';
 
 export interface IBaseError {
-  title?: React.ReactNode;
-  subTitle?: React.ReactNode;
-  status?: 404 | 500;
+  img: ReactNode;
+  title: ReactNode;
+  subTitle: ReactNode;
 }
 
-export const BaseError: React.FC<IBaseError> = ({
-  title = '500',
-  subTitle = 'Sorry, something went wrong.',
-  status = 500,
-}) => {
+export const BaseError: FC<IBaseError> = ({ img, title, subTitle }) => {
   return (
-    <div className="grid gap-4 place-items-center m-8">
-      <Image src={`/assets/errors/${status}.svg`} alt="a person scratching his head" width="252" height="294" />
+    <div className="grid gap-4 m-8 place-items-center">
+      {img}
       <div className="text-2xl">{title}</div>
       <div className="text-grey-400">{subTitle}</div>
     </div>

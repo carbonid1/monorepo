@@ -4,7 +4,7 @@ import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
 import { NotFound } from 'components/@errors/NotFound';
 import type { IReview } from 'types/interfaces';
-import { BaseError } from 'components/@errors/BaseError';
+import { ServerError } from 'components/@errors/ServerError';
 import { CustomHead } from 'components/CustomHead';
 import { Authors } from 'components/Authors';
 
@@ -38,7 +38,7 @@ const Review: React.FC = () => {
   const { review } = data ?? {};
 
   if (loading) return null;
-  if (error) return <BaseError />;
+  if (error) return <ServerError />;
   if (!review) return <NotFound />;
 
   const { body, edition } = review;
