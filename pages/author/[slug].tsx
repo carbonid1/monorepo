@@ -6,7 +6,7 @@ import { Link } from 'components/@controls/Link';
 import extractIdFromSlug from 'utils/extractIdFromSlug';
 import { Paragraph } from 'components/@typography/Paragraph';
 import { CoverImage } from 'components/CoverImage';
-import queries from './queries';
+import queries from 'modules/author/queries';
 import { Errors } from 'components/@errors';
 
 const Book: React.FC = () => {
