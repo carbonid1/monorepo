@@ -8,6 +8,7 @@ import { Toggle } from 'components/@controls/Toggle';
 import { Paragraph } from 'components/@typography/Paragraph';
 import { useToggler } from 'hooks/useToggler';
 import { LoadingContent } from 'components/@layout/LoadingContent';
+import { Skeleton } from 'components/@layout/Skeleton';
 
 export const BookReviews: React.FC<NBookReviews.Props> = ({ bookId, editionId }) => {
   const [thisEditionOnly, setThisEditionOnly] = useToggler();
@@ -35,6 +36,13 @@ export const BookReviews: React.FC<NBookReviews.Props> = ({ bookId, editionId })
         loading={loading}
         empty={!reviews.length}
         subTitle="There are no reviews yet. You can submit the first one!"
+        loader={
+          <div className="flex flex-col gap-y-4">
+            <Skeleton />
+            <Skeleton />
+            <Skeleton />
+          </div>
+        }
       >
         <div className="grid gap-2 auto-rows-max">
           {reviews.map(review => (
