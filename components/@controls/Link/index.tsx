@@ -12,7 +12,7 @@ export const Link: React.FC<ILink> = ({ children, path, slug, ...linkProps }) =>
   const href = slug ? `${path}.${slugify(slug, { lower: false })}` : path;
   return (
     <NextLink {...linkProps} href={href}>
-      <a className="text-blue-500 hover:underline">{children}</a>
+      <a className="text-blue-500 rounded-full hover:underline">{children}</a>
     </NextLink>
   );
 };

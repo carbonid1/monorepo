@@ -22,7 +22,7 @@ export const Select = <V,>({ options, placeholder = 'Select an Option', onChange
   return (
     <Listbox value={value} onChange={onChange}>
       <div className="relative w-52">
-        <Listbox.Button className="relative w-full py-2 pl-3 pr-10 text-left bg-white rounded-lg shadow-md cursor-default focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400 sm:text-sm">
+        <Listbox.Button className="relative w-full py-2 pl-3 pr-10 text-left bg-white rounded-lg shadow-md cursor-default custom-focus sm:text-sm">
           {selectedOption ? (
             <span className="block truncate">{selectedOption.label}</span>
           ) : (
@@ -33,7 +33,7 @@ export const Select = <V,>({ options, placeholder = 'Select an Option', onChange
           </span>
         </Listbox.Button>
         <Transition as={Fragment} leave="transition ease-in duration-100" leaveFrom="opacity-100" leaveTo="opacity-0">
-          <Listbox.Options className="absolute w-full py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg max-h-60 focus:outline-none focus:ring-2 focus:ring-blue-400 sm:text-sm">
+          <Listbox.Options className="absolute w-full py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg max-h-60 focus:ring-offset-0 sm:text-sm">
             {options.map((option, index) => (
               <Listbox.Option
                 key={index}

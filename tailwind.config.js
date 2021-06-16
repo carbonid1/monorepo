@@ -9,10 +9,10 @@ module.exports = {
       transparent: 'transparent',
       current: 'currentColor',
       white: 'white',
+      primary: 'var(--primary)',
       grey: colors.blueGray,
       red: colors.red,
       blue: colors.lightBlue,
-      green: colors.teal,
     },
     zIndex: {
       1: 1,
