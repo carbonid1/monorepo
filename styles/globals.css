@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-#app.light-blue {
+#app {
   --primary-50: #f0f9ff;
   --primary-100: #e0f2fe;
   --primary-200: #bae6fd;
