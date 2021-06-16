@@ -29,11 +29,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="theme-color" content="#317EFB" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div id="app">
-        <AppHeader />
-        <div className="max-w-5xl p-4 mx-auto">
-          <Component {...pageProps} />
-        </div>
+      <AppHeader />
+      <div className="max-w-5xl p-4 mx-auto">
+        <Component {...pageProps} />
       </div>
     </>
   );
