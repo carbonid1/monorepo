@@ -1,15 +1,14 @@
 import { useRouter } from 'next/router';
 import { withApollo } from 'apollo/client';
 import { gql, useQuery } from '@apollo/react-hooks';
-import { NotFound } from 'components/@errors/NotFound';
 import type { IEdition } from 'types/interfaces';
-import { BaseError } from 'components/@errors/BaseError';
 import { CustomHead } from 'components/CustomHead';
 import { ROUTE } from 'consts/routes';
 import { Link } from 'components/@controls/Link';
 import extractIdFromSlug from 'utils/extractIdFromSlug';
 import { BookReviews } from 'modules/BookReviews';
 import { Edition } from 'modules/Edition';
+import { Errors } from 'components/@errors';
 
 interface IEditionQData {
   edition: IEdition;
@@ -44,8 +43,8 @@ const Book: React.FC = () => {
   const { edition } = data ?? {};
 
   if (loading) return null;
-  if (error) return <BaseError />;
-  if (!edition || id === null) return <NotFound />;
+  if (error) return <Errors.ServerError />;
+  if (!edition || id === null) return <Errors.NotFound />;
 
   const { book } = edition;
 

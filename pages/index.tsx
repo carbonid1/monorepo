@@ -3,9 +3,9 @@ import gql from 'graphql-tag';
 import { withApollo } from 'apollo/client';
 import { ROUTE } from 'consts/routes';
 import type { IBook } from 'types/interfaces';
-import { BaseError } from 'components/@errors/BaseError';
 import { Link } from 'components/@controls/Link';
 import { Authors } from 'components/Authors';
+import { Errors } from 'components/@errors';
 
 interface IBooksQData {
   books: IBook[];
@@ -31,7 +31,7 @@ const Home: React.FC = () => {
   const { data, error } = useQuery<IBooksQData>(BooksQ);
   const { books = [] } = data ?? {};
 
-  if (error) return <BaseError />;
+  if (error) return <Errors.ServerError />;
   return (
     <ul>
       {books.map(({ id, authors, editions }, index) => (

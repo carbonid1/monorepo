@@ -2,9 +2,7 @@ import { useRouter } from 'next/router';
 import { withApollo } from 'apollo/client';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
-import { NotFound } from 'components/@errors/NotFound';
 import type { IBook } from 'types/interfaces';
-import { BaseError } from 'components/@errors/BaseError';
 import { CustomHead } from 'components/CustomHead';
 import { ROUTE } from 'consts/routes';
 import { Link } from 'components/@controls/Link';
@@ -12,6 +10,7 @@ import extractIdFromSlug from 'utils/extractIdFromSlug';
 import languageService from 'services/language.service';
 import formatDate from 'utils/formatDate';
 import { ByAuthors } from 'components/Authors/ByAuthors';
+import { Errors } from 'components/@errors';
 
 interface IBookQData {
   book: IBook;
@@ -45,8 +44,8 @@ const Book: React.FC = () => {
   const { book } = data ?? {};
 
   if (loading) return null;
-  if (error) return <BaseError />;
-  if (!book) return <NotFound />;
+  if (error) return <Errors.ServerError />;
+  if (!book) return <Errors.NotFound />;
 
   const { editions, publishedIn, authors } = book;
   const { title, description } = editions[0];
