@@ -17,7 +17,7 @@ export const Edition: React.FC<IEditionProps> = ({ className, edition }) => {
   return (
     <div className={cn('grid justify-start grid-flow-col gap-x-10', className)}>
       <CoverImage src={cover} alt={title} className="row-span-6" />
-      <div className="">
+      <div>
         <div>
           <b>{title}</b>
         </div>

@@ -52,7 +52,7 @@ const Book: React.FC = () => {
     <div>
       <CustomHead title={edition.title} description={edition.description} />
       <div>
-        <Edition edition={edition} />
+        <Edition edition={edition} className="mb-2" />
         <Link path={`/${ROUTE.editions}/${book.id}`} slug={edition.title}>
           All Editions
         </Link>

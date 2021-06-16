@@ -17,7 +17,7 @@ export const Paragraph: React.FC<IParagraph> = ({ className, children, ellipsis 
         {children}
       </p>
       {isActive && (
-        <button onClick={onExpand} aria-expanded={expanded} className="text-blue-500 rounded-full hover:underline">
+        <button onClick={onExpand} aria-expanded={expanded} className="text-primary-500 rounded-full hover:underline">
           {expanded ? 'Show less' : 'Read more'}
         </button>
       )}
