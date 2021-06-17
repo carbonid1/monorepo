@@ -6,7 +6,6 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 module.exports = withBundleAnalyzer(
   withPWA({
-    webpack5: true,
     pwa: {
       dest: 'public',
       runtimeCaching,
