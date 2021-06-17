@@ -1,6 +1,6 @@
+import languageService from 'services/language.service';
 import { useMemo } from 'react';
 import type { ISelect } from 'components/@controls/Select';
-import languageService from 'services/language.service';
 import type { NBookReviews } from './interface';
 
 const useLangOptions = (languagesOpts: NBookReviews.LangOptions): ISelect<string | null>['options'] => {

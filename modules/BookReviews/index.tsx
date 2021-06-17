@@ -1,14 +1,14 @@
+import formatDate from 'utils/formatDate';
 import hooks from './hooks';
 import queries from './queries';
-import { useState } from 'react';
-import formatDate from 'utils/formatDate';
-import type { NBookReviews } from './interface';
 import { ISelect, Select } from 'components/@controls/Select';
-import { Toggle } from 'components/@controls/Toggle';
-import { Paragraph } from 'components/@typography/Paragraph';
-import { useToggler } from 'hooks/useToggler';
 import { LoadingContent } from 'components/@layout/LoadingContent';
+import { Paragraph } from 'components/@typography/Paragraph';
 import { Skeleton } from 'components/@layout/Skeleton';
+import { Toggle } from 'components/@controls/Toggle';
+import { useState } from 'react';
+import { useToggler } from 'hooks/useToggler';
+import type { NBookReviews } from './interface';
 
 export const BookReviews: React.FC<NBookReviews.Props> = ({ bookId, editionId }) => {
   const [thisEditionOnly, setThisEditionOnly] = useToggler();
