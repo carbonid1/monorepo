@@ -2,9 +2,10 @@
 
 [DB Diagram](https://drawsql.app/coriander/diagrams/bookhub#)
 
-#### Comments rules
+#### VS Code extensions
 
-[Better Comments](https://github.com/aaron-bond/better-comments) extension
+- [Better Comments](https://github.com/aaron-bond/better-comments)
+- [Sort Imports](https://github.com/MLoughry/sort-typescript-imports)
 
 ```javascript
 // * a highlight
