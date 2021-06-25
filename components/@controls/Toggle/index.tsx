@@ -35,7 +35,7 @@ export const Toggle: React.FC<IToggle> = ({
         onChange={onChange}
         checked={isChecked}
         className={cn(
-          isChecked ? 'bg-primary-400' : 'bg-grey-200',
+          isChecked ? 'bg-blue-400' : 'bg-grey-200',
           'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200',
         )}
       >

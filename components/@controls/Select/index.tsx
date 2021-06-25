@@ -39,7 +39,7 @@ export const Select = <V,>({ options, placeholder = 'Select an Option', onChange
                 key={index}
                 className={({ active }) =>
                   cn(
-                    active ? 'text-primary-500 bg-primary-100' : 'text-grey-900',
+                    active ? 'text-blue-500 bg-blue-100' : 'text-grey-900',
                     'cursor-default select-none relative py-2 pl-10 pr-4',
                   )
                 }
@@ -51,7 +51,7 @@ export const Select = <V,>({ options, placeholder = 'Select an Option', onChange
                       {option.label}
                     </span>
                     {selected && (
-                      <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-primary-600">
+                      <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-blue-600">
                         <CheckIcon className="w-5 h-5" aria-hidden="true" />
                       </span>
                     )}
