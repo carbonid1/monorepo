@@ -1,8 +1,8 @@
-import { ApolloServer } from 'apollo-server-micro';
-import { GraphQLDate } from 'graphql-iso-date';
-import { asNexusMethod, makeSchema, objectType, idArg, list, nonNull, stringArg } from 'nexus';
 import path from 'path';
 import prisma from '../../lib/prisma';
+import { ApolloServer } from 'apollo-server-micro';
+import { asNexusMethod, idArg, list, makeSchema, nonNull, objectType, stringArg } from 'nexus';
+import { GraphQLDate } from 'graphql-iso-date';
 
 export const GQLDate = asNexusMethod(GraphQLDate, 'date');
 
@@ -103,7 +103,7 @@ const Query = objectType({
       resolve: (_, { id }) => prisma.review.findFirst({ where: { id: +id } }),
     });
     t.field('reviews', {
-      type: nonNull(list('Review')),
+      type: nonNull(list(nonNull('Review'))),
       args: { bookId: idArg(), editionId: idArg(), lang: stringArg() },
       resolve: async (_, { bookId, editionId, lang }) => {
         return prisma.book

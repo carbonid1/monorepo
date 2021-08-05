@@ -1,9 +1,9 @@
-import type { IBook, IEdition, IReview } from 'types/interfaces';
+import type { Book, Edition } from 'generated/graphql';
 
 export namespace NBookReviews {
   export interface Props {
-    bookId: IBook['id'];
-    editionId: IEdition['id'];
+    bookId: Book['id'];
+    editionId: Edition['id'];
   }
 
   interface SelectedLanguageOption {
@@ -13,15 +13,5 @@ export namespace NBookReviews {
 
   export type LangOptions = SelectedLanguageOption[];
 
-  export type SelectedLanguage = string | null;
-
-  export interface QData {
-    reviews: IReview[];
-  }
-
-  export interface QVars {
-    bookId: number | null;
-    editionId: number | null;
-    lang: string | null;
-  }
+  export type SelectedLanguage = SelectedLanguageOption['lang'] | null;
 }
