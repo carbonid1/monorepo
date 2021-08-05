@@ -158,6 +158,17 @@ export type IndexPage_BooksQuery = {
   }>;
 };
 
+export type ReviewPage_ReviewQueryVariables = Exact<{
+  id?: Maybe<Scalars['ID']>;
+}>;
+
+export type ReviewPage_ReviewQuery = {
+  review?: Maybe<{
+    body: string;
+    edition: { title: string; book: { authors: Array<{ fullName: string; id: number }> } };
+  }>;
+};
+
 export const BookReviews_ReviewsDocument = gql`
   query BookReviews_reviews($bookId: ID, $editionId: ID, $lang: String) {
     reviews(lang: $lang, bookId: $bookId, editionId: $editionId) {
@@ -461,3 +472,54 @@ export function useIndexPage_BooksLazyQuery(
 export type IndexPage_BooksQueryHookResult = ReturnType<typeof useIndexPage_BooksQuery>;
 export type IndexPage_BooksLazyQueryHookResult = ReturnType<typeof useIndexPage_BooksLazyQuery>;
 export type IndexPage_BooksQueryResult = Apollo.QueryResult<IndexPage_BooksQuery, IndexPage_BooksQueryVariables>;
+export const ReviewPage_ReviewDocument = gql`
+  query ReviewPage_review($id: ID) {
+    review(id: $id) {
+      body
+      edition {
+        title
+        book {
+          authors {
+            fullName
+            id
+          }
+        }
+      }
+    }
+  }
+`;
+
+/**
+ * __useReviewPage_ReviewQuery__
+ *
+ * To run a query within a React component, call `useReviewPage_ReviewQuery` and pass it any options that fit your needs.
+ * When your component renders, `useReviewPage_ReviewQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useReviewPage_ReviewQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useReviewPage_ReviewQuery(
+  baseOptions?: Apollo.QueryHookOptions<ReviewPage_ReviewQuery, ReviewPage_ReviewQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<ReviewPage_ReviewQuery, ReviewPage_ReviewQueryVariables>(ReviewPage_ReviewDocument, options);
+}
+export function useReviewPage_ReviewLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<ReviewPage_ReviewQuery, ReviewPage_ReviewQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<ReviewPage_ReviewQuery, ReviewPage_ReviewQueryVariables>(
+    ReviewPage_ReviewDocument,
+    options,
+  );
+}
+export type ReviewPage_ReviewQueryHookResult = ReturnType<typeof useReviewPage_ReviewQuery>;
+export type ReviewPage_ReviewLazyQueryHookResult = ReturnType<typeof useReviewPage_ReviewLazyQuery>;
+export type ReviewPage_ReviewQueryResult = Apollo.QueryResult<ReviewPage_ReviewQuery, ReviewPage_ReviewQueryVariables>;
