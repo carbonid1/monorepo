@@ -1,5 +1,5 @@
-import * as Apollo from '@apollo/client';
 import { gql } from '@apollo/client';
+import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | null;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
@@ -102,11 +102,11 @@ export type BookReviews_LangReviewsQueryVariables = Exact<{
 
 export type BookReviews_LangReviewsQuery = { reviews: Array<{ lang?: Maybe<string> }> };
 
-export type AuthorQQueryVariables = Exact<{
-  id?: Maybe<Scalars['ID']>;
+export type AuthorPage_AuthorQueryVariables = Exact<{
+  id: Scalars['ID'];
 }>;
 
-export type AuthorQQuery = {
+export type AuthorPage_AuthorQuery = {
   author?: Maybe<{
     id: number;
     fullName: string;
@@ -217,8 +217,8 @@ export type BookReviews_LangReviewsQueryResult = Apollo.QueryResult<
   BookReviews_LangReviewsQuery,
   BookReviews_LangReviewsQueryVariables
 >;
-export const AuthorQDocument = gql`
-  query AuthorQ($id: ID) {
+export const AuthorPage_AuthorDocument = gql`
+  query AuthorPage_author($id: ID!) {
     author(id: $id) {
       id
       fullName
@@ -236,29 +236,36 @@ export const AuthorQDocument = gql`
 `;
 
 /**
- * __useAuthorQQuery__
+ * __useAuthorPage_AuthorQuery__
  *
- * To run a query within a React component, call `useAuthorQQuery` and pass it any options that fit your needs.
- * When your component renders, `useAuthorQQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useAuthorPage_AuthorQuery` and pass it any options that fit your needs.
+ * When your component renders, `useAuthorPage_AuthorQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useAuthorQQuery({
+ * const { data, loading, error } = useAuthorPage_AuthorQuery({
  *   variables: {
  *      id: // value for 'id'
  *   },
  * });
  */
-export function useAuthorQQuery(baseOptions?: Apollo.QueryHookOptions<AuthorQQuery, AuthorQQueryVariables>) {
+export function useAuthorPage_AuthorQuery(
+  baseOptions: Apollo.QueryHookOptions<AuthorPage_AuthorQuery, AuthorPage_AuthorQueryVariables>,
+) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<AuthorQQuery, AuthorQQueryVariables>(AuthorQDocument, options);
+  return Apollo.useQuery<AuthorPage_AuthorQuery, AuthorPage_AuthorQueryVariables>(AuthorPage_AuthorDocument, options);
 }
-export function useAuthorQLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<AuthorQQuery, AuthorQQueryVariables>) {
+export function useAuthorPage_AuthorLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<AuthorPage_AuthorQuery, AuthorPage_AuthorQueryVariables>,
+) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<AuthorQQuery, AuthorQQueryVariables>(AuthorQDocument, options);
+  return Apollo.useLazyQuery<AuthorPage_AuthorQuery, AuthorPage_AuthorQueryVariables>(
+    AuthorPage_AuthorDocument,
+    options,
+  );
 }
-export type AuthorQQueryHookResult = ReturnType<typeof useAuthorQQuery>;
-export type AuthorQLazyQueryHookResult = ReturnType<typeof useAuthorQLazyQuery>;
-export type AuthorQQueryResult = Apollo.QueryResult<AuthorQQuery, AuthorQQueryVariables>;
+export type AuthorPage_AuthorQueryHookResult = ReturnType<typeof useAuthorPage_AuthorQuery>;
+export type AuthorPage_AuthorLazyQueryHookResult = ReturnType<typeof useAuthorPage_AuthorLazyQuery>;
+export type AuthorPage_AuthorQueryResult = Apollo.QueryResult<AuthorPage_AuthorQuery, AuthorPage_AuthorQueryVariables>;

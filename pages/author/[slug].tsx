@@ -6,13 +6,13 @@ import { Link } from 'components/@controls/Link';
 import extractIdFromSlug from 'utils/extractIdFromSlug';
 import { Paragraph } from 'components/@typography/Paragraph';
 import { CoverImage } from 'components/CoverImage';
-import queries from 'modules/author/queries';
 import { Errors } from 'components/@errors';
+import hooks from 'modules/author/hooks';
 
 const Book: React.FC = () => {
   const slug = useRouter().query.slug as string;
   const id = extractIdFromSlug(slug);
-  const { data, loading, error } = queries.useAuthorQuery({ id });
+  const { data, loading, error } = hooks.useAuthorQuery(id)
   const { author } = data ?? {};
 
   if (loading) return null;

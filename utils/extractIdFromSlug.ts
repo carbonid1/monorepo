@@ -1,6 +1,5 @@
-const extractIdFromSlug = (slug: string): number | null => {
-  const id = Number(slug.split('.')[0]);
-  return id || null;
+const extractIdFromSlug = (slug: string): string => {
+  return slug.split('.')[0];
 };
 
 export default extractIdFromSlug;
