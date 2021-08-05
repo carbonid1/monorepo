@@ -9,19 +9,13 @@ import { useState } from 'react';
 import { useToggler } from 'hooks/useToggler';
 import type { NBookReviews } from './interface';
 
-export const BookReviews: React.FC<NBookReviews.Props> = ({ bookId, editionId }) => {
+export const BookReviews: React.FC<NBookReviews.Props> = (props) => {
   const [thisEditionOnly, setThisEditionOnly] = useToggler();
   const [lang, setLang] = useState<ISelect<NBookReviews.SelectedLanguage>['value']>(null);
-  const { reviews, loading, previousData } = hooks.useReviewsQuery({
-    lang,
-    bookId: bookId.toString(),
-    editionId: thisEditionOnly ? editionId.toString() : null,
-  });
-  const reviewLangs = hooks.useLangsQuery({
-    bookId: bookId.toString(),
-    editionId: thisEditionOnly ? editionId.toString() : null,
-  });
-  const langOptions = hooks.useLangOptions(reviewLangs);
+  const bookId = props.bookId.toString()
+  const editionId = thisEditionOnly ? props.editionId.toString() : null
+  const { reviews, loading, previousData } = hooks.useReviewsQuery({ lang, bookId, editionId });
+  const langOptions = hooks.useLangOptions({ bookId, editionId });
 
   return (
     <div>

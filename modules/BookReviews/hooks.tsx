@@ -10,14 +10,23 @@ import { useMemo } from 'react';
 import type { ISelect } from 'components/@controls/Select';
 import type { NBookReviews } from './interface';
 
-const useLangOptions = (languagesOpts: NBookReviews.LangOptions): ISelect<string | null>['options'] => {
+type TUseLangOptions = (variables: BookReviews_LangReviewsQueryVariables) =>
+  ISelect<NBookReviews.SelectedLanguage>['options']
+
+const useLangOptions: TUseLangOptions = (variables) => {
+  const { data } = useBookReviews_LangReviewsQuery({ variables });
+
+  const options = useMemo(() => {
+    return helpers.makeLangOptions(data?.reviews)
+  }, [data?.reviews]);
+
   return useMemo(() => {
-    const selectOptions = languagesOpts.map(({ lang, count }) => ({
+    const selectOptions = options.map(({ lang, count }) => ({
       value: lang,
       label: `${languageService.getName(lang)} (${count})`,
     }));
     return [{ value: null, label: 'All Languages' }, ...selectOptions];
-  }, [languagesOpts]);
+  }, [options]);
 };
 
 const useReviewsQuery = (variables: BookReviews_ReviewsQueryVariables) => {
@@ -26,13 +35,7 @@ const useReviewsQuery = (variables: BookReviews_ReviewsQueryVariables) => {
   return { reviews, loading, previousData };
 };
 
-const useLangsQuery = (variables: BookReviews_LangReviewsQueryVariables) => {
-  const { data } = useBookReviews_LangReviewsQuery({ variables });
-  return useMemo(() => helpers.makeLangOptions(data?.reviews), [data?.reviews]);
-};
-
 export default {
-  useLangsQuery,
   useLangOptions,
   useReviewsQuery,
 };
