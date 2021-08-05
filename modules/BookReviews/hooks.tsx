@@ -4,20 +4,21 @@ import {
   BookReviews_LangReviewsQueryVariables,
   BookReviews_ReviewsQueryVariables,
   useBookReviews_LangReviewsQuery,
-  useBookReviews_ReviewsQuery
-  } from 'generated/graphql';
+  useBookReviews_ReviewsQuery,
+} from 'generated/graphql';
 import { useMemo } from 'react';
 import type { ISelect } from 'components/@controls/Select';
 import type { NBookReviews } from './interface';
 
-type TUseLangOptions = (variables: BookReviews_LangReviewsQueryVariables) =>
-  ISelect<NBookReviews.SelectedLanguage>['options']
+type TUseLangOptions = (
+  variables: BookReviews_LangReviewsQueryVariables,
+) => ISelect<NBookReviews.SelectedLanguage>['options'];
 
-const useLangOptions: TUseLangOptions = (variables) => {
+const useLangOptions: TUseLangOptions = variables => {
   const { data } = useBookReviews_LangReviewsQuery({ variables });
 
   const options = useMemo(() => {
-    return helpers.makeLangOptions(data?.reviews)
+    return helpers.makeLangOptions(data?.reviews);
   }, [data?.reviews]);
 
   return useMemo(() => {
@@ -30,7 +31,7 @@ const useLangOptions: TUseLangOptions = (variables) => {
 };
 
 const useReviewsQuery = (variables: BookReviews_ReviewsQueryVariables) => {
-  const { data, loading, previousData } = useBookReviews_ReviewsQuery({ variables })
+  const { data, loading, previousData } = useBookReviews_ReviewsQuery({ variables });
   const { reviews } = data || previousData || { reviews: [] };
   return { reviews, loading, previousData };
 };

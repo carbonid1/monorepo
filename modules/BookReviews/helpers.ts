@@ -1,7 +1,7 @@
 import type { Review } from 'generated/graphql';
 import type { NBookReviews } from './interface';
 
-interface IReview extends Pick<Review, 'lang'> { }
+interface IReview extends Pick<Review, 'lang'> {}
 
 const makeLangOptions = (reviews: IReview[] = []): NBookReviews.LangOptions => {
   return reviews.reduce((acc: NBookReviews.LangOptions, { lang }) => {
