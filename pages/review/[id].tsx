@@ -13,6 +13,7 @@ interface IReviewQData {
 interface IReviewQVars {
   id: number | null;
 }
+// migrate
 
 const ReviewQ = gql`
   query ReviewQ($id: ID) {

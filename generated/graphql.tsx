@@ -115,6 +115,21 @@ export type AuthorPage_AuthorQuery = {
   }>;
 };
 
+export type BookPage_EditionQueryVariables = Exact<{
+  id?: Maybe<Scalars['ID']>;
+}>;
+
+export type BookPage_EditionQuery = {
+  edition?: Maybe<{
+    lang?: Maybe<string>;
+    cover?: Maybe<string>;
+    title: string;
+    description?: Maybe<string>;
+    publishedIn: string;
+    book: { id: number; authors: Array<{ fullName: string; id: number }> };
+  }>;
+};
+
 export type IndexPage_BooksQueryVariables = Exact<{ [key: string]: never }>;
 
 export type IndexPage_BooksQuery = {
@@ -279,6 +294,56 @@ export function useAuthorPage_AuthorLazyQuery(
 export type AuthorPage_AuthorQueryHookResult = ReturnType<typeof useAuthorPage_AuthorQuery>;
 export type AuthorPage_AuthorLazyQueryHookResult = ReturnType<typeof useAuthorPage_AuthorLazyQuery>;
 export type AuthorPage_AuthorQueryResult = Apollo.QueryResult<AuthorPage_AuthorQuery, AuthorPage_AuthorQueryVariables>;
+export const BookPage_EditionDocument = gql`
+  query BookPage_edition($id: ID) {
+    edition(id: $id) {
+      lang
+      cover
+      title
+      description
+      publishedIn
+      book {
+        id
+        authors {
+          fullName
+          id
+        }
+      }
+    }
+  }
+`;
+
+/**
+ * __useBookPage_EditionQuery__
+ *
+ * To run a query within a React component, call `useBookPage_EditionQuery` and pass it any options that fit your needs.
+ * When your component renders, `useBookPage_EditionQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useBookPage_EditionQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useBookPage_EditionQuery(
+  baseOptions?: Apollo.QueryHookOptions<BookPage_EditionQuery, BookPage_EditionQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<BookPage_EditionQuery, BookPage_EditionQueryVariables>(BookPage_EditionDocument, options);
+}
+export function useBookPage_EditionLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<BookPage_EditionQuery, BookPage_EditionQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<BookPage_EditionQuery, BookPage_EditionQueryVariables>(BookPage_EditionDocument, options);
+}
+export type BookPage_EditionQueryHookResult = ReturnType<typeof useBookPage_EditionQuery>;
+export type BookPage_EditionLazyQueryHookResult = ReturnType<typeof useBookPage_EditionLazyQuery>;
+export type BookPage_EditionQueryResult = Apollo.QueryResult<BookPage_EditionQuery, BookPage_EditionQueryVariables>;
 export const IndexPage_BooksDocument = gql`
   query IndexPage_books {
     books {

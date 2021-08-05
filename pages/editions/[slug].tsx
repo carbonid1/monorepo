@@ -18,6 +18,7 @@ interface IBookQData {
 interface IBookQVars {
   id: number | null;
 }
+// migrate
 
 const BookQ = gql`
   query BookQ($id: ID) {

@@ -1,11 +1,10 @@
 import React from 'react';
-import type { IAuthor } from 'types/interfaces';
-import { Authors } from '..';
+import { Authors, IAuthors } from '..';
 
-export interface IByAuthors {
+export interface IByAuthors extends Pick<IAuthors, 'authors'> {
   className?: string;
-  authors: IAuthor[];
 }
+
 export const ByAuthors: React.FC<IByAuthors> = ({ className, authors }) => {
   if (!authors.length) return null;
 
