@@ -1,10 +1,10 @@
-import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
+import { gql } from '@apollo/client';
 export type Maybe<T> = T | null;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
-const defaultOptions =  {}
+const defaultOptions = {}
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -147,13 +147,13 @@ export const BookReviews_ReviewsDocument = gql`
  * });
  */
 export function useBookReviews_ReviewsQuery(baseOptions?: Apollo.QueryHookOptions<BookReviews_ReviewsQuery, BookReviews_ReviewsQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<BookReviews_ReviewsQuery, BookReviews_ReviewsQueryVariables>(BookReviews_ReviewsDocument, options);
-      }
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<BookReviews_ReviewsQuery, BookReviews_ReviewsQueryVariables>(BookReviews_ReviewsDocument, options);
+}
 export function useBookReviews_ReviewsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<BookReviews_ReviewsQuery, BookReviews_ReviewsQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<BookReviews_ReviewsQuery, BookReviews_ReviewsQueryVariables>(BookReviews_ReviewsDocument, options);
-        }
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<BookReviews_ReviewsQuery, BookReviews_ReviewsQueryVariables>(BookReviews_ReviewsDocument, options);
+}
 export type BookReviews_ReviewsQueryHookResult = ReturnType<typeof useBookReviews_ReviewsQuery>;
 export type BookReviews_ReviewsLazyQueryHookResult = ReturnType<typeof useBookReviews_ReviewsLazyQuery>;
 export type BookReviews_ReviewsQueryResult = Apollo.QueryResult<BookReviews_ReviewsQuery, BookReviews_ReviewsQueryVariables>;
@@ -183,13 +183,13 @@ export const BookReviews_LangReviewsDocument = gql`
  * });
  */
 export function useBookReviews_LangReviewsQuery(baseOptions?: Apollo.QueryHookOptions<BookReviews_LangReviewsQuery, BookReviews_LangReviewsQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<BookReviews_LangReviewsQuery, BookReviews_LangReviewsQueryVariables>(BookReviews_LangReviewsDocument, options);
-      }
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<BookReviews_LangReviewsQuery, BookReviews_LangReviewsQueryVariables>(BookReviews_LangReviewsDocument, options);
+}
 export function useBookReviews_LangReviewsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<BookReviews_LangReviewsQuery, BookReviews_LangReviewsQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<BookReviews_LangReviewsQuery, BookReviews_LangReviewsQueryVariables>(BookReviews_LangReviewsDocument, options);
-        }
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<BookReviews_LangReviewsQuery, BookReviews_LangReviewsQueryVariables>(BookReviews_LangReviewsDocument, options);
+}
 export type BookReviews_LangReviewsQueryHookResult = ReturnType<typeof useBookReviews_LangReviewsQuery>;
 export type BookReviews_LangReviewsLazyQueryHookResult = ReturnType<typeof useBookReviews_LangReviewsLazyQuery>;
 export type BookReviews_LangReviewsQueryResult = Apollo.QueryResult<BookReviews_LangReviewsQuery, BookReviews_LangReviewsQueryVariables>;
@@ -228,13 +228,13 @@ export const AuthorQDocument = gql`
  * });
  */
 export function useAuthorQQuery(baseOptions?: Apollo.QueryHookOptions<AuthorQQuery, AuthorQQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<AuthorQQuery, AuthorQQueryVariables>(AuthorQDocument, options);
-      }
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<AuthorQQuery, AuthorQQueryVariables>(AuthorQDocument, options);
+}
 export function useAuthorQLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<AuthorQQuery, AuthorQQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<AuthorQQuery, AuthorQQueryVariables>(AuthorQDocument, options);
-        }
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<AuthorQQuery, AuthorQQueryVariables>(AuthorQDocument, options);
+}
 export type AuthorQQueryHookResult = ReturnType<typeof useAuthorQQuery>;
 export type AuthorQLazyQueryHookResult = ReturnType<typeof useAuthorQLazyQuery>;
 export type AuthorQQueryResult = Apollo.QueryResult<AuthorQQuery, AuthorQQueryVariables>;
