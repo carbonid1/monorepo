@@ -1,10 +1,10 @@
-import type { IBook } from 'types/interfaces';
 import authorsMock from './authors.mock';
 import editionsMock from './editions.mock';
 import getTime from 'date-fns/getTime';
+import type { Book } from 'generated/graphql';
 
 type TBook = 'range' | 'goT' | 'LongMars' | 'ArabianN';
-type TBooksMock = Record<TBook, IBook>;
+type TBooksMock = Record<TBook, Book>;
 
 const booksMock: TBooksMock = {
   range: {

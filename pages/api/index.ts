@@ -48,7 +48,7 @@ const Edition = objectType({
     t.nullable.string('description');
     t.int('id');
     t.nullable.string('lang');
-    t.string('publishedIn');
+    t.nullable.string('publishedIn');
     t.list.field('reviews', {
       type: 'Review',
       resolve: ({ id }) => prisma.edition.findUnique({ where: { id } }).reviews(),
@@ -89,7 +89,7 @@ const Query = objectType({
       resolve: (_, { id }) => prisma.book.findFirst({ where: { id: +id } }),
     });
     t.field('books', {
-      type: nonNull(list('Book')),
+      type: nonNull(list(nonNull('Book'))),
       resolve: () => prisma.book.findMany(),
     });
     t.field('edition', {

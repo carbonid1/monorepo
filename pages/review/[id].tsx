@@ -1,39 +1,13 @@
 import { useRouter } from 'next/router';
 import { withApollo } from 'apollo/client';
-import gql from 'graphql-tag';
-import { useQuery } from '@apollo/react-hooks';
-import type { IReview } from 'types/interfaces';
 import { CustomHead } from 'components/CustomHead';
 import { Authors } from 'components/Authors';
 import { Errors } from 'components/@errors';
-
-interface IReviewQData {
-  review: IReview;
-}
-interface IReviewQVars {
-  id: number | null;
-}
-
-const ReviewQ = gql`
-  query ReviewQ($id: ID) {
-    review(id: $id) {
-      body
-      edition {
-        title
-        book {
-          authors {
-            fullName
-            id
-          }
-        }
-      }
-    }
-  }
-`;
+import { useReviewPage_ReviewQuery } from 'generated/graphql';
 
 const Review: React.FC = () => {
-  const id = Number(useRouter().query.id);
-  const { data, loading, error } = useQuery<IReviewQData, IReviewQVars>(ReviewQ, { variables: { id } });
+  const id = useRouter().query.id as string;
+  const { data, loading, error } = useReviewPage_ReviewQuery({ variables: { id } });
   const { review } = data ?? {};
 
   if (loading) return null;

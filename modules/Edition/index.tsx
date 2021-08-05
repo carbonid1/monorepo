@@ -1,10 +1,16 @@
 import { CoverImage } from 'components/CoverImage';
-import type { IEdition } from 'types/interfaces';
 import cn from 'classnames';
 import languageService from 'services/language.service';
 import formatDate from 'utils/formatDate';
-import { ByAuthors } from 'components/Authors/ByAuthors';
+import { ByAuthors, IByAuthors } from 'components/Authors/ByAuthors';
 import { Paragraph } from 'components/@typography/Paragraph';
+import type { Edition as GEdition } from 'generated/graphql';
+
+interface IEdition extends Pick<GEdition, 'title' | 'description' | 'publishedIn' | 'lang' | 'cover'> {
+  book: {
+    authors: IByAuthors['authors'];
+  };
+}
 
 export interface IEditionProps {
   className?: string;

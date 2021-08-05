@@ -1,9 +1,9 @@
 import Head from 'next/head';
-import React from 'react';
+import type { ReactNode } from 'react';
 
 interface ICustomHead {
-  title?: string;
-  description?: string;
+  title?: ReactNode;
+  description?: string | null;
 }
 export const CustomHead: React.FC<ICustomHead> = ({ title, description }) => {
   return (

@@ -4,7 +4,7 @@ import fromUnixTime from 'date-fns/fromUnixTime';
 
 const prisma = new PrismaClient();
 
-const getDate = (timestamp: string | undefined): Date | undefined =>
+const getDate = (timestamp: Maybe<string>): Date | undefined =>
   timestamp ? fromUnixTime(+timestamp / 1000) : undefined;
 
 async function main() {

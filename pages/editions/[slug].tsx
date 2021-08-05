@@ -1,8 +1,5 @@
 import { useRouter } from 'next/router';
 import { withApollo } from 'apollo/client';
-import gql from 'graphql-tag';
-import { useQuery } from '@apollo/react-hooks';
-import type { IBook } from 'types/interfaces';
 import { CustomHead } from 'components/CustomHead';
 import { ROUTE } from 'consts/routes';
 import { Link } from 'components/@controls/Link';
@@ -11,36 +8,12 @@ import languageService from 'services/language.service';
 import formatDate from 'utils/formatDate';
 import { ByAuthors } from 'components/Authors/ByAuthors';
 import { Errors } from 'components/@errors';
-
-interface IBookQData {
-  book: IBook;
-}
-interface IBookQVars {
-  id: number | null;
-}
-
-const BookQ = gql`
-  query BookQ($id: ID) {
-    book(id: $id) {
-      authors {
-        fullName
-        id
-      }
-      editions {
-        publishedIn
-        title
-        lang
-        id
-      }
-      publishedIn
-    }
-  }
-`;
+import { useEditionsPage_BookQuery } from 'generated/graphql';
 
 const Book: React.FC = () => {
   const slug = useRouter().query.slug as string;
   const id = extractIdFromSlug(slug);
-  const { data, loading, error } = useQuery<IBookQData, IBookQVars>(BookQ, { variables: { id } });
+  const { data, loading, error } = useEditionsPage_BookQuery({ variables: { id } });
   const { book } = data ?? {};
 
   if (loading) return null;
