@@ -109,7 +109,7 @@ export interface NexusGenFieldTypes {
     books: Array<NexusGenRootTypes['Book'] | null>; // [Book]!
     edition: NexusGenRootTypes['Edition'] | null; // Edition
     review: NexusGenRootTypes['Review'] | null; // Review
-    reviews: Array<NexusGenRootTypes['Review'] | null>; // [Review]!
+    reviews: NexusGenRootTypes['Review'][]; // [Review!]!
   }
   Review: { // field return type
     body: string; // String!

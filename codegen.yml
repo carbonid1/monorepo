@@ -1,0 +1,14 @@
+overwrite: true
+schema: "http://localhost:3000/api"
+documents: ["./modules/**/*.ts"]
+generates:
+  generated/graphql.tsx:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"
+  ./graphql.schema.json:
+    plugins:
+      - "introspection"
+config:
+  skipTypename: true

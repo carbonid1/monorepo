@@ -1,6 +1,5 @@
 import formatDate from 'utils/formatDate';
 import hooks from './hooks';
-import queries from './queries';
 import { ISelect, Select } from 'components/@controls/Select';
 import { LoadingContent } from 'components/@layout/LoadingContent';
 import { Paragraph } from 'components/@typography/Paragraph';
@@ -13,12 +12,15 @@ import type { NBookReviews } from './interface';
 export const BookReviews: React.FC<NBookReviews.Props> = ({ bookId, editionId }) => {
   const [thisEditionOnly, setThisEditionOnly] = useToggler();
   const [lang, setLang] = useState<ISelect<NBookReviews.SelectedLanguage>['value']>(null);
-  const { reviews, loading, previousData } = queries.useReviewsQuery({
+  const { reviews, loading, previousData } = hooks.useReviewsQuery({
     lang,
-    bookId,
-    editionId: thisEditionOnly ? editionId : null,
+    bookId: bookId.toString(),
+    editionId: thisEditionOnly ? editionId.toString() : null,
   });
-  const reviewLangs = queries.useLangsQuery({ bookId, editionId: thisEditionOnly ? editionId : null, lang: null });
+  const reviewLangs = hooks.useLangsQuery({
+    bookId: bookId.toString(),
+    editionId: thisEditionOnly ? editionId.toString() : null,
+  });
   const langOptions = hooks.useLangOptions(reviewLangs);
 
   return (

@@ -1,10 +1,7 @@
-import helpers from './helpers';
-import { useMemo } from 'react';
-import { gql, useQuery } from '@apollo/client';
-import type { NBookReviews } from './interface';
+import { gql } from '@apollo/client';
 
-const ReviewsQ = gql`
-  query EditionQ($bookId: ID, $editionId: ID, $lang: String) {
+gql`
+  query BookReviews_reviews($bookId: ID, $editionId: ID, $lang: String) {
     reviews(lang: $lang, bookId: $bookId, editionId: $editionId) {
       body
       lang
@@ -14,26 +11,10 @@ const ReviewsQ = gql`
   }
 `;
 
-const useReviewsQuery = (variables: NBookReviews.QVars) => {
-  const { data, loading, previousData } = useQuery<NBookReviews.QData, NBookReviews.QVars>(ReviewsQ, { variables });
-  const { reviews } = data || previousData || { reviews: [] };
-  return { reviews, loading, previousData };
-};
-
-const LangsQ = gql`
-  query EditionQ($bookId: ID, $editionId: ID) {
+gql`
+  query BookReviews_langReviews($bookId: ID, $editionId: ID) {
     reviews(bookId: $bookId, editionId: $editionId) {
       lang
     }
   }
 `;
-
-const useLangsQuery = (variables: NBookReviews.QVars) => {
-  const { data } = useQuery<NBookReviews.QData, NBookReviews.QVars>(LangsQ, { variables });
-  return useMemo(() => helpers.makeLangOptions(data?.reviews), [data?.reviews]);
-};
-
-export default {
-  useReviewsQuery,
-  useLangsQuery,
-};
