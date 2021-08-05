@@ -89,7 +89,7 @@ const Query = objectType({
       resolve: (_, { id }) => prisma.book.findFirst({ where: { id: +id } }),
     });
     t.field('books', {
-      type: nonNull(list('Book')),
+      type: nonNull(list(nonNull('Book'))),
       resolve: () => prisma.book.findMany(),
     });
     t.field('edition', {

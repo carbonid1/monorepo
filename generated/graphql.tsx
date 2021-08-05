@@ -44,7 +44,7 @@ export type Edition = {
 export type Query = {
   author?: Maybe<Author>;
   book?: Maybe<Book>;
-  books: Array<Maybe<Book>>;
+  books: Array<Book>;
   edition?: Maybe<Edition>;
   review?: Maybe<Review>;
   reviews: Array<Review>;
@@ -112,6 +112,16 @@ export type AuthorPage_AuthorQuery = {
     fullName: string;
     imageUrl?: Maybe<string>;
     books: Array<{ id: number; editions: Array<{ title: string; description?: Maybe<string>; id: number }> }>;
+  }>;
+};
+
+export type IndexPage_BooksQueryVariables = Exact<{ [key: string]: never }>;
+
+export type IndexPage_BooksQuery = {
+  books: Array<{
+    id: number;
+    authors: Array<{ fullName: string; id: number }>;
+    editions: Array<{ title: string; id: number }>;
   }>;
 };
 
@@ -269,3 +279,49 @@ export function useAuthorPage_AuthorLazyQuery(
 export type AuthorPage_AuthorQueryHookResult = ReturnType<typeof useAuthorPage_AuthorQuery>;
 export type AuthorPage_AuthorLazyQueryHookResult = ReturnType<typeof useAuthorPage_AuthorLazyQuery>;
 export type AuthorPage_AuthorQueryResult = Apollo.QueryResult<AuthorPage_AuthorQuery, AuthorPage_AuthorQueryVariables>;
+export const IndexPage_BooksDocument = gql`
+  query IndexPage_books {
+    books {
+      authors {
+        fullName
+        id
+      }
+      editions {
+        title
+        id
+      }
+      id
+    }
+  }
+`;
+
+/**
+ * __useIndexPage_BooksQuery__
+ *
+ * To run a query within a React component, call `useIndexPage_BooksQuery` and pass it any options that fit your needs.
+ * When your component renders, `useIndexPage_BooksQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useIndexPage_BooksQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useIndexPage_BooksQuery(
+  baseOptions?: Apollo.QueryHookOptions<IndexPage_BooksQuery, IndexPage_BooksQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<IndexPage_BooksQuery, IndexPage_BooksQueryVariables>(IndexPage_BooksDocument, options);
+}
+export function useIndexPage_BooksLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<IndexPage_BooksQuery, IndexPage_BooksQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<IndexPage_BooksQuery, IndexPage_BooksQueryVariables>(IndexPage_BooksDocument, options);
+}
+export type IndexPage_BooksQueryHookResult = ReturnType<typeof useIndexPage_BooksQuery>;
+export type IndexPage_BooksLazyQueryHookResult = ReturnType<typeof useIndexPage_BooksLazyQuery>;
+export type IndexPage_BooksQueryResult = Apollo.QueryResult<IndexPage_BooksQuery, IndexPage_BooksQueryVariables>;

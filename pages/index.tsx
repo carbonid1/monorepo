@@ -1,34 +1,12 @@
-import { useQuery } from '@apollo/react-hooks';
-import gql from 'graphql-tag';
 import { withApollo } from 'apollo/client';
 import { ROUTE } from 'consts/routes';
-import type { IBook } from 'types/interfaces';
 import { Link } from 'components/@controls/Link';
 import { Authors } from 'components/Authors';
 import { Errors } from 'components/@errors';
-
-interface IBooksQData {
-  books: IBook[];
-}
-
-const BooksQ = gql`
-  query Books {
-    books {
-      authors {
-        fullName
-        id
-      }
-      editions {
-        title
-        id
-      }
-      id
-    }
-  }
-`;
+import { useIndexPage_BooksQuery } from 'generated/graphql';
 
 const Home: React.FC = () => {
-  const { data, error } = useQuery<IBooksQData>(BooksQ);
+  const { data, error } = useIndexPage_BooksQuery();
   const { books = [] } = data ?? {};
 
   if (error) return <Errors.ServerError />;

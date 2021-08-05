@@ -106,7 +106,7 @@ export interface NexusGenFieldTypes {
   Query: { // field return type
     author: NexusGenRootTypes['Author'] | null; // Author
     book: NexusGenRootTypes['Book'] | null; // Book
-    books: Array<NexusGenRootTypes['Book'] | null>; // [Book]!
+    books: NexusGenRootTypes['Book'][]; // [Book!]!
     edition: NexusGenRootTypes['Edition'] | null; // Edition
     review: NexusGenRootTypes['Review'] | null; // Review
     reviews: NexusGenRootTypes['Review'][]; // [Review!]!
