@@ -1,7 +1,7 @@
 import type { Author } from 'generated/graphql';
 
 type TAuthors = 'EpsteinD' | 'MartinG' | 'PratchettT' | 'BaxterS';
-interface IInitialMock extends Omit<Author, 'books' | 'id'> { }
+interface IInitialMock extends Omit<Author, 'books' | 'id'> {}
 
 const initialMock: Record<TAuthors, IInitialMock> = {
   EpsteinD: {

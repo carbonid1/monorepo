@@ -2,7 +2,7 @@ import getTime from 'date-fns/getTime';
 import type { Edition, Review } from 'generated/graphql';
 
 type TReviews = 'rangeEng1' | 'rangeRu1' | 'rangeRu2';
-interface IInitialMock extends Omit<Review, 'edition' | 'id'> { }
+interface IInitialMock extends Omit<Review, 'edition' | 'id'> {}
 type TReviewsMock = Record<TReviews, Review>;
 
 const initialMock: Record<TReviews, IInitialMock> = {

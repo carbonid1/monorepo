@@ -8,8 +8,8 @@ import type { Edition as GEdition } from 'generated/graphql';
 
 interface IEdition extends Pick<GEdition, 'title' | 'description' | 'publishedIn' | 'lang' | 'cover'> {
   book: {
-    authors: IByAuthors['authors']
-  }
+    authors: IByAuthors['authors'];
+  };
 }
 
 export interface IEditionProps {

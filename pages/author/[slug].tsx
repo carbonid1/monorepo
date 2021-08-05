@@ -12,7 +12,7 @@ import hooks from 'modules/author/hooks';
 const Book: React.FC = () => {
   const slug = useRouter().query.slug as string;
   const id = extractIdFromSlug(slug);
-  const { data, loading, error } = hooks.useAuthorQuery(id)
+  const { data, loading, error } = hooks.useAuthorQuery(id);
   const { author } = data ?? {};
 
   if (loading) return null;
