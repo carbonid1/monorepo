@@ -48,7 +48,7 @@ const Edition = objectType({
     t.nullable.string('description');
     t.int('id');
     t.nullable.string('lang');
-    t.string('publishedIn');
+    t.nullable.string('publishedIn');
     t.list.field('reviews', {
       type: 'Review',
       resolve: ({ id }) => prisma.edition.findUnique({ where: { id } }).reviews(),

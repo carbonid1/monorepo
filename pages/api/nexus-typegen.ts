@@ -57,7 +57,7 @@ export interface NexusGenObjects {
     description?: string | null; // String
     id: number; // Int!
     lang?: string | null; // String
-    publishedIn: string; // String!
+    publishedIn?: string | null; // String
     title: string; // String!
   }
   Query: {};
@@ -99,7 +99,7 @@ export interface NexusGenFieldTypes {
     description: string | null; // String
     id: number; // Int!
     lang: string | null; // String
-    publishedIn: string; // String!
+    publishedIn: string | null; // String
     reviews: NexusGenRootTypes['Review'][]; // [Review!]!
     title: string; // String!
   }

@@ -27,7 +27,7 @@ type Edition {
   description: String
   id: Int!
   lang: String
-  publishedIn: String!
+  publishedIn: String
   reviews: [Review!]!
   title: String!
 }

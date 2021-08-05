@@ -35,7 +35,7 @@ export type Edition = {
   description?: Maybe<Scalars['String']>;
   id: Scalars['Int'];
   lang?: Maybe<Scalars['String']>;
-  publishedIn: Scalars['String'];
+  publishedIn?: Maybe<Scalars['String']>;
   reviews: Array<Review>;
   title: Scalars['String'];
   cover?: Maybe<Scalars['String']>;
@@ -125,7 +125,7 @@ export type BookPage_EditionQuery = {
     cover?: Maybe<string>;
     title: string;
     description?: Maybe<string>;
-    publishedIn: string;
+    publishedIn?: Maybe<string>;
     book: { id: number; authors: Array<{ fullName: string; id: number }> };
   }>;
 };
@@ -140,7 +140,7 @@ export type EditionsPage_BookQuery = {
     authors: Array<{ fullName: string; id: number }>;
     editions: Array<{
       description?: Maybe<string>;
-      publishedIn: string;
+      publishedIn?: Maybe<string>;
       title: string;
       lang?: Maybe<string>;
       id: number;

@@ -1,7 +1,7 @@
-import type { IAuthor } from 'types/interfaces';
+import type { Author } from 'generated/graphql';
 
 type TAuthors = 'EpsteinD' | 'MartinG' | 'PratchettT' | 'BaxterS';
-interface IInitialMock extends Omit<IAuthor, 'books' | 'id'> {}
+interface IInitialMock extends Omit<Author, 'books' | 'id'> { }
 
 const initialMock: Record<TAuthors, IInitialMock> = {
   EpsteinD: {
@@ -24,12 +24,12 @@ const initialMock: Record<TAuthors, IInitialMock> = {
 };
 
 let count = 0;
-const fillMock = (mock: IInitialMock): IAuthor => {
+const fillMock = (mock: IInitialMock): Author => {
   count++;
   return { ...mock, books: [], id: count };
 };
 
-const authorsMock: Record<TAuthors, IAuthor> = {
+const authorsMock: Record<TAuthors, Author> = {
   EpsteinD: fillMock(initialMock.EpsteinD),
   MartinG: fillMock(initialMock.MartinG),
   PratchettT: fillMock(initialMock.PratchettT),

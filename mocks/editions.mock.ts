@@ -1,9 +1,9 @@
-import type { IBook, IEdition } from 'types/interfaces';
 import reviewsMock from './reviews.mock';
 import getTime from 'date-fns/getTime';
+import type { Book, Edition } from 'generated/graphql';
 
 type TEditions = 'rangeEng' | 'rangeRu' | 'goT' | 'LongMars' | 'ArabianN';
-type TEditionsMock = Record<TEditions, IEdition>;
+type TEditionsMock = Record<TEditions, Edition>;
 
 const editionsMock: TEditionsMock = {
   rangeEng: {
@@ -13,7 +13,7 @@ const editionsMock: TEditionsMock = {
     lang: 'en',
     title: 'Range: Why Generalists Triumph in a Specialized World',
     cover: 'https://res.cloudinary.com/book-hub/image/upload/v1621965132/covers/sm/range_fy4vdv.jpg',
-    book: {} as IBook,
+    book: {} as Book,
     reviews: [reviewsMock.rangeEng1],
   },
   rangeRu: {
@@ -23,7 +23,7 @@ const editionsMock: TEditionsMock = {
     lang: 'ru',
     title: 'Универсалы. Как талантливые дилетанты становятся победителями по жизни',
     cover: 'https://res.cloudinary.com/book-hub/image/upload/v1621965192/covers/sm/range_f2gjvq.jpg',
-    book: {} as IBook,
+    book: {} as Book,
     reviews: [reviewsMock.rangeRu1, reviewsMock.rangeRu2],
   },
   goT: {
@@ -34,7 +34,7 @@ const editionsMock: TEditionsMock = {
     Here an enigmatic band of warriors bear swords of no human metal; a tribe of fierce wildlings carry men off into madness; a cruel young dragon prince barters his sister to win back his throne; and a determined woman undertakes the most treacherous of journeys. Amid plots and counterplots, tragedy and betrayal, victory and terror, the fate of the Starks, their allies, and their enemies hangs perilously in the balance, as each endeavors to win that deadliest of conflicts: the game of thrones.`,
     title: 'A Game of Thrones',
     cover: 'https://res.cloudinary.com/book-hub/image/upload/v1621965264/covers/sm/13496_lmqry2.jpg',
-    book: {} as IBook,
+    book: {} as Book,
     reviews: [],
   },
   LongMars: {
@@ -44,7 +44,7 @@ const editionsMock: TEditionsMock = {
     publishedIn: getTime(new Date('2014-06-19')).toString(),
     title: 'The Long Mars',
     cover: 'https://res.cloudinary.com/book-hub/image/upload/v1621965325/covers/sm/18586487_gk7e1k.jpg',
-    book: {} as IBook,
+    book: {} as Book,
     reviews: [],
   },
   ArabianN: {
@@ -54,7 +54,7 @@ const editionsMock: TEditionsMock = {
     publishedIn: getTime(new Date('2004-06')).toString(),
     title: 'The Arabian Nights',
     cover: 'https://res.cloudinary.com/book-hub/image/upload/v1621965401/covers/sm/93101._SY475__adpv95.jpg',
-    book: {} as IBook,
+    book: {} as Book,
     reviews: [],
   },
 };
