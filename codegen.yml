@@ -12,3 +12,6 @@ generates:
       - 'introspection'
 config:
   skipTypename: true
+hooks:
+  afterAllFileWrite:
+    - prettier --write
