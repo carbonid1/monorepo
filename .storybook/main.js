@@ -18,7 +18,7 @@ module.exports = {
         consts: path.resolve(__dirname, '../consts'),
         mocks: path.resolve(__dirname, '../mocks'),
         services: path.resolve(__dirname, '../services'),
-        utils: path.resolve(__dirname, '../utils'),
+        lib: path.resolve(__dirname, '../lib'),
       },
     },
   }),
