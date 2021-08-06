@@ -3,7 +3,7 @@ import { withApollo } from 'apollo/client';
 import { CustomHead } from 'components/CustomHead';
 import { ROUTE } from 'consts/routes';
 import { Link } from 'components/@controls/Link';
-import extractIdFromSlug from 'utils/extractIdFromSlug';
+import extractIdFromSlug from 'lib/utils/extractIdFromSlug';
 import { BookReviews } from 'modules/BookReviews';
 import { Edition } from 'modules/Edition';
 import { Errors } from 'components/@errors';
