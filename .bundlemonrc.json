@@ -1,0 +1,8 @@
+{
+  "baseDir": "./.next",
+  "files": [
+    {
+      "path": "static/**/*-<hash>.js"
+    }
+  ]
+}

@@ -73,6 +73,7 @@
     "@types/react": "^17.0.0",
     "autoprefixer": "^10.2.5",
     "babel-loader": "^8.2.2",
+    "bundlemon": "^1.0.0",
     "chromatic": "^5.9.0",
     "husky": "^6.0.0",
     "jest": "^27.0.4",
