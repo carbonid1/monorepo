@@ -14,5 +14,6 @@
         "prComment": true
       }
     ]
-  ]
+  ],
+  "verbose": true
 }
