@@ -1,4 +1,5 @@
-import { format, fromUnixTime, addBusinessDays } from 'date-fns'
+import { format, fromUnixTime, addBusinessDays } from 'date-fns';
+
 
 const formatDate = (timestamp: Maybe<string>) => {
   if (!timestamp) return 'N/A';
