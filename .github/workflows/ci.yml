@@ -11,3 +11,8 @@ jobs:
         run: npm run test
       - name: Run prettier
         run: npx prettier --check .
+      - name: Run BundleMon
+        run: npx bundlemon
+        env:
+          BUNDLEMON_PROJECT_ID: ${{ secrets.BUNDLEMON_PROJECT_ID }}
+          BUNDLEMON_PROJECT_APIKEY: ${{ secrets.BUNDLEMON_PROJECT_APIKEY }}

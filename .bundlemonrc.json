@@ -4,5 +4,15 @@
     {
       "path": "static/**/*-<hash>.js"
     }
+  ],
+  "reportOutput": [
+    [
+      "github",
+      {
+        "checkRun": false,
+        "commitStatus": true,
+        "prComment": true
+      }
+    ]
   ]
 }
