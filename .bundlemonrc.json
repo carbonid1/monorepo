@@ -2,7 +2,18 @@
   "baseDir": "./.next",
   "files": [
     {
-      "path": "static/**/*-<hash>.js"
+      "path": "static/pages/**/*-<hash>.js"
+    },
+    {
+      "path": "static/css/<hash>.css"
+    }
+  ],
+  "groups": [
+    {
+      "path": "**/*.js"
+    },
+    {
+      "path": "**/*.css"
     }
   ],
   "reportOutput": [
