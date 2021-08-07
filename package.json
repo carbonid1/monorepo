@@ -85,7 +85,6 @@
     "typescript": "^4.3.3"
   },
   "lint-staged": {
-    "*.ts": "jest --passWithNoTests",
-    "**/*": "prettier --write --ignore-unknown"
+    "*.ts": "jest --passWithNoTests"
   }
 }
