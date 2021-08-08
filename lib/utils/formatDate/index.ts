@@ -1,5 +1,4 @@
-import fromUnixTime from 'date-fns/fromUnixTime';
-import format from 'date-fns/format';
+import { format, fromUnixTime } from 'date-fns';
 
 const formatDate = (timestamp: Maybe<string>) => {
   if (!timestamp) return 'N/A';
