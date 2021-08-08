@@ -2,19 +2,7 @@
   "baseDir": "./.next",
   "files": [
     {
-      "path": "static/chunks/pages/**/*-<hash>.js"
-    },
-    {
-      "path": "static/**/framework-<hash>.js"
-    },
-    {
-      "path": "static/**/main-<hash>.js"
-    },
-    {
-      "path": "static/**/polyfills-<hash>.js"
-    },
-    {
-      "path": "static/**/webpack-<hash>.js"
+      "path": "static/chunks/**/*-<hash>.js"
     }
   ],
   "groups": [
