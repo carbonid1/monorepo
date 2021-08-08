@@ -1,4 +1,4 @@
-import formatDate from 'lib/utils/formatDate';
+import { formatDate } from 'lib/utils';
 import hooks from './hooks';
 import { ISelect, Select } from 'components/@controls/Select';
 import { LoadingContent } from 'components/@layout/LoadingContent';
@@ -6,7 +6,7 @@ import { Paragraph } from 'components/@typography/Paragraph';
 import { Skeleton } from 'components/@layout/Skeleton';
 import { Toggle } from 'components/@controls/Toggle';
 import { useState } from 'react';
-import { useToggler } from 'lib/hooks/useToggler';
+import { useToggler } from 'lib/hooks';
 import type { NBookReviews } from './interface';
 
 export const BookReviews: React.FC<NBookReviews.Props> = props => {

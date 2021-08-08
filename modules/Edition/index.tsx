@@ -1,7 +1,7 @@
 import { CoverImage } from 'components/CoverImage';
 import cn from 'classnames';
 import languageService from 'services/language.service';
-import formatDate from 'lib/utils/formatDate';
+import { formatDate } from 'lib/utils';
 import { ByAuthors, IByAuthors } from 'components/Authors/ByAuthors';
 import { Paragraph } from 'components/@typography/Paragraph';
 import type { Edition as GEdition } from 'generated/graphql';
