@@ -3,7 +3,7 @@ import { withApollo } from 'apollo/client';
 import { CustomHead } from 'components/CustomHead';
 import { ROUTE } from 'consts/routes';
 import { Link } from 'components/@controls/Link';
-import extractIdFromSlug from 'lib/utils/extractIdFromSlug';
+import { extractIdFromSlug } from 'lib/utils';
 import { Paragraph } from 'components/@typography/Paragraph';
 import { CoverImage } from 'components/CoverImage';
 import { Errors } from 'components/@errors';
