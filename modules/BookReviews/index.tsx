@@ -1,4 +1,4 @@
-import formatDate from 'lib/utils/formatDate';
+import { formatDate } from 'lib/utils';
 import hooks from './hooks';
 import { ISelect, Select } from 'components/@controls/Select';
 import { LoadingContent } from 'components/@layout/LoadingContent';
