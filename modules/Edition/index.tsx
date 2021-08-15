@@ -21,8 +21,8 @@ export const Edition: React.FC<IEditionProps> = ({ className, edition }) => {
   const { title, description, publishedIn, book, lang, cover } = edition;
 
   return (
-    <div className={cn('grid justify-start grid-flow-col gap-x-10', className)}>
-      <CoverImage src={cover} alt={title} className="row-span-6" />
+    <div className={cn('grid justify-start sm:grid-flow-col gap-10', className)}>
+      <CoverImage src={cover} alt={title} className="justify-self-center" />
       <div>
         <div>
           <b>{title}</b>
@@ -40,7 +40,11 @@ export const Edition: React.FC<IEditionProps> = ({ className, edition }) => {
             {languageService.getName(lang)}
           </div>
         )}
-        {description && <Paragraph ellipsis={{ rows: 5 }}>{description}</Paragraph>}
+        {description && (
+          <Paragraph ellipsis={{ rows: 5 }} className="my-2">
+            {description}
+          </Paragraph>
+        )}
       </div>
     </div>
   );
