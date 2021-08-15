@@ -78,6 +78,7 @@
     "chromatic": "^5.9.0",
     "eslint": "^7.32.0",
     "eslint-config-next": "^11.1.0",
+    "eslint-config-prettier": "^8.3.0",
     "husky": "^6.0.0",
     "jest": "^27.0.4",
     "lint-staged": "^11.0.0",
@@ -89,6 +90,7 @@
   },
   "lint-staged": {
     "*.ts": "jest --passWithNoTests",
+    "*.{ts, tsx}": "next lint",
     "**/*": "prettier --write --ignore-unknown"
   }
 }
