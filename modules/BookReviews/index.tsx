@@ -10,10 +10,10 @@ import { useToggler } from 'lib/hooks';
 import type { NBookReviews } from './interface';
 
 export const BookReviews: React.FC<NBookReviews.Props> = props => {
-  const [thisEditionOnly, setThisEditionOnly] = useToggler();
+  const [thisEdition, setThisEdition] = useToggler();
   const [lang, setLang] = useState<ISelect<NBookReviews.SelectedLanguage>['value']>(null);
   const bookId = props.bookId.toString();
-  const editionId = thisEditionOnly ? props.editionId.toString() : null;
+  const editionId = thisEdition ? props.editionId.toString() : null;
   const { reviews, loading, previousData } = hooks.useReviewsQuery({ lang, bookId, editionId });
   const langOptions = hooks.useLangOptions({ bookId, editionId });
 
@@ -23,11 +23,11 @@ export const BookReviews: React.FC<NBookReviews.Props> = props => {
       <div className="flex gap-x-4">
         <Select options={langOptions} value={lang} onChange={setLang} />
         <Toggle
-          label="This Edition Only"
-          isChecked={thisEditionOnly}
+          label="This Edition"
+          isChecked={thisEdition}
           onChange={() => {
             setLang(null);
-            setThisEditionOnly();
+            setThisEdition();
           }}
         />
       </div>

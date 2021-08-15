@@ -24,8 +24,8 @@ const Book: React.FC = () => {
   return (
     <div>
       <CustomHead title={fullName} />
-      <div className="grid justify-start grid-flow-col gap-x-10">
-        <CoverImage alt={fullName} src={imageUrl} />
+      <div className="grid justify-start gap-10 sm:grid-flow-col">
+        <CoverImage alt={fullName} src={imageUrl} className="justify-self-center" />
         <div>
           <div>
             <b>Name: </b>
@@ -35,7 +35,7 @@ const Book: React.FC = () => {
             {books.map(({ editions, id }, index) => {
               const { title, description, id: editionId } = editions[0];
               return (
-                <li key={id + index}>
+                <li key={id + index} className="my-2">
                   <Link path={`/${ROUTE.book}/${editionId}`} slug={title}>
                     {title}
                   </Link>
