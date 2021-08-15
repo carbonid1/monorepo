@@ -12,6 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Run types check
+        run: npm run ts
+
       - name: Install Dependencies
         run: npm ci
 
