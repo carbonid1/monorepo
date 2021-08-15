@@ -1,13 +1,43 @@
-name: CI
-on: push
+name: General CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    types: [synchronize, opened, reopened]
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install modules
-        run: npm install
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run types check
+        run: npm run ts
+
+      - name: Build
+        run: npm run build
+
+      # https://frontside.com/blog/2020-05-26-github-actions-pull_request/#how-does-pull_request-affect-actionscheckout
+      - name: override CI_COMMIT_SHA
+        if: github.event_name == 'pull_request'
+        run: echo "CI_COMMIT_SHA=${{ github.event.pull_request.head.sha}}" >> $GITHUB_ENV
+
+      - name: Run BundleMon
+        run: npx bundlemon
+        env:
+          BUNDLEMON_PROJECT_ID: ${{ secrets.BUNDLEMON_PROJECT_ID }}
+          BUNDLEMON_PROJECT_APIKEY: ${{ secrets.BUNDLEMON_PROJECT_APIKEY }}
+          BUNDLEMON_GITHUB_TOKEN: ${{ secrets.BUNDLEMON_GITHUB_TOKEN }}
+
       - name: Run tests
         run: npm run test
+
+      - name: Run linter
+        run: npm run lint
+
       - name: Run prettier
         run: npx prettier --check .

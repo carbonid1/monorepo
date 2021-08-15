@@ -20,7 +20,8 @@
     "build-storybook": "build-storybook",
     "generate:prisma": "prisma generate",
     "generate:nexus": "ts-node --transpile-only -P nexus.tsconfig.json pages/api",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "lint": "next lint"
   },
   "dependencies": {
     "@apollo/react-hooks": "^4.0.0",
@@ -75,6 +76,9 @@
     "babel-loader": "^8.2.2",
     "bundlemon": "^1.0.0",
     "chromatic": "^5.9.0",
+    "eslint": "^7.32.0",
+    "eslint-config-next": "^11.1.0",
+    "eslint-config-prettier": "^8.3.0",
     "husky": "^6.0.0",
     "jest": "^27.0.4",
     "lint-staged": "^11.0.0",
@@ -86,6 +90,7 @@
   },
   "lint-staged": {
     "*.ts": "jest --passWithNoTests",
+    "*.{ts, tsx}": "next lint",
     "**/*": "prettier --write --ignore-unknown"
   }
 }
