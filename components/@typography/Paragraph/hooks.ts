@@ -25,6 +25,7 @@ interface IUseEllipsis {
   lineClampClassName: string;
   paragraphRef: RefObject<HTMLParagraphElement>;
 }
+
 // 120 is max height for 16px font and line clamp 5 lines
 // if another value used the current implementation should be refactored
 const useEllipsis = (ellipsis: TParagraphEllipsis): IUseEllipsis => {
@@ -36,7 +37,7 @@ const useEllipsis = (ellipsis: TParagraphEllipsis): IUseEllipsis => {
     if (config.rows !== 1) {
       setConfig(config => ({ ...config, expandable: Number(paragraphRef.current?.scrollHeight) > 120 }));
     }
-  }, [paragraphRef.current]);
+  }, [config.rows]);
 
   return {
     expanded,
@@ -47,4 +48,8 @@ const useEllipsis = (ellipsis: TParagraphEllipsis): IUseEllipsis => {
   };
 };
 
-export default { useEllipsis };
+const hooks = {
+  useEllipsis,
+};
+
+export default hooks;
