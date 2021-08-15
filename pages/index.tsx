@@ -2,14 +2,14 @@ import { withApollo } from 'apollo/client';
 import { ROUTE } from 'consts/routes';
 import { Link } from 'components/@controls/Link';
 import { Authors } from 'components/Authors';
-import { Errors } from 'components/@errors';
 import { useIndexPage_BooksQuery } from 'generated/graphql';
+import { ServerError } from 'components/@errors';
 
 const Home: React.FC = () => {
   const { data, error } = useIndexPage_BooksQuery();
   const { books = [] } = data ?? {};
 
-  if (error) return <Errors.ServerError />;
+  if (error) return <ServerError />;
   return (
     <ul>
       {books.map(({ id, authors, editions }, index) => (

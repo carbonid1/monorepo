@@ -90,7 +90,7 @@
   },
   "lint-staged": {
     "*.ts": "jest --passWithNoTests",
-    "*.{ts, tsx}": "next lint",
+    "*.{ts, tsx}": "eslint",
     "**/*": "prettier --write --ignore-unknown"
   }
 }
