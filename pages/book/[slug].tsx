@@ -6,8 +6,8 @@ import { Link } from 'components/@controls/Link';
 import { extractIdFromSlug } from 'lib/utils';
 import { BookReviews } from 'modules/BookReviews';
 import { Edition } from 'modules/Edition';
-import { Errors } from 'components/@errors';
 import { useBookPage_EditionQuery } from 'generated/graphql';
+import { NotFound, ServerError } from 'components/@errors';
 
 const Book: React.FC = () => {
   const slug = useRouter().query.slug as string;
@@ -16,8 +16,8 @@ const Book: React.FC = () => {
   const { edition } = data ?? {};
 
   if (loading) return null;
-  if (error) return <Errors.ServerError />;
-  if (!edition || id === null) return <Errors.NotFound />;
+  if (error) return <ServerError />;
+  if (!edition || id === null) return <NotFound />;
 
   const { book } = edition;
 

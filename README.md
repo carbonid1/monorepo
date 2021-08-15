@@ -19,3 +19,9 @@
 ```bash
 vercel env pull
 ```
+
+#### Bundle size report:
+
+```bash
+npx bundlemon
+```

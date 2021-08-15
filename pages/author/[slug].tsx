@@ -6,8 +6,8 @@ import { Link } from 'components/@controls/Link';
 import { extractIdFromSlug } from 'lib/utils';
 import { Paragraph } from 'components/@typography/Paragraph';
 import { CoverImage } from 'components/CoverImage';
-import { Errors } from 'components/@errors';
 import hooks from 'modules/author/hooks';
+import { NotFound, ServerError } from 'components/@errors';
 
 const Book: React.FC = () => {
   const slug = useRouter().query.slug as string;
@@ -16,8 +16,8 @@ const Book: React.FC = () => {
   const { author } = data ?? {};
 
   if (loading) return null;
-  if (error) return <Errors.ServerError />;
-  if (!author) return <Errors.NotFound />;
+  if (error) return <ServerError />;
+  if (!author) return <NotFound />;
 
   const { fullName, books, imageUrl } = author;
 
