@@ -1,5 +1,7 @@
 import cn from 'classnames';
-import { motion } from 'framer-motion';
+import { useIsSmScreen } from 'lib/hooks';
+import { useSpring, animated } from 'react-spring';
+import { useDrag } from 'react-use-gesture';
 
 export interface ICoverImage {
   className?: string;
@@ -8,11 +10,25 @@ export interface ICoverImage {
 }
 
 export const CoverImage: React.FC<ICoverImage> = ({ src, alt, className }) => {
+  const isSmScreen = useIsSmScreen();
+  const [{ scale, x, y }, api] = useSpring(() => ({ scale: 1, x: '0%', y: '0%' }));
+  const bind = useDrag(({ active }) => {
+    if (isSmScreen)
+      api.start({
+        to: {
+          x: active ? '50%' : '0%',
+          y: active ? '50%' : '0%',
+          scale: active ? 2 : 1,
+        },
+      });
+  });
+
   return (
-    <motion.img
-      src={src || undefined}
+    <animated.img
+      {...bind()}
       alt={alt}
-      whileTap={{ scale: 2, x: '50%', y: '50%' }}
+      src={src || undefined}
+      style={{ scale, x, y }}
       className={cn('cursor-pointer w-full sm:w-40 z-1 object-contain', className)}
     />
   );
