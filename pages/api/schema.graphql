@@ -3,6 +3,7 @@
 
 
 type Author {
+  bio: String
   books: [Book!]!
   fullName: String!
   id: Int!

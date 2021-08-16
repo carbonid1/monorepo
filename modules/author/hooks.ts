@@ -6,6 +6,8 @@ const useAuthorQuery = (id: AuthorPage_AuthorQueryVariables['id']) =>
     skip: !id,
   });
 
-export default {
+const hooks = {
   useAuthorQuery,
 };
+
+export default hooks;

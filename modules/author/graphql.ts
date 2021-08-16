@@ -4,6 +4,7 @@ gql`
   query AuthorPage_author($id: ID!) {
     author(id: $id) {
       id
+      bio
       fullName
       imageUrl
       books {
