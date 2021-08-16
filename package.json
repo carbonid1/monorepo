@@ -73,6 +73,7 @@
     "@types/jest": "^26.0.23",
     "@types/node": "^14.14.22",
     "@types/react": "^17.0.0",
+    "@types/tailwindcss": "^2.2.1",
     "autoprefixer": "^10.2.5",
     "babel-loader": "^8.2.2",
     "bundlemon": "^1.0.0",
