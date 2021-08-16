@@ -19,7 +19,7 @@ const Book: React.FC = () => {
   if (error) return <ServerError />;
   if (!author) return <NotFound />;
 
-  const { fullName, books, imageUrl } = author;
+  const { fullName, books, imageUrl, bio } = author;
 
   return (
     <div>
@@ -31,6 +31,7 @@ const Book: React.FC = () => {
             <b>Name: </b>
             {fullName}
           </div>
+          {bio && <p>{bio}</p>}
           <ul>
             {books.map(({ editions, id }, index) => {
               const { title, description, id: editionId } = editions[0];

@@ -14,9 +14,9 @@ async function main() {
       data: {
         publishedIn: getDate(publishedIn),
         authors: {
-          connectOrCreate: authors.map(({ id, fullName, imageUrl }) => ({
+          connectOrCreate: authors.map(({ id, fullName, imageUrl, bio }) => ({
             where: { id },
-            create: { fullName, imageUrl },
+            create: { fullName, imageUrl, bio },
           })),
         },
         editions: {

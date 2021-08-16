@@ -19,6 +19,7 @@ export type Scalars = {
 export type Author = {
   id: Scalars['Int'];
   fullName: Scalars['String'];
+  bio?: Maybe<Scalars['String']>;
   imageUrl?: Maybe<Scalars['String']>;
   books: Array<Book>;
 };
@@ -109,6 +110,7 @@ export type AuthorPage_AuthorQueryVariables = Exact<{
 export type AuthorPage_AuthorQuery = {
   author?: Maybe<{
     id: number;
+    bio?: Maybe<string>;
     fullName: string;
     imageUrl?: Maybe<string>;
     books: Array<{ id: number; editions: Array<{ title: string; description?: Maybe<string>; id: number }> }>;
@@ -275,6 +277,7 @@ export const AuthorPage_AuthorDocument = gql`
   query AuthorPage_author($id: ID!) {
     author(id: $id) {
       id
+      bio
       fullName
       imageUrl
       books {

@@ -44,6 +44,7 @@ export interface NexusGenScalars {
 
 export interface NexusGenObjects {
   Author: { // root type
+    bio?: string | null; // String
     fullName: string; // String!
     id: number; // Int!
     imageUrl?: string | null; // String
@@ -82,6 +83,7 @@ export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
   Author: { // field return type
+    bio: string | null; // String
     books: NexusGenRootTypes['Book'][]; // [Book!]!
     fullName: string; // String!
     id: number; // Int!
@@ -123,6 +125,7 @@ export interface NexusGenFieldTypes {
 
 export interface NexusGenFieldTypeNames {
   Author: { // field return type name
+    bio: 'String'
     books: 'Book'
     fullName: 'String'
     id: 'Int'

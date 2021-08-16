@@ -13,13 +13,14 @@ model Author {
   id                     Int                         @default(autoincrement()) @id
   updatedAt              DateTime                    @updatedAt
   imageUrl               String?
+  bio                    String?
 }
 
 model Book {
   authors                Author[]
   editions               Edition[]
   id                     Int                         @default(autoincrement()) @id
-  publishedIn            DateTime?                        
+  publishedIn            DateTime?
 }
 
 model Edition {
