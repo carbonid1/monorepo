@@ -4,15 +4,18 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { AppHeader } from 'modules/AppHeader';
 import trackingService from 'services/tracking.service';
-import { withApollo } from 'apollo/client';
+import { useApollo } from 'lib/apollo';
+import { ApolloProvider } from '@apollo/client';
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const apolloClient = useApollo(pageProps.initialApolloState);
+
   useEffect(() => {
     trackingService.init();
   }, []);
 
   return (
-    <>
+    <ApolloProvider client={apolloClient}>
       <Head>
         <meta charSet="utf-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
@@ -34,8 +37,8 @@ function MyApp({ Component, pageProps }: AppProps) {
       <div className="max-w-5xl p-4 mx-auto">
         <Component {...pageProps} />
       </div>
-    </>
+    </ApolloProvider>
   );
 }
 
-export default withApollo(MyApp);
+export default MyApp;

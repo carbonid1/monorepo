@@ -8,7 +8,7 @@ import { Edition } from 'modules/Edition';
 import { useBookPage_EditionQuery } from 'generated/graphql';
 import { NotFound, ServerError } from 'components/@errors';
 
-const Book: React.FC = () => {
+const Book = () => {
   const slug = useRouter().query.slug as string;
   const id = extractIdFromSlug(slug);
   const { data, loading, error } = useBookPage_EditionQuery({ variables: { id } });

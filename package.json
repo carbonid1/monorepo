@@ -24,29 +24,23 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@apollo/react-hooks": "^4.0.0",
-    "@apollo/react-ssr": "^4.0.0",
+    "@apollo/client": "^3.4.8",
     "@headlessui/react": "^1.2.0",
     "@heroicons/react": "^1.0.1",
     "@splitbee/web": "^0.2.4",
     "@tailwindcss/line-clamp": "^0.2.1",
-    "apollo-boost": "^0.4.9",
-    "apollo-link-http": "^1.5.17",
-    "apollo-link-schema": "^1.2.5",
     "apollo-server-micro": "^2.19.2",
     "classnames": "^2.3.1",
     "date-fns": "^2.19.0",
     "express": "^4.17.1",
     "google-auth-library": "^7.6.2",
-    "graphql": "^15.5.0",
+    "graphql": "^15.5.1",
     "graphql-iso-date": "^3.6.1",
-    "graphql-tag": "^2.11.0",
     "iso-639-1": "^2.1.8",
     "next": "^11.1.0",
     "next-pwa": "^5.0.4",
     "nexus": "^1.0.0",
     "react": "17.0.1",
-    "react-apollo": "^3.1.5",
     "react-dom": "17.0.1",
     "react-google-login": "^5.2.2",
     "react-markdown": "^5.0.3",
@@ -93,7 +87,7 @@
     "typescript": "^4.3.3"
   },
   "lint-staged": {
-    "*.ts": "jest --passWithNoTests",
+    "*.ts": "jest --passWithNoTests --findRelatedTests --bail",
     "*.{ts, tsx}": "eslint",
     "**/*": "prettier --write --ignore-unknown"
   }
