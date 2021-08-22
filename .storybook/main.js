@@ -19,6 +19,7 @@ module.exports = {
         mocks: path.resolve(__dirname, '../mocks'),
         services: path.resolve(__dirname, '../services'),
         lib: path.resolve(__dirname, '../lib'),
+        generated: path.resolve(__dirname, '../generated'),
       },
     },
   }),

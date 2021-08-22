@@ -11,3 +11,9 @@ const Template: Story<ILink> = args => <Link {...args} />;
 
 export const Default = Template.bind({});
 Default.args = { children: 'Click Me!', path: '#' };
+
+export const Button = Template.bind({});
+Button.args = {
+  ...Default.args,
+  path: undefined,
+};

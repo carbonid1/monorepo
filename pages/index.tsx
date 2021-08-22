@@ -1,4 +1,3 @@
-import { withApollo } from 'apollo/client';
 import { ROUTE } from 'consts/routes';
 import { Link } from 'components/@controls/Link';
 import { Authors } from 'components/Authors';
@@ -24,4 +23,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default withApollo(Home);
+export default Home;
