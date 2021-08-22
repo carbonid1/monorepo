@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router';
-import { withApollo } from 'apollo/client';
 import { CustomHead } from 'components/CustomHead';
 import { Authors } from 'components/Authors';
 import { useReviewPage_ReviewQuery } from 'generated/graphql';
@@ -31,4 +30,4 @@ const Review: React.FC = () => {
   );
 };
 
-export default withApollo(Review);
+export default Review;

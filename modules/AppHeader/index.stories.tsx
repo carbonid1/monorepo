@@ -8,4 +8,4 @@ export default {
 
 const Template: Story = args => <AppHeader {...args} />;
 
-export const Default = Template.bind({});
+// export const Default = Template.bind({});

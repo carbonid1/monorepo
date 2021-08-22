@@ -33,11 +33,16 @@ type Edition {
   title: String!
 }
 
+type Mutation {
+  signInWithGoogle(token: String!): User
+}
+
 type Query {
   author(id: ID): Author
   book(id: ID): Book
   books: [Book!]!
   edition(id: ID): Edition
+  profile: User
   review(id: ID): Review
   reviews(bookId: ID, editionId: ID, lang: String): [Review!]!
 }
@@ -48,5 +53,16 @@ type Review {
   edition(id: ID): Edition!
   id: Int!
   lang: String
+  updatedAt: String!
+}
+
+type User {
+  createdAt: String!
+  email: String!
+  firstName: String
+  fullName: String
+  id: Int!
+  lastName: String
+  picture: String
   updatedAt: String!
 }

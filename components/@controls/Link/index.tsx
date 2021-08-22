@@ -1,18 +1,24 @@
 import React from 'react';
-import NextLink, { LinkProps } from 'next/link';
+import NextLink from 'next/link';
 import slugify from 'slugify';
+import cn from 'classnames';
 
-export interface ILink extends Omit<LinkProps, 'href'> {
-  children: React.ReactNode;
-  path: string;
+type ReactAnchor = JSX.IntrinsicElements['a'];
+export interface ILink extends ReactAnchor {
+  path?: string;
   slug?: string;
 }
 
-export const Link: React.FC<ILink> = ({ children, path, slug, ...linkProps }) => {
-  const href = slug ? `${path}.${slugify(slug, { lower: false })}` : path;
-  return (
-    <NextLink {...linkProps} href={href}>
-      <a className="text-blue-500 rounded-full hover:underline">{children}</a>
-    </NextLink>
+export const Link: React.FC<ILink> = ({ children, path, slug, className, ...props }) => {
+  const anchor = (
+    <a className={cn('text-blue-500 hover:underline cursor-pointer', className)} {...props}>
+      {children}
+    </a>
   );
+
+  if (!path) return anchor;
+
+  const href = slug ? `${path}.${slugify(slug, { lower: false })}` : path;
+
+  return <NextLink href={href}>{anchor}</NextLink>;
 };

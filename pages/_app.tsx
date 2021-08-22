@@ -4,6 +4,7 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { AppHeader } from 'modules/AppHeader';
 import trackingService from 'services/tracking.service';
+import { withApollo } from 'apollo/client';
 
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -37,4 +38,4 @@ function MyApp({ Component, pageProps }: AppProps) {
   );
 }
 
-export default MyApp;
+export default withApollo(MyApp);

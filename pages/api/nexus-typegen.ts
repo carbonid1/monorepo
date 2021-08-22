@@ -61,12 +61,23 @@ export interface NexusGenObjects {
     publishedIn?: string | null; // String
     title: string; // String!
   }
+  Mutation: {};
   Query: {};
   Review: { // root type
     body: string; // String!
     createdAt: string; // String!
     id: number; // Int!
     lang?: string | null; // String
+    updatedAt: string; // String!
+  }
+  User: { // root type
+    createdAt: string; // String!
+    email: string; // String!
+    firstName?: string | null; // String
+    fullName?: string | null; // String
+    id: number; // Int!
+    lastName?: string | null; // String
+    picture?: string | null; // String
     updatedAt: string; // String!
   }
 }
@@ -105,11 +116,15 @@ export interface NexusGenFieldTypes {
     reviews: NexusGenRootTypes['Review'][]; // [Review!]!
     title: string; // String!
   }
+  Mutation: { // field return type
+    signInWithGoogle: NexusGenRootTypes['User'] | null; // User
+  }
   Query: { // field return type
     author: NexusGenRootTypes['Author'] | null; // Author
     book: NexusGenRootTypes['Book'] | null; // Book
     books: NexusGenRootTypes['Book'][]; // [Book!]!
     edition: NexusGenRootTypes['Edition'] | null; // Edition
+    profile: NexusGenRootTypes['User'] | null; // User
     review: NexusGenRootTypes['Review'] | null; // Review
     reviews: NexusGenRootTypes['Review'][]; // [Review!]!
   }
@@ -119,6 +134,16 @@ export interface NexusGenFieldTypes {
     edition: NexusGenRootTypes['Edition']; // Edition!
     id: number; // Int!
     lang: string | null; // String
+    updatedAt: string; // String!
+  }
+  User: { // field return type
+    createdAt: string; // String!
+    email: string; // String!
+    firstName: string | null; // String
+    fullName: string | null; // String
+    id: number; // Int!
+    lastName: string | null; // String
+    picture: string | null; // String
     updatedAt: string; // String!
   }
 }
@@ -147,11 +172,15 @@ export interface NexusGenFieldTypeNames {
     reviews: 'Review'
     title: 'String'
   }
+  Mutation: { // field return type name
+    signInWithGoogle: 'User'
+  }
   Query: { // field return type name
     author: 'Author'
     book: 'Book'
     books: 'Book'
     edition: 'Edition'
+    profile: 'User'
     review: 'Review'
     reviews: 'Review'
   }
@@ -163,9 +192,24 @@ export interface NexusGenFieldTypeNames {
     lang: 'String'
     updatedAt: 'String'
   }
+  User: { // field return type name
+    createdAt: 'String'
+    email: 'String'
+    firstName: 'String'
+    fullName: 'String'
+    id: 'Int'
+    lastName: 'String'
+    picture: 'String'
+    updatedAt: 'String'
+  }
 }
 
 export interface NexusGenArgTypes {
+  Mutation: {
+    signInWithGoogle: { // args
+      token: string; // String!
+    }
+  }
   Query: {
     author: { // args
       id?: string | null; // ID

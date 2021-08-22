@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router';
-import { withApollo } from 'apollo/client';
 import { CustomHead } from 'components/CustomHead';
 import { ROUTE } from 'consts/routes';
 import { Link } from 'components/@controls/Link';
@@ -53,4 +52,4 @@ const Book: React.FC = () => {
   );
 };
 
-export default withApollo(Book);
+export default Book;
