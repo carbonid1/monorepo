@@ -13,7 +13,7 @@
     "next"
   ],
   "plugins": ["react"],
-  "ignorePatterns": ["pages/api/nexus-typegen.ts"],
+  "ignorePatterns": ["pages/api/nexus-typegen.ts", "lib/generated/**/*"],
   "rules": {
     "array-element-newline": ["error", "consistent"],
     "quotes": ["warn", "single"],
