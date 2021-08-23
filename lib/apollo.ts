@@ -1,6 +1,8 @@
-import { ApolloClient, InMemoryCache, NormalizedCacheObject } from '@apollo/client';
+import { ApolloClient, from, InMemoryCache, NormalizedCacheObject } from '@apollo/client';
 import { useMemo } from 'react';
 import { getAuthToken } from 'services/localStorage.service';
+import { onError } from '@apollo/client/link/error';
+import { isSSR } from './utils';
 
 let apolloClient: ApolloClient<NormalizedCacheObject>;
 
@@ -37,10 +39,20 @@ function createIsomorphicLink() {
   }
 }
 
+const createErrorLink = () => {
+  return onError(({ graphQLErrors, networkError }) => {
+    if (graphQLErrors)
+      graphQLErrors.forEach(({ message, locations, path }) =>
+        console.error(`[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`),
+      );
+    if (networkError) console.error(`[Network error]: ${networkError}`);
+  });
+};
+
 function createApolloClient() {
   return new ApolloClient({
-    ssrMode: typeof window === 'undefined',
-    link: createIsomorphicLink(),
+    ssrMode: isSSR(),
+    link: from([createErrorLink(), createIsomorphicLink()]),
     cache: new InMemoryCache(),
   });
 }
@@ -52,7 +64,7 @@ export function initializeApollo(initialState: NormalizedCacheObject | null = nu
     _apolloClient.cache.restore(initialState);
   }
 
-  if (typeof window === 'undefined') return _apolloClient;
+  if (isSSR()) return _apolloClient;
   apolloClient = apolloClient ?? _apolloClient;
 
   return apolloClient;
