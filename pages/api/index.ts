@@ -1,9 +1,8 @@
 import path from 'path';
 import prisma from '../../lib/prisma';
-import { ApolloServer, ApolloError } from 'apollo-server-micro';
+import { ApolloServer } from 'apollo-server-micro';
 import { asNexusMethod, idArg, list, makeSchema, nonNull, objectType, stringArg } from 'nexus';
 import { GraphQLDate } from 'graphql-iso-date';
-import { verifyGoogleIdToken } from '../../lib/google-auth';
 
 export const GQLDate = asNexusMethod(GraphQLDate, 'date');
 
@@ -84,33 +83,18 @@ const User = objectType({
     t.int('id');
     t.string('createdAt');
     t.string('updatedAt');
-    t.string('email');
-    t.nullable.string('fullName');
-    t.nullable.string('firstName');
-    t.nullable.string('lastName');
-    t.nullable.string('picture');
+    t.nullable.string('email');
   },
 });
 
 const Query = objectType({
   name: 'Query',
   definition(t) {
-    t.field('profile', {
-      type: 'User',
-      resolve: async (root, args, ctx) => {
-        const loginTiket = await verifyGoogleIdToken(ctx.req.headers.authorization);
-        return prisma.user.findFirst({
-          where: {
-            email: loginTiket.getPayload()?.email,
-          },
-        });
-      },
-    }),
-      t.field('author', {
-        type: 'Author',
-        args: { id: idArg() },
-        resolve: (_, { id }) => prisma.author.findFirst({ where: { id: +id } }),
-      });
+    t.field('author', {
+      type: 'Author',
+      args: { id: idArg() },
+      resolve: (_, { id }) => prisma.author.findFirst({ where: { id: +id } }),
+    });
     t.field('book', {
       type: 'Book',
       args: { id: idArg() },
@@ -160,24 +144,10 @@ const Mutation = objectType({
   name: 'Mutation',
   nonNullDefaults: { input: true },
   definition(t) {
-    t.field('signInWithGoogle', {
+    t.field('empty', {
       type: 'User',
-      args: { token: stringArg() },
-      resolve: async (_, { token }) => {
-        const loginTiket = await verifyGoogleIdToken(token);
-        const { email, family_name, given_name, name, picture } = loginTiket.getPayload() ?? {};
-        const user = await prisma.user.findFirst({ where: { email } });
-        if (user) return user;
-        if (!email) throw new ApolloError('Not possible to create a new user. Email is invalid');
-        return prisma.user.create({
-          data: {
-            email,
-            picture,
-            fullName: name,
-            firstName: given_name,
-            lastName: family_name,
-          },
-        });
+      resolve: async () => {
+        return prisma.user.findFirst();
       },
     });
   },

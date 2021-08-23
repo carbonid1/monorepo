@@ -1,5 +1,5 @@
 import { ApolloError } from 'apollo-server-micro';
-import { LoginTicket, OAuth2Client, VerifyIdTokenOptions } from 'google-auth-library';
+import { LoginTicket, OAuth2Client, VerifyIdTokenOptions } from 'google-auth-library'; // TODO: rm this library
 
 const authGoogleClient = new OAuth2Client(process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID);
 
