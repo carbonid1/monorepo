@@ -34,7 +34,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AppHeader />
-      <div className="max-w-5xl p-4 mx-auto">
+      <div className="flex flex-col flex-1 w-full max-w-5xl p-4 mx-auto">
         <Component {...pageProps} />
       </div>
     </ApolloProvider>
