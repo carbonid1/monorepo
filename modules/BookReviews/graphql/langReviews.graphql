@@ -1,0 +1,5 @@
+query BookReviews_langReviews($bookId: ID, $editionId: ID) {
+  reviews(bookId: $bookId, editionId: $editionId) {
+    lang
+  }
+}
