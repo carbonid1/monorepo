@@ -1,8 +1,9 @@
 import { ROUTE } from 'consts/routes';
 import { Link } from 'components/@controls/Link';
 import { Authors } from 'components/Authors';
-import { useIndexPage_BooksQuery } from 'generated/graphql';
+import { IndexPage_BooksDocument, useIndexPage_BooksQuery } from 'generated/graphql';
 import { ServerError } from 'components/@errors';
+import { initializeApollo } from 'lib/apollo';
 
 export default function HomePage() {
   const { data, error } = useIndexPage_BooksQuery();
@@ -23,3 +24,9 @@ export default function HomePage() {
     </ul>
   );
 }
+
+export const getServerSideProps = async () => {
+  const apolloClient = initializeApollo();
+  await apolloClient.query({ query: IndexPage_BooksDocument });
+  return { props: { initialApolloState: apolloClient.cache.extract() } };
+};
