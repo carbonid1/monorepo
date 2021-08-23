@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client';
-import mocks from '../mocks';
+import mocks from '../lib/mocks';
 import fromUnixTime from 'date-fns/fromUnixTime';
 
 const prisma = new PrismaClient();

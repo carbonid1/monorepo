@@ -1,5 +1,5 @@
 import path from 'path';
-import prisma from '../../lib/prisma';
+import prisma from '../../prisma';
 import { ApolloServer } from 'apollo-server-micro';
 import { asNexusMethod, idArg, list, makeSchema, nonNull, objectType, stringArg } from 'nexus';
 import { GraphQLDate } from 'graphql-iso-date';
