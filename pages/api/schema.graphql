@@ -34,7 +34,7 @@ type Edition {
 }
 
 type Mutation {
-  signInWithGoogle(token: String!): User
+  empty: User
 }
 
 type Query {
@@ -42,7 +42,6 @@ type Query {
   book(id: ID): Book
   books: [Book!]!
   edition(id: ID): Edition
-  profile: User
   review(id: ID): Review
   reviews(bookId: ID, editionId: ID, lang: String): [Review!]!
 }
@@ -58,11 +57,7 @@ type Review {
 
 type User {
   createdAt: String!
-  email: String!
-  firstName: String
-  fullName: String
+  email: String
   id: Int!
-  lastName: String
-  picture: String
   updatedAt: String!
 }

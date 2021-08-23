@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import { ApolloClient, from, InMemoryCache, NormalizedCacheObject } from '@apollo/client';
 import { useMemo } from 'react';
-import { getAuthToken } from 'services/localStorage.service';
 import { onError } from '@apollo/client/link/error';
 import { isSSR } from './utils';
 
@@ -30,14 +29,10 @@ function createIsomorphicLink() {
     const { HttpLink } = require('@apollo/client/link/http');
     const { host, protocol } = getURIConfig();
     const uri = `${protocol}://${host}/api`;
-    const authToken = getAuthToken();
 
     return new HttpLink({
       uri,
       credentials: 'same-origin',
-      headers: {
-        authorization: authToken,
-      },
     });
   }
 }
