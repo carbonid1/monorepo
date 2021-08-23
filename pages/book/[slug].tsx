@@ -3,7 +3,7 @@ import { initializeApollo } from 'lib/apollo';
 import { extractIdFromSlug } from 'lib/utils';
 import type { GetServerSideProps } from 'next';
 
-export { default as default } from 'modules/BookPage';
+export { default } from 'modules/BookPage';
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const slug = query.slug as string;

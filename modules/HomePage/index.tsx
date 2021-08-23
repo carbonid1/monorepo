@@ -23,3 +23,9 @@ export default function HomePage() {
     </ul>
   );
 }
+
+// export const getStaticProps = async () => {
+//   const apolloClient = initializeApollo();
+//   await apolloClient.query({ query: IndexPage_BooksDocument });
+//   return { props: { initialApolloState: apolloClient.cache.extract() } };
+// };
