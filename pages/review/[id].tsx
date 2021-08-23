@@ -1,1 +1,1 @@
-export { default, getServerSideProps } from 'modules/ReviewPage';
+export { default, getServerSideProps } from 'lib/modules/ReviewPage';

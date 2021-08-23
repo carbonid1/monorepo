@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  stories: ['../{components,modules}/**/*.stories.@(tsx|mdx)', '../docs/**/*.stories.@(tsx|mdx)'],
+  stories: ['../lib/**/*.stories.@(tsx|mdx)', '../docs/**/*.stories.@(tsx|mdx)'],
   addons: [
     '@storybook/addon-a11y',
     '@storybook/addon-links',
@@ -14,12 +14,7 @@ module.exports = {
       ...config.resolve,
       alias: {
         ...config.resolve.alias,
-        components: path.resolve(__dirname, '../components'),
-        consts: path.resolve(__dirname, '../consts'),
-        mocks: path.resolve(__dirname, '../mocks'),
-        services: path.resolve(__dirname, '../services'),
         lib: path.resolve(__dirname, '../lib'),
-        generated: path.resolve(__dirname, '../generated'),
       },
     },
   }),
