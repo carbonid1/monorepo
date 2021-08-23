@@ -1,26 +1,10 @@
-import { ROUTE } from 'consts/routes';
-import { Link } from 'components/@controls/Link';
-import { Authors } from 'components/Authors';
-import { useIndexPage_BooksQuery } from 'generated/graphql';
-import { ServerError } from 'components/@errors';
+import { IndexPage_BooksDocument } from 'generated/graphql';
+import { initializeApollo } from 'lib/apollo';
 
-const Home: React.FC = () => {
-  const { data, error } = useIndexPage_BooksQuery();
-  const { books = [] } = data ?? {};
+export { default as default } from 'modules/HomePage/index';
 
-  if (error) return <ServerError />;
-  return (
-    <ul>
-      {books.map(({ id, authors, editions }, index) => (
-        <li key={id + index}>
-          <Authors authors={authors} lastAuthorSuffix=": " />
-          <Link path={`/${ROUTE.book}/${editions[0].id}`} slug={editions[0].title}>
-            {editions[0].title}
-          </Link>
-        </li>
-      ))}
-    </ul>
-  );
+export const getStaticProps = async () => {
+  const apolloClient = initializeApollo();
+  await apolloClient.query({ query: IndexPage_BooksDocument });
+  return { props: { initialApolloState: apolloClient.cache.extract() } };
 };
-
-export default Home;
