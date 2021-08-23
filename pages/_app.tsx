@@ -6,8 +6,9 @@ import { AppHeader } from 'modules/AppHeader';
 import trackingService from 'services/tracking.service';
 import { useApollo } from 'lib/apollo';
 import { ApolloProvider } from '@apollo/client';
+import type { NextPage } from 'next';
 
-function MyApp({ Component, pageProps }: AppProps) {
+const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
   const apolloClient = useApollo(pageProps.initialApolloState);
 
   useEffect(() => {
@@ -39,6 +40,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       </div>
     </ApolloProvider>
   );
-}
+};
 
 export default MyApp;

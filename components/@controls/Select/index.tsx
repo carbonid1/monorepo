@@ -1,4 +1,4 @@
-import { Fragment, useMemo } from 'react';
+import React, { Fragment, useMemo } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid';
 import cn from 'classnames';
@@ -14,7 +14,7 @@ export interface ISelect<V> {
   onChange: (value: ISelectOption<V>['value']) => void;
 }
 
-export const Select = <V,>({ options, placeholder = 'Select an Option', onChange, value }: ISelect<V>) => {
+export const Select = <V,>({ options, placeholder = 'Select an Option', onChange, value }: ISelect<V>): JSX.Element => {
   const selectedOption = useMemo(() => {
     return options.find(option => option.value === value);
   }, [options, value]);

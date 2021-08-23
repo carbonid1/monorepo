@@ -1,12 +1,11 @@
 import cn from 'classnames';
-import type { ReactNode } from 'react';
 import { Switch } from '@headlessui/react';
 
 export interface IToggle {
   className?: string;
   onChange: (isChecked: boolean) => void;
   isChecked: boolean;
-  label?: ReactNode;
+  label?: React.ReactNode;
   srLabel?: string;
   isPassiveLabel?: boolean;
   // description?: ReactNode;

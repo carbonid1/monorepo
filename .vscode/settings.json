@@ -1,9 +1,0 @@
-{
-  "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "files.insertFinalNewline": true,
-  "typescript.format.semicolons": "insert",
-  "javascript.format.semicolons": "insert",
-  "prettier.singleQuote": true,
-  "prettier.trailingComma": "all"
-}

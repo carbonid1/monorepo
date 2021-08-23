@@ -1,10 +1,13 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import { ApolloClient, from, InMemoryCache, NormalizedCacheObject } from '@apollo/client';
 import { useMemo } from 'react';
 import { getAuthToken } from 'services/localStorage.service';
 import { onError } from '@apollo/client/link/error';
 import { isSSR } from './utils';
 
-let apolloClient: ApolloClient<NormalizedCacheObject>;
+type TApolloClient = ApolloClient<NormalizedCacheObject>;
+type TInitialState = NormalizedCacheObject | null;
+let apolloClient: TApolloClient;
 
 const getURIConfig = () => {
   switch (process.env.NEXT_PUBLIC_VERCEL_ENV) {
@@ -57,7 +60,7 @@ function createApolloClient() {
   });
 }
 
-export function initializeApollo(initialState: NormalizedCacheObject | null = null) {
+export function initializeApollo(initialState: TInitialState = null): TApolloClient {
   const _apolloClient = apolloClient ?? createApolloClient();
 
   if (initialState) {
@@ -70,7 +73,7 @@ export function initializeApollo(initialState: NormalizedCacheObject | null = nu
   return apolloClient;
 }
 
-export function useApollo(initialState: NormalizedCacheObject | null = null) {
+export function useApollo(initialState: TInitialState = null): TApolloClient {
   const store = useMemo(() => initializeApollo(initialState), [initialState]);
   return store;
 }

@@ -36,8 +36,15 @@ jobs:
       - name: Run tests
         run: npm run test
 
+      - name: Run prettier
+        run: npx prettier --check .
+
       - name: Run linter
         run: npm run lint
 
-      - name: Run prettier
-        run: npx prettier --check .
+      - name: Publish to Chromatic
+        uses: chromaui/action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          exitZeroOnChanges: true # 👈 Option to prevent the workflow from failing
