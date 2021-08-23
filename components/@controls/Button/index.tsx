@@ -2,9 +2,9 @@ import cn from 'classnames';
 
 type ReactBtn = JSX.IntrinsicElements['button'];
 
-export interface IButton extends ReactBtn {}
+export type TButtonProps = ReactBtn;
 
-export const Button: React.FC<IButton> = ({ children, className, ...props }) => {
+export const Button: React.FC<TButtonProps> = ({ children, className, ...props }) => {
   return (
     <button {...props} className={cn(className)}>
       {children}
