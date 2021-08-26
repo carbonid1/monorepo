@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 import { ApolloClient, from, InMemoryCache, NormalizedCacheObject } from '@apollo/client';
 import { useMemo } from 'react';
 import { onError } from '@apollo/client/link/error';
