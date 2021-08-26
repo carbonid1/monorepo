@@ -1,24 +1,37 @@
 import type { GetServerSideProps } from 'next';
-import { ClientSafeProvider, getProviders } from 'next-auth/client';
-
+import { getProviders, getSession, signin } from 'next-auth/client';
 export interface ISignInPage {
-  providers: ClientSafeProvider[];
+  providers: ReturnType<typeof getProviders>;
 }
 
 const SignInPage: React.FC<ISignInPage> = ({ providers }) => {
   return (
     <>
-      {providers.map(provider => (
-        <div key={provider.id}>{provider.name}</div>
+      {Object.values(providers).map(provider => (
+        <button key={provider.id} onClick={() => signin(provider.id)}>
+          {provider.name}
+        </button>
       ))}
     </>
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const providers = await getProviders();
+export const getServerSideProps: GetServerSideProps = async ctx => {
+  const session = await getSession(ctx);
+
+  if (session && typeof ctx.query.callbackUrl === 'string') {
+    return {
+      props: {},
+      redirect: {
+        destination: ctx.query.callbackUrl,
+      },
+    };
+  }
+
   return {
-    props: { providers },
+    props: {
+      providers: await getProviders(),
+    },
   };
 };
 
