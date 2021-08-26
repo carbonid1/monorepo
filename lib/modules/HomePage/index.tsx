@@ -4,6 +4,8 @@ import { Authors } from 'lib/components/Authors';
 import { IndexPage_BooksDocument, useIndexPage_BooksQuery } from 'lib/generated/graphql';
 import { ServerError } from 'lib/components/@errors';
 import { initializeApollo } from 'lib/apollo';
+import { getSession } from 'next-auth/client';
+import type { GetServerSideProps } from 'next';
 
 export default function HomePage() {
   const { data, error } = useIndexPage_BooksQuery();
@@ -25,8 +27,13 @@ export default function HomePage() {
   );
 }
 
-export const getServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async ctx => {
   const apolloClient = initializeApollo();
   await apolloClient.query({ query: IndexPage_BooksDocument });
-  return { props: { initialApolloState: apolloClient.cache.extract() } };
+  return {
+    props: {
+      initialApolloState: apolloClient.cache.extract(),
+      session: await getSession(ctx),
+    },
+  };
 };

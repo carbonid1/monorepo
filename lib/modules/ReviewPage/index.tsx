@@ -9,6 +9,7 @@ import {
 import { NotFound, ServerError } from 'lib/components/@errors';
 import type { GetServerSideProps, NextPage } from 'next';
 import { initializeApollo } from 'lib/apollo';
+import { getSession } from 'next-auth/client';
 
 interface IReview {
   id: string;
@@ -38,8 +39,8 @@ const Review: NextPage<IReview> = ({ id }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const id = query.id as string;
+export const getServerSideProps: GetServerSideProps = async ctx => {
+  const id = ctx.query.id as string;
 
   const apolloClient = initializeApollo();
   await apolloClient.query<ReviewPage_ReviewQuery, ReviewPage_ReviewQueryVariables>({
@@ -48,7 +49,11 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   });
 
   return {
-    props: { initialApolloState: apolloClient.cache.extract(), id },
+    props: {
+      id,
+      session: await getSession(ctx),
+      initialApolloState: apolloClient.cache.extract(),
+    },
   };
 };
 

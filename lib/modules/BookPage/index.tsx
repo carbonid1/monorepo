@@ -13,6 +13,7 @@ import { NotFound, ServerError } from 'lib/components/@errors';
 import type { GetServerSideProps, NextPage } from 'next';
 import { extractIdFromSlug } from 'lib/utils';
 import { initializeApollo } from 'lib/apollo';
+import { getSession } from 'next-auth/client';
 
 interface IBookPage {
   id: string;
@@ -41,8 +42,8 @@ const BookPage: NextPage<IBookPage> = ({ id }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const slug = query.slug as string;
+export const getServerSideProps: GetServerSideProps = async ctx => {
+  const slug = ctx.query.slug as string;
   const id = extractIdFromSlug(slug);
 
   const apolloClient = initializeApollo();
@@ -52,7 +53,11 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   });
 
   return {
-    props: { initialApolloState: apolloClient.cache.extract(), id },
+    props: {
+      id,
+      session: await getSession(ctx),
+      initialApolloState: apolloClient.cache.extract(),
+    },
   };
 };
 

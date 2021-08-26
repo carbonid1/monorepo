@@ -12,10 +12,14 @@ export const AppHeader: React.FC = () => {
         <Link path="/" className={cn(styles.link, 'mr-auto text-3xl')}>
           BookHub
         </Link>
-        {/* {profile?.picture && <img className="h-12 mr-4 rounded-full" src={profile.picture} alt="profile" />} */}
-        <Link className={styles.link} onClick={session ? () => signOut() : () => signIn()}>
-          {session ? 'Sign Out' : 'Sign In'}
-        </Link>
+        {session && (
+          <>
+            {session.user?.image && <img className="h-12 mr-4 rounded-full" src={session.user?.image} alt="profile" />}
+            <Link className={styles.link} onClick={session.user ? () => signOut() : () => signIn()}>
+              {session.user ? 'Sign Out' : 'Sign In'}
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );
