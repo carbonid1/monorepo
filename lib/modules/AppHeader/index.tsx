@@ -5,7 +5,7 @@ import cn from 'classnames';
 import { signIn, signOut, useSession } from 'next-auth/client';
 
 export const AppHeader: React.FC = () => {
-  const [session] = useSession();
+  const { user } = useSession()[0] ?? {};
 
   return (
     <div className="sticky top-0 flex items-center w-full h-16 bg-blue-600 bg-opacity-50 backdrop-filter backdrop-blur z-header justify-items-center">
@@ -13,16 +13,10 @@ export const AppHeader: React.FC = () => {
         <Link path="/" className={cn(styles.link, 'mr-auto text-3xl')}>
           BookHub
         </Link>
-        {session && (
-          <>
-            {session.user?.image && (
-              <NextImg className="rounded-full" src={session.user?.image} alt="profile" height={48} width={48} />
-            )}
-            <Link className={cn(styles.link, 'ml-4')} onClick={session.user ? () => signOut() : () => signIn()}>
-              {session.user ? 'Sign Out' : 'Sign In'}
-            </Link>
-          </>
-        )}
+        {user?.image && <NextImg className="rounded-full" src={user?.image} alt="profile" height={48} width={48} />}
+        <Link className={cn(styles.link, 'ml-4')} onClick={user ? () => signOut() : () => signIn()}>
+          {user ? 'Sign Out' : 'Sign In'}
+        </Link>
       </div>
     </div>
   );
