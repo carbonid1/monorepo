@@ -1,5 +1,6 @@
 import type { GetServerSideProps } from 'next';
 import { getProviders, getSession, signin } from 'next-auth/client';
+
 export interface ISignInPage {
   providers: ReturnType<typeof getProviders>;
 }
