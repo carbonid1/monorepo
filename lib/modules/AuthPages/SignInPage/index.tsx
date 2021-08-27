@@ -1,30 +1,35 @@
+import { GoogleIcon } from 'lib/icons';
 import type { GetServerSideProps } from 'next';
-import { getProviders, getSession, signin } from 'next-auth/client';
+import { ClientSafeProvider, getProviders, getSession, signin } from 'next-auth/client';
 
 export interface ISignInPage {
-  providers: ReturnType<typeof getProviders>;
+  providers: Record<'google', ClientSafeProvider>;
 }
 
 const SignInPage: React.FC<ISignInPage> = ({ providers }) => {
+  const googleProvider = providers?.google;
+
   return (
-    <>
-      {Object.values(providers).map(provider => (
-        <button key={provider.id} onClick={() => signin(provider.id)}>
-          {provider.name}
-        </button>
-      ))}
-    </>
+    <div className="flex items-center justify-center flex-1">
+      <button
+        onClick={() => signin(googleProvider.id)}
+        className="flex items-center w-full max-w-xs p-4 text-xl font-medium shadow-md rounded-xl text-grey-600"
+      >
+        <GoogleIcon className="mr-4 text-2xl" />
+        Continue with Google
+      </button>
+    </div>
   );
 };
 
 export const getServerSideProps: GetServerSideProps = async ctx => {
   const session = await getSession(ctx);
 
-  if (session && typeof ctx.query.callbackUrl === 'string') {
+  if (session) {
     return {
       props: {},
       redirect: {
-        destination: ctx.query.callbackUrl,
+        destination: ctx.query.callbackUrl || '/',
       },
     };
   }
