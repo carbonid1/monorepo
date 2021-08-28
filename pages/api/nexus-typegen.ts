@@ -73,7 +73,10 @@ export interface NexusGenObjects {
   User: { // root type
     createdAt: string; // String!
     email?: string | null; // String
+    emailVerified?: string | null; // String
     id: number; // Int!
+    image?: string | null; // String
+    name?: string | null; // String
     updatedAt: string; // String!
   }
 }
@@ -134,7 +137,10 @@ export interface NexusGenFieldTypes {
   User: { // field return type
     createdAt: string; // String!
     email: string | null; // String
+    emailVerified: string | null; // String
     id: number; // Int!
+    image: string | null; // String
+    name: string | null; // String
     updatedAt: string; // String!
   }
 }
@@ -185,7 +191,10 @@ export interface NexusGenFieldTypeNames {
   User: { // field return type name
     createdAt: 'String'
     email: 'String'
+    emailVerified: 'String'
     id: 'Int'
+    image: 'String'
+    name: 'String'
     updatedAt: 'String'
   }
 }

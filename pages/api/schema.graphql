@@ -58,6 +58,9 @@ type Review {
 type User {
   createdAt: String!
   email: String
+  emailVerified: String
   id: Int!
+  image: String
+  name: String
   updatedAt: String!
 }

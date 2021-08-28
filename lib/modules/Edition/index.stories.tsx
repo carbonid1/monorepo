@@ -10,7 +10,7 @@ export default {
   component: Edition,
   decorators: [
     Story => (
-      <div className="max-w-5xl p-4 mx-auto">
+      <div className="max-w-5xl p-4">
         <Story />
       </div>
     ),
