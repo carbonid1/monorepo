@@ -7,7 +7,7 @@ on:
     types: [synchronize, opened, reopened]
 
 jobs:
-  CI/CD:
+  CI&CD:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
