@@ -1,11 +1,11 @@
+import { getSession } from 'next-auth/client';
+import type { GetServerSideProps } from 'next';
 import { ROUTE } from 'lib/consts/routes';
 import { Link } from 'lib/components/@controls/Link';
 import { Authors } from 'lib/components/Authors';
-import { IndexPage_BooksDocument, useIndexPage_BooksQuery } from 'lib/generated/graphql';
 import { ServerError } from 'lib/components/@errors';
+import { IndexPage_BooksDocument, useIndexPage_BooksQuery } from 'lib/generated/graphql';
 import { initializeApollo } from 'lib/apollo';
-import { getSession } from 'next-auth/client';
-import type { GetServerSideProps } from 'next';
 
 export default function HomePage() {
   const { data, error } = useIndexPage_BooksQuery();

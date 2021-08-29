@@ -1,6 +1,6 @@
-import { ISelect, Select } from '.';
 import { useState } from 'react';
 import type { Story, Meta } from '@storybook/react';
+import { ISelect, Select } from '.';
 
 export default {
   title: '@controls/Select',

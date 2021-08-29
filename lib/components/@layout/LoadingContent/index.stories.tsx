@@ -1,6 +1,6 @@
 import type { Story, Meta } from '@storybook/react';
-import { LoadingContent, ILoadingContent } from '.';
 import { Skeleton } from '../Skeleton';
+import { LoadingContent, ILoadingContent } from '.';
 
 export default { title: '@layout/LoadingContent', component: LoadingContent } as Meta;
 const Template: Story<ILoadingContent> = props => (

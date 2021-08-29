@@ -1,6 +1,6 @@
-import reviewsMock from './reviews.mock';
 import getTime from 'date-fns/getTime';
 import type { Book, Edition } from 'lib/generated/graphql';
+import reviewsMock from './reviews.mock';
 
 type TEditions = 'rangeEng' | 'rangeRu' | 'goT' | 'LongMars' | 'ArabianN';
 type TEditionsMock = Record<TEditions, Edition>;

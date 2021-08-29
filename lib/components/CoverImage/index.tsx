@@ -1,7 +1,7 @@
 import cn from 'classnames';
-import { useIsSmScreen } from 'lib/hooks';
 import { useSpring, animated } from 'react-spring';
 import { useDrag } from 'react-use-gesture';
+import { useIsSmScreen } from 'lib/hooks';
 
 export interface ICoverImage {
   className?: string;

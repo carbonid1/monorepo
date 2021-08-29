@@ -1,7 +1,7 @@
-import authorsMock from './authors.mock';
-import editionsMock from './editions.mock';
 import getTime from 'date-fns/getTime';
 import type { Book } from 'lib/generated/graphql';
+import authorsMock from './authors.mock';
+import editionsMock from './editions.mock';
 
 type TBook = 'range' | 'goT' | 'LongMars' | 'ArabianN';
 type TBooksMock = Record<TBook, Book>;

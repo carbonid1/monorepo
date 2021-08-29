@@ -1,8 +1,8 @@
 import { CollectionIcon } from '@heroicons/react/solid';
-import { BaseBlock, IBaseBlock } from 'lib/components/@layout/BaseBlock';
 import type { ReactNode } from 'react';
-import { Skeleton } from '../Skeleton';
 import cn from 'classnames';
+import { BaseBlock, IBaseBlock } from 'lib/components/@layout/BaseBlock';
+import { Skeleton } from '../Skeleton';
 
 export interface ILoadingContent extends Pick<IBaseBlock, 'subTitle' | 'title'> {
   className?: string;

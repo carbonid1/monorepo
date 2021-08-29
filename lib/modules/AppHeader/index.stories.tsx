@@ -1,8 +1,8 @@
 import type { Story, Meta } from '@storybook/react';
-import usersMock from 'lib/mocks/users';
 import { Provider as NextAuthProvider } from 'next-auth/client';
-import { AppHeader } from '.';
 import { rest } from 'msw';
+import usersMock from 'lib/mocks/users';
+import { AppHeader } from '.';
 
 export default {
   title: 'modules/AppHeader',

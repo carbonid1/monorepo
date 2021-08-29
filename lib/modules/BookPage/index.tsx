@@ -1,3 +1,5 @@
+import type { GetServerSideProps, NextPage } from 'next';
+import { getSession } from 'next-auth/client';
 import { CustomHead } from 'lib/components/CustomHead';
 import { ROUTE } from 'lib/consts/routes';
 import { Link } from 'lib/components/@controls/Link';
@@ -10,10 +12,8 @@ import {
   useBookPage_EditionQuery,
 } from 'lib/generated/graphql';
 import { NotFound, ServerError } from 'lib/components/@errors';
-import type { GetServerSideProps, NextPage } from 'next';
 import { extractIdFromSlug } from 'lib/utils';
 import { initializeApollo } from 'lib/apollo';
-import { getSession } from 'next-auth/client';
 
 interface IBookPage {
   id: string;

@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import languageService from 'lib/services/language.service';
 import {
   BookReviews_LangReviewsQueryVariables,
@@ -5,7 +6,6 @@ import {
   useBookReviews_LangReviewsQuery,
   useBookReviews_ReviewsQuery,
 } from 'lib/generated/graphql';
-import { useMemo } from 'react';
 import type { ISelect } from 'lib/components/@controls/Select';
 import type { SelectedLanguage } from './interface';
 import { makeLangOptions } from './helpers';
