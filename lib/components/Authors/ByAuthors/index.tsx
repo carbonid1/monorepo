@@ -1,7 +1,9 @@
 import React from 'react';
-import { Authors, IAuthors } from '..';
+import type { ByAuthorsFragment } from 'lib/generated/graphql';
+import { Authors } from '..';
 
-export interface IByAuthors extends Pick<IAuthors, 'authors'> {
+export interface IByAuthors {
+  authors: ByAuthorsFragment['authors'];
   className?: string;
 }
 

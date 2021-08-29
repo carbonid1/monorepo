@@ -1,5 +1,5 @@
 import { getSession } from 'next-auth/client';
-import type { GetServerSideProps } from 'next';
+import type { GetServerSideProps, NextPage } from 'next';
 import { ROUTE } from 'lib/consts/routes';
 import { Link } from 'lib/components/@controls/Link';
 import { Authors } from 'lib/components/Authors';
@@ -7,7 +7,7 @@ import { ServerError } from 'lib/components/@errors';
 import { IndexPage_BooksDocument, useIndexPage_BooksQuery } from 'lib/generated/graphql';
 import { initializeApollo } from 'lib/apollo';
 
-export default function HomePage() {
+const HomePage: NextPage = () => {
   const { data, error } = useIndexPage_BooksQuery();
   const { books = [] } = data ?? {};
 
@@ -25,7 +25,7 @@ export default function HomePage() {
       ))}
     </ul>
   );
-}
+};
 
 export const getServerSideProps: GetServerSideProps = async ctx => {
   const apolloClient = initializeApollo();
@@ -37,3 +37,5 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
     },
   };
 };
+
+export default HomePage;

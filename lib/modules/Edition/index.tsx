@@ -2,19 +2,13 @@ import cn from 'classnames';
 import { CoverImage } from 'lib/components/CoverImage';
 import languageService from 'lib/services/language.service';
 import { formatDate } from 'lib/utils';
-import { ByAuthors, IByAuthors } from 'lib/components/Authors/ByAuthors';
+import { ByAuthors } from 'lib/components/Authors/ByAuthors';
 import { Paragraph } from 'lib/components/@typography/Paragraph';
-import type { Edition as GEdition } from 'lib/generated/graphql';
-
-interface IEdition extends Pick<GEdition, 'title' | 'description' | 'publishedIn' | 'lang' | 'cover'> {
-  book: {
-    authors: IByAuthors['authors'];
-  };
-}
+import type { EditionFragment } from 'lib/generated/graphql';
 
 export interface IEditionProps {
   className?: string;
-  edition: IEdition;
+  edition: EditionFragment;
 }
 
 export const Edition: React.FC<IEditionProps> = ({ className, edition }) => {
