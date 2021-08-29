@@ -1,4 +1,4 @@
-name: General CI
+name: General CI/CD
 
 on:
   push:
