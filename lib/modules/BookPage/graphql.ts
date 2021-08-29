@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client';
-import { EDITION_QUERY } from '../Edition/graphql';
+import { EDITION_FRAGMENT } from '../Edition/graphql';
 
 gql`
   query BookPage_edition($id: ID) {
@@ -7,5 +7,5 @@ gql`
       ...Edition
     }
   }
-  ${EDITION_QUERY}
+  ${EDITION_FRAGMENT}
 `;

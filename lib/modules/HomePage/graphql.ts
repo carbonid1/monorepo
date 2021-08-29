@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client';
-import { AUTHORS_QUERY } from 'lib/components/Authors/graphql';
+import { AUTHORS_FRAGMENT } from 'lib/components/Authors/graphql';
 
 gql`
   query IndexPage_books {
@@ -12,5 +12,5 @@ gql`
       id
     }
   }
-  ${AUTHORS_QUERY}
+  ${AUTHORS_FRAGMENT}
 `;

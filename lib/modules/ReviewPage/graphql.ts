@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client';
-import { AUTHORS_QUERY } from 'lib/components/Authors/graphql';
+import { AUTHORS_FRAGMENT } from 'lib/components/Authors/graphql';
 
 gql`
   query ReviewPage_review($id: ID) {
@@ -13,5 +13,5 @@ gql`
       }
     }
   }
-  ${AUTHORS_QUERY}
+  ${AUTHORS_FRAGMENT}
 `;

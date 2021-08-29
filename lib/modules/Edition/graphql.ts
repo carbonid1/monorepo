@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
-import { BY_AUTHORS_QUERY } from 'lib/components/Authors/ByAuthors/graphql';
+import { BY_AUTHORS_FRAGMENT } from 'lib/components/Authors/ByAuthors/graphql';
 
-export const EDITION_QUERY = gql`
+export const EDITION_FRAGMENT = gql`
   fragment Edition on Edition {
     lang
     title
@@ -13,5 +13,5 @@ export const EDITION_QUERY = gql`
       ...ByAuthors
     }
   }
-  ${BY_AUTHORS_QUERY}
+  ${BY_AUTHORS_FRAGMENT}
 `;

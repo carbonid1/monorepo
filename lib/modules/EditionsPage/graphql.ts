@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client';
-import { BY_AUTHORS_QUERY } from 'lib/components/Authors/ByAuthors/graphql';
+import { BY_AUTHORS_FRAGMENT } from 'lib/components/Authors/ByAuthors/graphql';
 
 gql`
   query EditionsPage_book($id: ID) {
@@ -15,5 +15,5 @@ gql`
       publishedIn
     }
   }
-  ${BY_AUTHORS_QUERY}
+  ${BY_AUTHORS_FRAGMENT}
 `;
