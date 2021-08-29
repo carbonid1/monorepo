@@ -83,6 +83,9 @@ const User = objectType({
     t.int('id');
     t.string('createdAt');
     t.string('updatedAt');
+    t.nullable.string('name');
+    t.nullable.string('emailVerified');
+    t.nullable.string('image');
     t.nullable.string('email');
   },
 });

@@ -94,6 +94,9 @@ export type User = {
   id: Scalars['Int'];
   createdAt: Scalars['String'];
   updatedAt: Scalars['String'];
+  name?: Maybe<Scalars['String']>;
+  emailVerified?: Maybe<Scalars['String']>;
+  image?: Maybe<Scalars['String']>;
   email?: Maybe<Scalars['String']>;
 };
 
