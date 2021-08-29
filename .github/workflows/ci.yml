@@ -43,6 +43,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
+
+      - name: Install Dependencies
         run: npm ci
 
       - uses: chromaui/action@v1
