@@ -1,5 +1,5 @@
-import { CoverImage } from 'lib/components/CoverImage';
 import cn from 'classnames';
+import { CoverImage } from 'lib/components/CoverImage';
 import languageService from 'lib/services/language.service';
 import { formatDate } from 'lib/utils';
 import { ByAuthors, IByAuthors } from 'lib/components/Authors/ByAuthors';

@@ -1,19 +1,19 @@
+import type { GetServerSideProps, NextPage } from 'next';
+import { getSession } from 'next-auth/client';
 import { CustomHead } from 'lib/components/CustomHead';
 import { ROUTE } from 'lib/consts/routes';
 import { Link } from 'lib/components/@controls/Link';
 import { extractIdFromSlug } from 'lib/utils';
 import { Paragraph } from 'lib/components/@typography/Paragraph';
 import { CoverImage } from 'lib/components/CoverImage';
-import hooks from './hooks';
 import { NotFound, ServerError } from 'lib/components/@errors';
-import type { GetServerSideProps, NextPage } from 'next';
 import { initializeApollo } from 'lib/apollo';
 import {
   AuthorPage_AuthorDocument,
   AuthorPage_AuthorQuery,
   AuthorPage_AuthorQueryVariables,
 } from 'lib/generated/graphql';
-import { getSession } from 'next-auth/client';
+import hooks from './hooks';
 
 interface IAuthorPage {
   id: string;

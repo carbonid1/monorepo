@@ -1,7 +1,7 @@
 import type { Story, Meta } from '@storybook/react';
-import { Edition, IEditionProps } from '.';
 import mocks from 'lib/mocks';
 import type { Edition as GEdition } from 'lib/generated/graphql';
+import { Edition, IEditionProps } from '.';
 
 const edition: GEdition = { ...mocks.editions.rangeEng, book: mocks.books.range };
 

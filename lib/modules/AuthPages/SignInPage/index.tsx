@@ -1,6 +1,6 @@
-import { GoogleIcon } from 'lib/icons';
 import type { GetServerSideProps } from 'next';
 import { ClientSafeProvider, getProviders, getSession, signin } from 'next-auth/client';
+import { GoogleIcon } from 'lib/icons';
 
 export interface ISignInPage {
   providers: Record<'google', ClientSafeProvider>;

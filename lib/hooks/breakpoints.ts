@@ -1,5 +1,5 @@
-import { useWindowSize } from './useWindowSize';
 import theme from 'tailwindcss/defaultTheme';
+import { useWindowSize } from './useWindowSize';
 
 export const useIsSmScreen = (): boolean => {
   const windowWidth = Number(useWindowSize().width);

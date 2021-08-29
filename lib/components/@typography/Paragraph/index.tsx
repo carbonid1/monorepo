@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import cn from 'classnames';
-import hooks, { TParagraphEllipsis } from './hooks';
 import { Link } from 'lib/components';
+import hooks, { TParagraphEllipsis } from './hooks';
 
 export interface IParagraph {
   className?: string;

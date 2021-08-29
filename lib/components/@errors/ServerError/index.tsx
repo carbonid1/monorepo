@@ -1,6 +1,6 @@
 import React from 'react';
-import { BaseBlock } from '../../@layout/BaseBlock';
 import Image from 'next/image';
+import { BaseBlock } from '../../@layout/BaseBlock';
 
 export const ServerError: React.FC = () => {
   return (

@@ -1,8 +1,8 @@
 import path from 'path';
-import prisma from '../../prisma';
 import { ApolloServer } from 'apollo-server-micro';
 import { asNexusMethod, idArg, list, makeSchema, nonNull, objectType, stringArg } from 'nexus';
 import { GraphQLDate } from 'graphql-iso-date';
+import prisma from '../../prisma';
 
 export const GQLDate = asNexusMethod(GraphQLDate, 'date');
 

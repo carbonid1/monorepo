@@ -2,12 +2,12 @@ import 'styles/globals.css';
 import { useEffect } from 'react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import { AppHeader } from 'lib/modules/AppHeader';
-import trackingService from 'lib/services/tracking.service';
-import { useApollo } from 'lib/apollo';
 import { ApolloProvider } from '@apollo/client';
 import type { NextPage } from 'next';
 import { Provider as NextAuthProvider } from 'next-auth/client';
+import { AppHeader } from 'lib/modules/AppHeader';
+import trackingService from 'lib/services/tracking.service';
+import { useApollo } from 'lib/apollo';
 
 const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
   const apolloClient = useApollo(pageProps.initialApolloState);

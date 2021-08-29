@@ -1,3 +1,5 @@
+import type { GetServerSideProps, NextPage } from 'next';
+import { getSession } from 'next-auth/client';
 import { CustomHead } from 'lib/components/CustomHead';
 import { Authors } from 'lib/components/Authors';
 import {
@@ -7,9 +9,7 @@ import {
   useReviewPage_ReviewQuery,
 } from 'lib/generated/graphql';
 import { NotFound, ServerError } from 'lib/components/@errors';
-import type { GetServerSideProps, NextPage } from 'next';
 import { initializeApollo } from 'lib/apollo';
-import { getSession } from 'next-auth/client';
 
 interface IReview {
   id: string;
