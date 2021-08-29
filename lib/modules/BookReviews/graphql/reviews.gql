@@ -1,8 +1,0 @@
-query BookReviews_reviews($bookId: ID, $editionId: ID, $lang: String) {
-  reviews(lang: $lang, bookId: $bookId, editionId: $editionId) {
-    body
-    lang
-    id
-    createdAt
-  }
-}
