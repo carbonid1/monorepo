@@ -7,7 +7,6 @@ on:
     types: [synchronize, opened, reopened]
 
 jobs:
-  runs-on: ubuntu-latest
   install-dependencies:
     steps:
       - uses: actions/checkout@v2
