@@ -15,7 +15,10 @@ Default.args = {
     { fullName: 'Stephen Baxter', id: 1 },
     { fullName: 'Terry Pratchett', id: 2 },
   ],
-} as IAuthors;
+};
 
 export const ColumnSuffix = Template.bind({});
-ColumnSuffix.args = { ...Default.args, lastAuthorSuffix: ':' } as IAuthors;
+ColumnSuffix.args = {
+  ...Default.args,
+  lastAuthorSuffix: ':',
+};

@@ -100,6 +100,10 @@ export type User = {
   email?: Maybe<Scalars['String']>;
 };
 
+export type ByAuthorsFragment = { authors: Array<{ id: number; fullName: string }> };
+
+export type AuthorsFragment = { authors: Array<{ id: number; fullName: string }> };
+
 export type AuthorPage_AuthorQueryVariables = Exact<{
   id: Scalars['ID'];
 }>;
@@ -121,11 +125,11 @@ export type BookPage_EditionQueryVariables = Exact<{
 export type BookPage_EditionQuery = {
   edition?: Maybe<{
     lang?: Maybe<string>;
-    cover?: Maybe<string>;
     title: string;
+    cover?: Maybe<string>;
     description?: Maybe<string>;
     publishedIn?: Maybe<string>;
-    book: { id: number; authors: Array<{ fullName: string; id: number }> };
+    book: { id: number; authors: Array<{ id: number; fullName: string }> };
   }>;
 };
 
@@ -146,6 +150,15 @@ export type BookReviews_ReviewsQuery = {
   reviews: Array<{ body: string; lang?: Maybe<string>; id: number; createdAt: string }>;
 };
 
+export type EditionFragment = {
+  lang?: Maybe<string>;
+  title: string;
+  cover?: Maybe<string>;
+  description?: Maybe<string>;
+  publishedIn?: Maybe<string>;
+  book: { id: number; authors: Array<{ id: number; fullName: string }> };
+};
+
 export type EditionsPage_BookQueryVariables = Exact<{
   id?: Maybe<Scalars['ID']>;
 }>;
@@ -153,7 +166,6 @@ export type EditionsPage_BookQueryVariables = Exact<{
 export type EditionsPage_BookQuery = {
   book?: Maybe<{
     publishedIn: string;
-    authors: Array<{ fullName: string; id: number }>;
     editions: Array<{
       description?: Maybe<string>;
       publishedIn?: Maybe<string>;
@@ -161,6 +173,7 @@ export type EditionsPage_BookQuery = {
       lang?: Maybe<string>;
       id: number;
     }>;
+    authors: Array<{ id: number; fullName: string }>;
   }>;
 };
 
@@ -169,8 +182,8 @@ export type IndexPage_BooksQueryVariables = Exact<{ [key: string]: never }>;
 export type IndexPage_BooksQuery = {
   books: Array<{
     id: number;
-    authors: Array<{ fullName: string; id: number }>;
     editions: Array<{ title: string; id: number }>;
+    authors: Array<{ id: number; fullName: string }>;
   }>;
 };
 
@@ -181,10 +194,38 @@ export type ReviewPage_ReviewQueryVariables = Exact<{
 export type ReviewPage_ReviewQuery = {
   review?: Maybe<{
     body: string;
-    edition: { title: string; book: { authors: Array<{ fullName: string; id: number }> } };
+    edition: { title: string; book: { authors: Array<{ id: number; fullName: string }> } };
   }>;
 };
 
+export const AuthorsFragmentDoc = gql`
+  fragment Authors on Book {
+    authors {
+      id
+      fullName
+    }
+  }
+`;
+export const ByAuthorsFragmentDoc = gql`
+  fragment ByAuthors on Book {
+    ...Authors
+  }
+  ${AuthorsFragmentDoc}
+`;
+export const EditionFragmentDoc = gql`
+  fragment Edition on Edition {
+    lang
+    title
+    cover
+    description
+    publishedIn
+    book {
+      id
+      ...ByAuthors
+    }
+  }
+  ${ByAuthorsFragmentDoc}
+`;
 export const AuthorPage_AuthorDocument = gql`
   query AuthorPage_author($id: ID!) {
     author(id: $id) {
@@ -241,20 +282,10 @@ export type AuthorPage_AuthorQueryResult = Apollo.QueryResult<AuthorPage_AuthorQ
 export const BookPage_EditionDocument = gql`
   query BookPage_edition($id: ID) {
     edition(id: $id) {
-      lang
-      cover
-      title
-      description
-      publishedIn
-      book {
-        id
-        authors {
-          fullName
-          id
-        }
-      }
+      ...Edition
     }
   }
+  ${EditionFragmentDoc}
 `;
 
 /**
@@ -393,10 +424,7 @@ export type BookReviews_ReviewsQueryResult = Apollo.QueryResult<
 export const EditionsPage_BookDocument = gql`
   query EditionsPage_book($id: ID) {
     book(id: $id) {
-      authors {
-        fullName
-        id
-      }
+      ...ByAuthors
       editions {
         description
         publishedIn
@@ -407,6 +435,7 @@ export const EditionsPage_BookDocument = gql`
       publishedIn
     }
   }
+  ${ByAuthorsFragmentDoc}
 `;
 
 /**
@@ -446,10 +475,7 @@ export type EditionsPage_BookQueryResult = Apollo.QueryResult<EditionsPage_BookQ
 export const IndexPage_BooksDocument = gql`
   query IndexPage_books {
     books {
-      authors {
-        fullName
-        id
-      }
+      ...Authors
       editions {
         title
         id
@@ -457,6 +483,7 @@ export const IndexPage_BooksDocument = gql`
       id
     }
   }
+  ${AuthorsFragmentDoc}
 `;
 
 /**
@@ -496,14 +523,12 @@ export const ReviewPage_ReviewDocument = gql`
       edition {
         title
         book {
-          authors {
-            fullName
-            id
-          }
+          ...Authors
         }
       }
     }
   }
+  ${AuthorsFragmentDoc}
 `;
 
 /**

@@ -1,11 +1,10 @@
 import React from 'react';
 import { Link } from 'lib/components/@controls/Link';
 import { ROUTE } from 'lib/consts/routes';
-import type { Author } from 'lib/generated/graphql';
+import type { AuthorsFragment } from 'lib/generated/graphql';
 
-type TAuthor = Pick<Author, 'fullName' | 'id'>;
 export interface IAuthors {
-  authors: TAuthor[];
+  authors: AuthorsFragment['authors'];
   lastAuthorSuffix?: string;
 }
 
