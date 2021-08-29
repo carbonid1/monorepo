@@ -1,4 +1,4 @@
-name: General CI
+name: General CI/CD
 
 on:
   push:
@@ -7,13 +7,22 @@ on:
     types: [synchronize, opened, reopened]
 
 jobs:
-  build:
+  code-quality:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
 
       - name: Install Dependencies
         run: npm ci
+
+      - name: Run tests
+        run: npm run test
+
+      - name: Run prettier
+        run: npx prettier --check .
+
+      - name: Run linter
+        run: npm run lint
 
       - name: Build
         run: npm run build
@@ -30,11 +39,16 @@ jobs:
           BUNDLEMON_PROJECT_APIKEY: ${{ secrets.BUNDLEMON_PROJECT_APIKEY }}
           BUNDLEMON_GITHUB_TOKEN: ${{ secrets.BUNDLEMON_GITHUB_TOKEN }}
 
-      - name: Run tests
-        run: npm run test
+  chromatic-deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
 
-      - name: Run prettier
-        run: npx prettier --check .
+      - name: Install Dependencies
+        run: npm ci
 
-      - name: Run linter
-        run: npm run lint
+      - uses: chromaui/action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          exitZeroOnChanges: true # 👈 Option to prevent the workflow from failing
