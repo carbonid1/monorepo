@@ -19,7 +19,7 @@ export const Link: React.FC<ILink> = ({ path, slug, children, className, color =
       <a
         {...props}
         className={cn(
-          'hover:underline cursor-pointer leading-5',
+          'hover:underline cursor-pointer',
           {
             'text-blue-500': color === 'default',
             'text-white': color === 'accent',
