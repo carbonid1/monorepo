@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import cn from 'classnames';
-import { Link } from 'lib/components';
+import { LinkBtn } from 'lib/components';
 import hooks, { TParagraphEllipsis } from './hooks';
 
 export interface IParagraph {
@@ -18,9 +18,9 @@ export const Paragraph: React.FC<IParagraph> = ({ className, children, ellipsis 
         {children}
       </p>
       {isActive && (
-        <Link onClick={onExpand} aria-expanded={expanded}>
+        <LinkBtn onClick={onExpand} aria-expanded={expanded}>
           {expanded ? 'Show less' : 'Read more'}
-        </Link>
+        </LinkBtn>
       )}
     </div>
   );
