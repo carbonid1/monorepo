@@ -1,6 +1,6 @@
 import NextImg from 'next/image';
 import { signIn, signOut, useSession } from 'next-auth/client';
-import { Link } from 'lib/components/@controls/Link';
+import { Link, LinkBtn } from 'lib/components';
 
 export const AppHeader: React.FC = () => {
   const { user } = useSession()[0] ?? {};
@@ -12,9 +12,9 @@ export const AppHeader: React.FC = () => {
           BookHub
         </Link>
         {user?.image && <NextImg className="rounded-full" src={user?.image} alt="profile" height={48} width={48} />}
-        <Link className="ml-4 font-bold" color="accent" onClick={user ? () => signOut() : () => signIn()}>
+        <LinkBtn className="ml-4 font-bold" color="accent" onClick={user ? () => signOut() : () => signIn()}>
           {user ? 'Sign Out' : 'Sign In'}
-        </Link>
+        </LinkBtn>
       </div>
     </div>
   );
