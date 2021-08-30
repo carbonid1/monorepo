@@ -12,7 +12,7 @@ const LinkBtn: FC<LinkBtnProps> = ({ children, className, color = 'default', ...
     <button
       {...props}
       className={cn(
-        'hover:underline cursor-pointer leading-5',
+        'hover:underline cursor-pointer leading-tight',
         {
           'text-blue-500': color === 'default',
           'text-white': color === 'accent',
