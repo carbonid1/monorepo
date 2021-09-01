@@ -1,4 +1,4 @@
-import NextAuth from 'next-auth';
+import NextAuth, { Profile } from 'next-auth';
 import Providers from 'next-auth/providers';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import prisma from '../../../prisma';
@@ -15,6 +15,18 @@ export default NextAuth({
     Providers.Google({
       clientId: process.env.GOOGLE_AUTH_ID,
       clientSecret: process.env.GOOGLE_AUTH_SECRET,
+    }),
+    Providers.GitHub({
+      clientId: process.env.GITHUB_AUTH_ID,
+      clientSecret: process.env.GITHUB_AUTH_SECRET,
+      profile: (profile: Profile & { id: number; login?: string; avatar_url?: string }) => {
+        return {
+          id: profile.id.toString(),
+          name: profile.name || profile.login,
+          email: profile.email,
+          image: profile.avatar_url,
+        };
+      },
     }),
   ],
   pages: {
