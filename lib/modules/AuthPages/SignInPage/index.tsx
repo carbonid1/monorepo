@@ -1,12 +1,17 @@
-import type { GetServerSideProps } from 'next';
+import type { GetServerSideProps, NextPage } from 'next';
 import { ClientSafeProvider, getProviders, getSession, signin } from 'next-auth/client';
 import { GoogleIcon, GitHubIcon, TwitterIcon } from 'lib/icons';
+import { isSSR } from 'lib/utils';
+import { errors } from 'lib/consts/errors';
 
-export interface ISignInPage {
+export interface SignInPageProps {
   providers: Record<'google' | 'github' | 'twitter', ClientSafeProvider>;
+  error: string | undefined;
 }
 
-const SignInPage: React.FC<ISignInPage> = ({ providers }) => {
+const SignInPage: NextPage<SignInPageProps> = ({ providers, error }) => {
+  if (error && !isSSR()) alert(error);
+
   return (
     <div className="flex items-center justify-center flex-1">
       <div className="grid gap-4 p-6 transition-transform duration-300 shadow-md rounded-xl focus-within:shadow-xl focus-within:translate-y-[-4px] focus-within:transform">
@@ -51,6 +56,7 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
   return {
     props: {
       providers: await getProviders(),
+      error: ctx.query.error === 'OAuthAccountNotLinked' ? errors.OAuthAccountNotLinked : null,
     },
   };
 };
