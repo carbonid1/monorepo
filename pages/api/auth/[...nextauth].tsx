@@ -28,6 +28,10 @@ export default NextAuth({
         };
       },
     }),
+    Providers.Twitter({
+      clientId: process.env.TWITTER_AUTH_ID,
+      clientSecret: process.env.TWITTER_AUTH_SECRET,
+    }),
   ],
   pages: {
     signIn: '/auth/sign-in',
