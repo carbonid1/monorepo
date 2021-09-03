@@ -6,8 +6,8 @@ import { ApolloProvider } from '@apollo/client';
 import type { NextPage } from 'next';
 import { Provider as NextAuthProvider } from 'next-auth/client';
 import { AppHeader } from 'lib/modules/AppHeader';
-import trackingService from 'lib/services/tracking.service';
 import { useApollo } from 'lib/apollo';
+import trackingService from 'lib/services/tracking';
 
 const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
   const apolloClient = useApollo(pageProps.initialApolloState);
