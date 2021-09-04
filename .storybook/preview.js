@@ -1,7 +1,8 @@
+import '../styles/globals.css';
 import * as nextImage from 'next/image';
 import { addDecorator } from '@storybook/react';
 import { initializeWorker, mswDecorator } from 'msw-storybook-addon';
-import '../styles/globals.css';
+import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 
 // Mock Service Worker addon
 initializeWorker();
@@ -16,5 +17,8 @@ Object.defineProperty(nextImage, 'default', {
 export const parameters = {
   actions: {
     argTypesRegex: '^on[A-Z].*',
+  },
+  viewport: {
+    viewports: INITIAL_VIEWPORTS,
   },
 };

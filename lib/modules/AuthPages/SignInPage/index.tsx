@@ -18,30 +18,30 @@ const SignInPage: NextPage<SignInPageProps> = ({ providers, error }) => {
       <div className="grid gap-4 p-6 transition-transform duration-300 shadow-md rounded-xl focus-within:shadow-xl focus-within:translate-y-[-4px] focus-within:transform">
         <button
           onClick={() => signin(providers?.twitter.id)}
-          className="flex items-center w-full max-w-xs p-4 text-xl font-medium rounded-xl text-grey-600"
+          className="flex items-center w-full max-w-xs p-4 text-sm font-medium xs:text-xl rounded-xl text-grey-600"
         >
-          <TwitterIcon className="mr-4 text-3xl" />
+          <TwitterIcon className="mr-4 text-xl xs:text-3xl" />
           Continue with Twitter
         </button>
         <button
           onClick={() => signin(providers?.google.id)}
-          className="flex items-center w-full max-w-xs p-4 text-xl font-medium rounded-xl text-grey-600"
+          className="flex items-center w-full max-w-xs p-4 text-sm font-medium xs:text-xl rounded-xl text-grey-600"
         >
-          <GoogleIcon className="mr-4 text-3xl" />
+          <GoogleIcon className="mr-4 text-xl xs:text-3xl" />
           Continue with Google
         </button>
         <button
           onClick={() => signin(providers?.github.id)}
-          className="flex items-center w-full max-w-xs p-4 text-xl font-medium rounded-xl text-grey-600"
+          className="flex items-center w-full max-w-xs p-4 text-sm font-medium xs:text-xl rounded-xl text-grey-600"
         >
-          <GitHubIcon className="mr-4 text-3xl" />
+          <GitHubIcon className="mr-4 text-xl xs:text-3xl" />
           Continue with GitHub
         </button>
         <button
           onClick={() => signin(providers?.facebook.id)}
-          className="flex items-center w-full max-w-xs p-4 text-xl font-medium rounded-xl text-grey-600"
+          className="flex items-center w-full max-w-xs p-4 text-sm font-medium xs:text-xl rounded-xl text-grey-600"
         >
-          <FacebookIcon className="mr-4 text-3xl" />
+          <FacebookIcon className="mr-4 text-xl xs:text-3xl" />
           Continue with Facebook
         </button>
       </div>
