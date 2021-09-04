@@ -1,4 +1,5 @@
 const colors = require('tailwindcss/colors');
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
   purge: ['./{pages,docs,lib}/**/*.{js,ts,jsx,tsx,mdx}'], // list all the folders
@@ -16,6 +17,10 @@ module.exports = {
     zIndex: {
       1: 1,
       header: 2,
+    },
+    screens: {
+      xs: '380px',
+      ...defaultTheme.screens,
     },
   },
   variants: {
