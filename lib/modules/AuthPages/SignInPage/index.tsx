@@ -1,11 +1,12 @@
 import type { GetServerSideProps, NextPage } from 'next';
 import { ClientSafeProvider, getProviders, getSession, signin } from 'next-auth/client';
-import { GoogleIcon, GitHubIcon, TwitterIcon } from 'lib/icons';
+import { GoogleIcon, GitHubIcon, TwitterIcon, FacebookIcon } from 'lib/icons';
 import { isSSR } from 'lib/utils';
 import { errors } from 'lib/consts/errors';
 
+type TSignInProviders = 'google' | 'github' | 'twitter' | 'facebook';
 export interface SignInPageProps {
-  providers: Record<'google' | 'github' | 'twitter', ClientSafeProvider>;
+  providers: Record<TSignInProviders, ClientSafeProvider>;
   error: string | undefined;
 }
 
@@ -21,6 +22,13 @@ const SignInPage: NextPage<SignInPageProps> = ({ providers, error }) => {
         >
           <GoogleIcon className="mr-4 text-2xl" />
           Continue with Google
+        </button>
+        <button
+          onClick={() => signin(providers?.facebook.id)}
+          className="flex items-center w-full max-w-xs p-4 text-xl font-medium rounded-xl text-grey-600"
+        >
+          <FacebookIcon className="mr-4 text-2xl" />
+          Continue with Facebook
         </button>
         <button
           onClick={() => signin(providers?.github.id)}

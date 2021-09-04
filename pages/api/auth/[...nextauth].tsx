@@ -32,6 +32,10 @@ export default NextAuth({
       clientId: process.env.TWITTER_AUTH_ID,
       clientSecret: process.env.TWITTER_AUTH_SECRET,
     }),
+    Providers.Facebook({
+      clientId: process.env.FACEBOOK_AUTH_ID,
+      clientSecret: process.env.FACEBOOK_AUTH_SECRET,
+    }),
   ],
   pages: {
     signIn: '/auth/sign-in',
