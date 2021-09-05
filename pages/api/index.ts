@@ -8,13 +8,12 @@ export const GQLDate = asNexusMethod(GraphQLDate, 'date');
 
 const Author = objectType({
   name: 'Author',
-  nonNullDefaults: { output: true },
   definition(t) {
-    t.int('id');
-    t.string('fullName');
-    t.nullable.string('bio');
-    t.nullable.string('imageUrl');
-    t.list.field('books', {
+    t.string('bio');
+    t.string('imageUrl');
+    t.nonNull.int('id');
+    t.nonNull.string('fullName');
+    t.nonNull.list.nonNull.field('books', {
       type: 'Book',
       resolve: ({ id }) => prisma.author.findUnique({ where: { id } }).books(),
     });

@@ -5,11 +5,11 @@ import NextLink from 'next/link';
 import slugify from 'slugify';
 import { ROUTE } from 'lib/consts/routes';
 import { ServerError } from 'lib/components/@errors';
-import { IndexPage_BooksDocument, useIndexPage_BooksQuery } from 'lib/generated/graphql';
 import { initializeApollo } from 'lib/apollo';
+import gg from 'lib/generated';
 
 const HomePage: NextPage = () => {
-  const { data, error } = useIndexPage_BooksQuery();
+  const { data, error } = gg.useIndexPageBooks();
   const { books = [] } = data ?? {};
 
   if (error) return <ServerError />;
@@ -38,7 +38,7 @@ const HomePage: NextPage = () => {
 
 export const getServerSideProps: GetServerSideProps = async ctx => {
   const apolloClient = initializeApollo();
-  await apolloClient.query({ query: IndexPage_BooksDocument });
+  await apolloClient.query({ query: gg.IndexPageBooksDocument });
   return {
     props: {
       initialApolloState: apolloClient.cache.extract(),

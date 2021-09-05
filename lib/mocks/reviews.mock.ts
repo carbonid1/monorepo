@@ -1,9 +1,9 @@
 import getTime from 'date-fns/getTime';
-import type { Edition, Review } from 'lib/generated/graphql';
+import type gg from 'lib/generated';
 
 type TReviews = 'rangeEng1' | 'rangeRu1' | 'rangeRu2';
-type IInitialMock = Omit<Review, 'edition' | 'id'>;
-type TReviewsMock = Record<TReviews, Review>;
+type IInitialMock = Omit<gg.Review, 'edition' | 'id'>;
+type TReviewsMock = Record<TReviews, gg.Review>;
 
 const initialMock: Record<TReviews, IInitialMock> = {
   rangeEng1: {
@@ -27,12 +27,12 @@ const initialMock: Record<TReviews, IInitialMock> = {
 };
 
 let count = 0;
-const fillMock = (mock: IInitialMock): Review => {
+const fillMock = (mock: IInitialMock): gg.Review => {
   count++;
   return {
     ...mock,
     id: count,
-    edition: {} as Edition,
+    edition: {} as gg.Edition,
     createdAt: getTime(new Date(mock.createdAt)).toString(),
   };
 };

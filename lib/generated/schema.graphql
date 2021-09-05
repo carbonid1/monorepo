@@ -1,0 +1,67 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+type Author {
+  bio: String
+  imageUrl: String
+  id: Int!
+  fullName: String!
+  books: [Book!]!
+}
+
+type Book {
+  authors: [Author!]!
+  editions: [Edition!]!
+  id: Int!
+  publishedIn: String!
+}
+
+"""
+A date string, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar Date
+
+type Edition {
+  book: Book!
+  description: String
+  id: Int!
+  lang: String
+  publishedIn: String
+  reviews: [Review!]!
+  title: String!
+  cover: String
+}
+
+type Mutation {
+  empty: User
+}
+
+type Query {
+  author(id: ID): Author
+  book(id: ID): Book
+  books: [Book!]!
+  edition(id: ID): Edition
+  review(id: ID): Review
+  reviews(bookId: ID, editionId: ID, lang: String): [Review!]!
+}
+
+type Review {
+  id: Int!
+  createdAt: String!
+  updatedAt: String!
+  body: String!
+  edition(id: ID): Edition!
+  lang: String
+}
+
+type User {
+  id: Int!
+  createdAt: String!
+  updatedAt: String!
+  name: String
+  emailVerified: String
+  image: String
+  email: String
+}

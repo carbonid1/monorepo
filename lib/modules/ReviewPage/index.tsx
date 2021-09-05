@@ -2,21 +2,16 @@ import type { GetServerSideProps, NextPage } from 'next';
 import { getSession } from 'next-auth/client';
 import { CustomHead } from 'lib/components/CustomHead';
 import { Authors } from 'lib/components/Authors';
-import {
-  ReviewPage_ReviewDocument,
-  ReviewPage_ReviewQuery,
-  ReviewPage_ReviewQueryVariables,
-  useReviewPage_ReviewQuery,
-} from 'lib/generated/graphql';
 import { NotFound, ServerError } from 'lib/components/@errors';
 import { initializeApollo } from 'lib/apollo';
+import gg from 'lib/generated';
 
 interface IReview {
   id: string;
 }
 
 const Review: NextPage<IReview> = ({ id }) => {
-  const { data, error } = useReviewPage_ReviewQuery({ variables: { id } });
+  const { data, error } = gg.useReviewPageReview({ variables: { id } });
   const { review } = data ?? {};
 
   if (error) return <ServerError />;
@@ -43,8 +38,8 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
   const id = ctx.query.id as string;
 
   const apolloClient = initializeApollo();
-  await apolloClient.query<ReviewPage_ReviewQuery, ReviewPage_ReviewQueryVariables>({
-    query: ReviewPage_ReviewDocument,
+  await apolloClient.query({
+    query: gg.ReviewPageReviewDocument,
     variables: { id },
   });
 

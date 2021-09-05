@@ -1,17 +1,26 @@
 overwrite: true
 schema: 'http://localhost:3000/api'
-documents: './**/graphql.ts'
+documents: './**/*.gql'
 generates:
+  lib/generated/schema.json:
+    plugins:
+      - introspection
+  lib/generated/schema.graphql:
+    plugins:
+      - schema-ast
+    config:
+      includeDirectives: true
   lib/generated/graphql.tsx:
     plugins:
-      - 'typescript'
-      - 'typescript-operations'
-      - 'typescript-react-apollo'
-  ./graphql.schema.json:
-    plugins:
-      - 'introspection'
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
+      - named-operations-object
 config:
   skipTypename: true
+  identifierName: names
+  omitOperationSuffix: true
+  maybeValue: T | null | undefined
 hooks:
   afterAllFileWrite:
     - prettier --write

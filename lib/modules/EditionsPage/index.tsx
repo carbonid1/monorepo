@@ -6,21 +6,16 @@ import { Link } from 'lib/components/@controls/Link';
 import { extractIdFromSlug, formatDate } from 'lib/utils';
 import languageService from 'lib/services/language.service';
 import { ByAuthors } from 'lib/components/Authors/ByAuthors';
-import {
-  EditionsPage_BookDocument,
-  EditionsPage_BookQuery,
-  EditionsPage_BookQueryVariables,
-  useEditionsPage_BookQuery,
-} from 'lib/generated/graphql';
 import { NotFound, ServerError } from 'lib/components/@errors';
 import { initializeApollo } from 'lib/apollo';
+import gg from 'lib/generated';
 
 interface IEditionsPage {
   id: string;
 }
 
 const EditionsPage: NextPage<IEditionsPage> = ({ id }) => {
-  const { data, error } = useEditionsPage_BookQuery({ variables: { id } });
+  const { data, error } = gg.useEditionsPageBook({ variables: { id } });
   const { book } = data ?? {};
 
   if (error) return <ServerError />;
@@ -65,8 +60,8 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
   const id = extractIdFromSlug(slug);
 
   const apolloClient = initializeApollo();
-  await apolloClient.query<EditionsPage_BookQuery, EditionsPage_BookQueryVariables>({
-    query: EditionsPage_BookDocument,
+  await apolloClient.query({
+    query: gg.EditionsPageBookDocument,
     variables: { id },
   });
 

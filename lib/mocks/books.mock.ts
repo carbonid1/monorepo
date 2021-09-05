@@ -1,10 +1,10 @@
 import getTime from 'date-fns/getTime';
-import type { Book } from 'lib/generated/graphql';
+import type gg from 'lib/generated';
 import authorsMock from './authors.mock';
 import editionsMock from './editions.mock';
 
 type TBook = 'range' | 'goT' | 'LongMars' | 'ArabianN';
-type TBooksMock = Record<TBook, Book>;
+type TBooksMock = Record<TBook, gg.Book>;
 
 const booksMock: TBooksMock = {
   range: {

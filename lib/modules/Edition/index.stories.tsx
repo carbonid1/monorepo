@@ -1,9 +1,9 @@
 import type { Story, Meta } from '@storybook/react';
+import type gg from 'lib/generated';
 import mocks from 'lib/mocks';
-import type { Edition as GEdition } from 'lib/generated/graphql';
 import { Edition, IEditionProps } from '.';
 
-const edition: GEdition = { ...mocks.editions.rangeEng, book: mocks.books.range };
+const edition: gg.Edition = { ...mocks.editions.rangeEng, book: mocks.books.range };
 
 export default {
   title: 'modules/Edition',
