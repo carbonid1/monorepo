@@ -1,4 +1,4 @@
-import type { Book, Edition } from 'lib/generated/graphql';
+import type gg from 'lib/generated';
 
 interface SelectedLanguageOption {
   count: number;
@@ -10,6 +10,6 @@ export type LangOptions = SelectedLanguageOption[];
 export type SelectedLanguage = SelectedLanguageOption['lang'] | null;
 
 export interface BookReviewsProps {
-  bookId: Book['id'];
-  editionId: Edition['id'];
+  bookId: gg.Book['id'];
+  editionId: gg.Edition['id'];
 }

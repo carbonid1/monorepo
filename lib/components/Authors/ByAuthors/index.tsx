@@ -1,9 +1,9 @@
 import React from 'react';
-import type { ByAuthorsFragment } from 'lib/generated/graphql';
+import type gg from 'lib/generated';
 import { Authors } from '..';
 
 export interface IByAuthors {
-  authors: ByAuthorsFragment['authors'];
+  authors: gg.ByAuthorsFragment['authors'];
   className?: string;
 }
 

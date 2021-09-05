@@ -1,7 +1,7 @@
-import type { Author } from 'lib/generated/graphql';
+import type gg from 'lib/generated';
 
 type TAuthors = 'EpsteinD' | 'MartinG' | 'PratchettT' | 'BaxterS';
-type IInitialMock = Omit<Author, 'books' | 'id'>;
+type IInitialMock = Omit<gg.Author, 'books' | 'id'>;
 
 const initialMock: Record<TAuthors, IInitialMock> = {
   EpsteinD: {
@@ -26,12 +26,12 @@ const initialMock: Record<TAuthors, IInitialMock> = {
 };
 
 let count = 0;
-const fillMock = (mock: IInitialMock): Author => {
+const fillMock = (mock: IInitialMock): gg.Author => {
   count++;
   return { ...mock, books: [], id: count };
 };
 
-const authorsMock: Record<TAuthors, Author> = {
+const authorsMock: Record<TAuthors, gg.Author> = {
   EpsteinD: fillMock(initialMock.EpsteinD),
   MartinG: fillMock(initialMock.MartinG),
   PratchettT: fillMock(initialMock.PratchettT),

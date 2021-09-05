@@ -8,19 +8,14 @@ import { Paragraph } from 'lib/components/@typography/Paragraph';
 import { CoverImage } from 'lib/components/CoverImage';
 import { NotFound, ServerError } from 'lib/components/@errors';
 import { initializeApollo } from 'lib/apollo';
-import {
-  AuthorPage_AuthorDocument,
-  AuthorPage_AuthorQuery,
-  AuthorPage_AuthorQueryVariables,
-} from 'lib/generated/graphql';
-import hooks from './hooks';
+import gg from 'lib/generated';
 
 interface IAuthorPage {
   id: string;
 }
 
 const AuthorPage: NextPage<IAuthorPage> = ({ id }) => {
-  const { data, loading, error } = hooks.useAuthorQuery(id);
+  const { data, loading, error } = gg.useAuthorPageAuthor({ variables: { id }, skip: !id });
   const { author } = data ?? {};
 
   if (loading) return null;
@@ -64,8 +59,8 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
   const id = extractIdFromSlug(slug);
 
   const apolloClient = initializeApollo();
-  await apolloClient.query<AuthorPage_AuthorQuery, AuthorPage_AuthorQueryVariables>({
-    query: AuthorPage_AuthorDocument,
+  await apolloClient.query({
+    query: gg.AuthorPageAuthorDocument,
     variables: { id },
   });
 

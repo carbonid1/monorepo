@@ -5,22 +5,17 @@ import { ROUTE } from 'lib/consts/routes';
 import { Link } from 'lib/components/@controls/Link';
 import { BookReviews } from 'lib/modules/BookReviews';
 import { Edition } from 'lib/modules/Edition';
-import {
-  BookPage_EditionDocument,
-  BookPage_EditionQuery,
-  BookPage_EditionQueryVariables,
-  useBookPage_EditionQuery,
-} from 'lib/generated/graphql';
 import { NotFound, ServerError } from 'lib/components/@errors';
 import { extractIdFromSlug } from 'lib/utils';
 import { initializeApollo } from 'lib/apollo';
+import gg from 'lib/generated';
 
 interface IBookPage {
   id: string;
 }
 
 const BookPage: NextPage<IBookPage> = ({ id }) => {
-  const { data, error } = useBookPage_EditionQuery({ variables: { id } });
+  const { data, error } = gg.useBookPageEdition({ variables: { id } });
   const { edition } = data ?? {};
 
   if (error) return <ServerError />;
@@ -47,8 +42,8 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
   const id = extractIdFromSlug(slug);
 
   const apolloClient = initializeApollo();
-  await apolloClient.query<BookPage_EditionQuery, BookPage_EditionQueryVariables>({
-    query: BookPage_EditionDocument,
+  await apolloClient.query({
+    query: gg.BookPageEditionDocument,
     variables: { id },
   });
 

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'lib/components/@controls/Link';
 import { ROUTE } from 'lib/consts/routes';
-import type { AuthorsFragment } from 'lib/generated/graphql';
+import type gg from 'lib/generated';
 
 export interface IAuthors {
-  authors: AuthorsFragment['authors'];
+  authors: gg.AuthorsFragment['authors'];
   lastAuthorSuffix?: string;
 }
 

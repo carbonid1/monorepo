@@ -4,11 +4,11 @@ import languageService from 'lib/services/language.service';
 import { formatDate } from 'lib/utils';
 import { ByAuthors } from 'lib/components/Authors/ByAuthors';
 import { Paragraph } from 'lib/components/@typography/Paragraph';
-import type { EditionFragment } from 'lib/generated/graphql';
+import type gg from 'lib/generated';
 
 export interface IEditionProps {
   className?: string;
-  edition: EditionFragment;
+  edition: gg.EditionFragment;
 }
 
 export const Edition: React.FC<IEditionProps> = ({ className, edition }) => {

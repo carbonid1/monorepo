@@ -1,7 +1,7 @@
-import type { Review } from 'lib/generated/graphql';
+import type gg from 'lib/generated';
 import type { LangOptions } from './interface';
 
-type IReview = Pick<Review, 'lang'>;
+type IReview = Pick<gg.Review, 'lang'>;
 
 export const makeLangOptions = (reviews: IReview[] = []): LangOptions => {
   return reviews.reduce((acc: LangOptions, { lang }) => {
