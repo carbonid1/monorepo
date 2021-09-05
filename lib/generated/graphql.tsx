@@ -139,7 +139,7 @@ export type BookReviewsVariables = Exact<{
   lang?: Maybe<Scalars['String']>;
 }>;
 
-export type BookReviews = { reviews: Array<{ body: string; lang?: Maybe<string>; id: number; createdAt: string }> };
+export type BookReviews = { reviews: Array<{ id: number; body: string; lang?: Maybe<string>; createdAt: string }> };
 
 export type BookReviewsLanguagesVariables = Exact<{
   bookId?: Maybe<Scalars['ID']>;
@@ -309,9 +309,9 @@ export type BookPageEditionQueryResult = Apollo.QueryResult<BookPageEdition, Boo
 export const BookReviewsDocument = gql`
   query BookReviews($bookId: ID, $editionId: ID, $lang: String) {
     reviews(lang: $lang, bookId: $bookId, editionId: $editionId) {
+      id
       body
       lang
-      id
       createdAt
     }
   }
