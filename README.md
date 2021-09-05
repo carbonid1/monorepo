@@ -2,7 +2,7 @@
 
 [DB Diagram](https://drawsql.app/coriander/diagrams/bookhub#)
 
-#### Download Development .env:
+#### Download .env for dev environment:
 
 ```bash
 vercel env pull
