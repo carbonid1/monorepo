@@ -180,11 +180,7 @@ export type EditionsPage_BookQuery = {
 export type IndexPage_BooksQueryVariables = Exact<{ [key: string]: never }>;
 
 export type IndexPage_BooksQuery = {
-  books: Array<{
-    id: number;
-    editions: Array<{ title: string; id: number }>;
-    authors: Array<{ id: number; fullName: string }>;
-  }>;
+  books: Array<{ id: number; editions: Array<{ id: number; title: string; cover?: Maybe<string> }> }>;
 };
 
 export type ReviewPage_ReviewQueryVariables = Exact<{
@@ -475,15 +471,14 @@ export type EditionsPage_BookQueryResult = Apollo.QueryResult<EditionsPage_BookQ
 export const IndexPage_BooksDocument = gql`
   query IndexPage_books {
     books {
-      ...Authors
-      editions {
-        title
-        id
-      }
       id
+      editions {
+        id
+        title
+        cover
+      }
     }
   }
-  ${AuthorsFragmentDoc}
 `;
 
 /**

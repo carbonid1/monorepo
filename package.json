@@ -9,6 +9,7 @@
     "reset_db": "npx prisma migrate reset --force --preview-feature",
     "nexus_gen": "npm -s run generate:prisma && npm -s run generate:nexus",
     "gql_gen": "graphql-codegen --config codegen.yml",
+    "gql_gen:watch": "graphql-codegen --config codegen.yml --watch",
     "storybook": "start-storybook -s ./public -p 6006",
     "upgrade_storybook": "npm i -D @storybook/addon-postcss@latest @storybook/react@latest @storybook/addon-links@latest @storybook/addon-essentials@latest @storybook/addon-a11y@latest",
     "test": "jest",

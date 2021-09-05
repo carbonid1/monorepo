@@ -11,4 +11,7 @@ Default.args = {
 };
 
 export const MissingSource = Template.bind({});
-MissingSource.args = { ...Default.args, src: undefined };
+MissingSource.args = {
+  ...Default.args,
+  src: undefined,
+};
