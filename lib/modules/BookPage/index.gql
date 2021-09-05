@@ -1,4 +1,4 @@
-query BookPage_edition($id: ID) {
+query BookPageEdition($id: ID) {
   edition(id: $id) {
     ...EditionFragment
   }

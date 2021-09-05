@@ -118,11 +118,11 @@ export type AuthorPageAuthor = {
   }>;
 };
 
-export type BookPage_EditionVariables = Exact<{
+export type BookPageEditionVariables = Exact<{
   id?: Maybe<Scalars['ID']>;
 }>;
 
-export type BookPage_Edition = {
+export type BookPageEdition = {
   edition?: Maybe<{
     lang?: Maybe<string>;
     title: string;
@@ -268,8 +268,8 @@ export function useAuthorPageAuthorLazyQuery(
 export type AuthorPageAuthorHookResult = ReturnType<typeof useAuthorPageAuthor>;
 export type AuthorPageAuthorLazyQueryHookResult = ReturnType<typeof useAuthorPageAuthorLazyQuery>;
 export type AuthorPageAuthorQueryResult = Apollo.QueryResult<AuthorPageAuthor, AuthorPageAuthorVariables>;
-export const BookPage_EditionDocument = gql`
-  query BookPage_edition($id: ID) {
+export const BookPageEditionDocument = gql`
+  query BookPageEdition($id: ID) {
     edition(id: $id) {
       ...EditionFragment
     }
@@ -278,36 +278,34 @@ export const BookPage_EditionDocument = gql`
 `;
 
 /**
- * __useBookPage_Edition__
+ * __useBookPageEdition__
  *
- * To run a query within a React component, call `useBookPage_Edition` and pass it any options that fit your needs.
- * When your component renders, `useBookPage_Edition` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useBookPageEdition` and pass it any options that fit your needs.
+ * When your component renders, `useBookPageEdition` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useBookPage_Edition({
+ * const { data, loading, error } = useBookPageEdition({
  *   variables: {
  *      id: // value for 'id'
  *   },
  * });
  */
-export function useBookPage_Edition(
-  baseOptions?: Apollo.QueryHookOptions<BookPage_Edition, BookPage_EditionVariables>,
+export function useBookPageEdition(baseOptions?: Apollo.QueryHookOptions<BookPageEdition, BookPageEditionVariables>) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<BookPageEdition, BookPageEditionVariables>(BookPageEditionDocument, options);
+}
+export function useBookPageEditionLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<BookPageEdition, BookPageEditionVariables>,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<BookPage_Edition, BookPage_EditionVariables>(BookPage_EditionDocument, options);
+  return Apollo.useLazyQuery<BookPageEdition, BookPageEditionVariables>(BookPageEditionDocument, options);
 }
-export function useBookPage_EditionLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<BookPage_Edition, BookPage_EditionVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<BookPage_Edition, BookPage_EditionVariables>(BookPage_EditionDocument, options);
-}
-export type BookPage_EditionHookResult = ReturnType<typeof useBookPage_Edition>;
-export type BookPage_EditionLazyQueryHookResult = ReturnType<typeof useBookPage_EditionLazyQuery>;
-export type BookPage_EditionQueryResult = Apollo.QueryResult<BookPage_Edition, BookPage_EditionVariables>;
+export type BookPageEditionHookResult = ReturnType<typeof useBookPageEdition>;
+export type BookPageEditionLazyQueryHookResult = ReturnType<typeof useBookPageEditionLazyQuery>;
+export type BookPageEditionQueryResult = Apollo.QueryResult<BookPageEdition, BookPageEditionVariables>;
 export const BookReviewsDocument = gql`
   query BookReviews($bookId: ID, $editionId: ID, $lang: String) {
     reviews(lang: $lang, bookId: $bookId, editionId: $editionId) {
@@ -529,7 +527,7 @@ export type ReviewPageReviewQueryResult = Apollo.QueryResult<ReviewPageReview, R
 export const names = {
   Query: {
     AuthorPageAuthor: 'AuthorPageAuthor',
-    BookPage_edition: 'BookPage_edition',
+    BookPageEdition: 'BookPageEdition',
     BookReviews: 'BookReviews',
     BookReviewsLanguages: 'BookReviewsLanguages',
     EditionsPageBook: 'EditionsPageBook',

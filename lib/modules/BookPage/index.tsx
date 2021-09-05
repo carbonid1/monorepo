@@ -15,7 +15,7 @@ interface IBookPage {
 }
 
 const BookPage: NextPage<IBookPage> = ({ id }) => {
-  const { data, error } = gg.useBookPage_Edition({ variables: { id } });
+  const { data, error } = gg.useBookPageEdition({ variables: { id } });
   const { edition } = data ?? {};
 
   if (error) return <ServerError />;
@@ -43,7 +43,7 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
 
   const apolloClient = initializeApollo();
   await apolloClient.query({
-    query: gg.BookPage_EditionDocument,
+    query: gg.BookPageEditionDocument,
     variables: { id },
   });
 
