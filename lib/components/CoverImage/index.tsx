@@ -29,7 +29,10 @@ export const CoverImage: React.FC<ICoverImage> = ({ src, alt, className }) => {
       alt={alt}
       src={src || undefined}
       style={{ scale, x, y }}
-      className={cn('cursor-pointer w-full sm:w-40 z-1 object-contain', className)}
+      className={cn(
+        'cursor-pointer w-full sm:w-40 z-1 object-contain rounded transition-shadow duration-500 hover:shadow-lg',
+        className,
+      )}
     />
   );
 };

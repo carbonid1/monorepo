@@ -13,9 +13,10 @@ module.exports = withBundleAnalyzer(
     },
     images: {
       domains: [
+        'abs.twimg.com',
+        'res.cloudinary.com',
         'lh3.googleusercontent.com',
         'avatars.githubusercontent.com',
-        'abs.twimg.com',
         'platform-lookaside.fbsbx.com',
       ],
     },
