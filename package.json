@@ -15,6 +15,7 @@
     "test": "jest",
     "ts": "tsc --noEmit",
     "analyze": "ANALYZE=true next dev",
+    "analyz-2": "ANALYZE=true NODE_ENV=production next build && node scripts/analyze-bundles.js",
     "✋___comment__✋": "internal scripts ⏬",
     "build": "next build",
     "start": "next start",
