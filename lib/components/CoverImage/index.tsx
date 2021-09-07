@@ -16,8 +16,6 @@ export const CoverImage: React.FC<ICoverImage> = ({ src, alt, className }) => {
     if (isSmScreen)
       api.start({
         to: {
-          x: active ? '50%' : '0%',
-          y: active ? '50%' : '0%',
           scale: active ? 2 : 1,
         },
       });
@@ -30,7 +28,7 @@ export const CoverImage: React.FC<ICoverImage> = ({ src, alt, className }) => {
       src={src || undefined}
       style={{ scale, x, y }}
       className={cn(
-        'cursor-pointer w-full sm:w-40 z-1 object-contain rounded transition-shadow duration-500 hover:shadow-lg',
+        'origin-top-left cursor-pointer w-full sm:w-40 z-1 object-contain rounded transition-shadow duration-500 hover:shadow-lg',
         className,
       )}
     />
