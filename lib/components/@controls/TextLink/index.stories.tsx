@@ -1,13 +1,13 @@
 import React from 'react';
 import type { Story, Meta } from '@storybook/react';
-import { ILink, Link } from '.';
+import TextLink, { TextLinkProps } from '.';
 
 export default {
   title: '@controls/Link',
-  component: Link,
+  component: TextLink,
 } as Meta;
 
-const Template: Story<ILink> = args => <Link {...args} />;
+const Template: Story<TextLinkProps> = args => <TextLink {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

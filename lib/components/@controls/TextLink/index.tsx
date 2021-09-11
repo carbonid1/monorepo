@@ -5,13 +5,13 @@ import cn from 'classnames';
 
 type ReactAnchor = JSX.IntrinsicElements['a'];
 type Color = 'default' | 'accent';
-export interface ILink extends ReactAnchor {
+export interface TextLinkProps extends ReactAnchor {
   path: string;
   slug?: string;
   color?: Color;
 }
 
-export const Link: React.FC<ILink> = ({ path, slug, children, className, color = 'default', ...props }) => {
+const TextLink: React.FC<TextLinkProps> = ({ path, slug, children, className, color = 'default', ...props }) => {
   const href = slug ? `${path}.${slugify(slug, { lower: false })}` : path;
 
   return (
@@ -32,3 +32,5 @@ export const Link: React.FC<ILink> = ({ path, slug, children, className, color =
     </NextLink>
   );
 };
+
+export default TextLink;

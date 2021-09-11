@@ -2,7 +2,7 @@ import type { GetServerSideProps, NextPage } from 'next';
 import { getSession } from 'next-auth/client';
 import { CustomHead } from 'lib/components/CustomHead';
 import { ROUTE } from 'lib/consts/routes';
-import { Link } from 'lib/components/@controls/Link';
+import { TextLink } from 'lib/components';
 import { BookReviews } from 'lib/modules/BookReviews';
 import { Edition } from 'lib/modules/Edition';
 import { NotFound, ServerError } from 'lib/components/@errors';
@@ -28,9 +28,9 @@ const BookPage: NextPage<IBookPage> = ({ id }) => {
       <CustomHead title={edition.title} description={edition.description} />
       <div>
         <Edition edition={edition} className="mb-2" />
-        <Link path={`/${ROUTE.editions}/${book.id}`} slug={edition.title}>
+        <TextLink path={`/${ROUTE.editions}/${book.id}`} slug={edition.title}>
           All Editions
-        </Link>
+        </TextLink>
         <BookReviews bookId={book.id} editionId={Number(id)} />
       </div>
     </div>
