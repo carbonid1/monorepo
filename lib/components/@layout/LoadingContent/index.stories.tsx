@@ -37,8 +37,8 @@ CustomLoader.args = {
   ),
 };
 
-export const InitiallyLoadedLoading = Template.bind({});
-InitiallyLoadedLoading.args = {
+export const LoadingMore = Template.bind({});
+LoadingMore.args = {
   ...Loading.args,
   initiallyLoaded: true,
 };
