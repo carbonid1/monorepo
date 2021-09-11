@@ -6,8 +6,30 @@ const vars = css`
   }
 `;
 
+const base = css`
+  html,
+  body,
+  #__next {
+    height: 100%;
+  }
+
+  #__next {
+    display: flex;
+    flex-direction: column;
+  }
+
+  a,
+  ul,
+  button {
+    &:focus {
+      outline: none;
+    }
+  }
+`;
+
 const GlobalStyles = createGlobalStyle`
   ${vars}
+  ${base}
 `;
 
 export default GlobalStyles;
