@@ -33,10 +33,9 @@ const base = css`
   }
 
   a,
-  ul,
   button {
     &:focus {
-      outline: none;
+      /* outline: none; */
     }
   }
 `;
