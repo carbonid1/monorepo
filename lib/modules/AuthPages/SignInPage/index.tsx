@@ -39,7 +39,7 @@ const SignInPage: NextPage<SignInPageProps> = ({ providers, error }) => {
         </button>
         <button
           onClick={() => signin(providers?.facebook.id)}
-          className="flex items-center w-full max-w-xs p-4 text-sm font-medium xs:text-xl rounded-xl text-grey-600"
+          className="flex items-center w-full max-w-xs p-4 text-xs font-medium xs:text-xl rounded-xl text-grey-600"
         >
           <FacebookIcon className="mr-4 text-xl xs:text-3xl" />
           Continue with Facebook
