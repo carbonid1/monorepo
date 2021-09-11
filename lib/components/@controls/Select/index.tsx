@@ -14,7 +14,7 @@ export interface ISelect<V> {
   onChange: (value: ISelectOption<V>['value']) => void;
 }
 
-export const Select = <V,>({ options, placeholder = 'Select an Option', onChange, value }: ISelect<V>): JSX.Element => {
+export const Select = <V,>({ value, options, onChange, placeholder = 'Select an Option' }: ISelect<V>): JSX.Element => {
   const selectedOption = useMemo(() => {
     return options.find(option => option.value === value);
   }, [options, value]);

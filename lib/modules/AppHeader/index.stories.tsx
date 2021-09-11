@@ -7,6 +7,9 @@ import { AppHeader } from '.';
 export default {
   title: 'modules/AppHeader',
   component: AppHeader,
+  parameters: {
+    layout: 'fullscreen',
+  },
 } as Meta;
 
 const Template: Story = args => (

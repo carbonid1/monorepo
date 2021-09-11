@@ -1,8 +1,31 @@
 import type { Story, Meta } from '@storybook/react';
+import AppWrapper from 'lib/components/AppWrapper';
+import { SignedOut } from '../../AppHeader/index.stories';
 import SignInPage, { SignInPageProps } from '.';
 
-export default { title: 'modules/SignInPage', component: SignInPage } as Meta;
-const Template: Story<SignInPageProps> = props => <SignInPage {...props} />;
+export default {
+  title: 'modules/SignInPage',
+  component: SignInPage,
+  parameters: {
+    chromatic: { viewports: [320, 414, 1200] },
+    layout: 'fullscreen',
+  },
+} as Meta;
+
+const Template: Story<SignInPageProps> = props => (
+  <div
+    style={{
+      height: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+    }}
+  >
+    <SignedOut />
+    <AppWrapper>
+      <SignInPage {...props} />
+    </AppWrapper>
+  </div>
+);
 
 export const Default = Template.bind({});
 Default.args = {
@@ -37,19 +60,6 @@ Default.args = {
     },
   },
 };
-
-export const Apple6Plus = Template.bind({});
-Apple6Plus.args = {
-  ...Default.args,
-};
-Apple6Plus.parameters = {
-  viewport: { defaultViewport: 'iphone6p' },
-};
-
-export const Apple5 = Template.bind({});
-Apple5.args = {
-  ...Default.args,
-};
-Apple5.parameters = {
-  viewport: { defaultViewport: 'iphone5' },
+Default.parameters = {
+  ...SignedOut.parameters,
 };

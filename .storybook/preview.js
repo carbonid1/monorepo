@@ -1,11 +1,11 @@
 import '../styles/globals.css';
 import * as nextImage from 'next/image';
 import { addDecorator } from '@storybook/react';
-import { initializeWorker, mswDecorator } from 'msw-storybook-addon';
+import { initialize, mswDecorator } from 'msw-storybook-addon';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 
 // Mock Service Worker addon
-initializeWorker();
+initialize();
 addDecorator(mswDecorator);
 
 // use <img> instead of Next.js <Image />

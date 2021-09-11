@@ -8,6 +8,7 @@ import { Provider as NextAuthProvider } from 'next-auth/client';
 import { AppHeader } from 'lib/modules/AppHeader';
 import { useApollo } from 'lib/apollo';
 import trackingService from 'lib/services/tracking';
+import AppWrapper from 'lib/components/AppWrapper';
 
 const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
   const apolloClient = useApollo(pageProps.initialApolloState);
@@ -37,9 +38,9 @@ const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <AppHeader />
-        <div className="flex flex-col flex-1 w-full max-w-5xl p-4 mx-auto">
+        <AppWrapper>
           <Component {...pageProps} />
-        </div>
+        </AppWrapper>
       </ApolloProvider>
     </NextAuthProvider>
   );
