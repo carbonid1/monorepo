@@ -1,53 +1,39 @@
 import React, { MouseEventHandler } from 'react';
 import NextLink from 'next/link';
 import slugify from 'slugify';
-import cn from 'classnames';
+import $ from './styled';
 
-type ReactAnchor = JSX.IntrinsicElements['a'];
+type ReactAnchor = JSX.IntrinsicElements['button'];
 type Color = 'default' | 'accent';
 export interface TextLinkProps {
   className?: ReactAnchor['className'];
+  style?: ReactAnchor['style'];
   onClick?: MouseEventHandler;
   path?: string;
   slug?: string;
   color?: Color;
 }
 
-const TextLink: React.FC<TextLinkProps> = ({ path, slug, children, className, color = 'default', ...props }) => {
+const TextLink: React.FC<TextLinkProps> = ({ path, slug, children, color = 'default', ...props }) => {
+  const style = {
+    ...props.style,
+    '--color': color === 'default' ? 'rgba(14, 165, 233, 1)' : 'white',
+  };
+
   if (!path) {
     return (
-      <button
-        {...props}
-        className={cn(
-          'hover:underline cursor-pointer leading-tight',
-          {
-            'text-blue-500': color === 'default',
-            'text-white': color === 'accent',
-          },
-          className,
-        )}
-      >
+      <$.Button {...props} style={style}>
         {children}
-      </button>
+      </$.Button>
     );
   } else {
     const href = slug ? `${path}.${slugify(slug, { lower: false })}` : path;
 
     return (
       <NextLink href={href}>
-        <a
-          {...props}
-          className={cn(
-            'hover:underline cursor-pointer',
-            {
-              'text-blue-500': color === 'default',
-              'text-white': color === 'accent',
-            },
-            className,
-          )}
-        >
+        <$.AnchorButton {...props} as="a" href={href} style={style}>
           {children}
-        </a>
+        </$.AnchorButton>
       </NextLink>
     );
   }
