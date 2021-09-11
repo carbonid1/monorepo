@@ -26,13 +26,13 @@ const BookPage: NextPage<IBookPage> = ({ id }) => {
   return (
     <>
       <CustomHead title={edition.title} description={edition.description} />
-      <>
+      <div>
         <Edition edition={edition} className="mb-2" />
         <TextLink path={`/${ROUTE.editions}/${book.id}`} slug={edition.title}>
           All Editions
         </TextLink>
         <BookReviews bookId={book.id} editionId={Number(id)} />
-      </>
+      </div>
     </>
   );
 };
