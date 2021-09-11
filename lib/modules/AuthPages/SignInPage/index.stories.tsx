@@ -1,4 +1,6 @@
 import type { Story, Meta } from '@storybook/react';
+import AppWrapper from 'lib/components/AppWrapper';
+import { SignedOut } from '../../AppHeader/index.stories';
 import SignInPage, { SignInPageProps } from '.';
 
 export default {
@@ -6,9 +8,24 @@ export default {
   component: SignInPage,
   parameters: {
     chromatic: { viewports: [320, 414, 1200] },
+    layout: 'fullscreen',
   },
 } as Meta;
-const Template: Story<SignInPageProps> = props => <SignInPage {...props} />;
+
+const Template: Story<SignInPageProps> = props => (
+  <div
+    style={{
+      height: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+    }}
+  >
+    <SignedOut />
+    <AppWrapper>
+      <SignInPage {...props} />
+    </AppWrapper>
+  </div>
+);
 
 export const Default = Template.bind({});
 Default.args = {
