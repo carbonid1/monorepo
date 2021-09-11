@@ -60,3 +60,6 @@ Default.args = {
     },
   },
 };
+Default.parameters = {
+  ...SignedOut.parameters,
+};
