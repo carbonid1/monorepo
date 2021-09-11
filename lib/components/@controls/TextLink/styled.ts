@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
 const ButtonBase = styled.button`
-  color: var(--color);
-  box-shadow: 0 0 0 var(--color);
+  color: var(--color-primary);
+  box-shadow: 0 0 0 var(--color-primary);
   transition: box-shadow 400ms;
 
   &:hover {
-    box-shadow: 0 2px 0 var(--color);
+    box-shadow: 0 2px 0 var(--color-primary);
     transition-duration: 100ms;
   }
 `;
