@@ -3,6 +3,7 @@ import * as nextImage from 'next/image';
 import { addDecorator } from '@storybook/react';
 import { initialize, mswDecorator } from 'msw-storybook-addon';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
+import GlobalStyles from '../styles/GlobalStyles';
 
 // Mock Service Worker addon
 initialize();
@@ -22,3 +23,12 @@ export const parameters = {
     viewports: INITIAL_VIEWPORTS,
   },
 };
+
+export const decorators = [
+  Story => (
+    <>
+      <GlobalStyles />
+      <Story />
+    </>
+  ),
+];
