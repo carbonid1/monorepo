@@ -11,6 +11,7 @@ const Root = styled.div`
   justify-items: center;
   width: 100%;
   height: 4rem;
+  z-index: 2;
 `;
 
 const Inner = styled.div`

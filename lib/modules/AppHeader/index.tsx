@@ -5,7 +5,7 @@ export const AppHeader: React.FC = () => {
   const { user } = useSession()[0] ?? {};
 
   return (
-    <$.Root className="z-header">
+    <$.Root>
       <$.Inner>
         <$.LogoLink path="/">BookHub</$.LogoLink>
         {user?.image && <$.Img src={user?.image} alt="profile" height={48} width={48} />}
