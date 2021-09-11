@@ -4,6 +4,7 @@ const vars = css`
   :root {
     --opacity: 1;
     --font-bold: 700;
+    --font-medium: 500;
     --color-primary: rgba(13, 162, 231, var(--opacity));
     --color-text: rgba(14, 20, 27, var(--opacity));
     --color-background: rgba(255, 255, 255, var(--opacity));

@@ -2,6 +2,7 @@ import React, { Fragment, useMemo } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid';
 import cn from 'classnames';
+import $ from './styled';
 
 interface ISelectOption<V> {
   label: string;
@@ -21,7 +22,7 @@ export const Select = <V,>({ value, options, onChange, placeholder = 'Select an 
 
   return (
     <Listbox value={value} onChange={onChange}>
-      <div className="relative w-52">
+      <$.InnerWrapper>
         <Listbox.Button className="relative w-full py-2 pl-3 pr-10 text-left bg-white rounded-lg shadow-md cursor-default sm:text-sm">
           {selectedOption ? (
             <span className="block truncate">{selectedOption.label}</span>
@@ -61,7 +62,7 @@ export const Select = <V,>({ value, options, onChange, placeholder = 'Select an 
             ))}
           </Listbox.Options>
         </Transition>
-      </div>
+      </$.InnerWrapper>
     </Listbox>
   );
 };

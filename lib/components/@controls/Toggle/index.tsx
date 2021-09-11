@@ -1,5 +1,6 @@
 import cn from 'classnames';
 import { Switch } from '@headlessui/react';
+import $ from './styled';
 
 export interface IToggle {
   className?: string;
@@ -8,7 +9,6 @@ export interface IToggle {
   label?: React.ReactNode;
   srLabel?: string;
   isPassiveLabel?: boolean;
-  // description?: ReactNode;
   labelPosition?: 'left' | 'right';
 }
 
@@ -18,24 +18,18 @@ export const Toggle: React.FC<IToggle> = ({
   onChange,
   className,
   isChecked,
-  // description,
   isPassiveLabel,
   labelPosition = 'right',
 }) => {
   return (
-    <Switch.Group as="div" className={cn('inline-flex gap-x-2 items-center justify-between', className)}>
-      {label && labelPosition === 'left' && (
-        <Switch.Label passive={isPassiveLabel} className="text-sm font-medium text-grey-900">
-          {label}
-        </Switch.Label>
-      )}
-      {/* {description && <Switch.Description className="text-sm text-grey-500">{description}</Switch.Description>} */}
+    <Switch.Group as={$.Root} className={className}>
+      {label && labelPosition === 'left' && <$.SwitchLabel passive={isPassiveLabel}>{label}</$.SwitchLabel>}
       <Switch
         onChange={onChange}
         checked={isChecked}
         className={cn(
           isChecked ? 'bg-blue-400' : 'bg-grey-200',
-          'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200',
+          'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full transition-colors ease-in-out duration-200',
         )}
       >
         {srLabel && !label && <span className="sr-only">{srLabel}</span>}
@@ -47,11 +41,7 @@ export const Toggle: React.FC<IToggle> = ({
           )}
         />
       </Switch>
-      {label && labelPosition === 'right' && (
-        <Switch.Label passive={isPassiveLabel} className="text-sm font-medium text-grey-900">
-          {label}
-        </Switch.Label>
-      )}
+      {label && labelPosition === 'right' && <$.SwitchLabel passive={isPassiveLabel}>{label}</$.SwitchLabel>}
     </Switch.Group>
   );
 };
@@ -63,7 +53,3 @@ Toggle.propTypes = {
     } else return null;
   },
 };
-
-// * 1) I can decouple group, label and description from the switch
-// *   if I would like to use Swith without those particular components
-// * 2) Description is not handled properly. Will be fixed in the future if needed
