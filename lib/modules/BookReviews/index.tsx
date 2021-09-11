@@ -8,6 +8,7 @@ import { Toggle } from 'lib/components/@controls/Toggle';
 import { useToggler } from 'lib/hooks';
 import type { BookReviewsProps, SelectedLanguage } from './interface';
 import { useLangOptions, useReviewsQuery } from './hooks';
+import $ from './styled';
 
 export const BookReviews: React.FC<BookReviewsProps> = props => {
   const [thisEdition, setThisEdition] = useToggler();
@@ -45,14 +46,14 @@ export const BookReviews: React.FC<BookReviewsProps> = props => {
           </div>
         }
       >
-        <div className="grid gap-2 auto-rows-max">
+        <$.ReviewsWrapper>
           {reviews.map(review => (
             <div key={review.id}>
               <div className="font-bold">{formatDate(review.createdAt)}</div>
               <Paragraph ellipsis={{ rows: 5 }}>{review.body}</Paragraph>
             </div>
           ))}
-        </div>
+        </$.ReviewsWrapper>
       </LoadingContent>
     </div>
   );
