@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const InnerWrapper = styled.div`
   width: 13rem; // 208px
@@ -19,9 +19,27 @@ const Button = styled.button`
   }
 `;
 
+const Option = styled.li<{ active: boolean }>`
+  cursor: default;
+  user-select: none;
+  position: relative;
+  padding: 0.5rem 1rem 0.5rem 2.5rem; // 8px 16px 8px 40px
+  ${props => {
+    if (props.active)
+      return css`
+        color: var(--color-primary-500);
+        background: var(--color-primary-100);
+      `;
+    return css`
+      color: var(--color-grey-900);
+    `;
+  }}
+`;
+
 const $ = {
   InnerWrapper,
   Button,
+  Option,
 };
 
 export default $;

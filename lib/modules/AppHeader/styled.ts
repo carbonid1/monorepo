@@ -24,7 +24,7 @@ const Inner = styled.div`
 `;
 
 const TextLink = styled(TextLinkImported)`
-  --color-primary: var(--color-text);
+  --color-primary-500: var(--color-text);
   font-weight: var(--font-bold);
 `;
 

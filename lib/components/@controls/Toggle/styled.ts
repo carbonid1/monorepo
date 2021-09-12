@@ -27,7 +27,7 @@ const Switch = styled(SwitchImported)`
   ${props => {
     if (props.checked) {
       return css`
-        background: var(--color-primary);
+        background: var(--color-primary-500);
       `;
     }
     return css`
