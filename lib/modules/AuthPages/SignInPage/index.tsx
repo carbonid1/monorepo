@@ -3,6 +3,7 @@ import { ClientSafeProvider, getProviders, getSession, signin } from 'next-auth/
 import { GoogleIcon, GitHubIcon, TwitterIcon, FacebookIcon } from 'lib/icons';
 import { isSSR } from 'lib/utils';
 import { errors } from 'lib/consts/errors';
+import $ from './styled';
 
 type TSignInProviders = 'google' | 'github' | 'twitter' | 'facebook';
 export interface SignInPageProps {
@@ -14,38 +15,26 @@ const SignInPage: NextPage<SignInPageProps> = ({ providers, error }) => {
   if (error && !isSSR()) alert(error);
 
   return (
-    <div className="flex items-center justify-center flex-1">
-      <div className="grid gap-4 p-6 transition-transform duration-300 shadow-md rounded-xl focus-within:shadow-xl focus-within:translate-y-[-4px] focus-within:transform">
-        <button
-          onClick={() => signin(providers?.twitter.id)}
-          className="flex items-center w-full max-w-xs p-4 text-sm font-medium xs:text-xl rounded-xl text-grey-600"
-        >
-          <TwitterIcon className="mr-4 text-xl xs:text-3xl" />
+    <$.Root>
+      <$.Buttons>
+        <$.Button onClick={() => signin(providers?.twitter.id)} className="xs:text-xl">
+          <TwitterIcon className="xs:text-3xl" />
           Continue with Twitter
-        </button>
-        <button
-          onClick={() => signin(providers?.google.id)}
-          className="flex items-center w-full max-w-xs p-4 text-sm font-medium xs:text-xl rounded-xl text-grey-600"
-        >
-          <GoogleIcon className="mr-4 text-xl xs:text-3xl" />
+        </$.Button>
+        <$.Button onClick={() => signin(providers?.google.id)} className="xs:text-xl">
+          <GoogleIcon className="xs:text-3xl" />
           Continue with Google
-        </button>
-        <button
-          onClick={() => signin(providers?.github.id)}
-          className="flex items-center w-full max-w-xs p-4 text-sm font-medium xs:text-xl rounded-xl text-grey-600"
-        >
-          <GitHubIcon className="mr-4 text-xl xs:text-3xl" />
+        </$.Button>
+        <$.Button onClick={() => signin(providers?.github.id)} className="xs:text-xl">
+          <GitHubIcon className="xs:text-3xl" />
           Continue with GitHub
-        </button>
-        <button
-          onClick={() => signin(providers?.facebook.id)}
-          className="flex items-center w-full max-w-xs p-4 text-sm font-medium xs:text-xl rounded-xl text-grey-600"
-        >
-          <FacebookIcon className="mr-4 text-xl xs:text-3xl" />
+        </$.Button>
+        <$.Button onClick={() => signin(providers?.facebook.id)} className="xs:text-xl">
+          <FacebookIcon className="xs:text-3xl" />
           Continue with Facebook
-        </button>
-      </div>
-    </div>
+        </$.Button>
+      </$.Buttons>
+    </$.Root>
   );
 };
 

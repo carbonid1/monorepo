@@ -3,7 +3,7 @@ import NextImg from 'next/image';
 import { TextLink as TextLinkImported } from 'lib/components';
 
 const Root = styled.div`
-  background: var(--color-background);
+  background: var(--color-bg);
   position: sticky;
   top: 0;
   display: flex;
