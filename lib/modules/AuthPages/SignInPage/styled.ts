@@ -9,7 +9,7 @@ const Root = styled.div`
 
 const Buttons = styled.div`
   display: grid;
-  color: var(--color-grey-600);
+  color: var(--color-grey-6);
   background: white;
   transition: transform 0.3s;
   padding: 1.5rem; // 24px

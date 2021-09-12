@@ -15,7 +15,7 @@ const Button = styled.button`
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   cursor: default;
   @media (prefers-color-scheme: dark) {
-    background-color: var(--color-grey-700);
+    background-color: var(--color-grey-7);
   }
 `;
 
@@ -33,7 +33,7 @@ const Options = styled.ul`
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   max-height: 15rem; // 240px
   @media (prefers-color-scheme: dark) {
-    background: var(--color-grey-700);
+    background: var(--color-grey-7);
   }
 `;
 
@@ -45,11 +45,11 @@ const Option = styled.li<{ active: boolean }>`
   ${props => {
     if (props.active)
       return css`
-        color: var(--color-primary-500);
-        background: var(--color-primary-100);
+        color: var(--color-primary-5);
+        background: var(--color-primary-1);
       `;
     return css`
-      color: var(--color-grey-900);
+      color: var(--color-grey-9);
       @media (prefers-color-scheme: dark) {
         color: white;
       }
@@ -65,7 +65,7 @@ const CheckIconBlock = styled.span`
   display: flex;
   align-items: center;
   padding-left: 0.75rem; // 12px
-  color: var(--color-primary-600);
+  color: var(--color-primary-6);
 `;
 
 const $ = {

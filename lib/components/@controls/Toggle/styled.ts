@@ -27,13 +27,13 @@ const Switch = styled(SwitchImported)`
   ${props => {
     if (props.checked) {
       return css`
-        background: var(--color-primary-400);
+        background: var(--color-primary-4);
       `;
     }
     return css`
-      background: var(--color-grey-200);
+      background: var(--color-grey-2);
       @media (prefers-color-scheme: dark) {
-        background: var(--color-grey-700);
+        background: var(--color-grey-7);
       }
     `;
   }};

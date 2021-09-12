@@ -3,7 +3,7 @@ import { CollectionIcon as CollectionIconImported } from '@heroicons/react/solid
 
 const CollectionIcon = styled(CollectionIconImported)`
   height: 10rem; // 160px
-  color: var(--color-primary-300);
+  color: var(--color-primary-3);
 `;
 
 const $ = {
