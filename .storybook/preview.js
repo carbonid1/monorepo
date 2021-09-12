@@ -4,6 +4,8 @@ import { addDecorator } from '@storybook/react';
 import { initialize, mswDecorator } from 'msw-storybook-addon';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import GlobalStyles from '../styles/GlobalStyles';
+import { ThemeProvider } from 'styled-components';
+import theme from 'styles/theme';
 
 // Mock Service Worker addon
 initialize();
@@ -26,9 +28,9 @@ export const parameters = {
 
 export const decorators = [
   Story => (
-    <>
+    <ThemeProvider theme={theme}>
       <GlobalStyles />
       <Story />
-    </>
+    </ThemeProvider>
   ),
 ];
