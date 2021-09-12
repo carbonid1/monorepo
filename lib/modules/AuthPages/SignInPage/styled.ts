@@ -45,9 +45,9 @@ const Button = styled.button`
   border-radius: 0.75rem; // 12px
 
   ${({ theme }) => css`
-    @media (min-width: ${theme.breakpoints.xl}) {
-      font-size: 1.25rem // 20px
-      line-height: 1.75rem // 28px
+    @media (min-width: ${theme.breakpoints.xs}) {
+      font-size: 1.25rem; // 20px
+      line-height: 1.75rem; // 28px
     }
   `}
 
@@ -57,9 +57,9 @@ const Button = styled.button`
     line-height: 1.75rem; // 28px
 
     ${({ theme }) => css`
-      @media (min-width: ${theme.breakpoints.xl}) {
-        font-size: 1.875rem // 30px
-        line-height: 2.25rem // 36px
+      @media (min-width: ${theme.breakpoints.xs}) {
+        font-size: 1.875rem; // 30px
+        line-height: 2.25rem; // 36px
       }
     `}
   }
