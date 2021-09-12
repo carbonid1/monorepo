@@ -1,8 +1,8 @@
-import { CollectionIcon } from '@heroicons/react/solid';
 import type { ReactNode } from 'react';
 import cn from 'classnames';
 import { BaseBlock, IBaseBlock } from 'lib/components/@layout/BaseBlock';
 import { Skeleton } from '../Skeleton';
+import $ from './styled';
 
 export interface ILoadingContent extends Pick<IBaseBlock, 'subTitle' | 'title'> {
   className?: string;
@@ -27,7 +27,7 @@ export const LoadingContent: React.FC<ILoadingContent> = ({
       {loading && !initiallyLoaded ? (
         loader || <Skeleton />
       ) : empty ? (
-        <BaseBlock title={title} subTitle={subTitle} img={<CollectionIcon className="h-40 text-blue-300" />} />
+        <BaseBlock title={title} subTitle={subTitle} img={<$.CollectionIcon />} />
       ) : (
         children
       )}

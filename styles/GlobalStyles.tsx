@@ -5,6 +5,8 @@ const vars = css`
     --font-bold: 700;
     --font-medium: 500;
     --color-blue-100: #dbeafe;
+    --color-blue-200: #bfdbfe;
+    --color-blue-300: #93c5fd;
     --color-blue-400: #60a5fa;
     --color-blue-500: #3b82f6;
     --color-blue-600: #2563eb;
@@ -20,6 +22,8 @@ const vars = css`
     --color-grey-700: #374151;
     --color-grey-900: #111827;
     --color-primary-100: var(--color-blue-100);
+    --color-primary-200: var(--color-blue-200);
+    --color-primary-300: var(--color-blue-300);
     --color-primary-400: var(--color-blue-400);
     --color-primary-500: var(--color-blue-500);
     --color-primary-600: var(--color-blue-600);
@@ -27,6 +31,8 @@ const vars = css`
     --color-background: #fff;
     @media (prefers-color-scheme: dark) {
       --color-primary-100: var(--color-yellow-100);
+      --color-primary-200: var(--color-yellow-200);
+      --color-primary-300: var(--color-yellow-300);
       --color-primary-400: var(--color-yellow-400);
       --color-primary-500: var(--color-yellow-500);
       --color-primary-600: var(--color-yellow-600);
