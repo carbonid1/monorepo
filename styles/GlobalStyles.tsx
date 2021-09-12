@@ -13,7 +13,7 @@ const vars = css`
     --color-grey-600: rgba(75, 85, 99, var(--opacity));
     --color-grey-700: rgba(55, 65, 81, var(--opacity));
     @media (prefers-color-scheme: dark) {
-      --color-primary: rgba(255, 225, 0, var(--opacity));
+      --color-primary: rgba(250, 204, 21, var(--opacity));
       --color-text: rgba(255, 255, 255, var(--opacity));
       --color-background: rgba(14, 20, 27, var(--opacity));
     }
@@ -40,7 +40,7 @@ const base = css`
   a,
   button {
     &:focus {
-      /* outline: none; */
+      outline: none;
     }
   }
 `;

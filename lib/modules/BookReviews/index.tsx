@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { formatDate } from 'lib/utils';
 import { ISelect, Select } from 'lib/components/@controls/Select';
-import { LoadingContent } from 'lib/components/@layout/LoadingContent';
 import { Paragraph } from 'lib/components/@typography/Paragraph';
 import { Skeleton } from 'lib/components/@layout/Skeleton';
 import { Toggle } from 'lib/components/@controls/Toggle';
@@ -21,7 +20,7 @@ export const BookReviews: React.FC<BookReviewsProps> = props => {
   return (
     <div>
       <div className="py-4 text-2xl font-bold">Reviews:</div>
-      <div className="flex gap-x-4">
+      <$.Filters>
         <Select options={langOptions} value={lang} onChange={setLang} />
         <Toggle
           label="This Edition"
@@ -31,9 +30,8 @@ export const BookReviews: React.FC<BookReviewsProps> = props => {
             setThisEdition();
           }}
         />
-      </div>
-      <LoadingContent
-        className="mt-4"
+      </$.Filters>
+      <$.LoadingContent
         loading={loading}
         empty={!reviews.length}
         initiallyLoaded={Boolean(previousData)}
@@ -54,7 +52,7 @@ export const BookReviews: React.FC<BookReviewsProps> = props => {
             </div>
           ))}
         </$.ReviewsWrapper>
-      </LoadingContent>
+      </$.LoadingContent>
     </div>
   );
 };
