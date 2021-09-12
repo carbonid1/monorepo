@@ -42,10 +42,11 @@ export const Select = <V,>({ value, options, onChange, placeholder = 'Select an 
                     <span className={cn(selected ? 'font-medium' : 'font-normal', 'block truncate')}>
                       {option.label}
                     </span>
+
                     {selected && (
-                      <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-blue-600">
+                      <$.CheckIconWrap>
                         <CheckIcon className="w-5 h-5" aria-hidden="true" />
-                      </span>
+                      </$.CheckIconWrap>
                     )}
                   </$.Option>
                 )}

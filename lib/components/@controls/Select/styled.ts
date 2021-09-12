@@ -36,10 +36,22 @@ const Option = styled.li<{ active: boolean }>`
   }}
 `;
 
+const CheckIconWrap = styled.span`
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  display: flex;
+  align-items: center;
+  padding-left: 0.75rem; // 12px
+  color: var(--color-primary-600);
+`;
+
 const $ = {
   InnerWrapper,
   Button,
   Option,
+  CheckIconWrap,
 };
 
 export default $;
