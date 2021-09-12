@@ -1,7 +1,6 @@
 const GoogleIcon: React.FC<JSX.IntrinsicElements['svg']> = props => {
   return (
     <svg {...props} width="1em" height="1em" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect width="1em" height="1em" transform="translate(0.845947)" fill="white" />
       <path
         fillRule="evenodd"
         clipRule="evenodd"
