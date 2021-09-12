@@ -34,7 +34,7 @@ export const Select = <V,>({ value, options, onChange, placeholder = 'Select an 
           </span>
         </Listbox.Button>
         <Transition as={Fragment} leave="transition ease-in duration-100" leaveFrom="opacity-100" leaveTo="opacity-0">
-          <Listbox.Options className="absolute w-full py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg max-h-60 focus:ring-offset-0 sm:text-sm">
+          <Listbox.Options as={$.Options} className="sm:text-sm">
             {options.map((option, index) => (
               <Listbox.Option key={index} value={option.value} as={Fragment}>
                 {({ selected, active }) => (
@@ -44,9 +44,9 @@ export const Select = <V,>({ value, options, onChange, placeholder = 'Select an 
                     </span>
 
                     {selected && (
-                      <$.CheckIconWrap>
+                      <$.CheckIconBlock>
                         <CheckIcon className="w-5 h-5" aria-hidden="true" />
-                      </$.CheckIconWrap>
+                      </$.CheckIconBlock>
                     )}
                   </$.Option>
                 )}
