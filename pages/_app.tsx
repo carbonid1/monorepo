@@ -5,11 +5,13 @@ import Head from 'next/head';
 import { ApolloProvider } from '@apollo/client';
 import type { NextPage } from 'next';
 import { Provider as NextAuthProvider } from 'next-auth/client';
+import { ThemeProvider } from 'styled-components';
 import { AppHeader } from 'lib/modules/AppHeader';
 import { useApollo } from 'lib/apollo';
 import trackingService from 'lib/services/tracking';
 import AppWrapper from 'lib/components/AppWrapper';
 import GlobalStyles from 'styles/GlobalStyles';
+import theme from 'styles/theme';
 
 const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
   const apolloClient = useApollo(pageProps.initialApolloState);
@@ -38,11 +40,13 @@ const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
           <meta name="theme-color" content="#317EFB" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <GlobalStyles />
-        <AppHeader />
-        <AppWrapper>
-          <Component {...pageProps} />
-        </AppWrapper>
+        <ThemeProvider theme={theme}>
+          <GlobalStyles />
+          <AppHeader />
+          <AppWrapper>
+            <Component {...pageProps} />
+          </AppWrapper>
+        </ThemeProvider>
       </ApolloProvider>
     </NextAuthProvider>
   );

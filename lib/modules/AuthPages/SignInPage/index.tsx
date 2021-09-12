@@ -17,20 +17,20 @@ const SignInPage: NextPage<SignInPageProps> = ({ providers, error }) => {
   return (
     <$.Root>
       <$.Buttons>
-        <$.Button onClick={() => signin(providers?.twitter.id)} className="xs:text-xl">
-          <TwitterIcon className="xs:text-3xl" />
+        <$.Button onClick={() => signin(providers?.twitter.id)}>
+          <TwitterIcon />
           Continue with Twitter
         </$.Button>
-        <$.Button onClick={() => signin(providers?.google.id)} className="xs:text-xl">
-          <GoogleIcon className="xs:text-3xl" />
+        <$.Button onClick={() => signin(providers?.google.id)}>
+          <GoogleIcon />
           Continue with Google
         </$.Button>
-        <$.Button onClick={() => signin(providers?.github.id)} className="xs:text-xl">
-          <GitHubIcon className="xs:text-3xl" />
+        <$.Button onClick={() => signin(providers?.github.id)}>
+          <GitHubIcon />
           Continue with GitHub
         </$.Button>
-        <$.Button onClick={() => signin(providers?.facebook.id)} className="xs:text-xl">
-          <FacebookIcon className="xs:text-3xl" />
+        <$.Button onClick={() => signin(providers?.facebook.id)}>
+          <FacebookIcon />
           Continue with Facebook
         </$.Button>
       </$.Buttons>

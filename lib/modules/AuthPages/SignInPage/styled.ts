@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const Root = styled.div`
   display: flex;
@@ -44,10 +44,24 @@ const Button = styled.button`
   font-weight: var(--font-medium);
   border-radius: 0.75rem; // 12px
 
+  ${({ theme }) => css`
+    @media (min-width: ${theme.breakpoints.xl}) {
+      font-size: 1.25rem // 20px
+      line-height: 1.75rem // 28px
+    }
+  `}
+
   svg {
     margin-right: 1rem; // 16px
     font-size: 1.25rem; // 20px
     line-height: 1.75rem; // 28px
+
+    ${({ theme }) => css`
+      @media (min-width: ${theme.breakpoints.xl}) {
+        font-size: 1.875rem // 30px
+        line-height: 2.25rem // 36px
+      }
+    `}
   }
 `;
 
