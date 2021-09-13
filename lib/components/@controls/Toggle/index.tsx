@@ -23,7 +23,7 @@ export const Toggle: React.FC<IToggle> = ({
   return (
     <Switch.Group as="div" className={cn('inline-flex gap-x-2 items-center justify-between', className)}>
       {label && labelPosition === 'left' && (
-        <Switch.Label passive={isPassiveLabel} className="text-sm font-medium">
+        <Switch.Label passive={isPassiveLabel} className="text-sm font-medium text-skin-complement">
           {label}
         </Switch.Label>
       )}
@@ -32,7 +32,7 @@ export const Toggle: React.FC<IToggle> = ({
         checked={isChecked}
         className={cn(
           isChecked ? 'bg-skin-button-base' : 'bg-[#e5e7eb] dark:bg-skin-complement',
-          'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-skin-base rounded-full cursor-pointer transition-colors ease-in-out duration-200',
+          'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-skin-base rounded-full transition-colors ease-in-out duration-200',
         )}
       >
         {srLabel && !label && <span className="sr-only">{srLabel}</span>}
@@ -45,7 +45,7 @@ export const Toggle: React.FC<IToggle> = ({
         />
       </Switch>
       {label && labelPosition === 'right' && (
-        <Switch.Label passive={isPassiveLabel} className="text-sm font-medium">
+        <Switch.Label passive={isPassiveLabel} className="text-sm font-medium text-skin-complement">
           {label}
         </Switch.Label>
       )}

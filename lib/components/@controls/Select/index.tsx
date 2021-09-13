@@ -22,24 +22,24 @@ export const Select = <V,>({ value, options, onChange, placeholder = 'Select an 
   return (
     <Listbox value={value} onChange={onChange}>
       <div className="relative w-52">
-        <Listbox.Button className="relative w-full py-2 pl-3 pr-10 text-left border rounded-lg shadow-md cursor-default bg-skin-complement border-skin-base sm:text-sm">
+        <Listbox.Button className="relative w-full py-2 pl-3 pr-10 text-left border-2 rounded-lg shadow-md cursor-default bg-skin-complement border-skin-base sm:text-sm text-skin-complement">
           {selectedOption ? (
             <span className="block truncate">{selectedOption.label}</span>
           ) : (
-            <span className="block truncate text-grey-400">{placeholder}</span>
+            <span className="block truncate text-skin-placeholder">{placeholder}</span> // TODO: check out storybook
           )}
           <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-            <SelectorIcon className="w-5 h-5 text-grey-400" aria-hidden="true" />
+            <SelectorIcon className="w-5 h-5 text-[#9ca3af]" aria-hidden="true" />
           </span>
         </Listbox.Button>
         <Transition as={Fragment} leave="transition ease-in duration-100" leaveFrom="opacity-100" leaveTo="opacity-0">
-          <Listbox.Options className="absolute w-full py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg max-h-60 focus:ring-offset-0 sm:text-sm">
+          <Listbox.Options className="absolute w-full py-1 mt-1 overflow-auto text-base rounded-md shadow-lg bg-skin-complement max-h-60 focus:ring-offset-0 sm:text-sm">
             {options.map((option, index) => (
               <Listbox.Option
                 key={index}
                 className={({ active }) =>
                   cn(
-                    active ? 'text-blue-500 bg-blue-100' : 'text-grey-900',
+                    active ? 'text-skin-primary bg-skin-primary-light' : 'text-skin-complement',
                     'cursor-default select-none relative py-2 pl-10 pr-4',
                   )
                 }
@@ -51,7 +51,7 @@ export const Select = <V,>({ value, options, onChange, placeholder = 'Select an 
                       {option.label}
                     </span>
                     {selected && (
-                      <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-blue-600">
+                      <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-skin-primary-dark">
                         <CheckIcon className="w-5 h-5" aria-hidden="true" />
                       </span>
                     )}

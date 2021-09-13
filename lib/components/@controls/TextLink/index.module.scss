@@ -1,7 +1,7 @@
 .underlineShadow {
-  box-shadow: 0 0 0 var(--color-link-base); // TODO: fix before merge
+  box-shadow: 0 0 0 var(--color-primary); // TODO: fix before merge
 
   &:hover {
-    box-shadow: 0 2px 0 var(--color-link-base);
+    box-shadow: 0 2px 0 var(--color-primary);
   }
 }

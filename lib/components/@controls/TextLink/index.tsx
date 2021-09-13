@@ -21,9 +21,9 @@ const TextLink: React.FC<TextLinkProps> = ({ path, slug, children, className, co
       <button
         {...props}
         className={cn(
-          'leading-tight text-skin-link-base transition-shadow duration-500 hover:duration-1000 shadow-md',
+          'leading-tight text-skin-primary transition-shadow duration-500 hover:duration-1000 shadow-md',
           {
-            'text-skin-link-text': color === 'text',
+            'text-skin-base': color === 'text',
           },
           $.underlineShadow,
           className,
@@ -41,9 +41,9 @@ const TextLink: React.FC<TextLinkProps> = ({ path, slug, children, className, co
           {...props}
           href={href}
           className={cn(
-            'text-skin-link-base transition-shadow duration-500 hover:duration-1000',
+            'text-skin-primary transition-shadow duration-500 hover:duration-1000',
             {
-              'text-skin-link-text': color === 'text',
+              'text-skin-base': color === 'text',
             },
             $.underlineShadow,
             className,
