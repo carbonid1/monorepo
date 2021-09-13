@@ -1,3 +1,2 @@
-export * from './Button';
-export * from './Link';
-export { default as LinkBtn } from './LinkBtn';
+export * from './TextLink';
+export { default as TextLink } from './TextLink';
