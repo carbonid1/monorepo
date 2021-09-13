@@ -20,6 +20,7 @@ module.exports = {
           base: 'var(--color-background-base)',
           complement: 'var(--color-background-complement)',
           skeleton: 'var(--color-skeleton)',
+          'button-base': 'var(--color-background-button-base)',
         },
       },
       borderColor: {

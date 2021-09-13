@@ -29,22 +29,24 @@
     --color-text-base: rgba(14, 20, 27, 1);
     --color-text-complement: #4b5563;
     --color-background-base: #fff;
-    /* --color-background-complement: NO VALUE; */
-    /* --color-border-base: NO VALUE; */
+    --color-background-complement: #fff;
+    --color-border-base: transparent;
     --color-link-base: #3b82f6;
     --color-link-text: var(--color-text-base);
+    --color-background-button-base: #60a5fa;
     --color-skeleton: #93c5fd;
   }
 
   @media (prefers-color-scheme: dark) {
     :root {
       --color-text-base: #fff;
-      /* --color-text-complement: NO VALUE; */
+      --color-text-complement: #fff;
       --color-background-base: rgba(14, 20, 27, 1);
       --color-background-complement: #19232d;
       --color-border-base: #374151;
       --color-link-base: #fbbf24;
       /* --color-link-text: SAME AS LIGHT THEME; */
+      --color-background-button-base: #fcd34d;
       --color-skeleton: #fde68a;
     }
   }

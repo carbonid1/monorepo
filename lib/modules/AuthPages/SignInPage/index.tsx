@@ -15,7 +15,7 @@ const SignInPage: NextPage<SignInPageProps> = ({ providers, error }) => {
 
   return (
     <div className="flex items-center justify-center flex-1">
-      <div className="grid gap-4 p-6 transition-transform duration-300 shadow-md rounded-xl focus-within:shadow-xl focus-within:translate-y-[-4px] focus-within:transform text-skin-complement bg-skin-base dark:text-skin-base  dark:bg-skin-complement dark:focus-within:transform-none dark:border-skin-base dark:border">
+      <div className="grid gap-4 p-6 transition-transform duration-300 shadow-md rounded-xl focus-within:shadow-xl focus-within:translate-y-[-4px] focus-within:transform text-skin-complement bg-skin-complement border-skin-base border">
         <button
           onClick={() => signin(providers?.twitter.id)}
           className="flex items-center w-full max-w-xs p-4 text-sm font-medium xs:text-xl rounded-xl"
