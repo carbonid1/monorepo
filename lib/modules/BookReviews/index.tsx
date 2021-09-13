@@ -32,7 +32,7 @@ export const BookReviews: React.FC<BookReviewsProps> = props => {
         />
       </div>
       <LoadingContent
-        className="mt-4"
+        className="mt-6"
         loading={loading}
         empty={!reviews.length}
         initiallyLoaded={Boolean(previousData)}
@@ -45,7 +45,7 @@ export const BookReviews: React.FC<BookReviewsProps> = props => {
           </div>
         }
       >
-        <div className="grid gap-2 auto-rows-max">
+        <div className="grid gap-4 auto-rows-max">
           {reviews.map(review => (
             <div key={review.id}>
               <div className="font-bold">{formatDate(review.createdAt)}</div>

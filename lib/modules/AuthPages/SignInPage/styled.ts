@@ -23,7 +23,7 @@ const Buttons = styled.div`
   }
 
   @media (prefers-color-scheme: dark) {
-    background: var(--color-bg-dimmed);
+    background: var(--color-background-dimmed);
     border: 1px solid var(--color-border-primary);
     color: white;
 
