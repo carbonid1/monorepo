@@ -22,3 +22,5 @@ export const parameters = {
     viewports: INITIAL_VIEWPORTS,
   },
 };
+
+export const decorators = [Story => <Story />];
