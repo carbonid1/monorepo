@@ -3,12 +3,13 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
   purge: ['./{pages,docs,lib}/**/*.{js,ts,jsx,tsx,mdx}'], // list all the folders
-  darkMode: false, // or 'media' or 'class'
+  darkMode: 'media',
   theme: {
     extend: {
       textColor: {
         skin: {
           base: 'var(--color-text-base)',
+          complement: 'var(--color-text-complement)',
           'link-base': 'var(--color-link-base)',
           'link-text': 'var(--color-link-text)',
           skeleton: 'var(--color-skeleton)',
@@ -16,10 +17,16 @@ module.exports = {
       },
       backgroundColor: {
         skin: {
-          base: 'var(--color-background)',
+          base: 'var(--color-background-base)',
+          complement: 'var(--color-background-complement)',
           skeleton: 'var(--color-skeleton)',
         },
       },
+      borderColor: {
+        skin: {
+          base: 'var(--color-border-base)'
+        }
+      }
     },
     colors: {
       white: 'white', // remove

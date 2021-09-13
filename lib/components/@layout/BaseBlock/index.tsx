@@ -8,7 +8,7 @@ export interface IBaseBlock {
 
 export const BaseBlock: FC<IBaseBlock> = ({ img, title, subTitle }) => {
   return (
-    <div className="grid gap-4 m-8 place-items-center">
+    <div className="m-8 grid gap-4 place-items-center">
       {img}
       {title && <div className="text-2xl">{title}</div>}
       <div className="text-center text-grey-400">{subTitle}</div>

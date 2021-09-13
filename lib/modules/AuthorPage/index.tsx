@@ -27,7 +27,7 @@ const AuthorPage: NextPage<IAuthorPage> = ({ id }) => {
   return (
     <div>
       <CustomHead title={fullName} />
-      <div className="grid justify-start gap-10 sm:grid-flow-col">
+      <div className="justify-start grid gap-10 sm:grid-flow-col">
         <CoverImage alt={fullName} src={imageUrl} className="justify-self-center" />
         <div>
           <div>

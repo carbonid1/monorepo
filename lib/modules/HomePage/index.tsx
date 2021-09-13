@@ -15,7 +15,7 @@ const HomePage: NextPage = () => {
   if (error) return <ServerError />;
 
   return (
-    <div className="grid justify-center gap-6 pt-4" style={{ gridTemplateColumns: 'repeat(auto-fit, 160px)' }}>
+    <div className="justify-center pt-4 grid gap-6" style={{ gridTemplateColumns: 'repeat(auto-fit, 160px)' }}>
       {books.map(({ id, editions }, index) => (
         <NextLink
           key={id + index}
