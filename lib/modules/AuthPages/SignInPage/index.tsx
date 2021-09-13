@@ -15,31 +15,31 @@ const SignInPage: NextPage<SignInPageProps> = ({ providers, error }) => {
 
   return (
     <div className="flex items-center justify-center flex-1">
-      <div className="grid gap-4 p-6 transition-transform duration-300 shadow-md rounded-xl focus-within:shadow-xl focus-within:translate-y-[-4px] focus-within:transform">
+      <div className="grid gap-4 p-6 transition-transform duration-300 shadow-md rounded-xl focus-within:shadow-xl focus-within:translate-y-[-4px] focus-within:transform text-skin-complement bg-skin-complement border-skin-base border-2">
         <button
           onClick={() => signin(providers?.twitter.id)}
-          className="flex items-center w-full max-w-xs p-4 text-sm font-medium xs:text-xl rounded-xl text-grey-600"
+          className="flex items-center w-full max-w-xs p-4 text-sm font-medium xs:text-xl rounded-xl"
         >
           <TwitterIcon className="mr-4 text-xl xs:text-3xl" />
           Continue with Twitter
         </button>
         <button
           onClick={() => signin(providers?.google.id)}
-          className="flex items-center w-full max-w-xs p-4 text-sm font-medium xs:text-xl rounded-xl text-grey-600"
+          className="flex items-center w-full max-w-xs p-4 text-sm font-medium xs:text-xl rounded-xl"
         >
           <GoogleIcon className="mr-4 text-xl xs:text-3xl" />
           Continue with Google
         </button>
         <button
           onClick={() => signin(providers?.github.id)}
-          className="flex items-center w-full max-w-xs p-4 text-sm font-medium xs:text-xl rounded-xl text-grey-600"
+          className="flex items-center w-full max-w-xs p-4 text-sm font-medium xs:text-xl rounded-xl"
         >
           <GitHubIcon className="mr-4 text-xl xs:text-3xl" />
           Continue with GitHub
         </button>
         <button
           onClick={() => signin(providers?.facebook.id)}
-          className="flex items-center w-full max-w-xs p-4 text-sm font-medium xs:text-xl rounded-xl text-grey-600"
+          className="flex items-center w-full max-w-xs p-4 text-sm font-medium xs:text-xl rounded-xl"
         >
           <FacebookIcon className="mr-4 text-xl xs:text-3xl" />
           Continue with Facebook

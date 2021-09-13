@@ -2,7 +2,7 @@ import type { GetServerSideProps, NextPage } from 'next';
 import { getSession } from 'next-auth/client';
 import { CustomHead } from 'lib/components/CustomHead';
 import { ROUTE } from 'lib/consts/routes';
-import { Link } from 'lib/components/@controls/Link';
+import { TextLink } from 'lib/components';
 import { extractIdFromSlug, formatDate } from 'lib/utils';
 import languageService from 'lib/services/language.service';
 import { ByAuthors } from 'lib/components/Authors/ByAuthors';
@@ -34,9 +34,9 @@ const EditionsPage: NextPage<IEditionsPage> = ({ id }) => {
         <div className="mt-2">
           {editions.map(edition => (
             <div key={edition.id} className="mb-2">
-              <Link path={`/${ROUTE.book}/${edition.id}`} slug={edition.title}>
+              <TextLink path={`/${ROUTE.book}/${edition.id}`} slug={edition.title}>
                 {edition.title}
-              </Link>
+              </TextLink>
               <div>
                 <b>Published in: </b>
                 {formatDate(edition.publishedIn)}

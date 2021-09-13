@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'lib/components/@controls/Link';
+import { TextLink } from 'lib/components';
 import { ROUTE } from 'lib/consts/routes';
 import type gg from 'lib/generated';
 
@@ -15,9 +15,9 @@ export const Authors: React.FC<IAuthors> = ({ authors = [], lastAuthorSuffix = '
     <>
       {authors.map(({ fullName, id }, index) => (
         <span key={id}>
-          <Link path={`/${ROUTE.author}/${id}`} slug={fullName}>
+          <TextLink path={`/${ROUTE.author}/${id}`} slug={fullName}>
             {fullName}
-          </Link>
+          </TextLink>
           {isLastAuthor(authors.length, index) ? lastAuthorSuffix : ', '}
         </span>
       ))}

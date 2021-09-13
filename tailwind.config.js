@@ -1,18 +1,41 @@
-const colors = require('tailwindcss/colors');
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
   purge: ['./{pages,docs,lib}/**/*.{js,ts,jsx,tsx,mdx}'], // list all the folders
-  darkMode: false, // or 'media' or 'class'
+  darkMode: 'media',
   theme: {
-    extend: {},
+    extend: {
+      textColor: {
+        skin: {
+          base: 'var(--color-text-base)',
+          complement: 'var(--color-text-complement)',
+          primary: 'var(--color-primary)',
+          'primary-light': 'var(--color-primary-light)',
+          'primary-dark': 'var(--color-primary-dark)',
+          skeleton: 'var(--color-skeleton)',
+          placeholder: 'var(--color-placeholder)',
+        },
+      },
+      backgroundColor: {
+        skin: {
+          base: 'var(--color-background-base)',
+          complement: 'var(--color-background-complement)',
+          primary: 'var(--color-primary)',
+          'primary-light': 'var(--color-primary-light)',
+          'primary-dark': 'var(--color-primary-dark)',
+          skeleton: 'var(--color-skeleton)',
+          'button-base': 'var(--color-background-button-base)',
+        },
+      },
+      borderColor: {
+        skin: {
+          base: 'var(--color-border-base)',
+        },
+      },
+    },
     colors: {
-      white: 'white',
       current: 'currentColor',
       transparent: 'transparent',
-      red: colors.red,
-      grey: colors.blueGray,
-      blue: colors.lightBlue,
     },
     zIndex: {
       1: 1,

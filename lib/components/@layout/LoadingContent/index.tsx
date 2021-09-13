@@ -27,7 +27,7 @@ export const LoadingContent: React.FC<ILoadingContent> = ({
       {loading && !initiallyLoaded ? (
         loader || <Skeleton />
       ) : empty ? (
-        <BaseBlock title={title} subTitle={subTitle} img={<CollectionIcon className="h-40 text-blue-300" />} />
+        <BaseBlock title={title} subTitle={subTitle} img={<CollectionIcon className="h-40 text-skin-skeleton" />} />
       ) : (
         children
       )}

@@ -2,7 +2,7 @@ import type { GetServerSideProps, NextPage } from 'next';
 import { getSession } from 'next-auth/client';
 import { CustomHead } from 'lib/components/CustomHead';
 import { ROUTE } from 'lib/consts/routes';
-import { Link } from 'lib/components/@controls/Link';
+import { TextLink } from 'lib/components';
 import { extractIdFromSlug } from 'lib/utils';
 import { Paragraph } from 'lib/components/@typography/Paragraph';
 import { CoverImage } from 'lib/components/CoverImage';
@@ -27,7 +27,7 @@ const AuthorPage: NextPage<IAuthorPage> = ({ id }) => {
   return (
     <div>
       <CustomHead title={fullName} />
-      <div className="grid justify-start gap-10 sm:grid-flow-col">
+      <div className="justify-start grid gap-10 sm:grid-flow-col">
         <CoverImage alt={fullName} src={imageUrl} className="justify-self-center" />
         <div>
           <div>
@@ -40,9 +40,9 @@ const AuthorPage: NextPage<IAuthorPage> = ({ id }) => {
               const { title, description, id: editionId } = editions[0];
               return (
                 <li key={id + index} className="my-2">
-                  <Link path={`/${ROUTE.book}/${editionId}`} slug={title}>
+                  <TextLink path={`/${ROUTE.book}/${editionId}`} slug={title}>
                     {title}
-                  </Link>
+                  </TextLink>
                   <Paragraph ellipsis={{ rows: 5, expandable: false }}>{description}</Paragraph>
                 </li>
               );
