@@ -42,6 +42,11 @@ module.exports = {
           base: withOpacity('--color-border-base'),
         },
       },
+      ringColor: {
+        skin: {
+          primary: withOpacity('--color-primary'),
+        },
+      },
     },
     colors: {
       current: 'currentColor',

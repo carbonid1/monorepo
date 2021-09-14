@@ -48,14 +48,13 @@
 
   ul,
   button {
-    @apply focus:outline-none;
-    /* shadow ring on focus */
+    @apply focus:outline-none focus:ring-2 focus:ring-skin-primary;
   }
 }
 
 @layer utilities {
   .shadow-underline {
-    @apply transition-shadow duration-500 shadow-md focus:outline-none hover:duration-1000 focus:duration-1000;
+    @apply transition-shadow duration-500 shadow-md focus:outline-none hover:duration-100 focus:duration-100;
     box-shadow: 0 0 0 currentColor;
   }
   .shadow-underline:focus,
