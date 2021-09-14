@@ -4,32 +4,31 @@
 
 @layer base {
   :root {
-    --color-text-base: rgba(14, 20, 27, 1);
-    --color-text-complement: #4b5563;
-    --color-placeholder: #9ca3af;
-    --color-background-base: #fff;
-    --color-background-complement: #fff;
-    --color-border-base: transparent;
-    --color-primary: #3b82f6;
-    --color-primary-light: #dbeafe;
-    --color-primary-dark: #2563eb;
-    --color-background-button-base: #60a5fa;
-    --color-skeleton: #93c5fd;
+    --color-text-base: 14, 20, 27;
+    --color-text-complement: 75, 85, 99;
+    --color-placeholder: 156, 163, 175;
+    --color-background-base: 255, 255, 255;
+    --color-background-complement: 255, 255, 255;
+    --color-border-base: 255, 255, 255;
+    --color-primary: 59, 130, 246;
+    --color-primary-light: 219, 234, 254;
+    --color-primary-dark: 37, 99, 235;
+    --color-background-button-base: 96, 165, 250;
+    --color-skeleton: 147, 197, 253;
   }
 
   @media (prefers-color-scheme: dark) {
     :root {
-      --color-text-base: #fff;
-      --color-text-complement: #fff;
-      /* --color-placeholder: SAME AS LIGHT THEME; */
-      --color-background-base: rgba(14, 20, 27, 1);
-      --color-background-complement: #19232d;
-      --color-border-base: #374151;
-      --color-primary: #fbbf24;
-      --color-primary-light: #fef3c7;
-      --color-primary-dark: #f59e0b;
-      --color-background-button-base: #fcd34d;
-      --color-skeleton: #fde68a;
+      --color-text-base: 255, 255, 255;
+      --color-text-complement: 255, 255, 255;
+      --color-background-base: 14, 20, 27;
+      --color-background-complement: 25, 35, 45;
+      --color-border-base: 55, 65, 81;
+      --color-primary: 251, 191, 36;
+      --color-primary-light: 254, 243, 199;
+      --color-primary-dark: 245, 158, 11;
+      --color-background-button-base: 252, 211, 77;
+      --color-skeleton: 253, 230, 138;
     }
   }
 
@@ -49,14 +48,13 @@
 
   ul,
   button {
-    @apply focus:outline-none;
-    /* shadow ring on focus */
+    @apply focus:outline-none focus:ring-2 focus:ring-skin-primary;
   }
 }
 
 @layer utilities {
   .shadow-underline {
-    @apply transition-shadow duration-500 shadow-md focus:outline-none hover:duration-1000 focus:duration-1000;
+    @apply transition-shadow duration-500 shadow-md focus:outline-none hover:duration-100 focus:duration-100;
     box-shadow: 0 0 0 currentColor;
   }
   .shadow-underline:focus,

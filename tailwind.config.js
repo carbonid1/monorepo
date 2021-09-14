@@ -1,5 +1,15 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 
+const withOpacity = variableName => {
+  return ({ opacityValue }) => {
+    if (opacityValue) {
+      return `rgba(var(${variableName}), ${opacityValue})`;
+    } else {
+      return `rgb(var(${variableName}))`;
+    }
+  };
+};
+
 module.exports = {
   purge: ['./{pages,docs,lib}/**/*.{js,ts,jsx,tsx,mdx}'], // list all the folders
   darkMode: 'media',
@@ -7,29 +17,34 @@ module.exports = {
     extend: {
       textColor: {
         skin: {
-          base: 'var(--color-text-base)',
-          complement: 'var(--color-text-complement)',
-          primary: 'var(--color-primary)',
-          'primary-light': 'var(--color-primary-light)',
-          'primary-dark': 'var(--color-primary-dark)',
-          skeleton: 'var(--color-skeleton)',
-          placeholder: 'var(--color-placeholder)',
+          base: withOpacity('--color-text-base'),
+          complement: withOpacity('--color-text-complement'),
+          primary: withOpacity('--color-primary'),
+          'primary-light': withOpacity('--color-primary-light'),
+          'primary-dark': withOpacity('--color-primary-dark'),
+          skeleton: withOpacity('--color-skeleton'),
+          placeholder: withOpacity('--color-placeholder'),
         },
       },
       backgroundColor: {
         skin: {
-          base: 'var(--color-background-base)',
-          complement: 'var(--color-background-complement)',
-          primary: 'var(--color-primary)',
-          'primary-light': 'var(--color-primary-light)',
-          'primary-dark': 'var(--color-primary-dark)',
-          skeleton: 'var(--color-skeleton)',
-          'button-base': 'var(--color-background-button-base)',
+          base: withOpacity('--color-background-base'),
+          complement: withOpacity('--color-background-complement'),
+          primary: withOpacity('--color-primary'),
+          'primary-light': withOpacity('--color-primary-light'),
+          'primary-dark': withOpacity('--color-primary-dark'),
+          skeleton: withOpacity('--color-skeleton'),
+          'button-base': withOpacity('--color-background-button-base'),
         },
       },
       borderColor: {
         skin: {
-          base: 'var(--color-border-base)',
+          base: withOpacity('--color-border-base'),
+        },
+      },
+      ringColor: {
+        skin: {
+          primary: withOpacity('--color-primary'),
         },
       },
     },

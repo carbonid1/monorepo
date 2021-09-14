@@ -37,13 +37,13 @@ export const Select = <V,>({ value, options, onChange, placeholder = 'Select an 
             {options.map((option, index) => (
               <Listbox.Option
                 key={index}
+                value={option.value}
                 className={({ active }) =>
                   cn(
                     active ? 'text-skin-primary bg-skin-primary-light' : 'text-skin-complement',
                     'cursor-default select-none relative py-2 pl-10 pr-4',
                   )
                 }
-                value={option.value}
               >
                 {({ selected }) => (
                   <>
