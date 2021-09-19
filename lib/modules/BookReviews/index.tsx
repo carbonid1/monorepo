@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { formatDate } from 'lib/utils';
-import { ISelect, Select } from 'lib/components/@controls/Select';
+import { Select, ISelect } from 'lib/components/@controls/Select';
 import { LoadingContent } from 'lib/components/@layout/LoadingContent';
 import { Paragraph } from 'lib/components/@typography/Paragraph';
 import { Skeleton } from 'lib/components/@layout/Skeleton';

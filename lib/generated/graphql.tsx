@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-export type Maybe<T> = T | null | undefined;
+export type Maybe<T> = T | null;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
@@ -43,7 +43,7 @@ export type Edition = {
 };
 
 export type Mutation = {
-  empty?: Maybe<User>;
+  updateProfile: User;
 };
 
 export type Query = {
@@ -52,6 +52,8 @@ export type Query = {
   books: Array<Book>;
   edition?: Maybe<Edition>;
   review?: Maybe<Review>;
+  user?: Maybe<User>;
+  profile?: Maybe<User>;
   reviews: Array<Review>;
 };
 
@@ -68,6 +70,10 @@ export type QueryEditionArgs = {
 };
 
 export type QueryReviewArgs = {
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type QueryUserArgs = {
   id?: Maybe<Scalars['ID']>;
 };
 
@@ -91,7 +97,7 @@ export type ReviewEditionArgs = {
 };
 
 export type User = {
-  id: Scalars['Int'];
+  id: Scalars['String'];
   createdAt: Scalars['String'];
   updatedAt: Scalars['String'];
   name?: Maybe<Scalars['String']>;
@@ -103,6 +109,10 @@ export type User = {
 export type ByAuthorsFragment = { authors: Array<{ id: number; fullName: string }> };
 
 export type AuthorsFragment = { authors: Array<{ id: number; fullName: string }> };
+
+export type ProfileHookVariables = Exact<{ [key: string]: never }>;
+
+export type ProfileHook = { profile?: Maybe<{ id: string; image?: Maybe<string> }> };
 
 export type AuthorPageAuthorVariables = Exact<{
   id: Scalars['ID'];
@@ -192,6 +202,12 @@ export type ReviewPageReview = {
   }>;
 };
 
+export type UserPageVariables = Exact<{
+  id?: Maybe<Scalars['ID']>;
+}>;
+
+export type UserPage = { user?: Maybe<{ id: string; name?: Maybe<string> }> };
+
 export const AuthorsFragment = gql`
   fragment AuthorsFragment on Book {
     authors {
@@ -220,6 +236,41 @@ export const EditionFragment = gql`
   }
   ${ByAuthorsFragment}
 `;
+export const ProfileHookDocument = gql`
+  query ProfileHook {
+    profile {
+      id
+      image
+    }
+  }
+`;
+
+/**
+ * __useProfileHook__
+ *
+ * To run a query within a React component, call `useProfileHook` and pass it any options that fit your needs.
+ * When your component renders, `useProfileHook` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useProfileHook({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useProfileHook(baseOptions?: Apollo.QueryHookOptions<ProfileHook, ProfileHookVariables>) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<ProfileHook, ProfileHookVariables>(ProfileHookDocument, options);
+}
+export function useProfileHookLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ProfileHook, ProfileHookVariables>) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<ProfileHook, ProfileHookVariables>(ProfileHookDocument, options);
+}
+export type ProfileHookHookResult = ReturnType<typeof useProfileHook>;
+export type ProfileHookLazyQueryHookResult = ReturnType<typeof useProfileHookLazyQuery>;
+export type ProfileHookQueryResult = Apollo.QueryResult<ProfileHook, ProfileHookVariables>;
 export const AuthorPageAuthorDocument = gql`
   query AuthorPageAuthor($id: ID!) {
     author(id: $id) {
@@ -524,8 +575,45 @@ export function useReviewPageReviewLazyQuery(
 export type ReviewPageReviewHookResult = ReturnType<typeof useReviewPageReview>;
 export type ReviewPageReviewLazyQueryHookResult = ReturnType<typeof useReviewPageReviewLazyQuery>;
 export type ReviewPageReviewQueryResult = Apollo.QueryResult<ReviewPageReview, ReviewPageReviewVariables>;
+export const UserPageDocument = gql`
+  query UserPage($id: ID) {
+    user(id: $id) {
+      id
+      name
+    }
+  }
+`;
+
+/**
+ * __useUserPage__
+ *
+ * To run a query within a React component, call `useUserPage` and pass it any options that fit your needs.
+ * When your component renders, `useUserPage` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useUserPage({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useUserPage(baseOptions?: Apollo.QueryHookOptions<UserPage, UserPageVariables>) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<UserPage, UserPageVariables>(UserPageDocument, options);
+}
+export function useUserPageLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<UserPage, UserPageVariables>) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<UserPage, UserPageVariables>(UserPageDocument, options);
+}
+export type UserPageHookResult = ReturnType<typeof useUserPage>;
+export type UserPageLazyQueryHookResult = ReturnType<typeof useUserPageLazyQuery>;
+export type UserPageQueryResult = Apollo.QueryResult<UserPage, UserPageVariables>;
 export const names = {
   Query: {
+    ProfileHook: 'ProfileHook',
     AuthorPageAuthor: 'AuthorPageAuthor',
     BookPageEdition: 'BookPageEdition',
     BookReviews: 'BookReviews',
@@ -533,6 +621,7 @@ export const names = {
     EditionsPageBook: 'EditionsPageBook',
     IndexPageBooks: 'IndexPageBooks',
     ReviewPageReview: 'ReviewPageReview',
+    UserPage: 'UserPage',
   },
   Fragment: {
     ByAuthorsFragment: 'ByAuthorsFragment',

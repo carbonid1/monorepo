@@ -1,9 +1,12 @@
-import { signIn, signOut, useSession } from 'next-auth/client';
+import { signIn, signOut } from 'next-auth/client';
+import NextLink from 'next/link';
 import NextImg from 'next/image';
 import { TextLink } from 'lib/components';
+import { ROUTE } from 'lib/consts/routes';
+import useProfile from 'lib/hooks/useProfile';
 
 export const AppHeader: React.FC = () => {
-  const { user } = useSession()[0] ?? {};
+  const { profile } = useProfile();
 
   return (
     <div className="sticky top-0 flex items-center w-full h-16 bg-skin-base z-header justify-items-center">
@@ -11,9 +14,15 @@ export const AppHeader: React.FC = () => {
         <TextLink path="/" className="mr-auto text-3xl font-bold" color="text">
           BookHub
         </TextLink>
-        {user?.image && <NextImg className="rounded-full" src={user?.image} alt="profile" height={48} width={48} />}
-        <TextLink className="ml-4 font-bold" color="text" onClick={user ? () => signOut() : () => signIn()}>
-          {user ? 'Sign Out' : 'Sign In'}
+        {profile?.image && (
+          <NextLink href={`/${ROUTE.settings}`}>
+            <div className="h-12 cursor-pointer">
+              <NextImg className="rounded-full" src={profile?.image} alt="profile" height={48} width={48} />
+            </div>
+          </NextLink>
+        )}
+        <TextLink className="ml-4 font-bold" color="text" onClick={profile ? () => signOut() : () => signIn()}>
+          {profile ? 'Sign Out' : 'Sign In'}
         </TextLink>
       </div>
     </div>

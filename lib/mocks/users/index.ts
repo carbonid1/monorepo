@@ -5,8 +5,9 @@ type UserName = 'ivan';
 
 const usersMock: Record<UserName, gg.User> = {
   ivan: {
-    id: 1,
+    id: '1',
     email: 'ivan@test.com',
+    name: 'Ivan',
     createdAt: '',
     updatedAt: '',
     image: user1Src.toString(),

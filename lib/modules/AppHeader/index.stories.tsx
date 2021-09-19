@@ -1,7 +1,8 @@
 import type { Story, Meta } from '@storybook/react';
-import { Provider as NextAuthProvider } from 'next-auth/client';
-import { rest } from 'msw';
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import { graphql } from 'msw';
 import usersMock from 'lib/mocks/users';
+import gg from 'lib/generated';
 import { AppHeader } from '.';
 
 export default {
@@ -12,30 +13,45 @@ export default {
   },
 } as Meta;
 
+const mockedClient = new ApolloClient({
+  uri: 'https://mocked/api',
+  cache: new InMemoryCache(),
+  defaultOptions: {
+    watchQuery: {
+      fetchPolicy: 'no-cache',
+      errorPolicy: 'all',
+    },
+    query: {
+      fetchPolicy: 'no-cache',
+      errorPolicy: 'all',
+    },
+  },
+});
+
 const Template: Story = args => (
-  <NextAuthProvider session={{ user: usersMock.ivan }}>
+  <ApolloProvider client={mockedClient}>
     <AppHeader {...args} />
-  </NextAuthProvider>
+  </ApolloProvider>
 );
 export const Default = Template.bind({});
 Default.parameters = {
   msw: [
-    rest.get(`${window.origin}/api/auth/session`, (req, res, ctx) => {
-      return res(ctx.json({ user: usersMock.ivan }));
+    graphql.query(gg.names.Query.ProfileHook, (req, res, ctx) => {
+      return res(ctx.data({ profile: usersMock.ivan }));
     }),
   ],
 };
 
 const SignedOutTemplate: Story = args => (
-  <NextAuthProvider session={undefined}>
+  <ApolloProvider client={mockedClient}>
     <AppHeader {...args} />
-  </NextAuthProvider>
+  </ApolloProvider>
 );
 export const SignedOut = SignedOutTemplate.bind({});
 SignedOut.parameters = {
   msw: [
-    rest.get(`${window.origin}/api/auth/session`, (req, res, ctx) => {
-      return res(ctx.json({}));
+    graphql.query(gg.names.Query.ProfileHook, (req, res, ctx) => {
+      return res(ctx.data({ profile: null }));
     }),
   ],
 };

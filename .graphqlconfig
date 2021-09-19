@@ -1,6 +1,6 @@
 {
   "name": "BookHub GraphQL Schema",
-  "schemaPath": "lib/genereted/schema.graphql",
+  "schemaPath": "pages/api/schema.graphql",
   "extensions": {
     "endpoints": {
       "Localhost": {

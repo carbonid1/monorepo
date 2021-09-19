@@ -1,6 +1,7 @@
 import NextAuth, { Profile } from 'next-auth';
 import Providers from 'next-auth/providers';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
+import { ROUTE } from 'lib/consts/routes';
 import prisma from '../../../prisma';
 
 export default NextAuth({
@@ -38,6 +39,6 @@ export default NextAuth({
     }),
   ],
   pages: {
-    signIn: '/auth/sign-in',
+    signIn: `/${ROUTE.signIn}`,
   },
 });

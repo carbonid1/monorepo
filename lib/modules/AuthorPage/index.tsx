@@ -1,5 +1,4 @@
 import type { GetServerSideProps, NextPage } from 'next';
-import { getSession } from 'next-auth/client';
 import { CustomHead } from 'lib/components/CustomHead';
 import { ROUTE } from 'lib/consts/routes';
 import { TextLink } from 'lib/components';
@@ -27,7 +26,7 @@ const AuthorPage: NextPage<IAuthorPage> = ({ id }) => {
   return (
     <div>
       <CustomHead title={fullName} />
-      <div className="justify-start grid gap-10 sm:grid-flow-col">
+      <div className="grid justify-start gap-10 sm:grid-flow-col">
         <CoverImage alt={fullName} src={imageUrl} className="justify-self-center" />
         <div>
           <div>
@@ -67,7 +66,6 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
   return {
     props: {
       id,
-      session: await getSession(ctx),
       initialApolloState: apolloClient.cache.extract(),
     },
   };

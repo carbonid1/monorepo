@@ -1,0 +1,6 @@
+query ProfileHook {
+  profile {
+    id
+    image
+  }
+}
