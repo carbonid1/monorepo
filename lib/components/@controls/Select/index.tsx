@@ -10,8 +10,8 @@ interface ISelectOption<V> {
 export interface ISelect<V> {
   options: ISelectOption<V>[];
   placeholder?: string;
-  value: ISelectOption<V>['value'];
-  onChange: (value: ISelectOption<V>['value']) => void;
+  value: V;
+  onChange: (value: V) => void;
 }
 
 export const Select = <V,>({ value, options, onChange, placeholder = 'Select an Option' }: ISelect<V>): JSX.Element => {

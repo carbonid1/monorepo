@@ -19,11 +19,12 @@ const getURIConfig = () => {
   }
 };
 
-function createIsomorphicLink() {
+type ApolloContext = any;
+function createIsomorphicLink(context?: ApolloContext) {
   if (typeof window === 'undefined') {
     const { SchemaLink } = require('@apollo/client/link/schema');
     const { schema } = require('../pages/api');
-    return new SchemaLink({ schema });
+    return new SchemaLink({ schema, context });
   } else {
     const { HttpLink } = require('@apollo/client/link/http');
     const { host, protocol } = getURIConfig();
@@ -46,16 +47,21 @@ const createErrorLink = () => {
   });
 };
 
-function createApolloClient() {
+function createApolloClient(context?: ApolloContext) {
   return new ApolloClient({
     ssrMode: isSSR(),
-    link: from([createErrorLink(), createIsomorphicLink()]),
+    link: from([createErrorLink(), createIsomorphicLink(context)]),
     cache: new InMemoryCache(),
   });
 }
 
-export function initializeApollo(initialState: TInitialState = null): TApolloClient {
-  const _apolloClient = apolloClient ?? createApolloClient();
+interface InitializeApollo {
+  initialState?: TInitialState;
+  context?: ApolloContext;
+}
+export function initializeApollo(options?: InitializeApollo): TApolloClient {
+  const { initialState = null, context } = options ?? {};
+  const _apolloClient = apolloClient ?? createApolloClient(context);
 
   if (initialState) {
     _apolloClient.cache.restore(initialState);
@@ -68,6 +74,6 @@ export function initializeApollo(initialState: TInitialState = null): TApolloCli
 }
 
 export function useApollo(initialState: TInitialState = null): TApolloClient {
-  const store = useMemo(() => initializeApollo(initialState), [initialState]);
+  const store = useMemo(() => initializeApollo({ initialState }), [initialState]);
   return store;
 }

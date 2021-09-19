@@ -19,8 +19,8 @@
 
   @media (prefers-color-scheme: dark) {
     :root {
-      --color-text-base: 255, 255, 255;
-      --color-text-complement: 255, 255, 255;
+      --color-text-base: 250, 250, 250;
+      --color-text-complement: 250, 250, 250;
       --color-background-base: 14, 20, 27;
       --color-background-complement: 25, 35, 45;
       --color-border-base: 55, 65, 81;

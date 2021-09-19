@@ -2,14 +2,6 @@ overwrite: true
 schema: 'http://localhost:3000/api'
 documents: './**/*.gql'
 generates:
-  lib/generated/schema.json:
-    plugins:
-      - introspection
-  lib/generated/schema.graphql:
-    plugins:
-      - schema-ast
-    config:
-      includeDirectives: true
   lib/generated/graphql.tsx:
     plugins:
       - typescript
@@ -20,7 +12,11 @@ config:
   skipTypename: true
   identifierName: names
   omitOperationSuffix: true
-  maybeValue: T | null | undefined
+  avoidOptionals:
+    field: false
+    inputValue: false
+    object: false
+    defaultValue: false
 hooks:
   afterAllFileWrite:
     - prettier --write

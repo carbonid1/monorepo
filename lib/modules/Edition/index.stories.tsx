@@ -25,17 +25,17 @@ Default.args = {
 
 export const NoPublishedDate = Template.bind({});
 NoPublishedDate.args = {
-  edition: { ...edition, publishedIn: undefined },
+  edition: { ...edition, publishedIn: null },
 };
 
 export const NoLanguage = Template.bind({});
 NoLanguage.args = {
-  edition: { ...edition, lang: undefined },
+  edition: { ...edition, lang: null },
 };
 
 export const NoDescription = Template.bind({});
 NoDescription.args = {
-  edition: { ...edition, description: undefined },
+  edition: { ...edition, description: null },
 };
 
 export const NoAuthours = Template.bind({});

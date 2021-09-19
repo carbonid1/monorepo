@@ -1,5 +1,4 @@
 import type { GetServerSideProps, NextPage } from 'next';
-import { getSession } from 'next-auth/client';
 import { CustomHead } from 'lib/components/CustomHead';
 import { ROUTE } from 'lib/consts/routes';
 import { TextLink } from 'lib/components';
@@ -68,7 +67,6 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
   return {
     props: {
       id,
-      session: await getSession(ctx),
       initialApolloState: apolloClient.cache.extract(),
     },
   };

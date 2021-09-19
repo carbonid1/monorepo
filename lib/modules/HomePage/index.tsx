@@ -1,4 +1,3 @@
-import { getSession } from 'next-auth/client';
 import type { GetServerSideProps, NextPage } from 'next';
 import NextImage from 'next/image';
 import NextLink from 'next/link';
@@ -15,7 +14,7 @@ const HomePage: NextPage = () => {
   if (error) return <ServerError />;
 
   return (
-    <div className="justify-center pt-4 grid gap-6" style={{ gridTemplateColumns: 'repeat(auto-fit, 160px)' }}>
+    <div className="grid justify-center gap-6 pt-4" style={{ gridTemplateColumns: 'repeat(auto-fit, 160px)' }}>
       {books.map(({ id, editions }, index) => (
         <NextLink
           key={id + index}
@@ -36,13 +35,12 @@ const HomePage: NextPage = () => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ctx => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const apolloClient = initializeApollo();
   await apolloClient.query({ query: gg.IndexPageBooksDocument });
   return {
     props: {
       initialApolloState: apolloClient.cache.extract(),
-      session: await getSession(ctx),
     },
   };
 };

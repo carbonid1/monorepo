@@ -1,5 +1,4 @@
 import type { GetServerSideProps, NextPage } from 'next';
-import { getSession } from 'next-auth/client';
 import { CustomHead } from 'lib/components/CustomHead';
 import { Authors } from 'lib/components/Authors';
 import { NotFound, ServerError } from 'lib/components/@errors';
@@ -46,7 +45,6 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
   return {
     props: {
       id,
-      session: await getSession(ctx),
       initialApolloState: apolloClient.cache.extract(),
     },
   };

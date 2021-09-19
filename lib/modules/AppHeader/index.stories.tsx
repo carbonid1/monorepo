@@ -4,6 +4,8 @@ import { rest } from 'msw';
 import usersMock from 'lib/mocks/users';
 import { AppHeader } from '.';
 
+// TODO: refactor
+
 export default {
   title: 'modules/AppHeader',
   component: AppHeader,
