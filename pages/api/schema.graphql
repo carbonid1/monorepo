@@ -34,7 +34,7 @@ type Edition {
 }
 
 type Mutation {
-  empty: User
+  updateProfile: User!
 }
 
 type Query {
@@ -42,8 +42,10 @@ type Query {
   book(id: ID): Book
   books: [Book!]!
   edition(id: ID): Edition
+  profile: User
   review(id: ID): Review
   reviews(bookId: ID, editionId: ID, lang: String): [Review!]!
+  user(id: ID): User
 }
 
 type Review {
@@ -59,7 +61,7 @@ type User {
   createdAt: String!
   email: String
   emailVerified: String
-  id: Int!
+  id: String!
   image: String
   name: String
   updatedAt: String!

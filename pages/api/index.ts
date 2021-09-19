@@ -1,7 +1,8 @@
 import path from 'path';
-import { ApolloServer } from 'apollo-server-micro';
+import { ApolloServer, AuthenticationError } from 'apollo-server-micro';
 import { asNexusMethod, idArg, list, makeSchema, nonNull, objectType, stringArg } from 'nexus';
 import { GraphQLDate } from 'graphql-iso-date';
+import { getSession } from 'next-auth/client';
 import prisma from '../../prisma';
 
 export const GQLDate = asNexusMethod(GraphQLDate, 'date');
@@ -79,7 +80,7 @@ const User = objectType({
   name: 'User',
   nonNullDefaults: { output: true },
   definition(t) {
-    t.int('id');
+    t.string('id');
     t.string('createdAt');
     t.string('updatedAt');
     t.nullable.string('name');
@@ -116,6 +117,22 @@ const Query = objectType({
       args: { id: idArg() },
       resolve: (_, { id }) => prisma.review.findFirst({ where: { id: +id } }),
     });
+    t.field('user', {
+      type: 'User',
+      args: { id: idArg() },
+      resolve: (_, { id }) => prisma.user.findUnique({ where: { id } }),
+    });
+    t.nullable.field('profile', {
+      type: 'User',
+      resolve: async (_, args, ctx) => {
+        const session = await getSession(ctx);
+        if (!session) return null;
+        const sessionRecord = await prisma.session.findUnique({
+          where: { accessToken: session.accessToken as string },
+        });
+        return prisma.user.findUnique({ where: { id: sessionRecord?.userId } });
+      },
+    });
     t.field('reviews', {
       type: nonNull(list(nonNull('Review'))),
       args: { bookId: idArg(), editionId: idArg(), lang: stringArg() },
@@ -146,10 +163,16 @@ const Mutation = objectType({
   name: 'Mutation',
   nonNullDefaults: { input: true },
   definition(t) {
-    t.field('empty', {
+    t.nonNull.field('updateProfile', {
       type: 'User',
-      resolve: async () => {
-        return prisma.user.findFirst();
+      args: {},
+      resolve: async (_, args, ctx) => {
+        const session = await getSession(ctx);
+        if (!session) return new AuthenticationError('Unauthorized action');
+        const sessionRecord = await prisma.session.findUnique({
+          where: { accessToken: session.accessToken as string },
+        });
+        return prisma.user.update({ where: { id: sessionRecord?.userId }, data: {} });
       },
     });
   },
@@ -167,7 +190,7 @@ export const config = { api: { bodyParser: false } };
 
 export default new ApolloServer({
   schema,
-  context: ({ req, res }) => ({ req, res }),
+  context: ctx => ctx,
 }).createHandler({
   path: '/api',
 });

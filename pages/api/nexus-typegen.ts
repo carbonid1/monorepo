@@ -74,7 +74,7 @@ export interface NexusGenObjects {
     createdAt: string; // String!
     email?: string | null; // String
     emailVerified?: string | null; // String
-    id: number; // Int!
+    id: string; // String!
     image?: string | null; // String
     name?: string | null; // String
     updatedAt: string; // String!
@@ -116,15 +116,17 @@ export interface NexusGenFieldTypes {
     title: string; // String!
   }
   Mutation: { // field return type
-    empty: NexusGenRootTypes['User'] | null; // User
+    updateProfile: NexusGenRootTypes['User']; // User!
   }
   Query: { // field return type
     author: NexusGenRootTypes['Author'] | null; // Author
     book: NexusGenRootTypes['Book'] | null; // Book
     books: NexusGenRootTypes['Book'][]; // [Book!]!
     edition: NexusGenRootTypes['Edition'] | null; // Edition
+    profile: NexusGenRootTypes['User'] | null; // User
     review: NexusGenRootTypes['Review'] | null; // Review
     reviews: NexusGenRootTypes['Review'][]; // [Review!]!
+    user: NexusGenRootTypes['User'] | null; // User
   }
   Review: { // field return type
     body: string; // String!
@@ -138,7 +140,7 @@ export interface NexusGenFieldTypes {
     createdAt: string; // String!
     email: string | null; // String
     emailVerified: string | null; // String
-    id: number; // Int!
+    id: string; // String!
     image: string | null; // String
     name: string | null; // String
     updatedAt: string; // String!
@@ -170,15 +172,17 @@ export interface NexusGenFieldTypeNames {
     title: 'String'
   }
   Mutation: { // field return type name
-    empty: 'User'
+    updateProfile: 'User'
   }
   Query: { // field return type name
     author: 'Author'
     book: 'Book'
     books: 'Book'
     edition: 'Edition'
+    profile: 'User'
     review: 'Review'
     reviews: 'Review'
+    user: 'User'
   }
   Review: { // field return type name
     body: 'String'
@@ -192,7 +196,7 @@ export interface NexusGenFieldTypeNames {
     createdAt: 'String'
     email: 'String'
     emailVerified: 'String'
-    id: 'Int'
+    id: 'String'
     image: 'String'
     name: 'String'
     updatedAt: 'String'
@@ -217,6 +221,9 @@ export interface NexusGenArgTypes {
       bookId?: string | null; // ID
       editionId?: string | null; // ID
       lang?: string | null; // String
+    }
+    user: { // args
+      id?: string | null; // ID
     }
   }
   Review: {
