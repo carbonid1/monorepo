@@ -5,19 +5,19 @@ import { TextLink } from 'lib/components';
 import { extractIdFromSlug } from 'lib/utils';
 import { Paragraph } from 'lib/components/@typography/Paragraph';
 import { CoverImage } from 'lib/components/CoverImage';
-import { NotFound, ServerError } from 'lib/components/@errors';
 import { initializeApollo } from 'lib/apollo';
 import gg from 'lib/generated';
+import { NotFound } from 'lib/components/@errors/NotFound';
+import { ServerError } from 'lib/components/@errors/ServerError';
 
 interface IAuthorPage {
   id: string;
 }
 
 const AuthorPage: NextPage<IAuthorPage> = ({ id }) => {
-  const { data, loading, error } = gg.useAuthorPageAuthor({ variables: { id }, skip: !id });
+  const { data, error } = gg.useAuthorPageAuthor({ variables: { id }, skip: !id });
   const { author } = data ?? {};
 
-  if (loading) return null;
   if (error) return <ServerError />;
   if (!author) return <NotFound />;
 

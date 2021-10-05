@@ -4,10 +4,11 @@ import { ROUTE } from 'lib/consts/routes';
 import { TextLink } from 'lib/components';
 import { BookReviews } from 'lib/modules/BookReviews';
 import { Edition } from 'lib/modules/Edition';
-import { NotFound, ServerError } from 'lib/components/@errors';
 import { extractIdFromSlug } from 'lib/utils';
 import { initializeApollo } from 'lib/apollo';
 import gg from 'lib/generated';
+import { ServerError } from 'lib/components/@errors/ServerError';
+import { NotFound } from 'lib/components/@errors/NotFound';
 
 interface IBookPage {
   id: string;
@@ -18,7 +19,7 @@ const BookPage: NextPage<IBookPage> = ({ id }) => {
   const { edition } = data ?? {};
 
   if (error) return <ServerError />;
-  if (!edition || id === null) return <NotFound />;
+  if (!edition) return <NotFound />;
 
   const { book } = edition;
 
@@ -41,7 +42,7 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
   const id = extractIdFromSlug(slug);
 
   const apolloClient = initializeApollo();
-  await apolloClient.query({
+  await apolloClient.query<gg.BookPageEdition, gg.BookPageEditionVariables>({
     query: gg.BookPageEditionDocument,
     variables: { id },
   });

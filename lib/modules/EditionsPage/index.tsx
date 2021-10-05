@@ -5,7 +5,8 @@ import { TextLink } from 'lib/components';
 import { extractIdFromSlug, formatDate } from 'lib/utils';
 import languageService from 'lib/services/language.service';
 import { ByAuthors } from 'lib/components/Authors/ByAuthors';
-import { NotFound, ServerError } from 'lib/components/@errors';
+import { ServerError } from 'lib/components/@errors/ServerError';
+import { NotFound } from 'lib/components/@errors/NotFound';
 import { initializeApollo } from 'lib/apollo';
 import gg from 'lib/generated';
 

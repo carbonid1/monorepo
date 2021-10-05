@@ -3,7 +3,7 @@ import NextImage from 'next/image';
 import NextLink from 'next/link';
 import slugify from 'slugify';
 import { ROUTE } from 'lib/consts/routes';
-import { ServerError } from 'lib/components/@errors';
+import { ServerError } from 'lib/components/@errors/ServerError';
 import { initializeApollo } from 'lib/apollo';
 import gg from 'lib/generated';
 

@@ -1,8 +1,9 @@
 import type { GetServerSideProps, NextPage } from 'next';
 import { CustomHead } from 'lib/components/CustomHead';
 import { Authors } from 'lib/components/Authors';
-import { NotFound, ServerError } from 'lib/components/@errors';
 import { initializeApollo } from 'lib/apollo';
+import { ServerError } from 'lib/components/@errors/ServerError';
+import { NotFound } from 'lib/components/@errors/NotFound';
 import gg from 'lib/generated';
 
 interface IReview {
