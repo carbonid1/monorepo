@@ -124,7 +124,7 @@ const Query = objectType({
     });
     t.nullable.field('profile', {
       type: 'User',
-      resolve: async (_, args, ctx) => {
+      resolve: async (_, __, ctx) => {
         const session = await getSession(ctx);
         if (!session) return null;
         const sessionRecord = await prisma.session.findUnique({
@@ -166,7 +166,7 @@ const Mutation = objectType({
     t.nonNull.field('updateProfile', {
       type: 'User',
       args: {},
-      resolve: async (_, args, ctx) => {
+      resolve: async (_, __, ctx) => {
         const session = await getSession(ctx);
         if (!session) return new AuthenticationError('Unauthorized action');
         const sessionRecord = await prisma.session.findUnique({

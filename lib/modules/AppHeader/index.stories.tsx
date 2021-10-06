@@ -36,7 +36,7 @@ const Template: Story = args => (
 export const Default = Template.bind({});
 Default.parameters = {
   msw: [
-    graphql.query(gg.names.Query.ProfileHook, (req, res, ctx) => {
+    graphql.query(gg.names.Query.ProfileHook, (_, res, ctx) => {
       return res(ctx.data({ profile: usersMock.ivan }));
     }),
   ],
@@ -50,7 +50,7 @@ const SignedOutTemplate: Story = args => (
 export const SignedOut = SignedOutTemplate.bind({});
 SignedOut.parameters = {
   msw: [
-    graphql.query(gg.names.Query.ProfileHook, (req, res, ctx) => {
+    graphql.query(gg.names.Query.ProfileHook, (_, res, ctx) => {
       return res(ctx.data({ profile: null }));
     }),
   ],
