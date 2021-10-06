@@ -24,5 +24,6 @@ export const useLangOptions: TUseLangOptions = variables => {
 export const useReviewsQuery = (variables: gg.BookReviewsVariables) => {
   const { data, loading, previousData } = gg.useBookReviews({ variables });
   const { reviews } = data || previousData || { reviews: [] };
-  return { reviews, loading, previousData };
+
+  return { reviews, loading: loading && !previousData, previousData };
 };

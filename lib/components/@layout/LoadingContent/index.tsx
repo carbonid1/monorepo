@@ -1,5 +1,5 @@
 import { CollectionIcon } from '@heroicons/react/solid';
-import type { ReactNode } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import cn from 'classnames';
 import { BaseBlock, IBaseBlock } from 'lib/components/@layout/BaseBlock';
 import { Skeleton } from '../Skeleton';
@@ -22,9 +22,23 @@ export const LoadingContent: React.FC<ILoadingContent> = ({
   className,
   initiallyLoaded,
 }) => {
+  const [innerLoading, setInnerLoading] = useState(loading);
+
+  useEffect(() => {
+    if (loading) {
+      setInnerLoading(loading);
+    } else {
+      const timeoutId = setTimeout(() => {
+        setInnerLoading(loading);
+      }, 300);
+
+      return () => clearTimeout(timeoutId);
+    }
+  }, [loading]);
+
   return (
-    <div className={cn(loading && 'animate-pulse', className)}>
-      {loading && !initiallyLoaded ? (
+    <div className={cn(innerLoading && 'animate-pulse', className)}>
+      {innerLoading && !initiallyLoaded ? (
         loader || <Skeleton />
       ) : empty ? (
         <BaseBlock title={title} subTitle={subTitle} img={<CollectionIcon className="h-40 text-skin-skeleton" />} />
