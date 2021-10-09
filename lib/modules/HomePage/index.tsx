@@ -20,7 +20,7 @@ const HomePage: NextPage = () => {
           key={id + index}
           href={`/${ROUTE.book}/${editions[0].id}.${slugify(editions[0].title, { lower: false })}`}
         >
-          <span className="cursor-pointer rounded transition duration-500 hover:shadow-xl transform hover:scale-[1.05] h-[240px]">
+          <a className="cursor-pointer rounded transition duration-500 hover:shadow-xl transform hover:scale-[1.05] h-[240px]">
             <NextImage
               width="160px"
               height="240px"
@@ -28,7 +28,7 @@ const HomePage: NextPage = () => {
               src={editions[0].cover || ''}
               alt={editions[0].title} // TODO: add default src
             />
-          </span>
+          </a>
         </NextLink>
       ))}
     </div>
