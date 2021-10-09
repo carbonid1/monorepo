@@ -16,9 +16,9 @@ export const AppHeader: React.FC = () => {
         </TextLink>
         {profile?.image && (
           <NextLink href={`/${ROUTE.settings}`}>
-            <div className="h-12 cursor-pointer">
+            <a className="h-12 overflow-hidden rounded-full cursor-pointer shadow-round">
               <NextImg className="rounded-full" src={profile?.image} alt="profile" height={48} width={48} />
-            </div>
+            </a>
           </NextLink>
         )}
         <TextLink className="ml-4 font-bold" color="text" onClick={profile ? () => signOut() : () => signIn()}>

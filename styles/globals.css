@@ -61,4 +61,13 @@
   .shadow-underline:hover {
     box-shadow: 0 2px 0 currentColor;
   }
+
+  .shadow-round {
+    @apply transition-shadow duration-500 shadow-md focus:outline-none hover:duration-100 focus:duration-100;
+    box-shadow: 0 0 0 currentColor;
+  }
+  .shadow-round:focus,
+  .shadow-round:hover {
+    box-shadow: 0 0 6px currentColor;
+  }
 }
