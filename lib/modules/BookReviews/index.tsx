@@ -4,8 +4,8 @@ import { Select, ISelect } from 'lib/components/@controls/Select';
 import { LoadingContent } from 'lib/components/@layout/LoadingContent';
 import { Paragraph } from 'lib/components/@typography/Paragraph';
 import { Skeleton } from 'lib/components/@layout/Skeleton';
-import { Toggle } from 'lib/components/@controls/Toggle';
 import { useToggler } from 'lib/hooks';
+import { Toggle } from 'lib/components/@controls/Toggle';
 import type { BookReviewsProps, SelectedLanguage } from './interface';
 import { useLangOptions, useReviewsQuery } from './hooks';
 
@@ -24,8 +24,8 @@ export const BookReviews: React.FC<BookReviewsProps> = props => {
         <Select options={langOptions} value={lang} onChange={setLang} />
         <Toggle
           label="This Edition"
-          isChecked={thisEdition}
-          onChange={() => {
+          checked={thisEdition}
+          onCheckedChange={() => {
             setLang(null);
             setThisEdition();
           }}
