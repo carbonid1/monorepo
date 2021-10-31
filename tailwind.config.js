@@ -30,6 +30,7 @@ module.exports = {
         skin: {
           base: withOpacity('--color-background-base'),
           complement: withOpacity('--color-background-complement'),
+          tertiary: withOpacity('--color-background-tertiary'),
           primary: withOpacity('--color-primary'),
           'primary-light': withOpacity('--color-primary-light'),
           'primary-dark': withOpacity('--color-primary-dark'),
@@ -59,6 +60,16 @@ module.exports = {
     screens: {
       xs: '380px',
       ...defaultTheme.screens,
+    },
+    keyframes: {
+      fadeIn: {
+        '0%': { opacity: 0 },
+        '20%': { opacity: 0 },
+        '100%': { opacity: 1 },
+      },
+    },
+    animation: {
+      fadeIn: 'fadeIn 1s',
     },
   },
   variants: {
