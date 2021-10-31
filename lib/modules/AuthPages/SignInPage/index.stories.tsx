@@ -1,5 +1,5 @@
 import type { Story, Meta } from '@storybook/react';
-import AppWrapper from 'lib/components/AppWrapper';
+import { AppWrapper } from 'lib/components/AppWrapper';
 import { SignedOut } from '../../AppHeader/index.stories';
 import SignInPage, { SignInPageProps } from '.';
 

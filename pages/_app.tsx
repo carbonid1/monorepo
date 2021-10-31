@@ -7,7 +7,8 @@ import { IdProvider } from '@radix-ui/react-id';
 import { AppHeader } from 'lib/modules/AppHeader';
 import { initializeApollo, useApollo } from 'lib/apollo';
 import trackingService from 'lib/services/tracking';
-import AppWrapper from 'lib/components/AppWrapper';
+import { AppWrapper } from 'lib/components/AppWrapper';
+import { AppProgress } from 'lib/modules/AppProgress';
 import gg from 'lib/generated';
 
 const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
@@ -45,6 +46,7 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <IdProvider>
+        <AppProgress />
         <AppHeader />
         <AppWrapper>
           <Component {...pageProps} />
