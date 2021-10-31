@@ -11,7 +11,7 @@ export const HeaderAvatar: React.FC = () => {
 
   return (
     <NextLink href={`/${ROUTE.settings}`}>
-      <a className="w-12 h-12 overflow-hidden rounded-full cursor-pointer bg-skin-tertiary">
+      <a className="inline-block w-12 h-12 overflow-hidden rounded-full cursor-pointer bg-skin-tertiary">
         <Avatar.Root>
           <Avatar.Image
             width={48}
