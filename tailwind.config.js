@@ -54,8 +54,9 @@ module.exports = {
       transparent: 'transparent',
     },
     zIndex: {
-      1: 1,
+      base: 1,
       header: 2,
+      progress: 3,
     },
     screens: {
       xs: '380px',
