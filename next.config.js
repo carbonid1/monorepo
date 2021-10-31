@@ -18,6 +18,7 @@ module.exports = withBundleAnalyzer(
         'lh3.googleusercontent.com',
         'avatars.githubusercontent.com',
         'platform-lookaside.fbsbx.com',
+        'avatars.dicebear.com',
       ],
     },
   }),

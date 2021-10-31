@@ -112,7 +112,7 @@ export type AuthorsFragment = { authors: Array<{ id: number; fullName: string }>
 
 export type ProfileHookVariables = Exact<{ [key: string]: never }>;
 
-export type ProfileHook = { profile?: Maybe<{ id: string; image?: Maybe<string> }> };
+export type ProfileHook = { profile?: Maybe<{ id: string; image?: Maybe<string>; name?: Maybe<string> }> };
 
 export type AuthorPageAuthorVariables = Exact<{
   id: Scalars['ID'];
@@ -241,6 +241,7 @@ export const ProfileHookDocument = gql`
     profile {
       id
       image
+      name
     }
   }
 `;
