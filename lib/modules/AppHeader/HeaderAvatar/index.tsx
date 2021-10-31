@@ -20,7 +20,7 @@ export const HeaderAvatar: React.FC = () => {
             src={profile.image ?? undefined}
             className="rounded-full animate-fadeIn"
           />
-          <Avatar.Fallback delayMs={1000} asChild>
+          <Avatar.Fallback delayMs={1000}>
             <NextImage
               width={48}
               height={48}
