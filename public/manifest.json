@@ -2,7 +2,7 @@
   "name": "BookHub",
   "short_name": "BookHub",
   "theme_color": "#ffffff",
-  "background_color": "#004740",
+  "background_color": "#ffffff",
   "display": "minimal-ui",
   "orientation": "portrait",
   "scope": "/",
