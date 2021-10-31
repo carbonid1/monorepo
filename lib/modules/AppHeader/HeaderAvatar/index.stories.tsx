@@ -3,14 +3,11 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import { graphql } from 'msw';
 import usersMock from 'lib/mocks/users';
 import gg from 'lib/generated';
-import { AppHeader } from '.';
+import { HeaderAvatar } from '.';
 
 export default {
-  title: 'modules/AppHeader',
-  component: AppHeader,
-  parameters: {
-    layout: 'fullscreen',
-  },
+  title: 'modules/AppHeader/HeaderAvatar',
+  component: HeaderAvatar,
 } as Meta;
 
 const mockedClient = new ApolloClient({
@@ -30,7 +27,7 @@ const mockedClient = new ApolloClient({
 
 const Template: Story = args => (
   <ApolloProvider client={mockedClient}>
-    <AppHeader {...args} />
+    <HeaderAvatar {...args} />
   </ApolloProvider>
 );
 
@@ -43,11 +40,11 @@ Default.parameters = {
   ],
 };
 
-export const SignedOut = Template.bind({});
-SignedOut.parameters = {
+export const NoProfileImage = Template.bind({});
+NoProfileImage.parameters = {
   msw: [
     graphql.query(gg.names.Query.ProfileHook, (_, res, ctx) => {
-      return res(ctx.data({ profile: null }));
+      return res(ctx.data({ profile: usersMock.john }));
     }),
   ],
 };

@@ -17,7 +17,7 @@ export const Toggle: React.FC<IToggle> = ({ label, className, checked, ...props 
       <Switch.Root
         {...props}
         className={cn(
-          checked ? 'bg-skin-button-base' : 'bg-[#e5e7eb] dark:bg-skin-complement',
+          checked ? 'bg-skin-button-base' : 'bg-skin-tertiary',
           'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-skin-base rounded-full transition-colors ease-in-out duration-200',
         )}
       >
