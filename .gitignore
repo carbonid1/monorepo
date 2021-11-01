@@ -19,6 +19,7 @@
 /prisma/dev.db
 public/sw.*
 public/workbox-*
+tsconfig.tsbuildinfo
 
 # debug
 npm-debug.log*

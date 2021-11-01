@@ -18,10 +18,10 @@ export type Scalars = {
 
 export type Author = {
   bio?: Maybe<Scalars['String']>;
-  imageUrl?: Maybe<Scalars['String']>;
-  id: Scalars['Int'];
-  fullName: Scalars['String'];
   books: Array<Book>;
+  fullName: Scalars['String'];
+  id: Scalars['Int'];
+  imageUrl?: Maybe<Scalars['String']>;
 };
 
 export type Book = {
@@ -33,13 +33,13 @@ export type Book = {
 
 export type Edition = {
   book: Book;
+  cover?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
   id: Scalars['Int'];
   lang?: Maybe<Scalars['String']>;
   publishedIn?: Maybe<Scalars['String']>;
   reviews: Array<Review>;
   title: Scalars['String'];
-  cover?: Maybe<Scalars['String']>;
 };
 
 export type Mutation = {
@@ -51,10 +51,10 @@ export type Query = {
   book?: Maybe<Book>;
   books: Array<Book>;
   edition?: Maybe<Edition>;
-  review?: Maybe<Review>;
-  user?: Maybe<User>;
   profile?: Maybe<User>;
+  review?: Maybe<Review>;
   reviews: Array<Review>;
+  user?: Maybe<User>;
 };
 
 export type QueryAuthorArgs = {
@@ -73,23 +73,23 @@ export type QueryReviewArgs = {
   id?: Maybe<Scalars['ID']>;
 };
 
-export type QueryUserArgs = {
-  id?: Maybe<Scalars['ID']>;
-};
-
 export type QueryReviewsArgs = {
   bookId?: Maybe<Scalars['ID']>;
   editionId?: Maybe<Scalars['ID']>;
   lang?: Maybe<Scalars['String']>;
 };
 
+export type QueryUserArgs = {
+  id?: Maybe<Scalars['ID']>;
+};
+
 export type Review = {
-  id: Scalars['Int'];
-  createdAt: Scalars['String'];
-  updatedAt: Scalars['String'];
   body: Scalars['String'];
+  createdAt: Scalars['String'];
   edition: Edition;
+  id: Scalars['Int'];
   lang?: Maybe<Scalars['String']>;
+  updatedAt: Scalars['String'];
 };
 
 export type ReviewEditionArgs = {
@@ -97,13 +97,13 @@ export type ReviewEditionArgs = {
 };
 
 export type User = {
-  id: Scalars['String'];
   createdAt: Scalars['String'];
-  updatedAt: Scalars['String'];
-  name?: Maybe<Scalars['String']>;
-  emailVerified?: Maybe<Scalars['String']>;
-  image?: Maybe<Scalars['String']>;
   email?: Maybe<Scalars['String']>;
+  emailVerified?: Maybe<Scalars['String']>;
+  id: Scalars['String'];
+  image?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  updatedAt: Scalars['String'];
 };
 
 export type ByAuthorsFragment = { authors: Array<{ id: number; fullName: string }> };
@@ -112,20 +112,28 @@ export type AuthorsFragment = { authors: Array<{ id: number; fullName: string }>
 
 export type ProfileHookVariables = Exact<{ [key: string]: never }>;
 
-export type ProfileHook = { profile?: Maybe<{ id: string; image?: Maybe<string>; name?: Maybe<string> }> };
+export type ProfileHook = {
+  profile?: { id: string; image?: string | null | undefined; name?: string | null | undefined } | null | undefined;
+};
 
 export type AuthorPageAuthorVariables = Exact<{
   id: Scalars['ID'];
 }>;
 
 export type AuthorPageAuthor = {
-  author?: Maybe<{
-    id: number;
-    bio?: Maybe<string>;
-    fullName: string;
-    imageUrl?: Maybe<string>;
-    books: Array<{ id: number; editions: Array<{ title: string; description?: Maybe<string>; id: number }> }>;
-  }>;
+  author?:
+    | {
+        id: number;
+        bio?: string | null | undefined;
+        fullName: string;
+        imageUrl?: string | null | undefined;
+        books: Array<{
+          id: number;
+          editions: Array<{ title: string; description?: string | null | undefined; id: number }>;
+        }>;
+      }
+    | null
+    | undefined;
 };
 
 export type BookPageEditionVariables = Exact<{
@@ -133,14 +141,17 @@ export type BookPageEditionVariables = Exact<{
 }>;
 
 export type BookPageEdition = {
-  edition?: Maybe<{
-    lang?: Maybe<string>;
-    title: string;
-    cover?: Maybe<string>;
-    description?: Maybe<string>;
-    publishedIn?: Maybe<string>;
-    book: { id: number; authors: Array<{ id: number; fullName: string }> };
-  }>;
+  edition?:
+    | {
+        lang?: string | null | undefined;
+        title: string;
+        cover?: string | null | undefined;
+        description?: string | null | undefined;
+        publishedIn?: string | null | undefined;
+        book: { id: number; authors: Array<{ id: number; fullName: string }> };
+      }
+    | null
+    | undefined;
 };
 
 export type BookReviewsVariables = Exact<{
@@ -149,21 +160,23 @@ export type BookReviewsVariables = Exact<{
   lang?: Maybe<Scalars['String']>;
 }>;
 
-export type BookReviews = { reviews: Array<{ id: number; body: string; lang?: Maybe<string>; createdAt: string }> };
+export type BookReviews = {
+  reviews: Array<{ id: number; body: string; lang?: string | null | undefined; createdAt: string }>;
+};
 
 export type BookReviewsLanguagesVariables = Exact<{
   bookId?: Maybe<Scalars['ID']>;
   editionId?: Maybe<Scalars['ID']>;
 }>;
 
-export type BookReviewsLanguages = { reviews: Array<{ lang?: Maybe<string> }> };
+export type BookReviewsLanguages = { reviews: Array<{ lang?: string | null | undefined }> };
 
 export type EditionFragment = {
-  lang?: Maybe<string>;
+  lang?: string | null | undefined;
   title: string;
-  cover?: Maybe<string>;
-  description?: Maybe<string>;
-  publishedIn?: Maybe<string>;
+  cover?: string | null | undefined;
+  description?: string | null | undefined;
+  publishedIn?: string | null | undefined;
   book: { id: number; authors: Array<{ id: number; fullName: string }> };
 };
 
@@ -172,23 +185,26 @@ export type EditionsPageBookVariables = Exact<{
 }>;
 
 export type EditionsPageBook = {
-  book?: Maybe<{
-    publishedIn: string;
-    editions: Array<{
-      id: number;
-      lang?: Maybe<string>;
-      title: string;
-      description?: Maybe<string>;
-      publishedIn?: Maybe<string>;
-    }>;
-    authors: Array<{ id: number; fullName: string }>;
-  }>;
+  book?:
+    | {
+        publishedIn: string;
+        editions: Array<{
+          id: number;
+          lang?: string | null | undefined;
+          title: string;
+          description?: string | null | undefined;
+          publishedIn?: string | null | undefined;
+        }>;
+        authors: Array<{ id: number; fullName: string }>;
+      }
+    | null
+    | undefined;
 };
 
 export type IndexPageBooksVariables = Exact<{ [key: string]: never }>;
 
 export type IndexPageBooks = {
-  books: Array<{ id: number; editions: Array<{ id: number; title: string; cover?: Maybe<string> }> }>;
+  books: Array<{ id: number; editions: Array<{ id: number; title: string; cover?: string | null | undefined }> }>;
 };
 
 export type ReviewPageReviewVariables = Exact<{
@@ -196,19 +212,19 @@ export type ReviewPageReviewVariables = Exact<{
 }>;
 
 export type ReviewPageReview = {
-  review?: Maybe<{
-    body: string;
-    edition: { title: string; book: { authors: Array<{ id: number; fullName: string }> } };
-  }>;
+  review?:
+    | { body: string; edition: { title: string; book: { authors: Array<{ id: number; fullName: string }> } } }
+    | null
+    | undefined;
 };
 
 export type UserPageVariables = Exact<{
   id?: Maybe<Scalars['ID']>;
 }>;
 
-export type UserPage = { user?: Maybe<{ id: string; name?: Maybe<string> }> };
+export type UserPage = { user?: { id: string; name?: string | null | undefined } | null | undefined };
 
-export const AuthorsFragment = gql`
+export const AuthorsFragment = /*#__PURE__*/ gql`
   fragment AuthorsFragment on Book {
     authors {
       id
@@ -216,13 +232,13 @@ export const AuthorsFragment = gql`
     }
   }
 `;
-export const ByAuthorsFragment = gql`
+export const ByAuthorsFragment = /*#__PURE__*/ gql`
   fragment ByAuthorsFragment on Book {
     ...AuthorsFragment
   }
   ${AuthorsFragment}
 `;
-export const EditionFragment = gql`
+export const EditionFragment = /*#__PURE__*/ gql`
   fragment EditionFragment on Edition {
     lang
     title
@@ -236,7 +252,7 @@ export const EditionFragment = gql`
   }
   ${ByAuthorsFragment}
 `;
-export const ProfileHookDocument = gql`
+export const ProfileHookDocument = /*#__PURE__*/ gql`
   query ProfileHook {
     profile {
       id
@@ -272,7 +288,7 @@ export function useProfileHookLazyQuery(baseOptions?: Apollo.LazyQueryHookOption
 export type ProfileHookHookResult = ReturnType<typeof useProfileHook>;
 export type ProfileHookLazyQueryHookResult = ReturnType<typeof useProfileHookLazyQuery>;
 export type ProfileHookQueryResult = Apollo.QueryResult<ProfileHook, ProfileHookVariables>;
-export const AuthorPageAuthorDocument = gql`
+export const AuthorPageAuthorDocument = /*#__PURE__*/ gql`
   query AuthorPageAuthor($id: ID!) {
     author(id: $id) {
       id
@@ -320,7 +336,7 @@ export function useAuthorPageAuthorLazyQuery(
 export type AuthorPageAuthorHookResult = ReturnType<typeof useAuthorPageAuthor>;
 export type AuthorPageAuthorLazyQueryHookResult = ReturnType<typeof useAuthorPageAuthorLazyQuery>;
 export type AuthorPageAuthorQueryResult = Apollo.QueryResult<AuthorPageAuthor, AuthorPageAuthorVariables>;
-export const BookPageEditionDocument = gql`
+export const BookPageEditionDocument = /*#__PURE__*/ gql`
   query BookPageEdition($id: ID) {
     edition(id: $id) {
       ...EditionFragment
@@ -358,7 +374,7 @@ export function useBookPageEditionLazyQuery(
 export type BookPageEditionHookResult = ReturnType<typeof useBookPageEdition>;
 export type BookPageEditionLazyQueryHookResult = ReturnType<typeof useBookPageEditionLazyQuery>;
 export type BookPageEditionQueryResult = Apollo.QueryResult<BookPageEdition, BookPageEditionVariables>;
-export const BookReviewsDocument = gql`
+export const BookReviewsDocument = /*#__PURE__*/ gql`
   query BookReviews($bookId: ID, $editionId: ID, $lang: String) {
     reviews(lang: $lang, bookId: $bookId, editionId: $editionId) {
       id
@@ -398,7 +414,7 @@ export function useBookReviewsLazyQuery(baseOptions?: Apollo.LazyQueryHookOption
 export type BookReviewsHookResult = ReturnType<typeof useBookReviews>;
 export type BookReviewsLazyQueryHookResult = ReturnType<typeof useBookReviewsLazyQuery>;
 export type BookReviewsQueryResult = Apollo.QueryResult<BookReviews, BookReviewsVariables>;
-export const BookReviewsLanguagesDocument = gql`
+export const BookReviewsLanguagesDocument = /*#__PURE__*/ gql`
   query BookReviewsLanguages($bookId: ID, $editionId: ID) {
     reviews(bookId: $bookId, editionId: $editionId) {
       lang
@@ -441,7 +457,7 @@ export function useBookReviewsLanguagesLazyQuery(
 export type BookReviewsLanguagesHookResult = ReturnType<typeof useBookReviewsLanguages>;
 export type BookReviewsLanguagesLazyQueryHookResult = ReturnType<typeof useBookReviewsLanguagesLazyQuery>;
 export type BookReviewsLanguagesQueryResult = Apollo.QueryResult<BookReviewsLanguages, BookReviewsLanguagesVariables>;
-export const EditionsPageBookDocument = gql`
+export const EditionsPageBookDocument = /*#__PURE__*/ gql`
   query EditionsPageBook($id: ID) {
     book(id: $id) {
       ...ByAuthorsFragment
@@ -489,7 +505,7 @@ export function useEditionsPageBookLazyQuery(
 export type EditionsPageBookHookResult = ReturnType<typeof useEditionsPageBook>;
 export type EditionsPageBookLazyQueryHookResult = ReturnType<typeof useEditionsPageBookLazyQuery>;
 export type EditionsPageBookQueryResult = Apollo.QueryResult<EditionsPageBook, EditionsPageBookVariables>;
-export const IndexPageBooksDocument = gql`
+export const IndexPageBooksDocument = /*#__PURE__*/ gql`
   query IndexPageBooks {
     books {
       id
@@ -530,7 +546,7 @@ export function useIndexPageBooksLazyQuery(
 export type IndexPageBooksHookResult = ReturnType<typeof useIndexPageBooks>;
 export type IndexPageBooksLazyQueryHookResult = ReturnType<typeof useIndexPageBooksLazyQuery>;
 export type IndexPageBooksQueryResult = Apollo.QueryResult<IndexPageBooks, IndexPageBooksVariables>;
-export const ReviewPageReviewDocument = gql`
+export const ReviewPageReviewDocument = /*#__PURE__*/ gql`
   query ReviewPageReview($id: ID) {
     review(id: $id) {
       body
@@ -576,7 +592,7 @@ export function useReviewPageReviewLazyQuery(
 export type ReviewPageReviewHookResult = ReturnType<typeof useReviewPageReview>;
 export type ReviewPageReviewLazyQueryHookResult = ReturnType<typeof useReviewPageReviewLazyQuery>;
 export type ReviewPageReviewQueryResult = Apollo.QueryResult<ReviewPageReview, ReviewPageReviewVariables>;
-export const UserPageDocument = gql`
+export const UserPageDocument = /*#__PURE__*/ gql`
   query UserPage($id: ID) {
     user(id: $id) {
       id
