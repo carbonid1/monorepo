@@ -9,6 +9,7 @@ generates:
       - typescript-react-apollo
       - named-operations-object
 config:
+  # pureMagicComment: true
   skipTypename: true
   identifierName: names
   omitOperationSuffix: true
