@@ -1,0 +1,24 @@
+name: Report Dead Code
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron:  '0 12 * * *'
+
+jobs:
+  report_dead_code:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2-beta
+        with:
+          node-version: "14"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Intall eslint-nibble
+        run: npm install --no-save eslint-nibble
+
+      - name: Run ESLint rule
+        run: npx eslint-nibble --config .github/configs/report-dead-code-eslintrc.js --no-interactive --ext=.tsx,.ts,.js --rule import/no-unused-modules .
