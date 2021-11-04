@@ -15,14 +15,14 @@ jobs:
         with:
           node-version: '14'
 
-      - name: Install dependencies
-        run: npm ci
+      # - name: Install dependencies
+      #   run: npm ci
 
-      - name: Intall eslint-nibble
-        run: npm install --no-save eslint-nibble
+      # - name: Intall eslint-nibble
+      #   run: npm install --no-save eslint-nibble
 
-      - name: Run ESLint rule
-        run: npx eslint-nibble --config .github/report-dead-code/eslintrc.js --no-interactive --ext=.tsx,.ts,.js --rule import/no-unused-modules .
+      # - name: Run ESLint rule
+      #   run: npx eslint-nibble --config .github/report-dead-code/eslintrc.js --no-interactive --ext=.tsx,.ts,.js --rule import/no-unused-modules .
 
   send_success_notification:
     if: success()
@@ -37,7 +37,7 @@ jobs:
       - name: Send Success Slack Notification
         uses: Brymastr/slack-action@v1
         with:
-          template: '.github/report-dead-code/success.slack.json'
+          template: '../report-dead-code/success.slack.json'
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
@@ -54,6 +54,6 @@ jobs:
       - name: Send Failure Slack Notification
         uses: Brymastr/slack-action@v1
         with:
-          template: '.github/report-dead-code/failure.slack.json'
+          template: '../report-dead-code/failure.slack.json'
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
