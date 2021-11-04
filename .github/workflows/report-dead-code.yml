@@ -2,23 +2,52 @@ name: Report Dead Code
 
 on:
   workflow_dispatch:
+  push:
+    branches: [master]
   schedule:
-    - cron:  '0 12 * * *'
+    - cron: '0 12 1 * *'
 
 jobs:
-  report_dead_code:
+  run_linter:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2-beta
         with:
-          node-version: "14"
+          node-version: '14'
 
-      - name: Install dependencies
-        run: npm ci
+      # - name: Install dependencies
+      #   run: npm ci
 
-      - name: Intall eslint-nibble
-        run: npm install --no-save eslint-nibble
+      # - name: Intall eslint-nibble
+      #   run: npm install --no-save eslint-nibble
 
-      - name: Run ESLint rule
-        run: npx eslint-nibble --config .github/configs/report-dead-code-eslintrc.js --no-interactive --ext=.tsx,.ts,.js --rule import/no-unused-modules .
+      # - name: Run ESLint rule
+      #   run: npx eslint-nibble --config .github/configs/report-dead-code-eslintrc.js --no-interactive --ext=.tsx,.ts,.js --rule import/no-unused-modules .
+
+  send_succesful_notification:
+    if: success()
+    needs: run_linter
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2-beta
+        with:
+          node-version: '14'
+
+      - name: Send Slack Notification
+        uses: Brymastr/slack-action@v1
+        with:
+          template: '.github/configs/dead-code.json'
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+
+  send_failure_notification:
+    if: failure()
+    needs: run_linter
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2-beta
+        with:
+          node-version: '14'

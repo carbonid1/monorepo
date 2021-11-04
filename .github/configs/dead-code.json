@@ -1,0 +1,81 @@
+{
+  "blocks": [
+    {
+      "type": "header",
+      "text": {
+        "type": "plain_text",
+        "text": "Dead Code Reported"
+      }
+    },
+    {
+      "type": "section",
+      "block_id": "section567",
+      "text": {
+        "type": "mrkdwn",
+        "text": "<https://example.com|Overlook Hotel> \n :star: \n Doors had too many axe holes, guest in room 237 was far too rowdy, whole place felt stuck in the 1920s."
+      },
+      "accessory": {
+        "type": "image",
+        "image_url": ".github/assets/upset_bot.png",
+        "alt_text": "Haunted hotel image"
+      }
+    },
+    {
+      "type": "section",
+      "block_id": "section789",
+      "fields": [
+        {
+          "type": "mrkdwn",
+          "text": "*Average Rating*\n1.0"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "This is a section block with a button."
+      },
+      "accessory": {
+        "type": "button",
+        "text": {
+          "type": "plain_text",
+          "text": "Click Me",
+          "emoji": true
+        },
+        "value": "click_me_123",
+        "url": "https://google.com",
+        "action_id": "button-action"
+      }
+    },
+    {
+      "type": "actions",
+      "elements": [
+        {
+          "type": "users_select",
+          "placeholder": {
+            "type": "plain_text",
+            "text": "Select a user",
+            "emoji": true
+          },
+          "initial_user": "U12345678",
+          "action_id": "actionId-1"
+        },
+        {
+          "type": "checkboxes",
+          "options": [
+            {
+              "text": {
+                "type": "plain_text",
+                "text": "Report checked",
+                "emoji": true
+              },
+              "value": "value-1"
+            }
+          ],
+          "action_id": "checkboxes-action"
+        }
+      ]
+    }
+  ]
+}
