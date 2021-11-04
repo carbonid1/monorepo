@@ -4,14 +4,16 @@
 			"type": "header",
 			"text": {
 				"type": "plain_text",
-				"text": "No Dead Code Reported :rocket:"
+				"text": "No Dead Code Reported :rocket:",
+				"emoji": true
 			}
 		},
 		{
 			"type": "section",
 			"text": {
 				"type": "plain_text",
-				"text": "❤️❤️❤️❤️❤️"
+				"text": ":heart::heart::heart::heart::heart:",
+				"emoji": true
 			}
 		}
 	]
