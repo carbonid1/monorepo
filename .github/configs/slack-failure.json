@@ -4,16 +4,14 @@
 			"type": "header",
 			"text": {
 				"type": "plain_text",
-				"text": "Dead Code Reported 💔",
-				"emoji": true
+				"text": "Dead Code Reported :broken_heart:"
 			}
 		},
 		{
 			"type": "section",
 			"text": {
 				"type": "plain_text",
-				"text": "💩💩💩💩💩",
-				"emoji": true
+				"text": ":shit::shit::shit::shit::shit:"
 			}
 		}
 	]
