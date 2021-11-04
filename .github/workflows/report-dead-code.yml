@@ -37,7 +37,7 @@ jobs:
       - name: Send Success Slack Notification
         uses: Brymastr/slack-action@v1
         with:
-          template: '../report-dead-code/success.slack.json'
+          template: '.github/report-dead-code/slack-success.json'
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
@@ -54,6 +54,6 @@ jobs:
       - name: Send Failure Slack Notification
         uses: Brymastr/slack-action@v1
         with:
-          template: '../report-dead-code/failure.slack.json'
+          template: '.github/report-dead-code/slack-failure.json'
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
