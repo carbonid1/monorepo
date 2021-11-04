@@ -14,6 +14,16 @@
 				"type": "plain_text",
 				"text": ":heart::heart::heart::heart::heart:",
 				"emoji": true
+			},
+			"accessory": {
+				"type": "button",
+				"text": {
+					"type": "plain_text",
+					"text": "Open the report",
+					"emoji": true
+				},
+				"url": "{{ actions_url }}",
+				"action_id": "button-action"
 			}
 		}
 	]
