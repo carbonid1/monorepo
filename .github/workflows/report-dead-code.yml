@@ -22,7 +22,7 @@ jobs:
       #   run: npm install --no-save eslint-nibble
 
       # - name: Run ESLint rule
-      #   run: npx eslint-nibble --config .github/configs/eslintrc.js --no-interactive --ext=.tsx,.ts,.js --rule import/no-unused-modules .
+      #   run: npx eslint-nibble --config .github/report-dead-code/eslintrc.js --no-interactive --ext=.tsx,.ts,.js --rule import/no-unused-modules .
 
   send_success_notification:
     if: success()
@@ -37,7 +37,7 @@ jobs:
       - name: Send Success Slack Notification
         uses: Brymastr/slack-action@v1
         with:
-          template: '.github/configs/slack-success.json'
+          template: '.github/report-dead-code/slack-success.json'
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
@@ -54,6 +54,6 @@ jobs:
       - name: Send Failure Slack Notification
         uses: Brymastr/slack-action@v1
         with:
-          template: '.github/configs/slack-failure.json'
+          template: '.github/report-dead-code/slack-failure.json'
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
