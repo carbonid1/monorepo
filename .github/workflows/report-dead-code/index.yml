@@ -24,7 +24,7 @@ jobs:
       # - name: Run ESLint rule
       #   run: npx eslint-nibble --config .github/configs/report-dead-code-eslintrc.js --no-interactive --ext=.tsx,.ts,.js --rule import/no-unused-modules .
 
-  send_succesful_notification:
+  send_success_notification:
     if: success()
     needs: run_linter
     runs-on: ubuntu-latest
@@ -34,10 +34,10 @@ jobs:
         with:
           node-version: '14'
 
-      - name: Send Slack Notification
+      - name: Send Success Slack Notification
         uses: Brymastr/slack-action@v1
         with:
-          template: '.github/configs/dead-code.json'
+          template: './success.slack.json'
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
