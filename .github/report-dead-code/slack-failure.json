@@ -27,6 +27,7 @@
 					"text": "Open the report",
 					"emoji": true
 				},
+				"value": "open_report",
 				"url": "{{ actions_url }}",
 				"action_id": "button-action"
 			}
