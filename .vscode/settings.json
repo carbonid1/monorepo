@@ -16,5 +16,6 @@
         "workbench.action.files.saveWithoutFormatting"
       ]
     }
-  ]
+  ],
+  "editor.tabSize": 2
 }
