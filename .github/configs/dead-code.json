@@ -1,10 +1,10 @@
 {
   "blocks": [
     {
-      "type": "header",
+      "type": "section",
       "text": {
-        "type": "plain_text",
-        "text": "Dead Code Reported"
+        "type": "mrkdwn",
+        "text": "Danny Torrence left the following review for your property:"
       }
     },
     {
@@ -16,8 +16,8 @@
       },
       "accessory": {
         "type": "image",
-        "image_url": ".github/assets/upset_bot.png",
-        "alt_text": "Haunted hotel image"
+        "image_url": "https://cdn1.vectorstock.com/i/1000x1000/07/75/happy-robot-vector-8150775.jpg",
+        "alt_text": "Happy Robot"
       }
     },
     {
@@ -29,51 +29,49 @@
           "text": "*Average Rating*\n1.0"
         }
       ]
-    },
+    }
+  ],
+  "attachments": [
     {
-      "type": "section",
-      "text": {
-        "type": "mrkdwn",
-        "text": "This is a section block with a button."
-      },
-      "accessory": {
-        "type": "button",
-        "text": {
-          "type": "plain_text",
-          "text": "Click Me",
-          "emoji": true
-        },
-        "value": "click_me_123",
-        "url": "https://google.com",
-        "action_id": "button-action"
-      }
-    },
-    {
-      "type": "actions",
-      "elements": [
+      "blocks": [
         {
-          "type": "users_select",
-          "placeholder": {
-            "type": "plain_text",
-            "text": "Select a user",
-            "emoji": true
+          "type": "section",
+          "text": {
+            "type": "mrkdwn",
+            "text": "*Alternative hotel options*"
+          }
+        },
+        {
+          "type": "section",
+          "text": {
+            "type": "mrkdwn",
+            "text": "<https://example.com|Bates Motel> :star::star:"
           },
-          "initial_user": "U12345678",
-          "action_id": "actionId-1"
+          "accessory": {
+            "type": "button",
+            "text": {
+              "type": "plain_text",
+              "text": "View",
+              "emoji": true
+            },
+            "value": "view_alternate_1"
+          }
         },
         {
-          "type": "checkboxes",
-          "options": [
-            {
-              "text": {
-                "type": "plain_text",
-                "text": "Report checked",
-                "emoji": true
-              },
-              "value": "value-1"
-            }
-          ],
-          "action_id": "checkboxes-action"
+          "type": "section",
+          "text": {
+            "type": "mrkdwn",
+            "text": "<https://example.com|The Great Northern Hotel> :star::star::star::star:"
+          },
+          "accessory": {
+            "type": "button",
+            "text": {
+              "type": "plain_text",
+              "text": "View",
+              "emoji": true
+            },
+            "value": "view_alternate_2"
+          }
         }
       ]
     }
