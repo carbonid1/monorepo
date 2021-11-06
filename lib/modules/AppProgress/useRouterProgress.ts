@@ -7,8 +7,15 @@ export const useRouterProgress = () => {
   const setIsAnimating = useAppProgress(state => state.setIsAnimating);
 
   useEffect(() => {
-    const handleStart = () => setIsAnimating(true);
-    const handleStop = () => setIsAnimating(false);
+    let timeout: NodeJS.Timeout;
+
+    const handleStart = () => {
+      timeout = setTimeout(() => setIsAnimating(true), 500);
+    };
+    const handleStop = () => {
+      clearTimeout(timeout);
+      setIsAnimating(false);
+    };
 
     router.events.on('routeChangeStart', handleStart);
     router.events.on('routeChangeComplete', handleStop);
