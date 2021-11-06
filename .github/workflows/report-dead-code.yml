@@ -2,7 +2,6 @@ name: Report Dead Code
 
 on:
   workflow_dispatch:
-  push:
   schedule:
     # Runs at 12:00 UTC on the 1st of every month.
     - cron: '0 12 1 * *'
@@ -16,14 +15,14 @@ jobs:
         with:
           node-version: '14'
 
-      # - name: Install dependencies
-      #   run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-      # - name: Intall eslint-nibble
-      #   run: npm install --no-save eslint-nibble
+      - name: Intall eslint-nibble
+        run: npm install --no-save eslint-nibble
 
-      # - name: Run ESLint rule
-      #   run: npx eslint-nibble --config .github/report-dead-code/eslintrc.js --no-interactive --ext=.tsx,.ts,.js --rule import/no-unused-modules .
+      - name: Run ESLint rule
+        run: npx eslint-nibble --config .github/report-dead-code/eslintrc.js --no-interactive --ext=.tsx,.ts,.js --rule import/no-unused-modules .
 
   send_success_notification:
     if: success()
