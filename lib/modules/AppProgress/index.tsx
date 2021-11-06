@@ -1,25 +1,37 @@
-import * as Progress from '@radix-ui/react-progress';
-import { useNProgress } from '@tanem/react-nprogress';
-import cn from 'classnames';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+import { Progress } from './Progress';
 import { useAppProgress } from './useAppProgress';
-import { useRouterProgress } from './useRouterProgress';
 
 export const AppProgress: React.FC = () => {
-  useRouterProgress();
-  const isAnimating = useAppProgress(state => state.isAnimating);
-  const { animationDuration, isFinished, progress } = useNProgress({ isAnimating });
-  const progressInPercentage = progress * 100;
+  const router = useRouter();
+  const progressKey = useAppProgress(state => state.key);
+  const updateKey = useAppProgress(state => state.updateKey);
+  const setIsAnimating = useAppProgress(state => state.setIsAnimating);
 
-  return (
-    <Progress.Root value={progressInPercentage} className="sticky top-0 w-full z-progress">
-      <Progress.Indicator
-        className={cn('h-1 rounded-tr-lg rounded-br-lg bg-skin-primary', isFinished ? 'opacity-0' : 'opacity-100')}
-        style={{
-          height: 3,
-          width: `${progressInPercentage}%`,
-          transition: `width ${animationDuration}ms cubic-bezier(0.65, 0, 0.35, 1)`,
-        }}
-      />
-    </Progress.Root>
-  );
+  useEffect(() => {
+    let timeout: NodeJS.Timeout;
+
+    const handleStart = () => {
+      updateKey();
+      timeout = setTimeout(() => setIsAnimating(true), 500);
+    };
+
+    const handleStop = () => {
+      clearTimeout(timeout);
+      setIsAnimating(false);
+    };
+
+    router.events.on('routeChangeStart', handleStart);
+    router.events.on('routeChangeComplete', handleStop);
+    router.events.on('routeChangeError', handleStop);
+
+    () => {
+      router.events.off('routeChangeStart', handleStart);
+      router.events.off('routeChangeComplete', handleStop);
+      router.events.off('routeChangeError', handleStop);
+    };
+  }, [router.events, setIsAnimating, updateKey]);
+
+  return <Progress key={progressKey} />;
 };
