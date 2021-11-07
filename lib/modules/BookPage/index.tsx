@@ -31,7 +31,7 @@ const BookPage: NextPage<IBookPage> = ({ id }) => {
         <TextLink path={`/${ROUTE.editions}/${book.id}`} slug={edition.title}>
           All Editions
         </TextLink>
-        <BookReviews bookId={book.id} editionId={Number(id)} />
+        <BookReviews bookId={book.id} editionId={id} />
       </div>
     </>
   );

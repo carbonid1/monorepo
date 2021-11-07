@@ -1,9 +1,26 @@
 import type { Story, Meta } from '@storybook/react';
+import startCase from 'lodash/startCase';
+import faker from 'faker';
 import type gg from 'lib/generated';
-import mocks from 'lib/mocks';
 import { Edition, IEditionProps } from '.';
 
-const edition: gg.Edition = { ...mocks.editions.rangeEng, book: mocks.books.range };
+faker.seed(1);
+
+const edition: gg.Edition = {
+  lang: 'en',
+  reviews: [],
+  id: faker.datatype.uuid(),
+  title: startCase(faker.lorem.words()),
+  cover: faker.image.business(160, 240),
+  description: faker.lorem.paragraphs(5),
+  publishedIn: faker.date.past().getTime().toString(),
+  book: {
+    authors: [],
+    editions: [],
+    id: faker.datatype.uuid(),
+    publishedIn: faker.date.past().getTime().toString(),
+  },
+};
 
 export default {
   title: 'modules/Edition',

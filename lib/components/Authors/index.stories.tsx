@@ -1,6 +1,9 @@
 import React from 'react';
 import type { Story, Meta } from '@storybook/react';
+import faker from 'faker';
 import { Authors, IAuthors } from '.';
+
+faker.seed(1);
 
 export default {
   title: 'Authors',
@@ -12,8 +15,14 @@ const Template: Story<IAuthors> = args => <Authors {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   authors: [
-    { fullName: 'Stephen Baxter', id: 1 },
-    { fullName: 'Terry Pratchett', id: 2 },
+    {
+      id: faker.datatype.uuid(),
+      fullName: faker.name.findName(),
+    },
+    {
+      id: faker.datatype.uuid(),
+      fullName: faker.name.findName(),
+    },
   ],
 };
 
