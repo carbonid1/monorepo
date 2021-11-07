@@ -10,7 +10,7 @@ const fillMock = (locale = 'en'): gg.Author => {
     id: faker.datatype.uuid(),
     bio: faker.lorem.paragraphs(2),
     fullName: faker.name.findName(),
-    imageUrl: faker.image.abstract(160, 240),
+    imageUrl: faker.image.people(160, 240),
   };
 };
 

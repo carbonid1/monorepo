@@ -1,5 +1,5 @@
 import faker from 'faker';
-import upperFirst from 'lodash/upperFirst';
+import startCase from 'lodash/startCase';
 import type gg from 'lib/generated';
 import reviewsMock from './reviews.mock';
 
@@ -9,15 +9,14 @@ type TFillMock = (options: { reviews?: gg.Edition['reviews']; lang?: string; par
 
 const fillMock: TFillMock = ({ lang = 'en', reviews = [], paragraphs }) => {
   faker.locale = lang;
-  faker.seed(faker.datatype.number());
 
   return {
     lang,
     reviews,
     book: {} as gg.Book,
     id: faker.datatype.uuid(),
-    title: upperFirst(faker.lorem.words()),
-    cover: faker.image.imageUrl(160, 240),
+    title: startCase(faker.lorem.words()),
+    cover: faker.image.business(160, 240),
     description: faker.lorem.paragraphs(paragraphs),
     publishedIn: faker.date.past().getTime().toString(),
   };
