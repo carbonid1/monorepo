@@ -35,7 +35,7 @@ export const Default = Template.bind({});
 Default.parameters = {
   msw: [
     graphql.query(gg.names.Query.ProfileHook, (_, res, ctx) => {
-      return res(ctx.data({ profile: usersMock.ivan }));
+      return res(ctx.data({ profile: usersMock.full }));
     }),
   ],
 };
@@ -44,7 +44,7 @@ export const NoProfileImage = Template.bind({});
 NoProfileImage.parameters = {
   msw: [
     graphql.query(gg.names.Query.ProfileHook, (_, res, ctx) => {
-      return res(ctx.data({ profile: usersMock.john }));
+      return res(ctx.data({ profile: usersMock.noImage }));
     }),
   ],
 };

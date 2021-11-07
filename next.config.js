@@ -22,5 +22,8 @@ module.exports = withBundleAnalyzer(
         'avatars.dicebear.com',
       ],
     },
+    experimental: {
+      urlImports: ['https://cdn.skypack.dev'],
+    },
   }),
 );
