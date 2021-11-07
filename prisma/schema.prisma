@@ -26,7 +26,7 @@ model Account {
 model Author {
   books     Book[]
   fullName  String   @db.VarChar(255)
-  id        Int      @id @default(autoincrement())
+  id        String   @id @default(cuid())
   updatedAt DateTime @updatedAt
   imageUrl  String?
   bio       String?
@@ -35,15 +35,15 @@ model Author {
 model Book {
   authors     Author[]
   editions    Edition[]
-  id          Int       @id @default(autoincrement())
+  id          String    @id @default(cuid())
   publishedIn DateTime?
 }
 
 model Edition {
-  id          Int       @id @default(autoincrement())
+  id          String    @id @default(cuid())
   updatedAt   DateTime  @updatedAt
   book        Book      @relation(fields: [bookId], references: [id])
-  bookId      Int
+  bookId      String
   cover       String?
   description String?
   lang        String?
@@ -53,12 +53,12 @@ model Edition {
 }
 
 model Review {
-  id        Int      @id @default(autoincrement())
+  id        String   @id @default(cuid())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   body      String
   edition   Edition  @relation(fields: [editionId], references: [id])
-  editionId Int
+  editionId String
   lang      String?
 }
 

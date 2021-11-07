@@ -20,6 +20,7 @@ module.exports = withBundleAnalyzer(
         'avatars.githubusercontent.com',
         'platform-lookaside.fbsbx.com',
         'avatars.dicebear.com',
+        'placeimg.com'
       ],
     },
     experimental: {

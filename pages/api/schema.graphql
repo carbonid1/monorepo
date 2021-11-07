@@ -6,14 +6,14 @@ type Author {
   bio: String
   books: [Book!]!
   fullName: String!
-  id: Int!
+  id: String!
   imageUrl: String
 }
 
 type Book {
   authors: [Author!]!
   editions: [Edition!]!
-  id: Int!
+  id: String!
   publishedIn: String!
 }
 
@@ -26,7 +26,7 @@ type Edition {
   book: Book!
   cover: String
   description: String
-  id: Int!
+  id: String!
   lang: String
   publishedIn: String
   reviews: [Review!]!
@@ -52,7 +52,7 @@ type Review {
   body: String!
   createdAt: String!
   edition(id: ID): Edition!
-  id: Int!
+  id: String!
   lang: String
   updatedAt: String!
 }

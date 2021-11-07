@@ -12,7 +12,7 @@ const Author = objectType({
   definition(t) {
     t.string('bio');
     t.string('imageUrl');
-    t.nonNull.int('id');
+    t.nonNull.string('id');
     t.nonNull.string('fullName');
     t.nonNull.list.nonNull.field('books', {
       type: 'Book',
@@ -33,7 +33,7 @@ const Book = objectType({
       type: 'Edition',
       resolve: ({ id }) => prisma.book.findUnique({ where: { id } }).editions(),
     });
-    t.int('id');
+    t.string('id');
     t.string('publishedIn');
   },
 });
@@ -47,7 +47,7 @@ const Edition = objectType({
       resolve: ({ id }) => prisma.edition.findUnique({ where: { id } }).book(),
     });
     t.nullable.string('description');
-    t.int('id');
+    t.string('id');
     t.nullable.string('lang');
     t.nullable.string('publishedIn');
     t.list.field('reviews', {
@@ -63,7 +63,7 @@ const Review = objectType({
   name: 'Review',
   nonNullDefaults: { output: true },
   definition(t) {
-    t.int('id');
+    t.string('id');
     t.string('createdAt');
     t.string('updatedAt');
     t.string('body');
@@ -96,12 +96,12 @@ const Query = objectType({
     t.field('author', {
       type: 'Author',
       args: { id: idArg() },
-      resolve: (_, { id }) => prisma.author.findFirst({ where: { id: +id } }),
+      resolve: (_, { id }) => prisma.author.findFirst({ where: { id } }),
     });
     t.field('book', {
       type: 'Book',
       args: { id: idArg() },
-      resolve: (_, { id }) => prisma.book.findFirst({ where: { id: +id } }),
+      resolve: (_, { id }) => prisma.book.findFirst({ where: { id } }),
     });
     t.field('books', {
       type: nonNull(list(nonNull('Book'))),
@@ -110,12 +110,12 @@ const Query = objectType({
     t.field('edition', {
       type: 'Edition',
       args: { id: idArg() },
-      resolve: (_, { id }) => prisma.edition.findFirst({ where: { id: +id } }),
+      resolve: (_, { id }) => prisma.edition.findFirst({ where: { id } }),
     });
     t.field('review', {
       type: 'Review',
       args: { id: idArg() },
-      resolve: (_, { id }) => prisma.review.findFirst({ where: { id: +id } }),
+      resolve: (_, { id }) => prisma.review.findFirst({ where: { id } }),
     });
     t.field('user', {
       type: 'User',
@@ -139,11 +139,11 @@ const Query = objectType({
       resolve: async (_, { bookId, editionId, lang }) => {
         return prisma.book
           .findFirst({
-            where: { id: +bookId },
+            where: { id: bookId },
             select: {
               editions: {
                 select: { reviews: { where: { lang: lang ?? undefined } } },
-                where: { id: editionId === null ? undefined : +editionId },
+                where: { id: editionId === null ? undefined : editionId },
               },
             },
           })

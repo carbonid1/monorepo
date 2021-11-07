@@ -46,17 +46,17 @@ export interface NexusGenObjects {
   Author: { // root type
     bio?: string | null; // String
     fullName: string; // String!
-    id: number; // Int!
+    id: string; // String!
     imageUrl?: string | null; // String
   }
   Book: { // root type
-    id: number; // Int!
+    id: string; // String!
     publishedIn: string; // String!
   }
   Edition: { // root type
     cover?: string | null; // String
     description?: string | null; // String
-    id: number; // Int!
+    id: string; // String!
     lang?: string | null; // String
     publishedIn?: string | null; // String
     title: string; // String!
@@ -66,7 +66,7 @@ export interface NexusGenObjects {
   Review: { // root type
     body: string; // String!
     createdAt: string; // String!
-    id: number; // Int!
+    id: string; // String!
     lang?: string | null; // String
     updatedAt: string; // String!
   }
@@ -96,20 +96,20 @@ export interface NexusGenFieldTypes {
     bio: string | null; // String
     books: NexusGenRootTypes['Book'][]; // [Book!]!
     fullName: string; // String!
-    id: number; // Int!
+    id: string; // String!
     imageUrl: string | null; // String
   }
   Book: { // field return type
     authors: NexusGenRootTypes['Author'][]; // [Author!]!
     editions: NexusGenRootTypes['Edition'][]; // [Edition!]!
-    id: number; // Int!
+    id: string; // String!
     publishedIn: string; // String!
   }
   Edition: { // field return type
     book: NexusGenRootTypes['Book']; // Book!
     cover: string | null; // String
     description: string | null; // String
-    id: number; // Int!
+    id: string; // String!
     lang: string | null; // String
     publishedIn: string | null; // String
     reviews: NexusGenRootTypes['Review'][]; // [Review!]!
@@ -132,7 +132,7 @@ export interface NexusGenFieldTypes {
     body: string; // String!
     createdAt: string; // String!
     edition: NexusGenRootTypes['Edition']; // Edition!
-    id: number; // Int!
+    id: string; // String!
     lang: string | null; // String
     updatedAt: string; // String!
   }
@@ -152,20 +152,20 @@ export interface NexusGenFieldTypeNames {
     bio: 'String'
     books: 'Book'
     fullName: 'String'
-    id: 'Int'
+    id: 'String'
     imageUrl: 'String'
   }
   Book: { // field return type name
     authors: 'Author'
     editions: 'Edition'
-    id: 'Int'
+    id: 'String'
     publishedIn: 'String'
   }
   Edition: { // field return type name
     book: 'Book'
     cover: 'String'
     description: 'String'
-    id: 'Int'
+    id: 'String'
     lang: 'String'
     publishedIn: 'String'
     reviews: 'Review'
@@ -188,7 +188,7 @@ export interface NexusGenFieldTypeNames {
     body: 'String'
     createdAt: 'String'
     edition: 'Edition'
-    id: 'Int'
+    id: 'String'
     lang: 'String'
     updatedAt: 'String'
   }

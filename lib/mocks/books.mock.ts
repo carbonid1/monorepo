@@ -1,35 +1,35 @@
-import getTime from 'date-fns/getTime';
+import faker from 'faker';
 import type gg from 'lib/generated';
 import authorsMock from './authors.mock';
 import editionsMock from './editions.mock';
 
-type TBook = 'range' | 'goT' | 'LongMars' | 'ArabianN';
+type TBook = '1' | '2' | '3' | '4';
 type TBooksMock = Record<TBook, gg.Book>;
 
 const booksMock: TBooksMock = {
-  range: {
-    id: 1,
-    publishedIn: getTime(new Date('2019-05-28')).toString(),
-    authors: [authorsMock.EpsteinD],
-    editions: [editionsMock.rangeEng, editionsMock.rangeRu],
+  1: {
+    id: faker.datatype.uuid(),
+    publishedIn: faker.date.past().getTime().toString(),
+    authors: [authorsMock[1]],
+    editions: [editionsMock.firstEn, editionsMock.firstUk],
   },
-  goT: {
-    id: 2,
-    publishedIn: getTime(new Date('1996-08-06')).toString(),
-    authors: [authorsMock.MartinG],
-    editions: [editionsMock.goT],
+  2: {
+    id: faker.datatype.uuid(),
+    publishedIn: faker.date.past().getTime().toString(),
+    authors: [authorsMock[2]],
+    editions: [editionsMock.second],
   },
-  LongMars: {
-    id: 3,
-    publishedIn: getTime(new Date('2014-06-19')).toString(),
-    authors: [authorsMock.PratchettT, authorsMock.BaxterS],
-    editions: [editionsMock.LongMars],
+  3: {
+    id: faker.datatype.uuid(),
+    publishedIn: faker.date.past().getTime().toString(),
+    authors: [authorsMock[3], authorsMock[4]],
+    editions: [editionsMock.third],
   },
-  ArabianN: {
-    id: 4,
-    publishedIn: getTime(new Date('800')).toString(),
+  4: {
+    id: faker.datatype.uuid(),
+    publishedIn: faker.date.past().getTime().toString(),
     authors: [],
-    editions: [editionsMock.ArabianN],
+    editions: [editionsMock.fourth],
   },
 };
 
