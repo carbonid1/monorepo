@@ -5,6 +5,7 @@ query EditionsPageBook($id: ID) {
       id
       lang
       title
+      cover
       description
       publishedIn
     }

@@ -1,4 +1,5 @@
 import type { GetServerSideProps, NextPage } from 'next';
+import NextImage from 'next/image';
 import { CustomHead } from 'lib/components/CustomHead';
 import { ROUTE } from 'lib/consts/routes';
 import { TextLink } from 'lib/components';
@@ -31,22 +32,33 @@ const EditionsPage: NextPage<IEditionsPage> = ({ id }) => {
         <b>{title}</b>
         <ByAuthors authors={authors} />
         {publishedIn && <div>First published in {formatDate(publishedIn)}</div>}
-        <div className="mt-2">
+        <div className="mt-8">
           {editions.map(edition => (
-            <div key={edition.id} className="mb-2">
-              <TextLink path={`/${ROUTE.book}/${edition.id}`} slug={edition.title}>
-                {edition.title}
-              </TextLink>
-              <div>
-                <b>Published in: </b>
-                {formatDate(edition.publishedIn)}
+            <div key={edition.id} className="grid sm:grid-cols-[auto,1fr] gap-x-6 gap-y-2 mb-6">
+              <div className="justify-self-center">
+                <NextImage
+                  width="160px"
+                  height="240px"
+                  className="rounded"
+                  src={edition.cover || ''}
+                  alt={edition.title}
+                />
               </div>
-              {edition.lang && (
+              <div className="max-w-xs text-center sm:text-left justify-self-center sm:justify-self-start sm:max-w-md">
+                <TextLink path={`/${ROUTE.book}/${edition.id}`} slug={edition.title}>
+                  {edition.title}
+                </TextLink>
                 <div>
-                  <b>Edition language: </b>
-                  {languageService.getName(edition.lang)}
+                  <b>Published in: </b>
+                  {formatDate(edition.publishedIn)}
                 </div>
-              )}
+                {edition.lang && (
+                  <div>
+                    <b>Edition language: </b>
+                    {languageService.getName(edition.lang)}
+                  </div>
+                )}
+              </div>
             </div>
           ))}
         </div>

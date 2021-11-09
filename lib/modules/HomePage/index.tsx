@@ -25,8 +25,8 @@ const HomePage: NextPage = () => {
               width="160px"
               height="240px"
               className="rounded"
+              alt={editions[0].title}
               src={editions[0].cover || ''}
-              alt={editions[0].title} // TODO: add default src
             />
           </a>
         </NextLink>
