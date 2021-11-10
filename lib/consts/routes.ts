@@ -2,7 +2,8 @@ export enum ROUTE {
   author = 'author',
   book = 'book',
   editions = 'editions',
+  review = 'review',
   settings = 'settings',
+  signIn = 'auth/sigzn-in',
   user = 'user',
-  signIn = 'auth/sign-in',
 }

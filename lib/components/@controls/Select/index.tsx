@@ -21,7 +21,7 @@ export const Select = <V,>({ value, options, onChange, placeholder = 'Select an 
 
   return (
     <Listbox value={value} onChange={onChange}>
-      <div className="relative w-52">
+      <div className="relative w-52 z-base">
         <Listbox.Button className="relative w-full py-2 pl-3 pr-10 text-left border-2 rounded-lg shadow-md cursor-default bg-skin-complement border-skin-base sm:text-sm text-skin-complement">
           {selectedOption ? (
             <span className="block truncate">{selectedOption.label}</span>

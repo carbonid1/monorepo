@@ -48,6 +48,11 @@ module.exports = {
           primary: withOpacity('--color-primary'),
         },
       },
+      fill: {
+        skin: {
+          complement: withOpacity('--color-background-complement'),
+        },
+      },
     },
     colors: {
       current: 'currentColor',
@@ -55,8 +60,9 @@ module.exports = {
     },
     zIndex: {
       base: 1,
-      header: 2,
-      progress: 3,
+      'scaled-img': 2,
+      header: 3,
+      progress: 4,
     },
     screens: {
       xs: '380px',

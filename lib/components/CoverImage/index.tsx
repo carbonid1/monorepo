@@ -28,7 +28,7 @@ export const CoverImage: React.FC<ICoverImage> = ({ src, alt, className }) => {
       src={src || undefined}
       style={{ scale, x, y }}
       className={cn(
-        'origin-top-left cursor-pointer w-full sm:w-40 z-base object-contain rounded transition-shadow duration-500 hover:shadow-lg',
+        'origin-top-left cursor-pointer w-full sm:w-40 z-scaled-img object-contain rounded transition-shadow duration-500 hover:shadow-lg',
         className,
       )}
     />
