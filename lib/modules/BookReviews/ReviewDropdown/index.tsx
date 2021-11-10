@@ -17,7 +17,7 @@ export const ReviewDropdown: React.FC<ReviewDropdownProps> = ({ reviewId }) => {
           aria-label="Review options"
           className="absolute top-0 right-0 p-1 rounded-full shadow-md dark:border-2 dark:border-skin-base bg-skin-complement"
         >
-          <DotsVerticalIcon className="w-5 h-5 text-[#9ca3af]" />
+          <DotsVerticalIcon className="w-4 h-4 dark:w-3 dark:h-3 text-[#9ca3af]" />
         </button>
       </DropdownMenu.Trigger>
       <DropdownMenu.Content className="py-1 rounded-md shadow-md bg-skin-complement" side="right" sideOffset={8}>
