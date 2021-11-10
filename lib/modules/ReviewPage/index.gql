@@ -3,6 +3,7 @@ query ReviewPageReview($id: ID) {
     body
     edition {
       title
+      cover
       book {
         ...AuthorsFragment
       }

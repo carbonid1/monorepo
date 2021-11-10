@@ -192,9 +192,9 @@ export type EditionsPageBook = {
           id: number;
           lang?: string | null | undefined;
           title: string;
+          cover?: string | null | undefined;
           description?: string | null | undefined;
           publishedIn?: string | null | undefined;
-          cover?: string | null | undefined;
         }>;
         authors: Array<{ id: number; fullName: string }>;
       }
@@ -214,7 +214,14 @@ export type ReviewPageReviewVariables = Exact<{
 
 export type ReviewPageReview = {
   review?:
-    | { body: string; edition: { title: string; book: { authors: Array<{ id: number; fullName: string }> } } }
+    | {
+        body: string;
+        edition: {
+          title: string;
+          cover?: string | null | undefined;
+          book: { authors: Array<{ id: number; fullName: string }> };
+        };
+      }
     | null
     | undefined;
 };
@@ -466,9 +473,9 @@ export const EditionsPageBookDocument = /*#__PURE__*/ gql`
         id
         lang
         title
+        cover
         description
         publishedIn
-        cover
       }
       publishedIn
     }
@@ -554,6 +561,7 @@ export const ReviewPageReviewDocument = /*#__PURE__*/ gql`
       body
       edition {
         title
+        cover
         book {
           ...AuthorsFragment
         }

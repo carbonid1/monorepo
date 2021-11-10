@@ -1,4 +1,5 @@
 import type { GetServerSideProps, NextPage } from 'next';
+import NextImage from 'next/image';
 import { CustomHead } from 'lib/components/CustomHead';
 import { Authors } from 'lib/components/Authors';
 import { initializeApollo } from 'lib/apollo';
@@ -21,16 +22,19 @@ const Review: NextPage<IReview> = ({ id }) => {
   const { title } = edition;
 
   return (
-    <div>
+    <>
       <CustomHead title={`review of ${title}`} description={body} />
-      <div>
+      <div className="grid grid-cols-[1fr,auto] grid-rows-[auto,1fr] sm:grid-rows-[auto,auto,1fr] gap-x-6 gap-y-2 mb-6">
+        <div className="w-40 row-span-2 h-60 sm:row-span-3">
+          <NextImage width="160px" height="240px" className="rounded" src={edition.cover || ''} alt={edition.title} />
+        </div>
         <div>
           <b>{title}</b>
         </div>
         <Authors authors={edition.book.authors} />
-        <div>{body}</div>
+        <div className="col-span-2 sm:col-auto">{body}</div>
       </div>
-    </div>
+    </>
   );
 };
 
