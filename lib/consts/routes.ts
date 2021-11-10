@@ -4,6 +4,6 @@ export enum ROUTE {
   editions = 'editions',
   review = 'review',
   settings = 'settings',
-  signIn = 'auth/sigzn-in',
+  signIn = 'auth/sign-in',
   user = 'user',
 }
