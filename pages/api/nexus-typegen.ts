@@ -135,6 +135,7 @@ export interface NexusGenFieldTypes {
     id: number; // Int!
     lang: string | null; // String
     updatedAt: string; // String!
+    user: NexusGenRootTypes['User']; // User!
   }
   User: { // field return type
     createdAt: string; // String!
@@ -191,6 +192,7 @@ export interface NexusGenFieldTypeNames {
     id: 'Int'
     lang: 'String'
     updatedAt: 'String'
+    user: 'User'
   }
   User: { // field return type name
     createdAt: 'String'
@@ -228,6 +230,9 @@ export interface NexusGenArgTypes {
   }
   Review: {
     edition: { // args
+      id?: string | null; // ID
+    }
+    user: { // args
       id?: string | null; // ID
     }
   }

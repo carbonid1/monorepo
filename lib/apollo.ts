@@ -49,6 +49,7 @@ const createErrorLink = () => {
 
 function createApolloClient(context?: ApolloContext) {
   return new ApolloClient({
+    connectToDevTools: process.env.NODE_ENV !== 'production',
     ssrMode: isSSR(),
     link: from([createErrorLink(), createIsomorphicLink(context)]),
     cache: new InMemoryCache(),

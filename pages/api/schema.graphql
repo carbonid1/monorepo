@@ -55,6 +55,7 @@ type Review {
   id: Int!
   lang: String
   updatedAt: String!
+  user(id: ID): User!
 }
 
 type User {

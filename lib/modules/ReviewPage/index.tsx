@@ -1,11 +1,13 @@
 import type { GetServerSideProps, NextPage } from 'next';
 import NextImage from 'next/image';
 import { CustomHead } from 'lib/components/CustomHead';
-import { Authors } from 'lib/components/Authors';
 import { initializeApollo } from 'lib/apollo';
 import { ServerError } from 'lib/components/@errors/ServerError';
 import { NotFound } from 'lib/components/@errors/NotFound';
 import gg from 'lib/generated';
+import { Avatar } from 'lib/components/Avatar';
+import { ByAuthors } from 'lib/components/Authors/ByAuthors';
+import { ROUTE } from 'lib/consts/routes';
 
 interface IReview {
   id: string;
@@ -18,20 +20,26 @@ const Review: NextPage<IReview> = ({ id }) => {
   if (error) return <ServerError />;
   if (!review) return <NotFound />;
 
-  const { body, edition } = review;
+  const { body, edition, user } = review;
   const { title } = edition;
 
   return (
     <>
       <CustomHead title={`review of ${title}`} description={body} />
-      <div className="grid grid-cols-[1fr,auto] grid-rows-[auto,1fr] sm:grid-rows-[auto,auto,1fr] gap-x-6 gap-y-2 mb-6">
-        <div className="w-40 row-span-2 h-60 sm:row-span-3">
+      <div className="grid grid-cols-[1fr,auto] grid-rows-[auto,auto,1fr] sm:grid-rows-[auto,auto,auto,1fr] gap-x-6 mb-6">
+        <div className="w-40 row-span-3 h-60 sm:row-span-4">
           <NextImage width="160px" height="240px" className="rounded" src={edition.cover || ''} alt={edition.title} />
         </div>
         <div>
           <b>{title}</b>
         </div>
-        <Authors authors={edition.book.authors} />
+        <ByAuthors authors={edition.book.authors} className="mb-4" />
+        <Avatar
+          src={user.image}
+          fallbackImgSeed={user.id}
+          href={`/${ROUTE.user}/${user.id}`}
+          alt={user.name ?? "review's author avatar"}
+        />
         <div className="col-span-2 sm:col-auto">{body}</div>
       </div>
     </>

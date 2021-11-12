@@ -8,5 +8,10 @@ query ReviewPageReview($id: ID) {
         ...AuthorsFragment
       }
     }
+    user {
+      id
+      image
+      name
+    }
   }
 }

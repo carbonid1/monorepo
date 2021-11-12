@@ -2,8 +2,6 @@ import type { GetServerSideProps, NextPage } from 'next';
 import { CustomHead } from 'lib/components/CustomHead';
 import { initializeApollo } from 'lib/apollo';
 import gg from 'lib/generated';
-import { TextLink } from 'lib/components';
-import { ROUTE } from 'lib/consts/routes';
 import { ServerError } from 'lib/components/@errors/ServerError';
 import { NotFound } from 'lib/components/@errors/NotFound';
 
@@ -24,10 +22,9 @@ const UserPage: NextPage<UserPage> = ({ id }) => {
     <>
       <CustomHead title={name} />
       <div>
-        <div className="mb-4 text-4xl">
-          Welcome <b>{name}</b>!
+        <div className="mb-4">
+          <b>{name}</b> personal page
         </div>
-        <TextLink path={`/${ROUTE.settings}`}>Go to settings</TextLink>
       </div>
     </>
   );
