@@ -20,7 +20,7 @@ const Review: NextPage<IReview> = ({ id }) => {
   if (error) return <ServerError />;
   if (!review) return <NotFound />;
 
-  const { body, edition, user } = review;
+  const { body, edition, creator } = review;
   const { title } = edition;
 
   return (
@@ -35,10 +35,10 @@ const Review: NextPage<IReview> = ({ id }) => {
         </div>
         <ByAuthors authors={edition.book.authors} className="mb-4" />
         <Avatar
-          src={user.image}
-          fallbackImgSeed={user.id}
-          href={`/${ROUTE.user}/${user.id}`}
-          alt={user.name ?? "review's author avatar"}
+          src={creator.image}
+          fallbackImgSeed={creator.id}
+          href={`/${ROUTE.user}/${creator.id}`}
+          alt={creator.name ?? "review's author avatar"}
         />
         <div className="col-span-2 sm:col-auto">{body}</div>
       </div>

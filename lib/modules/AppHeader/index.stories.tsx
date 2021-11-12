@@ -1,7 +1,7 @@
 import type { Story, Meta } from '@storybook/react';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import { graphql } from 'msw';
-import usersMock from 'lib/mocks/users';
+import usersMock from 'lib/mocks/users.mock';
 import gg from 'lib/generated';
 import { AppHeader } from '.';
 

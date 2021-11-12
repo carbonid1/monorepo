@@ -86,18 +86,18 @@ export type QueryUserArgs = {
 export type Review = {
   body: Scalars['String'];
   createdAt: Scalars['String'];
+  creator: User;
   edition: Edition;
   id: Scalars['Int'];
   lang?: Maybe<Scalars['String']>;
   updatedAt: Scalars['String'];
-  user: User;
 };
 
-export type ReviewEditionArgs = {
+export type ReviewCreatorArgs = {
   id?: Maybe<Scalars['ID']>;
 };
 
-export type ReviewUserArgs = {
+export type ReviewEditionArgs = {
   id?: Maybe<Scalars['ID']>;
 };
 
@@ -171,7 +171,7 @@ export type BookReviews = {
     body: string;
     lang?: string | null | undefined;
     createdAt: string;
-    user: { id: string; name?: string | null | undefined; image?: string | null | undefined };
+    creator: { id: string; name?: string | null | undefined; image?: string | null | undefined };
   }>;
 };
 
@@ -232,7 +232,7 @@ export type ReviewPageReview = {
           cover?: string | null | undefined;
           book: { authors: Array<{ id: number; fullName: string }> };
         };
-        user: { id: string; image?: string | null | undefined; name?: string | null | undefined };
+        creator: { id: string; image?: string | null | undefined; name?: string | null | undefined };
       }
     | null
     | undefined;
@@ -401,7 +401,7 @@ export const BookReviewsDocument = /*#__PURE__*/ gql`
       body
       lang
       createdAt
-      user {
+      creator {
         id
         name
         image
@@ -583,7 +583,7 @@ export const ReviewPageReviewDocument = /*#__PURE__*/ gql`
           ...AuthorsFragment
         }
       }
-      user {
+      creator {
         id
         image
         name

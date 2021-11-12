@@ -50,14 +50,14 @@ export const BookReviews: React.FC<BookReviewsProps> = props => {
       >
         <div className="grid gap-8 auto-rows-max">
           {reviews.map(review => {
-            const { user } = review;
+            const { creator } = review;
             return (
               <div key={review.id} className="relative grid items-center grid-cols-2 gap-2 max-w-prose">
                 <Avatar
-                  src={user.image}
-                  fallbackImgSeed={user.id}
-                  href={`/${ROUTE.user}/${user.id}`}
-                  alt={user.name ?? "review's author avatar"}
+                  src={creator.image}
+                  fallbackImgSeed={creator.id}
+                  href={`/${ROUTE.user}/${creator.id}`}
+                  alt={creator.name ?? "review's author avatar"}
                 />
                 <div className="mr-8 font-bold justify-self-end">{formatDate(review.createdAt)}</div>
                 <ReviewDropdown reviewId={review.id} />

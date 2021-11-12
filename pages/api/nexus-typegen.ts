@@ -131,11 +131,11 @@ export interface NexusGenFieldTypes {
   Review: { // field return type
     body: string; // String!
     createdAt: string; // String!
+    creator: NexusGenRootTypes['User']; // User!
     edition: NexusGenRootTypes['Edition']; // Edition!
     id: number; // Int!
     lang: string | null; // String
     updatedAt: string; // String!
-    user: NexusGenRootTypes['User']; // User!
   }
   User: { // field return type
     createdAt: string; // String!
@@ -188,11 +188,11 @@ export interface NexusGenFieldTypeNames {
   Review: { // field return type name
     body: 'String'
     createdAt: 'String'
+    creator: 'User'
     edition: 'Edition'
     id: 'Int'
     lang: 'String'
     updatedAt: 'String'
-    user: 'User'
   }
   User: { // field return type name
     createdAt: 'String'
@@ -229,10 +229,10 @@ export interface NexusGenArgTypes {
     }
   }
   Review: {
-    edition: { // args
+    creator: { // args
       id?: string | null; // ID
     }
-    user: { // args
+    edition: { // args
       id?: string | null; // ID
     }
   }

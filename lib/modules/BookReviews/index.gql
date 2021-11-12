@@ -4,7 +4,7 @@ query BookReviews($bookId: ID, $editionId: ID, $lang: String) {
     body
     lang
     createdAt
-    user {
+    creator {
       id
       name
       image
