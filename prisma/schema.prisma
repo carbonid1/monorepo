@@ -61,7 +61,7 @@ model Review {
   editionId Int
   lang      String?
   creator   User     @relation(fields: [creatorId], references: [id])
-  creatorId String   @default("ckvtv4oq10082msv5xlbmtz3k")
+  creatorId String
 }
 
 model Session {
