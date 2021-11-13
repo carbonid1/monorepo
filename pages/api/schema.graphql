@@ -51,6 +51,7 @@ type Query {
 type Review {
   body: String!
   createdAt: String!
+  creator(id: ID): User!
   edition(id: ID): Edition!
   id: Int!
   lang: String

@@ -72,6 +72,11 @@ const Review = objectType({
       args: { id: idArg() },
       resolve: ({ id }) => prisma.review.findFirst({ where: { id } }).edition(),
     });
+    t.field('creator', {
+      type: 'User',
+      args: { id: idArg() },
+      resolve: ({ id }) => prisma.review.findFirst({ where: { id } }).creator(),
+    });
     t.nullable.string('lang');
   },
 });

@@ -86,10 +86,15 @@ export type QueryUserArgs = {
 export type Review = {
   body: Scalars['String'];
   createdAt: Scalars['String'];
+  creator: User;
   edition: Edition;
   id: Scalars['Int'];
   lang?: Maybe<Scalars['String']>;
   updatedAt: Scalars['String'];
+};
+
+export type ReviewCreatorArgs = {
+  id?: Maybe<Scalars['ID']>;
 };
 
 export type ReviewEditionArgs = {
@@ -161,7 +166,13 @@ export type BookReviewsVariables = Exact<{
 }>;
 
 export type BookReviews = {
-  reviews: Array<{ id: number; body: string; lang?: string | null | undefined; createdAt: string }>;
+  reviews: Array<{
+    id: number;
+    body: string;
+    lang?: string | null | undefined;
+    createdAt: string;
+    creator: { id: string; name?: string | null | undefined; image?: string | null | undefined };
+  }>;
 };
 
 export type BookReviewsLanguagesVariables = Exact<{
@@ -221,6 +232,7 @@ export type ReviewPageReview = {
           cover?: string | null | undefined;
           book: { authors: Array<{ id: number; fullName: string }> };
         };
+        creator: { id: string; image?: string | null | undefined; name?: string | null | undefined };
       }
     | null
     | undefined;
@@ -389,6 +401,11 @@ export const BookReviewsDocument = /*#__PURE__*/ gql`
       body
       lang
       createdAt
+      creator {
+        id
+        name
+        image
+      }
     }
   }
 `;
@@ -565,6 +582,11 @@ export const ReviewPageReviewDocument = /*#__PURE__*/ gql`
         book {
           ...AuthorsFragment
         }
+      }
+      creator {
+        id
+        image
+        name
       }
     }
   }

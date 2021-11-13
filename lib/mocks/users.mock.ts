@@ -1,5 +1,4 @@
 import type gg from 'lib/generated';
-import user1Src from './user_1.jpeg';
 
 type UserName = 'ivan' | 'john';
 
@@ -10,7 +9,7 @@ const usersMock: Record<UserName, gg.User> = {
     name: 'Ivan',
     createdAt: '',
     updatedAt: '',
-    image: user1Src.toString(),
+    image: 'https://i.pravatar.cc/150?img=3',
   },
   john: {
     id: '2',

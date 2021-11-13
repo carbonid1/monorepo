@@ -60,6 +60,8 @@ model Review {
   edition   Edition  @relation(fields: [editionId], references: [id])
   editionId Int
   lang      String?
+  creator   User     @relation(fields: [creatorId], references: [id])
+  creatorId String
 }
 
 model Session {
@@ -83,6 +85,7 @@ model User {
   updatedAt     DateTime  @updatedAt
   accounts      Account[]
   sessions      Session[]
+  reviews       Review[]
 }
 
 model VerificationRequest {
