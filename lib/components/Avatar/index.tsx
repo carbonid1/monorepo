@@ -1,13 +1,13 @@
 import NextLink, { LinkProps } from 'next/link';
-import NextImage from 'next/image';
+import NextImage, { ImageProps } from 'next/image';
 import * as RadixAvatar from '@radix-ui/react-avatar';
 import classNames from 'classnames';
 
 export interface AvatarProps {
-  alt?: string;
   src: Maybe<string>;
   className?: string;
   fallbackImgSeed: string;
+  alt?: ImageProps['alt'];
   href: LinkProps['href'];
 }
 
