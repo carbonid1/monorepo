@@ -8,6 +8,12 @@ export const HeaderAvatar: React.FC = () => {
   if (!profile) return null;
 
   return (
-    <Avatar src={profile.image} href={`/${ROUTE.settings}`} alt={profile.name ?? 'user'} fallbackImgSeed={profile.id} />
+    <Avatar
+      src={profile.image}
+      href={`/${ROUTE.settings}`}
+      alt={profile.name ?? 'user'}
+      fallbackImgSeed={profile.id}
+      aria-label="Open your profile"
+    />
   );
 };

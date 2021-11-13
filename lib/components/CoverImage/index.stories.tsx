@@ -9,9 +9,3 @@ Default.args = {
   src: 'https://res.cloudinary.com/book-hub/image/upload/v1621965132/covers/sm/range_fy4vdv.jpg',
   alt: 'Range: Why Generalists Triumph in a Specialized World',
 };
-
-export const MissingSource = Template.bind({});
-MissingSource.args = {
-  ...Default.args,
-  src: undefined,
-};

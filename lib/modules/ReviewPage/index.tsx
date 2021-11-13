@@ -38,6 +38,7 @@ const Review: NextPage<IReview> = ({ id }) => {
           src={creator.image}
           fallbackImgSeed={creator.id}
           href={`/${ROUTE.user}/${creator.id}`}
+          aria-label={`Read more about ${creator.name}`}
           alt={creator.name ?? "review's author avatar"}
         />
         <div className="col-span-2 sm:col-auto">{body}</div>

@@ -57,6 +57,7 @@ export const BookReviews: React.FC<BookReviewsProps> = props => {
                   src={creator.image}
                   fallbackImgSeed={creator.id}
                   href={`/${ROUTE.user}/${creator.id}`}
+                  aria-label={`Read more about ${creator.name}`}
                   alt={creator.name ?? "review's author avatar"}
                 />
                 <div className="mr-8 font-bold justify-self-end">{formatDate(review.createdAt)}</div>
