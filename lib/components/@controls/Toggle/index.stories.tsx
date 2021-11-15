@@ -4,8 +4,8 @@ import { Toggle, IToggle } from '.';
 
 export default { title: '@controls/Toggle', component: Toggle } as Meta;
 const Template: Story<IToggle> = props => {
-  const [isChecked, onChange] = useState(props.checked);
-  return <Toggle {...props} checked={isChecked} onCheckedChange={onChange} />;
+	const [isChecked, onChange] = useState(props.checked);
+	return <Toggle {...props} checked={isChecked} onCheckedChange={onChange} />;
 };
 
 export const Default = Template.bind({});
