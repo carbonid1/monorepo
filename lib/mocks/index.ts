@@ -5,11 +5,11 @@ import reviewsMock from './reviews.mock';
 import usersMock from './users.mock';
 
 const mocks = {
-  authors: authorsMock,
-  books: booksMock,
-  editions: editionsMock,
-  reviews: reviewsMock,
-  users: usersMock,
+	authors: authorsMock,
+	books: booksMock,
+	editions: editionsMock,
+	reviews: reviewsMock,
+	users: usersMock,
 };
 
 export default mocks;

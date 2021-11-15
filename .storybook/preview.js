@@ -10,17 +10,17 @@ addDecorator(mswDecorator);
 
 // use <img> instead of Next.js <Image />
 Object.defineProperty(nextImage, 'default', {
-  configurable: true,
-  value: props => <img {...props} />,
+	configurable: true,
+	value: props => <img {...props} />,
 });
 
 export const parameters = {
-  actions: {
-    argTypesRegex: '^on[A-Z].*',
-  },
-  viewport: {
-    viewports: INITIAL_VIEWPORTS,
-  },
+	actions: {
+		argTypesRegex: '^on[A-Z].*',
+	},
+	viewport: {
+		viewports: INITIAL_VIEWPORTS,
+	},
 };
 
 export const decorators = [Story => <Story />];
