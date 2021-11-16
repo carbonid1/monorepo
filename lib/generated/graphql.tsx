@@ -1,15 +1,9 @@
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | null;
-export type Exact<T extends { [key: string]: unknown }> = {
-	[K in keyof T]: T[K];
-};
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
-	[SubKey in K]?: Maybe<T[SubKey]>;
-};
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
-	[SubKey in K]: Maybe<T[SubKey]>;
-};
+export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
 const defaultOptions = {};
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
@@ -50,6 +44,10 @@ export type Edition = {
 
 export type Mutation = {
 	updateProfile: User;
+};
+
+export type MutationUpdateProfileArgs = {
+	name?: Maybe<Scalars['String']>;
 };
 
 export type Query = {
@@ -117,23 +115,21 @@ export type User = {
 	updatedAt: Scalars['String'];
 };
 
-export type ByAuthorsFragment = {
-	authors: Array<{ id: number; fullName: string }>;
-};
+export type ByAuthorsFragment = { authors: Array<{ id: number; fullName: string }> };
 
-export type AuthorsFragment = {
-	authors: Array<{ id: number; fullName: string }>;
-};
+export type AuthorsFragment = { authors: Array<{ id: number; fullName: string }> };
+
+export type UpdateProfileHookVariables = Exact<{
+	name?: Maybe<Scalars['String']>;
+}>;
+
+export type UpdateProfileHook = { updateProfile: { id: string; name?: string | null | undefined } };
 
 export type ProfileHookVariables = Exact<{ [key: string]: never }>;
 
 export type ProfileHook = {
 	profile?:
-		| {
-				id: string;
-				image?: string | null | undefined;
-				name?: string | null | undefined;
-		  }
+		| { id: string; image?: string | null | undefined; name?: string | null | undefined }
 		| null
 		| undefined;
 };
@@ -151,11 +147,7 @@ export type AuthorPageAuthor = {
 				imageUrl?: string | null | undefined;
 				books: Array<{
 					id: number;
-					editions: Array<{
-						title: string;
-						description?: string | null | undefined;
-						id: number;
-					}>;
+					editions: Array<{ title: string; description?: string | null | undefined; id: number }>;
 				}>;
 		  }
 		| null
@@ -192,11 +184,7 @@ export type BookReviews = {
 		body: string;
 		lang?: string | null | undefined;
 		createdAt: string;
-		creator: {
-			id: string;
-			name?: string | null | undefined;
-			image?: string | null | undefined;
-		};
+		creator: { id: string; name?: string | null | undefined; image?: string | null | undefined };
 	}>;
 };
 
@@ -205,9 +193,7 @@ export type BookReviewsLanguagesVariables = Exact<{
 	editionId?: Maybe<Scalars['ID']>;
 }>;
 
-export type BookReviewsLanguages = {
-	reviews: Array<{ lang?: string | null | undefined }>;
-};
+export type BookReviewsLanguages = { reviews: Array<{ lang?: string | null | undefined }> };
 
 export type EditionFragment = {
 	lang?: string | null | undefined;
@@ -245,11 +231,7 @@ export type IndexPageBooksVariables = Exact<{ [key: string]: never }>;
 export type IndexPageBooks = {
 	books: Array<{
 		id: number;
-		editions: Array<{
-			id: number;
-			title: string;
-			cover?: string | null | undefined;
-		}>;
+		editions: Array<{ id: number; title: string; cover?: string | null | undefined }>;
 	}>;
 };
 
@@ -312,6 +294,51 @@ export const EditionFragment = /*#__PURE__*/ gql`
 	}
 	${ByAuthorsFragment}
 `;
+export const UpdateProfileHookDocument = /*#__PURE__*/ gql`
+	mutation UpdateProfileHook($name: String) {
+		updateProfile(name: $name) {
+			id
+			name
+		}
+	}
+`;
+export type UpdateProfileHookMutationFn = Apollo.MutationFunction<
+	UpdateProfileHook,
+	UpdateProfileHookVariables
+>;
+
+/**
+ * __useUpdateProfileHook__
+ *
+ * To run a mutation, you first call `useUpdateProfileHook` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateProfileHook` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateProfileHook, { data, loading, error }] = useUpdateProfileHook({
+ *   variables: {
+ *      name: // value for 'name'
+ *   },
+ * });
+ */
+export function useUpdateProfileHook(
+	baseOptions?: Apollo.MutationHookOptions<UpdateProfileHook, UpdateProfileHookVariables>,
+) {
+	const options = { ...defaultOptions, ...baseOptions };
+	return Apollo.useMutation<UpdateProfileHook, UpdateProfileHookVariables>(
+		UpdateProfileHookDocument,
+		options,
+	);
+}
+export type UpdateProfileHookHookResult = ReturnType<typeof useUpdateProfileHook>;
+export type UpdateProfileHookMutationResult = Apollo.MutationResult<UpdateProfileHook>;
+export type UpdateProfileHookMutationOptions = Apollo.BaseMutationOptions<
+	UpdateProfileHook,
+	UpdateProfileHookVariables
+>;
 export const ProfileHookDocument = /*#__PURE__*/ gql`
 	query ProfileHook {
 		profile {
@@ -774,6 +801,9 @@ export const names = {
 		IndexPageBooks: 'IndexPageBooks',
 		ReviewPageReview: 'ReviewPageReview',
 		UserPage: 'UserPage',
+	},
+	Mutation: {
+		UpdateProfileHook: 'UpdateProfileHook',
 	},
 	Fragment: {
 		ByAuthorsFragment: 'ByAuthorsFragment',

@@ -166,12 +166,11 @@ const Query = objectType({
 
 const Mutation = objectType({
 	name: 'Mutation',
-	nonNullDefaults: { input: true },
 	definition(t) {
 		t.nonNull.field('updateProfile', {
 			type: 'User',
-			args: {},
-			resolve: async (_, __, ctx) => {
+			args: { name: stringArg() },
+			resolve: async (_, { name }, ctx) => {
 				const session = await getSession(ctx);
 				if (!session) return new AuthenticationError('Unauthorized action');
 				const sessionRecord = await prisma.session.findUnique({
@@ -179,7 +178,7 @@ const Mutation = objectType({
 				});
 				return prisma.user.update({
 					where: { id: sessionRecord?.userId },
-					data: {},
+					data: { name },
 				});
 			},
 		});

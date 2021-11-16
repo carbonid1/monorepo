@@ -34,7 +34,7 @@ type Edition {
 }
 
 type Mutation {
-  updateProfile: User!
+  updateProfile(name: String): User!
 }
 
 type Query {
