@@ -2,6 +2,7 @@ export interface TextFieldProps {
 	className?: string;
 	inputProps?: JSX.IntrinsicElements['input'];
 	label?: React.ReactNode;
+	size?: 'sm' | 'md' | 'lg'; // use this
 }
 export const TextField: React.FC<TextFieldProps> = ({ className, inputProps, label }) => {
 	return (
