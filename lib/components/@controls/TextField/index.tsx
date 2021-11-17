@@ -1,16 +1,22 @@
+import cn from 'classnames';
+
 export interface TextFieldProps {
 	className?: string;
 	inputProps?: JSX.IntrinsicElements['input'];
 	label?: React.ReactNode;
-	size?: 'sm' | 'md' | 'lg'; // use this
+	size?: 'md';
 }
 export const TextField: React.FC<TextFieldProps> = ({ className, inputProps, label }) => {
 	return (
-		<fieldset className={className}>
-			{label && <label htmlFor={inputProps?.id}>{label}</label>}
+		<fieldset className={cn(className, 'grid gap-1')}>
+			{label && (
+				<label htmlFor={inputProps?.id} className="text-sm font-bold">
+					{label}
+				</label>
+			)}
 			<input
 				{...inputProps}
-				className="border-2 rounded-md focus:ring-2 focus:ring-skin-primary focus:outline-none bg-skin-complement border-skin-base"
+				className="px-3 py-1 rounded-md dark:border-2 bg-skin-tertiary focus:ring-2 focus:ring-skin-primary focus:outline-none dark:bg-skin-complement border-skin-base"
 			/>
 		</fieldset>
 	);

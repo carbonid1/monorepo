@@ -6,6 +6,7 @@ import { ROUTE } from 'lib/consts/routes';
 import { useUpdateProfile } from 'lib/hooks/updateProfile';
 import useProfile from 'lib/hooks/useProfile';
 import { TextField } from 'lib/components/@controls/TextField';
+import { Button } from 'lib/components/@controls/Button';
 
 interface FormData {
 	name: string | null;
@@ -13,7 +14,7 @@ interface FormData {
 
 const SettingsPage: NextPage = () => {
 	const { profile } = useProfile();
-	const { updateProfile } = useUpdateProfile();
+	const { updateProfile, loading } = useUpdateProfile();
 	const { register, handleSubmit } = useForm<FormData>({ defaultValues: { name: profile?.name } });
 	const onSubmit = handleSubmit(variables => {
 		updateProfile({ variables });
@@ -22,20 +23,21 @@ const SettingsPage: NextPage = () => {
 	return (
 		<>
 			<CustomHead title="Settings" />
-
-			<pre>{JSON.stringify(profile, null, 2)}</pre>
-
-			<form onSubmit={onSubmit} className="mt-10" noValidate={false}>
-				<TextField
-					label="Name"
-					inputProps={{
-						id: 'name',
-						type: 'text',
-						...register('name', { required: true }),
-					}}
-				/>
-				<button type="submit">Submit</button>
-			</form>
+			<div className="flex items-center justify-center flex-1">
+				<form onSubmit={onSubmit} className="grid flex-1 max-w-xs gap-4" noValidate={false}>
+					<TextField
+						label="Name"
+						inputProps={{
+							id: 'name',
+							type: 'text',
+							...register('name', { required: true }),
+						}}
+					/>
+					<Button type="submit" className="justify-self-end" loading={loading}>
+						Save
+					</Button>
+				</form>
+			</div>
 		</>
 	);
 };

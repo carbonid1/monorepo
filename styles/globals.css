@@ -6,6 +6,7 @@
 	:root {
 		--color-text-base: 14, 20, 27;
 		--color-text-complement: 75, 85, 99;
+		--color-text-inverted: 250, 250, 250;
 		--color-placeholder: 156, 163, 175;
 		--color-background-base: 255, 255, 255;
 		--color-background-complement: 255, 255, 255;
@@ -22,6 +23,7 @@
 		:root {
 			--color-text-base: 250, 250, 250;
 			--color-text-complement: 250, 250, 250;
+			--color-text-inverted: 14, 20, 27;
 			--color-background-base: 14, 20, 27;
 			--color-background-complement: 25, 35, 45;
 			--color-background-tertiary: 25, 35, 45;
@@ -63,4 +65,9 @@
 	.shadow-underline:hover {
 		box-shadow: 0 2px 0 currentColor;
 	}
+
+	/* .absoluty-centered {
+		@apply absolute left-1/2 top-1/2;
+		transform: translate(-50%, -50%);
+	} */
 }

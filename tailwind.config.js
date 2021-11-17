@@ -19,6 +19,7 @@ module.exports = {
 				skin: {
 					base: withOpacity('--color-text-base'),
 					complement: withOpacity('--color-text-complement'),
+					inverted: withOpacity('--color-text-inverted'),
 					primary: withOpacity('--color-primary'),
 					'primary-light': withOpacity('--color-primary-light'),
 					'primary-dark': withOpacity('--color-primary-dark'),
@@ -74,9 +75,14 @@ module.exports = {
 				'20%': { opacity: 0 },
 				'100%': { opacity: 1 },
 			},
+			spin: {
+				from: { transform: 'rotate(0deg)' },
+				to: { transform: 'rotate(360deg)' },
+			},
 		},
 		animation: {
 			fadeIn: 'fadeIn 1s',
+			spin: 'spin 1s linear infinite',
 		},
 	},
 	variants: {
