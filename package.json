@@ -13,6 +13,7 @@
 		"storybook": "start-storybook -s ./public -p 6006",
 		"test": "jest",
 		"ts": "tsc --noEmit",
+		"prettier": "npx prettier --write .",
 		"analyze": "ANALYZE=true next dev",
 		"✋___comment__✋": "internal scripts ⏬",
 		"build": "next build",
