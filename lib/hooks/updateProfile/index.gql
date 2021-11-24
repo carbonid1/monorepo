@@ -1,6 +1,6 @@
 mutation UpdateProfileHook($name: String) {
-	updateProfile(name: $name) {
-		id
-		name
-	}
+  updateProfile(name: $name) {
+    id
+    name
+  }
 }
