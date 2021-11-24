@@ -3,6 +3,7 @@ import { ClientSafeProvider, getProviders, getSession, signin } from 'next-auth/
 import { GoogleIcon, GitHubIcon, TwitterIcon, FacebookIcon } from 'lib/icons';
 import { isSSR } from 'lib/utils';
 import { errors } from 'lib/consts/errors';
+import toastService from 'lib/services/toast.service';
 
 type TSignInProviders = 'google' | 'github' | 'twitter' | 'facebook';
 export interface SignInPageProps {
@@ -11,7 +12,7 @@ export interface SignInPageProps {
 }
 
 const SignInPage: NextPage<SignInPageProps> = ({ providers, error }) => {
-	if (error && !isSSR()) alert(error);
+	if (error && !isSSR()) toastService.error(error, { duration: 10000 });
 
 	return (
 		<div className="flex items-center justify-center flex-1">

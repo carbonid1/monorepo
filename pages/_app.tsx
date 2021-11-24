@@ -4,6 +4,7 @@ import App, { AppContext, AppProps } from 'next/app';
 import Head from 'next/head';
 import { ApolloProvider } from '@apollo/client';
 import { IdProvider } from '@radix-ui/react-id';
+import { Toaster } from 'react-hot-toast';
 import { AppHeader } from 'lib/modules/AppHeader';
 import { initializeApollo, useApollo } from 'lib/apollo';
 import trackingService from 'lib/services/tracking';
@@ -42,6 +43,7 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
 					<Component {...pageProps} />
 				</AppWrapper>
 			</IdProvider>
+			<Toaster toastOptions={{ position: 'bottom-right' }} />
 		</ApolloProvider>
 	);
 };
