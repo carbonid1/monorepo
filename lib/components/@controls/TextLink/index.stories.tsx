@@ -3,8 +3,8 @@ import type { Story, Meta } from '@storybook/react';
 import TextLink, { TextLinkProps } from '.';
 
 export default {
-	title: '@controls/TextLink',
-	component: TextLink,
+  title: '@controls/TextLink',
+  component: TextLink,
 } as Meta;
 
 const Template: Story<TextLinkProps> = args => <TextLink {...args}>Click Me!</TextLink>;
@@ -14,5 +14,5 @@ Button.args = {};
 
 export const Link = Template.bind({});
 Link.args = {
-	path: '#',
+  path: '#',
 };

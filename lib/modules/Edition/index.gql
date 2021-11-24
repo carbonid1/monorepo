@@ -1,11 +1,11 @@
 fragment EditionFragment on Edition {
-	lang
-	title
-	cover
-	description
-	publishedIn
-	book {
-		id
-		...ByAuthorsFragment
-	}
+  lang
+  title
+  cover
+  description
+  publishedIn
+  book {
+    id
+    ...ByAuthorsFragment
+  }
 }

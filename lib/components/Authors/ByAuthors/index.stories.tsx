@@ -7,11 +7,11 @@ const Template: Story<IByAuthors> = args => <ByAuthors {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-	authors: mocks.books.LongMars.authors,
+  authors: mocks.books.LongMars.authors,
 };
 
 export const NoAuthors = Template.bind({});
 NoAuthors.args = {
-	...Default.args,
-	authors: [],
+  ...Default.args,
+  authors: [],
 };

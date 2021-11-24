@@ -1,6 +1,6 @@
 query UserPage($id: ID) {
-	user(id: $id) {
-		id
-		name
-	}
+  user(id: $id) {
+    id
+    name
+  }
 }

@@ -11,67 +11,67 @@ import { NotFound } from 'lib/components/@errors/NotFound';
 import { ServerError } from 'lib/components/@errors/ServerError';
 
 interface IAuthorPage {
-	id: string;
+  id: string;
 }
 
 const AuthorPage: NextPage<IAuthorPage> = ({ id }) => {
-	const { data, error } = gg.useAuthorPageAuthor({
-		variables: { id },
-		skip: !id,
-	});
-	const { author } = data ?? {};
+  const { data, error } = gg.useAuthorPageAuthor({
+    variables: { id },
+    skip: !id,
+  });
+  const { author } = data ?? {};
 
-	if (error) return <ServerError />;
-	if (!author) return <NotFound />;
+  if (error) return <ServerError />;
+  if (!author) return <NotFound />;
 
-	const { fullName, books, imageUrl, bio } = author;
+  const { fullName, books, imageUrl, bio } = author;
 
-	return (
-		<div>
-			<CustomHead title={fullName} />
-			<div className="grid justify-start gap-10 sm:grid-flow-col">
-				<CoverImage alt={fullName} src={imageUrl} className="justify-self-center" />
-				<div>
-					<div>
-						<b>Name: </b>
-						{fullName}
-					</div>
-					{bio && <p>{bio}</p>}
-					<ul>
-						{books.map(({ editions, id }, index) => {
-							const { title, description, id: editionId } = editions[0];
-							return (
-								<li key={id + index} className="my-2">
-									<TextLink path={`/${ROUTE.book}/${editionId}`} slug={title}>
-										{title}
-									</TextLink>
-									<Paragraph ellipsis={{ rows: 5, expandable: false }}>{description}</Paragraph>
-								</li>
-							);
-						})}
-					</ul>
-				</div>
-			</div>
-		</div>
-	);
+  return (
+    <div>
+      <CustomHead title={fullName} />
+      <div className="grid justify-start gap-10 sm:grid-flow-col">
+        <CoverImage alt={fullName} src={imageUrl} className="justify-self-center" />
+        <div>
+          <div>
+            <b>Name: </b>
+            {fullName}
+          </div>
+          {bio && <p>{bio}</p>}
+          <ul>
+            {books.map(({ editions, id }, index) => {
+              const { title, description, id: editionId } = editions[0];
+              return (
+                <li key={id + index} className="my-2">
+                  <TextLink path={`/${ROUTE.book}/${editionId}`} slug={title}>
+                    {title}
+                  </TextLink>
+                  <Paragraph ellipsis={{ rows: 5, expandable: false }}>{description}</Paragraph>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export const getServerSideProps: GetServerSideProps = async ctx => {
-	const slug = ctx.query.slug as string;
-	const id = extractIdFromSlug(slug);
+  const slug = ctx.query.slug as string;
+  const id = extractIdFromSlug(slug);
 
-	const apolloClient = initializeApollo();
-	await apolloClient.query({
-		query: gg.AuthorPageAuthorDocument,
-		variables: { id },
-	});
+  const apolloClient = initializeApollo();
+  await apolloClient.query({
+    query: gg.AuthorPageAuthorDocument,
+    variables: { id },
+  });
 
-	return {
-		props: {
-			id,
-			initialApolloState: apolloClient.cache.extract(),
-		},
-	};
+  return {
+    props: {
+      id,
+      initialApolloState: apolloClient.cache.extract(),
+    },
+  };
 };
 
 export default AuthorPage;

@@ -1,5 +1,5 @@
 query BookPageEdition($id: ID) {
-	edition(id: $id) {
-		...EditionFragment
-	}
+  edition(id: $id) {
+    ...EditionFragment
+  }
 }

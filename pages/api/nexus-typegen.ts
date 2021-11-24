@@ -206,6 +206,11 @@ export interface NexusGenFieldTypeNames {
 }
 
 export interface NexusGenArgTypes {
+  Mutation: {
+    updateProfile: { // args
+      name?: string | null; // String
+    }
+  }
   Query: {
     author: { // args
       id?: string | null; // ID
