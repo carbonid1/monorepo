@@ -1,11 +1,9 @@
-name: Conventional Label
+name: Conventional Release Labels
 
-# Warning, do not check out untrusted code with
-# the pull_request_target event.
 on:
   pull_request_target:
     types: [opened, edited]
-name: conventional-release-labels
+
 jobs:
   label:
     runs-on: ubuntu-latest
