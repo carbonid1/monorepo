@@ -3,7 +3,8 @@ changelog:
     labels:
       - ignore-for-release
     authors:
-      - octocat
+      - github-actions
+      - dependabot
   categories:
     - title: Exciting New Features 🎉
       labels:
