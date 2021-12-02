@@ -3,8 +3,6 @@ name: General CI/CD
 on:
   push:
     branches: [fixme]
-  pull_request:
-    types: [synchronize, opened, reopened]
 
 jobs:
   code-quality:
