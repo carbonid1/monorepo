@@ -10,5 +10,6 @@ jobs:
     steps:
       - uses: bcoe/conventional-release-labels@v1
         with:
-          ignore_label: test
+          ignore_label: Ignore For Release
           type_labels: '{"feat":"Feature","fix":"Fix"}'
+          ignored_types: ['fix']
