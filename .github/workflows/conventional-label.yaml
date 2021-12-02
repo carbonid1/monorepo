@@ -11,6 +11,6 @@ jobs:
       - uses: bcoe/conventional-release-labels@v1
         with:
           ignore_label: Ignore For Release
-          type_labels: ${{ toJson({ "feat":"Feature", "fix":"Fix" }) }}
+          type_labels: '.github/conventional-label.json'
           # type_labels: { "feat":"Feature", "fix":"Fix" }
           ignored_types: '["fix"]'
