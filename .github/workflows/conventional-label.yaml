@@ -2,7 +2,7 @@
 # the pull_request_target event.
 on:
   pull_request_target:
-    types: [opened, edited]
+    types: [opened, edited, synchronize, reopened]
 name: conventional-release-labels
 jobs:
   label:
