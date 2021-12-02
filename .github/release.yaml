@@ -7,10 +7,13 @@ changelog:
   categories:
     - title: Exciting New Features 🎉
       labels:
-        - feature
+        - Feature
     - title: Fixes 🔧
       labels:
-        - fix
+        - Fix
+    - title: Continuous Integration 🔧
+      labels:
+        - CI
     - title: Other Changes
       labels:
         - '*'
