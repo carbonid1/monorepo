@@ -2,9 +2,7 @@ name: General CI/CD
 
 on:
   push:
-    branches: [master]
-  pull_request:
-    types: [synchronize, opened, reopened]
+    branches: [fixme]
 
 jobs:
   code-quality:
