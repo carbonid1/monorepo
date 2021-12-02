@@ -10,4 +10,5 @@ jobs:
     steps:
       - uses: bcoe/conventional-release-labels@v1
         with:
-          type_labels: { 'feat': 'Feature', 'fix': 'Fix' }
+          ignore_label: test
+          type_labels: '{\"feat\":\"Feature\",\"fix\":\"Fix\"}'
