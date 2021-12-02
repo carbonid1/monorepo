@@ -2,7 +2,6 @@ changelog:
   exclude:
     labels:
       - Ignore for release
-    authors:
   categories:
     - title: Exciting New Features 🎉
       labels:
