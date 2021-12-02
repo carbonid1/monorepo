@@ -1,9 +1,8 @@
 changelog:
   exclude:
     labels:
-      - ignore-for-release
+      - Ignore for release
     authors:
-      - octocat
   categories:
     - title: Exciting New Features 🎉
       labels:
