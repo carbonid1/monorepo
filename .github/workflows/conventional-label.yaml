@@ -12,4 +12,4 @@ jobs:
         with:
           ignore_label: Ignore For Release
           type_labels: '{"feat":"Feature","fix":"Fix"}'
-          ignored_types: ["fix"]
+          ignored_types: '["fix"]''
