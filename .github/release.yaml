@@ -9,7 +9,7 @@ changelog:
     - title: Fixes 🔧
       labels:
         - Fix
-    - title: Continuous Integration 🔧
+    - title: Continuous Integration 🧪
       labels:
         - CI
     - title: Other Changes
