@@ -10,37 +10,41 @@ export interface AvatarProps extends TagProps {
   className?: string;
   fallbackImgSeed: string;
   href: LinkProps['href'];
+  size?: 'md' | 'lg';
 }
 
 export const Avatar: React.FC<AvatarProps> = ({
-  className,
-  href,
   alt,
   src,
+  size,
+  href,
+  className,
   fallbackImgSeed,
   ...props
 }) => {
+  const imgSize = size === 'lg' ? 48 : 32;
   return (
     <NextLink href={href}>
       <a
         className={classNames(
-          'inline-block w-12 h-12 overflow-hidden rounded-full cursor-pointer bg-skin-tertiary',
+          'inline-block overflow-hidden rounded-full cursor-pointer bg-skin-tertiary',
           className,
+          size === 'lg' ? 'w-12 h-12' : 'w-8 h-8',
         )}
         {...props}
       >
         <RadixAvatar.Root>
           <RadixAvatar.Image
-            width={48}
-            height={48}
+            width={imgSize}
+            height={imgSize}
             alt={alt || undefined}
             src={src || undefined}
             className="rounded-full animate-fadeIn"
           />
           <RadixAvatar.Fallback delayMs={1000}>
             <NextImage
-              width={48}
-              height={48}
+              width={imgSize}
+              height={imgSize}
               alt={alt || undefined}
               className="rounded-full animate-fadeIn"
               src={`https://avatars.dicebear.com/api/bottts/${fallbackImgSeed}.svg`}
