@@ -11,5 +11,5 @@ jobs:
       - uses: bcoe/conventional-release-labels@v1
         with:
           ignore_label: Ignore For Release
-          type_labels: '{"feat": "Feature", "fix": "Fix", "breaking": "breaking"}'
+          type_labels: '{"feat": "Hello", "fix": "Fix", "breaking": "breaking"}'
           ignored_types: '["fix"]'
