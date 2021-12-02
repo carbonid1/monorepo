@@ -11,4 +11,4 @@ jobs:
       - uses: bcoe/conventional-release-labels@v1
         with:
           ignore_label: test
-          type_labels: '{\"feat\":\"Feature\",\"fix\":\"Fix\"}'
+          type_labels: '{"feat":"Feature","fix":"Fix"}'
