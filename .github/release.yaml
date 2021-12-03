@@ -27,3 +27,6 @@ changelog:
     - title: Build Update 👷
       labels:
         - Build
+    - title: Other Updates
+      labels:
+        - Chore
