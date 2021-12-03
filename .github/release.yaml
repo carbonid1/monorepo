@@ -24,6 +24,6 @@ changelog:
     - title: Performance Improvements 🚀
       labels:
         - Performance Improvements
-    - title: Application Build Update 👷
+    - title: Build Update 👷
       labels:
         - Build
