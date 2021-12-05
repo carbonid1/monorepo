@@ -56,10 +56,7 @@ export const BookReviews: React.FC<BookReviewsProps> = props => {
           {reviews.map(review => {
             const { creator } = review;
             return (
-              <div
-                key={review.id}
-                className="relative grid items-center grid-cols-2 gap-2 max-w-prose"
-              >
+              <div key={review.id} className="relative grid items-center gap-2 max-w-prose">
                 <Avatar
                   src={creator.image}
                   fallbackImgSeed={creator.id}
@@ -67,7 +64,7 @@ export const BookReviews: React.FC<BookReviewsProps> = props => {
                   aria-label={`Read more about ${creator.name}`}
                   alt={creator.name ?? "review's author avatar"}
                 />
-                <div className="mr-8 font-bold justify-self-end">
+                <div className="self-end mr-8 text-sm font-bold justify-self-end">
                   {formatDate(review.createdAt)}
                 </div>
                 <ReviewDropdown reviewId={review.id} />
