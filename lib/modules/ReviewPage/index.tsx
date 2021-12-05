@@ -41,6 +41,7 @@ const Review: NextPage<IReview> = ({ id }) => {
         </div>
         <ByAuthors authors={edition.book.authors} className="mb-4" />
         <Avatar
+          size="lg"
           src={creator.image}
           fallbackImgSeed={creator.id}
           href={`/${ROUTE.user}/${creator.id}`}
