@@ -30,13 +30,6 @@ const Template: Story<SignInPageProps> = props => (
 export const Default = Template.bind({});
 Default.args = {
   providers: {
-    facebook: {
-      id: 'FB',
-      callbackUrl: '',
-      name: '',
-      signinUrl: '',
-      type: 'oauth',
-    },
     google: {
       id: 'Google',
       callbackUrl: '',
