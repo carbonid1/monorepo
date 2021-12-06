@@ -1,10 +1,6 @@
 {
   "title": [
 		{
-			"pattern": "^[A-Z][a-z]+?\\s",
-			"message": "Your title must start with a capital letter, and a real word, e.g. 'Add GO support'"
-		},
-		{
 			"pattern": "^\\S+\\s+\\S+\\s+\\S+",
 			"message": "Your title must have at least three words"
 		},
@@ -15,7 +11,7 @@
 	],
   "labels.0.name": [
     {
-      "pattern": "Feature|Fix|CI|Tests|Documentation|Refactoring|Performance Improvements|Build|Chore",
+      "pattern": "Feature|Fix|CI|Tests|Documentation|Refactoring|Performance Improvements|Build|Chore|Ignore For Release",
       "message": "Please add a release label"
     }
   ]
