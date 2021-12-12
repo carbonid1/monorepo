@@ -11,7 +11,7 @@ const withOpacity = variableName => {
 };
 
 module.exports = {
-  purge: ['./{pages,docs,lib}/**/*.{js,ts,jsx,tsx,mdx}'], // list all the folders
+  content: ['./{pages,docs,lib}/**/*.{js,ts,jsx,tsx,mdx}'], // list all the folders
   darkMode: 'media',
   theme: {
     extend: {
@@ -88,6 +88,5 @@ module.exports = {
   variants: {
     extend: {},
   },
-  mode: 'jit',
   plugins: [require('@tailwindcss/line-clamp')],
 };
