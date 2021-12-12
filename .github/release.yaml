@@ -6,7 +6,7 @@ changelog:
     - title: Exciting New Features 🎉
       labels:
         - Feature
-    - title: Fixes 🐛
+    - title: 🐛 Fixes
       labels:
         - Fix
     - title: Continuous Integration 🧪
