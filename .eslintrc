@@ -22,7 +22,7 @@
     "no-console": [
       "warn",
       {
-        "allow": ["warn", "error"]
+        "allow": ["error"]
       }
     ],
     "no-unused-vars": "off",
