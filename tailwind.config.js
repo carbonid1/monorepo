@@ -1,5 +1,3 @@
-const defaultTheme = require('tailwindcss/defaultTheme');
-
 const withOpacity = variableName => {
   return ({ opacityValue }) => {
     if (opacityValue) {
@@ -54,6 +52,9 @@ module.exports = {
           complement: withOpacity('--color-background-complement'),
         },
       },
+      screens: {
+        xs: '380px',
+      },
     },
     colors: {
       current: 'currentColor',
@@ -64,10 +65,6 @@ module.exports = {
       'scaled-img': 2,
       header: 3,
       progress: 4,
-    },
-    screens: {
-      xs: '380px',
-      ...defaultTheme.screens,
     },
     keyframes: {
       fadeIn: {
@@ -84,9 +81,6 @@ module.exports = {
       fadeIn: 'fadeIn 1s',
       spin: 'spin 1s linear infinite',
     },
-  },
-  variants: {
-    extend: {},
   },
   plugins: [require('@tailwindcss/line-clamp')],
 };
