@@ -35,7 +35,7 @@
     "@radix-ui/react-progress": "^0.1.1",
     "@radix-ui/react-switch": "^0.1.1",
     "@splitbee/web": "^0.3.0",
-    "@tailwindcss/line-clamp": "^0.2.2",
+    "@tailwindcss/line-clamp": "^0.3.0",
     "@tanem/react-nprogress": "^3.0.81",
     "apollo-server-micro": "^2.19.2",
     "classnames": "^2.3.1",
@@ -79,7 +79,7 @@
     "@types/jest": "^27.0.2",
     "@types/node": "^16.11.6",
     "@types/react": "^17.0.33",
-    "@types/tailwindcss": "^2.2.2",
+    "@types/tailwindcss": "^2.2.4",
     "@typescript-eslint/eslint-plugin": "^5.3.0",
     "@typescript-eslint/parser": "^5.3.0",
     "autoprefixer": "^10.4.0",
@@ -102,7 +102,7 @@
     "prisma": "^3.4.0",
     "sass": "^1.43.4",
     "storybook-css-modules-preset": "^1.1.1",
-    "tailwindcss": "^2.2.19",
+    "tailwindcss": "^3.0.1",
     "typescript": "^4.4.4"
   },
   "lint-staged": {
