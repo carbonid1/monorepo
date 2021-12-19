@@ -1,4 +1,4 @@
-import { signIn, signOut } from 'next-auth/client';
+import { signIn, signOut } from 'next-auth/react';
 import { TextLink } from 'lib/components';
 import useProfile from 'lib/hooks/useProfile';
 import { useAppProgress } from '../AppProgress/useAppProgress';
