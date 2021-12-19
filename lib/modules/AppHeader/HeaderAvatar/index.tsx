@@ -9,6 +9,7 @@ export const HeaderAvatar: React.FC = () => {
 
   return (
     <Avatar
+      size="lg"
       src={profile.image}
       href={`/${ROUTE.settings}`}
       alt={profile.name ?? 'user'}
