@@ -1,37 +1,32 @@
-import NextAuth, { Profile } from 'next-auth';
-import Providers from 'next-auth/providers';
+import NextAuth from 'next-auth';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
+import GoogleProvider from 'next-auth/providers/google';
+import GitHubProvider from 'next-auth/providers/github';
+import TwitterProvider from 'next-auth/providers/twitter';
 import { ROUTE } from 'lib/consts/routes';
 import prisma from '../../../prisma';
 
 export default NextAuth({
-  theme: 'light',
   adapter: PrismaAdapter(prisma),
-  database: process.env.DATABASE_URL,
-  jwt: {
-    // https://next-auth.js.org/warnings#jwt_auto_generated_signing_key
-    signingKey: process.env.JWT_SIGNING_PRIVATE_KEY,
-  },
+  secret: 'QwW72IpqpUjaHJSTNyLo6HV9HTJsqdq8T67PKptPFCQ=',
   providers: [
-    Providers.Google({
-      clientId: process.env.GOOGLE_AUTH_ID,
-      clientSecret: process.env.GOOGLE_AUTH_SECRET,
+    GoogleProvider({
+      clientId: String(process.env.GOOGLE_AUTH_ID),
+      clientSecret: String(process.env.GOOGLE_AUTH_SECRET),
     }),
-    Providers.GitHub({
+    GitHubProvider({
       clientId: process.env.GITHUB_AUTH_ID,
       clientSecret: process.env.GITHUB_AUTH_SECRET,
-      profile: (profile: Profile & { id: number; login?: string; avatar_url?: string }) => {
-        return {
-          id: profile.id.toString(),
-          name: profile.name || profile.login,
-          email: profile.email,
-          image: profile.avatar_url,
-        };
-      },
+      profile: profile => ({
+        id: profile.id.toString(),
+        name: profile.name || profile.login,
+        email: profile.email,
+        image: profile.avatar_url,
+      }),
     }),
-    Providers.Twitter({
-      clientId: process.env.TWITTER_AUTH_ID,
-      clientSecret: process.env.TWITTER_AUTH_SECRET,
+    TwitterProvider({
+      clientId: String(process.env.TWITTER_AUTH_ID),
+      clientSecret: String(process.env.TWITTER_AUTH_SECRET),
     }),
   ],
   pages: {

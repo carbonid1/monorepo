@@ -2,7 +2,7 @@ import path from 'path';
 import { ApolloServer, AuthenticationError } from 'apollo-server-micro';
 import { asNexusMethod, idArg, list, makeSchema, nonNull, objectType, stringArg } from 'nexus';
 import { GraphQLDate } from 'graphql-iso-date';
-import { getSession } from 'next-auth/client';
+import { getSession } from 'next-auth/react';
 import prisma from '../../prisma';
 
 export const GQLDate = asNexusMethod(GraphQLDate, 'date');
@@ -132,10 +132,7 @@ const Query = objectType({
       resolve: async (_, __, ctx) => {
         const session = await getSession(ctx);
         if (!session) return null;
-        const sessionRecord = await prisma.session.findUnique({
-          where: { accessToken: session.accessToken as string },
-        });
-        return prisma.user.findUnique({ where: { id: sessionRecord?.userId } });
+        return prisma.user.findUnique({ where: { email: session.user?.email || undefined } });
       },
     });
     t.field('reviews', {
@@ -173,11 +170,8 @@ const Mutation = objectType({
       resolve: async (_, { name }, ctx) => {
         const session = await getSession(ctx);
         if (!session) return new AuthenticationError('Unauthorized action');
-        const sessionRecord = await prisma.session.findUnique({
-          where: { accessToken: session.accessToken as string },
-        });
         return prisma.user.update({
-          where: { id: sessionRecord?.userId },
+          where: { email: session.user?.email || undefined },
           data: { name },
         });
       },

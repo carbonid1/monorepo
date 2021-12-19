@@ -1,5 +1,5 @@
 import type { GetServerSideProps, NextPage } from 'next';
-import { getSession } from 'next-auth/client';
+import { getSession } from 'next-auth/react';
 import { useForm } from 'react-hook-form';
 import { CustomHead } from 'lib/components/CustomHead';
 import { ROUTE } from 'lib/consts/routes';

@@ -1,5 +1,5 @@
 import type { GetServerSideProps, NextPage } from 'next';
-import { ClientSafeProvider, getProviders, getSession, signin } from 'next-auth/client';
+import { ClientSafeProvider, getProviders, getSession, signIn } from 'next-auth/react';
 import { GoogleIcon, GitHubIcon, TwitterIcon } from 'lib/icons';
 import { isSSR } from 'lib/utils';
 import { errors } from 'lib/consts/errors';
@@ -18,21 +18,21 @@ const SignInPage: NextPage<SignInPageProps> = ({ providers, error }) => {
     <div className="flex items-center justify-center flex-1">
       <div className="grid gap-4 p-6 transition-transform duration-300 shadow-md rounded-xl focus-within:shadow-xl focus-within:translate-y-[-4px] focus-within:transform text-skin-complement bg-skin-complement border-skin-base border-2 dark:focus-within:transform-none">
         <button
-          onClick={() => signin(providers?.twitter.id)}
+          onClick={() => signIn(providers?.twitter.id)}
           className="flex items-center w-full max-w-xs p-4 text-sm font-medium xs:text-xl rounded-xl"
         >
           <TwitterIcon className="mr-4 text-xl xs:text-3xl" />
           Continue with Twitter
         </button>
         <button
-          onClick={() => signin(providers?.google.id)}
+          onClick={() => signIn(providers?.google.id)}
           className="flex items-center w-full max-w-xs p-4 text-sm font-medium xs:text-xl rounded-xl"
         >
           <GoogleIcon className="mr-4 text-xl xs:text-3xl" />
           Continue with Google
         </button>
         <button
-          onClick={() => signin(providers?.github.id)}
+          onClick={() => signIn(providers?.github.id)}
           className="flex items-center w-full max-w-xs p-4 text-sm font-medium xs:text-xl rounded-xl"
         >
           <GitHubIcon className="mr-4 text-xl xs:text-3xl" />
