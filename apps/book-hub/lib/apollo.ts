@@ -1,12 +1,7 @@
-import {
-  from,
-  ApolloClient,
-  ApolloContextValue,
-  InMemoryCache,
-  NormalizedCacheObject,
-} from '@apollo/client'
+import { from, ApolloClient, InMemoryCache, NormalizedCacheObject } from '@apollo/client'
 import { useMemo } from 'react'
 import { onError } from '@apollo/client/link/error'
+import type { NextPageContext } from 'next'
 import { isSSR } from './utils'
 
 type TApolloClient = ApolloClient<NormalizedCacheObject>
@@ -25,7 +20,7 @@ const getURIConfig = () => {
   }
 }
 
-function createIsomorphicLink(context?: ApolloContextValue) {
+function createIsomorphicLink(context?: NextPageContext) {
   if (typeof window === 'undefined') {
     const { SchemaLink } = require('@apollo/client/link/schema')
     const { schema } = require('../pages/api')
@@ -56,7 +51,7 @@ const createErrorLink = () => {
   })
 }
 
-function createApolloClient(context?: ApolloContextValue) {
+function createApolloClient(context?: NextPageContext) {
   return new ApolloClient({
     connectToDevTools: process.env.NODE_ENV !== 'production',
     ssrMode: isSSR(),
@@ -67,7 +62,7 @@ function createApolloClient(context?: ApolloContextValue) {
 
 interface InitializeApollo {
   initialState?: TInitialState
-  context?: ApolloContextValue
+  context?: NextPageContext
 }
 export function initializeApollo(options?: InitializeApollo): TApolloClient {
   const { initialState = null, context } = options ?? {}
