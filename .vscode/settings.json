@@ -1,7 +1,4 @@
 {
-  "prettier.arrowParens": "avoid",
-  "prettier.singleQuote": true,
-  "prettier.printWidth": 120,
   "prettier.configPath": ".prettierrc",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
@@ -11,5 +8,6 @@
       "interval": 500,
       "sequence": ["eslint.executeAutofix", "workbench.action.files.saveWithoutFormatting"]
     }
-  ]
+  ],
+  "eslint.workingDirectories": [{ "pattern": "./apps/*/" }]
 }

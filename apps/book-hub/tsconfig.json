@@ -1,0 +1,15 @@
+{
+  "extends": "tsconfig/nextjs.json",
+  "compilerOptions": {
+    "baseUrl": "."
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    ".eslintrc.js",
+    "next-env.d.ts",
+    "next.config.js",
+    "tailwind.config.js"
+  ],
+  "exclude": ["node_modules", "pages/api/nexus-typegen.ts", "lib/generated/**/*"]
+}

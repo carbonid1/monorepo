@@ -1,0 +1,4 @@
+public/sw.*
+public/workbox-*
+.env
+.vercel
