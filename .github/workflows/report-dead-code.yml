@@ -16,13 +16,13 @@ jobs:
           node-version: '14'
 
       - name: Install dependencies
-        run: npm ci
+        run: npx pnpm ci
 
       - name: Intall eslint-nibble
-        run: npm install --no-save eslint-nibble
+        run: npx pnpm i --no-save eslint-nibble
 
       - name: Run ESLint rule
-        run: npx eslint-nibble --config .github/report-dead-code/eslintrc.js --no-interactive --ext=.tsx,.ts,.js --rule import/no-unused-modules .
+        run: npx eslint-nibble --config .github/report-dead-code/.eslintrc.js --no-interactive --ext=.tsx,.ts,.js --rule import/no-unused-modules .
 
   send_success_notification:
     if: success()
