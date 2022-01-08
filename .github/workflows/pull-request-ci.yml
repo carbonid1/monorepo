@@ -3,7 +3,7 @@ on:
   pull_request:
     types: [synchronize, opened, reopened]
 jobs:
-  setup:
+  lint:
     if: ${{ github.event.pull_request.draft == false }}
     runs-on: ubuntu-latest
     steps:
@@ -14,14 +14,5 @@ jobs:
           node-version: '14'
       - name: Install dependencies
         run: npx pnpm i -r
-  linter:
-    needs: setup
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js 14
-        uses: actions/setup-node@v2-beta
-        with:
-          node-version: '14'
       - name: Run linter
         run: npx pnpm lint
