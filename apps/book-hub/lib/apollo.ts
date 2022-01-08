@@ -1,5 +1,10 @@
-/* eslint-disable no-console */
-import { ApolloClient, from, InMemoryCache, NormalizedCacheObject } from '@apollo/client'
+import {
+  from,
+  ApolloClient,
+  ApolloContextValue,
+  InMemoryCache,
+  NormalizedCacheObject,
+} from '@apollo/client'
 import { useMemo } from 'react'
 import { onError } from '@apollo/client/link/error'
 import { isSSR } from './utils'
@@ -20,8 +25,7 @@ const getURIConfig = () => {
   }
 }
 
-type ApolloContext = any
-function createIsomorphicLink(context?: ApolloContext) {
+function createIsomorphicLink(context?: ApolloContextValue) {
   if (typeof window === 'undefined') {
     const { SchemaLink } = require('@apollo/client/link/schema')
     const { schema } = require('../pages/api')
@@ -42,15 +46,17 @@ const createErrorLink = () => {
   return onError(({ graphQLErrors, networkError }) => {
     if (graphQLErrors)
       graphQLErrors.forEach(({ message, locations, path }) =>
+        // eslint-disable-next-line no-console
         console.error(
           `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
         ),
       )
+    // eslint-disable-next-line no-console
     if (networkError) console.error(`[Network error]: ${networkError}`)
   })
 }
 
-function createApolloClient(context?: ApolloContext) {
+function createApolloClient(context?: ApolloContextValue) {
   return new ApolloClient({
     connectToDevTools: process.env.NODE_ENV !== 'production',
     ssrMode: isSSR(),
@@ -61,7 +67,7 @@ function createApolloClient(context?: ApolloContext) {
 
 interface InitializeApollo {
   initialState?: TInitialState
-  context?: ApolloContext
+  context?: ApolloContextValue
 }
 export function initializeApollo(options?: InitializeApollo): TApolloClient {
   const { initialState = null, context } = options ?? {}

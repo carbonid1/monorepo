@@ -19,6 +19,7 @@ module.exports = {
   rules: {
     'no-console': 2,
     '@next/next/no-html-link-for-pages': 0,
+    '@typescript-eslint/no-explicit-any': 2,
     '@typescript-eslint/no-var-requires': 0,
     '@typescript-eslint/explicit-module-boundary-types': 0,
     'react/prop-types': 0,

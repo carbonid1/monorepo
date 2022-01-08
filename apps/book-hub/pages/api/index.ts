@@ -150,9 +150,9 @@ const Query = objectType({
             },
           })
           .then(
-            (book: any) =>
+            book =>
               book?.editions.reduce(
-                (reviews: typeof edition.reviews, edition: any) => [...reviews, ...edition.reviews],
+                (reviews: typeof edition.reviews, edition) => [...reviews, ...edition.reviews],
                 [],
               ) || [],
           )
