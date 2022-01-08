@@ -52,7 +52,6 @@
     "react-markdown": "7.1.0",
     "react-spring": "9.3.0",
     "slugify": "1.6.1",
-    "ui": "workspace:*",
     "zustand": "3.6.3"
   },
   "devDependencies": {
