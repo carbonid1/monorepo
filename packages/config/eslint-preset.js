@@ -1,6 +1,15 @@
 module.exports = {
   settings: {
     next: { rootDir: ['apps/*/', 'packages/*/'] },
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts', '.tsx'],
+    },
+    'import/resolver': {
+      typescript: {
+        alwaysTryTypes: true,
+        project: ['apps/*/tsconfig.json'],
+      },
+    },
   },
   plugins: ['react', '@typescript-eslint'],
   extends: [

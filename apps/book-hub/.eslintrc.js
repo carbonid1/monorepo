@@ -5,7 +5,7 @@ module.exports = {
   parserOptions: {
     root: true,
     tsconfigRootDir: __dirname,
-    project: ['./tsconfig.json'],
+    project: './tsconfig.json',
   },
   ignorePatterns: ['pages/api/nexus-typegen.ts', 'lib/generated/**/*'],
 }

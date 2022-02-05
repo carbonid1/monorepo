@@ -31,5 +31,6 @@ export default NextAuth({
   ],
   pages: {
     signIn: `/${ROUTE.signIn}`,
+    // newUser: '/wellcome'
   },
 })
