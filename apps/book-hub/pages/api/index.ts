@@ -132,7 +132,9 @@ const Query = objectType({
       resolve: async (_, __, ctx) => {
         const session = await getSession(ctx)
         if (!session) return null
-        return prisma.user.findUnique({ where: { email: session.user?.email || undefined } })
+        return prisma.user.findUnique({
+          where: { email: session.user?.email || undefined },
+        })
       },
     })
     t.field('reviews', {

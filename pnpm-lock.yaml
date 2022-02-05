@@ -4,14 +4,14 @@ importers:
   .:
     specifiers:
       husky: ^7.0.4
-      lint-staged: ^12.1.4
+      lint-staged: ^12.3.3
       prettier: ^2.5.1
-      turbo: ^1.0.24
+      turbo: ^1.1.2
     devDependencies:
       husky: 7.0.4
-      lint-staged: 12.1.4
+      lint-staged: 12.3.3
       prettier: 2.5.1
-      turbo: 1.0.24
+      turbo: 1.1.2
 
   apps/book-hub:
     specifiers:
@@ -37,13 +37,13 @@ importers:
       '@storybook/addon-links': 6.3.12
       '@storybook/addon-postcss': 2.0.0
       '@storybook/react': 6.3.12
-      '@tailwindcss/line-clamp': 0.3.0
+      '@tailwindcss/line-clamp': 0.3.1
       '@tanem/react-nprogress': 3.0.81
       '@types/graphql-iso-date': 3.4.0
       '@types/jest': 27.0.2
       '@types/node': 16.11.6
       '@types/react': 17.0.37
-      '@types/tailwindcss': 2.2.4
+      '@types/tailwindcss': 3.0.7
       '@typescript-eslint/eslint-plugin': 5.3.0
       '@typescript-eslint/parser': 5.3.0
       '@use-gesture/react': ^10.2.4
@@ -78,7 +78,7 @@ importers:
       sass: 1.43.4
       slugify: 1.6.1
       storybook-css-modules-preset: 1.1.1
-      tailwindcss: 3.0.1
+      tailwindcss: 3.0.18
       ts-node: 10.4.0
       tsconfig: workspace:*
       zustand: 3.6.3
@@ -93,7 +93,7 @@ importers:
       '@radix-ui/react-progress': 0.1.1_react@17.0.2
       '@radix-ui/react-switch': 0.1.1_react@17.0.2
       '@splitbee/web': 0.3.0
-      '@tailwindcss/line-clamp': 0.3.0_tailwindcss@3.0.1
+      '@tailwindcss/line-clamp': 0.3.1_tailwindcss@3.0.18
       '@tanem/react-nprogress': 3.0.81_react-dom@17.0.2+react@17.0.2
       '@use-gesture/react': 10.2.4_react@17.0.2
       apollo-server-micro: 2.19.2_graphql@15.5.1
@@ -132,7 +132,7 @@ importers:
       '@types/jest': 27.0.2
       '@types/node': 16.11.6
       '@types/react': 17.0.37
-      '@types/tailwindcss': 2.2.4
+      '@types/tailwindcss': 3.0.7
       '@typescript-eslint/eslint-plugin': 5.3.0_@typescript-eslint+parser@5.3.0
       '@typescript-eslint/parser': 5.3.0
       autoprefixer: 10.4.0_postcss@8.3.11
@@ -148,7 +148,7 @@ importers:
       prisma: 3.6.0
       sass: 1.43.4
       storybook-css-modules-preset: 1.1.1
-      tailwindcss: 3.0.1_075b32d60691cc23a7bd4dff137831e8
+      tailwindcss: 3.0.18_075b32d60691cc23a7bd4dff137831e8
       ts-node: 10.4.0_@types+node@16.11.6
       tsconfig: link:../../packages/tsconfig
 
@@ -359,7 +359,7 @@ packages:
       gensync: 1.0.0-beta.2
       json5: 2.2.0
       lodash: 4.17.21
-      resolve: 1.20.0
+      resolve: 1.22.0
       semver: 5.7.1
       source-map: 0.5.7
     transitivePeerDependencies:
@@ -532,7 +532,7 @@ packages:
       '@babel/traverse': 7.16.7
       debug: 4.3.3
       lodash.debounce: 4.0.8
-      resolve: 1.20.0
+      resolve: 1.22.0
       semver: 6.3.0
     transitivePeerDependencies:
       - supports-color
@@ -552,7 +552,7 @@ packages:
       '@babel/traverse': 7.16.7
       debug: 4.3.3
       lodash.debounce: 4.0.8
-      resolve: 1.20.0
+      resolve: 1.22.0
       semver: 6.3.0
     transitivePeerDependencies:
       - supports-color
@@ -573,7 +573,7 @@ packages:
       '@babel/traverse': 7.16.7
       debug: 4.3.3
       lodash.debounce: 4.0.8
-      resolve: 1.20.0
+      resolve: 1.22.0
       semver: 6.3.0
     transitivePeerDependencies:
       - supports-color
@@ -5319,7 +5319,7 @@ packages:
       builtin-modules: 3.2.0
       deepmerge: 4.2.2
       is-module: 1.0.0
-      resolve: 1.20.0
+      resolve: 1.22.0
       rollup: 2.62.0
     dev: false
 
@@ -7117,15 +7117,15 @@ packages:
       defer-to-connect: 1.1.3
     dev: true
 
-  /@tailwindcss/line-clamp/0.3.0_tailwindcss@3.0.1:
+  /@tailwindcss/line-clamp/0.3.1_tailwindcss@3.0.18:
     resolution:
       {
-        integrity: sha512-ffDDclrqr3sy8cpChCozedDUAN8enxqAiWeH8d4dGQ2hcXlxf51+7KleveFi/n/TxEuRVApoL7hICeDOdYPKpg==,
+        integrity: sha512-pNr0T8LAc3TUx/gxCfQZRe9NB2dPEo/cedPHzUGIPxqDMhgjwNm6jYxww4W5l0zAsAddxr+XfZcqttGiFDgrGg==,
       }
     peerDependencies:
       tailwindcss: '>=2.0.0 || >=3.0.0 || >=3.0.0-alpha.1'
     dependencies:
-      tailwindcss: 3.0.1_075b32d60691cc23a7bd4dff137831e8
+      tailwindcss: 3.0.18_075b32d60691cc23a7bd4dff137831e8
     dev: false
 
   /@tanem/react-nprogress/3.0.81_react-dom@17.0.2+react@17.0.2:
@@ -7747,10 +7747,10 @@ packages:
       }
     dev: true
 
-  /@types/tailwindcss/2.2.4:
+  /@types/tailwindcss/3.0.7:
     resolution:
       {
-        integrity: sha512-8mIk+0BoReKiaBI4e3hjaz9YDQto+rdZ2eEExHf6AfS38FZcALQ6s8mTd+74N8BtBaLnTzLdNe5GbkzObWlSXw==,
+        integrity: sha512-M3DEErH+kbqRPcYg3CFhf0UFJwD1xgOjm9GxJcUZJGO/DZwu1fBknt4ajXCU6BI2wvTeLq9pSam78fcbjDOsCQ==,
       }
     dev: true
 
@@ -9489,7 +9489,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.16.7
       cosmiconfig: 6.0.0
-      resolve: 1.20.0
+      resolve: 1.22.0
     dev: true
 
   /babel-plugin-macros/3.1.0:
@@ -9501,7 +9501,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.16.7
       cosmiconfig: 7.0.1
-      resolve: 1.20.0
+      resolve: 1.22.0
     dev: true
 
   /babel-plugin-named-asset-import/0.3.8:
@@ -10448,7 +10448,7 @@ packages:
       {
         integrity: sha512-ZmZUazfOzf0Nve7duiCKD23PFSCs4JPoYyccjUFF3aQkQadqBhfzhjkwBH2mNOG9cTBwhamM37EIsIkZw3nRgg==,
       }
-    deprecated: Chokidar 2 will break on node v14+. Upgrade to chokidar 3 with 15x less dependencies.
+    deprecated: Chokidar 2 does not receive security updates since 2019. Upgrade to chokidar 3 with 15x fewer dependencies
     dependencies:
       anymatch: 2.0.0
       async-each: 1.0.3
@@ -10487,6 +10487,24 @@ packages:
     resolution:
       {
         integrity: sha512-ekGhOnNVPgT77r4K/U3GDhu+FQ2S8TnK/s2KbIGXi0SZWuwkZ2QNyfWdZW+TVfn84DpEP7rLeCt2UI6bJ8GwbQ==,
+      }
+    engines: { node: '>= 8.10.0' }
+    dependencies:
+      anymatch: 3.1.2
+      braces: 3.0.2
+      glob-parent: 5.1.2
+      is-binary-path: 2.1.0
+      is-glob: 4.0.3
+      normalize-path: 3.0.0
+      readdirp: 3.6.0
+    optionalDependencies:
+      fsevents: 2.3.2
+    dev: true
+
+  /chokidar/3.5.3:
+    resolution:
+      {
+        integrity: sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw==,
       }
     engines: { node: '>= 8.10.0' }
     dependencies:
@@ -12948,6 +12966,20 @@ packages:
       micromatch: 3.1.10
     dev: true
 
+  /fast-glob/3.2.11:
+    resolution:
+      {
+        integrity: sha512-xrO3+1bxSo3ZVHAnqzyuewYT6aMFHRAd4Kcs92MAonjwQZLsK9d0SF1IyQ3k5PoirxTW0Oe/RqFgMQ6TcNE5Ew==,
+      }
+    engines: { node: '>=8.6.0' }
+    dependencies:
+      '@nodelib/fs.stat': 2.0.5
+      '@nodelib/fs.walk': 1.2.8
+      glob-parent: 5.1.2
+      merge2: 1.4.1
+      micromatch: 4.0.4
+    dev: true
+
   /fast-glob/3.2.7:
     resolution:
       {
@@ -13342,7 +13374,7 @@ packages:
       '@babel/code-frame': 7.16.7
       '@types/json-schema': 7.0.9
       chalk: 4.1.2
-      chokidar: 3.5.2
+      chokidar: 3.5.3
       cosmiconfig: 6.0.0
       deepmerge: 4.2.2
       fs-extra: 9.1.0
@@ -13852,7 +13884,7 @@ packages:
     dependencies:
       array-union: 2.1.0
       dir-glob: 3.0.1
-      fast-glob: 3.2.7
+      fast-glob: 3.2.11
       ignore: 5.2.0
       merge2: 1.4.1
       slash: 3.0.0
@@ -14966,6 +14998,15 @@ packages:
     resolution:
       {
         integrity: sha512-vd15qHsaqrRL7dtH6QNuy0ndJmRDrS9HAM1CAiSifNUFv4x1a0CCVsj18hJ1mShxIG6T2i1sO78MkP56r0nYRw==,
+      }
+    dependencies:
+      has: 1.0.3
+    dev: false
+
+  /is-core-module/2.8.1:
+    resolution:
+      {
+        integrity: sha512-SdNCUs284hr40hFTFP6l0IfZ/RSrMXF3qgoRHd3/79unUTvrFO/JoXwkGm+5J/Oe3E/b5GsnG330uUNgRpu1PA==,
       }
     dependencies:
       has: 1.0.3
@@ -16114,10 +16155,10 @@ packages:
       }
     dev: true
 
-  /lint-staged/12.1.4:
+  /lint-staged/12.3.3:
     resolution:
       {
-        integrity: sha512-RgDz9nsFsE0/5eL9Vat0AvCuk0+j5mEuzBIVfrRH5FRtt5wibYe8zTjZs2nuqLFrLAGQGYnj8+HJxolcj08i/A==,
+        integrity: sha512-OqcLsqcPOqzvsfkxjeBpZylgJ3SRG1RYqc9LxC6tkt6tNsq1bNVkAixBwX09f6CobcHswzqVOCBpFR1Fck0+ag==,
       }
     engines: { node: ^12.20.0 || ^14.13.1 || >=16.0.0 }
     hasBin: true
@@ -16128,7 +16169,7 @@ packages:
       debug: 4.3.3_supports-color@9.2.1
       execa: 5.1.1
       lilconfig: 2.0.4
-      listr2: 3.13.5
+      listr2: 4.0.2
       micromatch: 4.0.4
       normalize-path: 3.0.0
       object-inspect: 1.12.0
@@ -16197,12 +16238,12 @@ packages:
       - zen-observable
     dev: true
 
-  /listr2/3.13.5:
+  /listr2/4.0.2:
     resolution:
       {
-        integrity: sha512-3n8heFQDSk+NcwBn3CgxEibZGaRzx+pC64n3YjpMD1qguV4nWus3Al+Oo3KooqFKTQEJ1v7MmnbnyyNspgx3NA==,
+        integrity: sha512-YcgwfCWpvPbj9FLUGqvdFvd3hrFWKpOeuXznRgfWEJ7RNr8b/IKKIKZABHx3aU+4CWN/iSAFFSReziQG6vTeIA==,
       }
-    engines: { node: '>=10.0.0' }
+    engines: { node: '>=12' }
     peerDependencies:
       enquirer: '>= 2.3.0 < 3'
     peerDependenciesMeta:
@@ -16214,7 +16255,7 @@ packages:
       log-update: 4.0.0
       p-map: 4.0.0
       rfdc: 1.3.0
-      rxjs: 7.5.1
+      rxjs: 7.5.2
       through: 2.3.8
       wrap-ansi: 7.0.0
     dev: true
@@ -17772,7 +17813,7 @@ packages:
       }
     dependencies:
       hosted-git-info: 2.8.9
-      resolve: 1.20.0
+      resolve: 1.22.0
       semver: 5.7.1
       validate-npm-package-license: 3.0.4
     dev: true
@@ -18707,12 +18748,14 @@ packages:
       postcss: 7.0.39
     dev: true
 
-  /postcss-js/3.0.3:
+  /postcss-js/4.0.0_postcss@8.3.11:
     resolution:
       {
-        integrity: sha512-gWnoWQXKFw65Hk/mi2+WTQTHdPD5UJdDXZmX073EY/B3BWnYjO4F4t0VneTCnCGQ5E5GsCdMkzPaTXwl3r5dJw==,
+        integrity: sha512-77QESFBwgX4irogGVPgQ5s07vLvFqWr228qZY+w6lW599cRlK/HmnlivnnVUxkjHnCu4J16PDMHcH+e+2HbvTQ==,
       }
-    engines: { node: '>=10.0' }
+    engines: { node: ^12 || ^14 || >= 16 }
+    peerDependencies:
+      postcss: ^8.3.3
     dependencies:
       camelcase-css: 2.0.1
       postcss: 8.3.11
@@ -18792,7 +18835,7 @@ packages:
     dependencies:
       icss-utils: 4.1.1
       postcss: 7.0.39
-      postcss-selector-parser: 6.0.8
+      postcss-selector-parser: 6.0.9
       postcss-value-parser: 4.2.0
     dev: true
 
@@ -18804,7 +18847,7 @@ packages:
     engines: { node: '>= 6' }
     dependencies:
       postcss: 7.0.39
-      postcss-selector-parser: 6.0.8
+      postcss-selector-parser: 6.0.9
     dev: true
 
   /postcss-modules-values/3.0.0:
@@ -18827,13 +18870,13 @@ packages:
       postcss: ^8.2.14
     dependencies:
       postcss: 8.3.11
-      postcss-selector-parser: 6.0.8
+      postcss-selector-parser: 6.0.9
     dev: true
 
-  /postcss-selector-parser/6.0.8:
+  /postcss-selector-parser/6.0.9:
     resolution:
       {
-        integrity: sha512-D5PG53d209Z1Uhcc0qAZ5U3t5HagH3cxu+WLZ22jt3gLUpXM4eXXfiO14jiDWST3NNooX/E8wISfOhZ9eIjGTQ==,
+        integrity: sha512-UO3SgnZOVTwu4kyLR22UQ1xZh086RyNZppb7lLAKBFK8a32ttG5i87Y/P3+2bRSjZNyJ1B7hfFNo273tKe9YxQ==,
       }
     engines: { node: '>=4' }
     dependencies:
@@ -20298,6 +20341,18 @@ packages:
     dependencies:
       is-core-module: 2.8.0
       path-parse: 1.0.7
+    dev: false
+
+  /resolve/1.22.0:
+    resolution:
+      {
+        integrity: sha512-Hhtrw0nLeSrFQ7phPp4OOcVjLPIeMnRlr5mcnVuMe7M/7eBn98A3hmFRLoFo3DLZkivSYwhRUJTyPyWAk56WLw==,
+      }
+    hasBin: true
+    dependencies:
+      is-core-module: 2.8.1
+      path-parse: 1.0.7
+      supports-preserve-symlinks-flag: 1.0.0
 
   /resolve/2.0.0-next.3:
     resolution:
@@ -20472,6 +20527,15 @@ packages:
     resolution:
       {
         integrity: sha512-KExVEeZWxMZnZhUZtsJcFwz8IvPvgu4G2Z2QyqjZQzUGr32KDYuSxrEYO4w3tFFNbfLozcrKUTvTPi+E9ywJkQ==,
+      }
+    dependencies:
+      tslib: 2.3.1
+    dev: true
+
+  /rxjs/7.5.2:
+    resolution:
+      {
+        integrity: sha512-PwDt186XaL3QN5qXj/H9DGyHhP3/RYYgZZwqBv9Tv8rsAaiwFH1IsJJlcgD37J7UW5a6O67qX0KWKS3/pu0m4w==,
       }
     dependencies:
       tslib: 2.3.1
@@ -21768,6 +21832,13 @@ packages:
     engines: { node: '>=12' }
     dev: true
 
+  /supports-preserve-symlinks-flag/1.0.0:
+    resolution:
+      {
+        integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==,
+      }
+    engines: { node: '>= 0.4' }
+
   /swap-case/2.0.2:
     resolution:
       {
@@ -21837,10 +21908,10 @@ packages:
       strip-ansi: 6.0.1
     dev: false
 
-  /tailwindcss/3.0.1_075b32d60691cc23a7bd4dff137831e8:
+  /tailwindcss/3.0.18_075b32d60691cc23a7bd4dff137831e8:
     resolution:
       {
-        integrity: sha512-EVDXVZkcueZ77/zfOJw7XkzCuxe5TCiT/S9pw9P183oRzSuwMZ7WO+W/L76jbJQA5qxGeUBJOVOLVBuAUfeZ3g==,
+        integrity: sha512-ihPTpEyA5ANgZbwKlgrbfnzOp9R5vDHFWmqxB1PT8NwOGCOFVVMl+Ps1cQQ369acaqqf1BEF77roCwK0lvNmTw==,
       }
     engines: { node: '>=12.13.0' }
     hasBin: true
@@ -21851,26 +21922,25 @@ packages:
       arg: 5.0.1
       autoprefixer: 10.4.0_postcss@8.3.11
       chalk: 4.1.2
-      chokidar: 3.5.2
+      chokidar: 3.5.3
       color-name: 1.1.4
       cosmiconfig: 7.0.1
       detective: 5.2.0
       didyoumean: 1.2.2
       dlv: 1.1.3
-      fast-glob: 3.2.7
+      fast-glob: 3.2.11
       glob-parent: 6.0.2
       is-glob: 4.0.3
       normalize-path: 3.0.0
       object-hash: 2.2.0
       postcss: 8.3.11
-      postcss-js: 3.0.3
+      postcss-js: 4.0.0_postcss@8.3.11
       postcss-load-config: 3.1.0_ts-node@10.4.0
       postcss-nested: 5.0.6_postcss@8.3.11
-      postcss-selector-parser: 6.0.8
+      postcss-selector-parser: 6.0.9
       postcss-value-parser: 4.2.0
       quick-lru: 5.1.1
-      resolve: 1.20.0
-      tmp: 0.2.1
+      resolve: 1.22.0
     transitivePeerDependencies:
       - ts-node
     dev: true
@@ -22159,16 +22229,6 @@ packages:
       os-tmpdir: 1.0.2
     dev: true
 
-  /tmp/0.2.1:
-    resolution:
-      {
-        integrity: sha512-76SUhtfqR2Ijn+xllcI5P1oyannHNHByD80W1q447gU3mp9G9PSpGdWmjUOHRDPiHYacIk66W7ubDTuPF3BEtQ==,
-      }
-    engines: { node: '>=8.17.0' }
-    dependencies:
-      rimraf: 3.0.2
-    dev: true
-
   /tmpl/1.0.5:
     resolution:
       {
@@ -22444,10 +22504,10 @@ packages:
       }
     dev: false
 
-  /turbo-darwin-64/1.0.24:
+  /turbo-darwin-64/1.1.2:
     resolution:
       {
-        integrity: sha512-A65Wxp+jBMfI3QX2uObX6DKvk+TxNXTf7ufQTHvRSLeAreB8QiVzJdYE0nC6YdrRwfPgFY3L72dhYd2v8ouXDg==,
+        integrity: sha512-rua17HnVvAqAU54gVfiQoH7cfopOqANv+yI6NtxLMD8aFfX2cJ9m8SSvH2v2vCaToNDW6OnTkdqDKQpqIHzbCw==,
       }
     cpu: [x64]
     os: [darwin]
@@ -22455,10 +22515,10 @@ packages:
     dev: true
     optional: true
 
-  /turbo-darwin-arm64/1.0.24:
+  /turbo-darwin-arm64/1.1.2:
     resolution:
       {
-        integrity: sha512-31zfexqUhvk/CIfAUk2mwjlpEjIURXu4QG8hoWlGxpcpAhlnkIX6CXle+LoQSnU3+4EbNe2SE92fYXsT/SnHAg==,
+        integrity: sha512-otqSQNYDyKg0KqB3NM0BI4oiRPKdJkUE/XBn8dcUS+zeRLrL00XtaM0eSwynZs1tb6zU/Y+SPMSBRygD1TCOnw==,
       }
     cpu: [arm64]
     os: [darwin]
@@ -22466,10 +22526,10 @@ packages:
     dev: true
     optional: true
 
-  /turbo-freebsd-64/1.0.24:
+  /turbo-freebsd-64/1.1.2:
     resolution:
       {
-        integrity: sha512-vZYbDkOHH5eeQrxsAYldrh2nDY884irtmgJdGbpjryJgnJx+xzriZfoFalm/d1ZfG3ArENRJqGU+k6BriefZzw==,
+        integrity: sha512-2nxwVDTAM0DtIQ2i3UOfEsQLF7vp+XZ/b9SKtiHxz710fXvdyuGivYI25axDdcBn8kQ45rnbUnarF1aW8CMGgg==,
       }
     cpu: [x64]
     os: [freebsd]
@@ -22477,10 +22537,10 @@ packages:
     dev: true
     optional: true
 
-  /turbo-freebsd-arm64/1.0.24:
+  /turbo-freebsd-arm64/1.1.2:
     resolution:
       {
-        integrity: sha512-TDIu1PlyusY8AB69KGM4wGrCjtfbzmVF4Hlgf9mVeSWVKzqkRASorOEq1k8KvfZ+sBTS2GBMpqwpa1KVkYpVhw==,
+        integrity: sha512-ro1Ah96yzgzyT0BJe1mceAqxPxi0pUwzAvN3IKVpMqi4hYkT3aRbzDCaSxzyC6let2Al/NUsgHnbAv38OF2Xkw==,
       }
     cpu: [arm64]
     os: [freebsd]
@@ -22488,10 +22548,10 @@ packages:
     dev: true
     optional: true
 
-  /turbo-linux-32/1.0.24:
+  /turbo-linux-32/1.1.2:
     resolution:
       {
-        integrity: sha512-lhhK7914sUtuWYcDO8LV7NQkvTIwpAZlYH0XEOC/OTiYRQJvtKbEySLvefvtwuGjx7cGNI6OYraUsY3WWoK3FA==,
+        integrity: sha512-HKBsETxQMVaf/DJwMg7pypPbGA6KEu0gEf9C8o2aPJvwMPBYgNsNaU08Xizuh5xzEQTzpbIWfQyqdNgMV4RG3Q==,
       }
     cpu: [ia32]
     os: [linux]
@@ -22499,10 +22559,10 @@ packages:
     dev: true
     optional: true
 
-  /turbo-linux-64/1.0.24:
+  /turbo-linux-64/1.1.2:
     resolution:
       {
-        integrity: sha512-EbfdrkwVsHDG7AIVQ1enWHoD6riAApx4VRAuFcQHTvJU9e+BuOQBMjb7e9jO4mUrpumtN3n20tP+86odRwsk5g==,
+        integrity: sha512-IklKsOklcRHIWkTzKg95BQ6jgJ53kLvRMrp8yqzlvZprkWdiyhAgUxrUTTHOOTce2XA3+jdN2+MwixG44uY2vg==,
       }
     cpu: [x64]
     os: [linux]
@@ -22510,10 +22570,10 @@ packages:
     dev: true
     optional: true
 
-  /turbo-linux-arm/1.0.24:
+  /turbo-linux-arm/1.1.2:
     resolution:
       {
-        integrity: sha512-lCNDVEkwxcn0acyPFVJgV5N5vKAP4LfXb+8uW/JpGHVoPHSONKtzYQG05J1KbHXpIjUT+DNgFtshtsdZYOewZQ==,
+        integrity: sha512-CNbaTvRozq7H/5jpy9OZlzJ6BkeEXF+nF2n9dHiUrbAXd3nq84Qt9odcQJmGnexP19YS9w6l3tIHncX4BgwtqA==,
       }
     cpu: [arm]
     os: [linux]
@@ -22521,10 +22581,10 @@ packages:
     dev: true
     optional: true
 
-  /turbo-linux-arm64/1.0.24:
+  /turbo-linux-arm64/1.1.2:
     resolution:
       {
-        integrity: sha512-H4rqlgP2L7G3iAB/un/7DclExzLUkQ1NoZ0p/1Oa7Wb8H1YUlc8GkwUmpIFd5AOFSPL75DjYvlS8T5Tm23i+1A==,
+        integrity: sha512-3kS6sk2lOtuBBqkcL+yeGqD1yew4UZ1o7XUcbDD8UPwhF2kAfK7Qs0vTJw4lnO1scjhihkoTrmXM7yozvjf4/w==,
       }
     cpu: [arm64]
     os: [linux]
@@ -22532,10 +22592,10 @@ packages:
     dev: true
     optional: true
 
-  /turbo-linux-mips64le/1.0.24:
+  /turbo-linux-mips64le/1.1.2:
     resolution:
       {
-        integrity: sha512-AmrgQUDIe9AdNyh5YrI6pfMTUHD/gYfbylNmedLuN5Al3xINdZObcISzd/7VWd+V8wNW/1b9lUnt70Rv/KExfA==,
+        integrity: sha512-CDoXVIlW43C6KLgYxe13KkG8h6DswXHxbTVHiZdOwRQ56j46lU+JOVpLoh6wpQGcHvj58VEiypZBRTGVFMeogw==,
       }
     cpu: [mips64el]
     os: [linux]
@@ -22543,10 +22603,10 @@ packages:
     dev: true
     optional: true
 
-  /turbo-linux-ppc64le/1.0.24:
+  /turbo-linux-ppc64le/1.1.2:
     resolution:
       {
-        integrity: sha512-+6ESjsfrvRUr1AsurNcRTrqYr+XHG8g763+hXLog1MP9mn1cufZqWlAyE4G8/MLXDHsEKgK+tXqPLIyLBRjLEw==,
+        integrity: sha512-xPVMHoiOJE/qI63jSOXwYIUFQXLdstxDV6fLnRxvq0QnJNxgTKq+mLUeE8M4LDVh1bdqHLcfk/HmyQ6+X1XVkQ==,
       }
     cpu: [ppc64]
     os: [linux]
@@ -22554,10 +22614,10 @@ packages:
     dev: true
     optional: true
 
-  /turbo-windows-32/1.0.24:
+  /turbo-windows-32/1.1.2:
     resolution:
       {
-        integrity: sha512-pqRys+FfHxuLVmW/AariITL5qpItp4WPAsYnWLx4u7VpCOO/qmTAI/SL7/jnTm4gxjBv3uf//lisu0AvEZd+TA==,
+        integrity: sha512-Gj1yvPE0aMDSOxGVSBaecLnwsVDT1xX8U0dtLrg52TYY2jlaci0atjHKr9nTFuX7z8uwAf6PopwdriGoCeT3ng==,
       }
     cpu: [ia32]
     os: [win32]
@@ -22565,10 +22625,10 @@ packages:
     dev: true
     optional: true
 
-  /turbo-windows-64/1.0.24:
+  /turbo-windows-64/1.1.2:
     resolution:
       {
-        integrity: sha512-YHAWha5XkW0Ate1HtwhzFD32kZFXtC8KB4ReEvHc9GM2inQob1ZinvktS0xi5MC5Sxl9+bObOWmsxeZPOgNCFA==,
+        integrity: sha512-0Ncx/iKhnKrdAU8hJ+8NUcF9jtFr8KoW5mMWfiFzy+mgUbVKbpzWT2eoGR6zJExedQsRvYOejbEX5iihbnj5bA==,
       }
     cpu: [x64]
     os: [win32]
@@ -22576,26 +22636,26 @@ packages:
     dev: true
     optional: true
 
-  /turbo/1.0.24:
+  /turbo/1.1.2:
     resolution:
       {
-        integrity: sha512-bfOr7iW48+chDl+yKiZ5FIWzXOF6xOIyrAGPaWI+I5CdD27IZCEGvqvTV/weaHvjLbV7otybHQ56XCybBlVjoA==,
+        integrity: sha512-3ViHKyAkaBKNKwHASTa1zkVT3tVVhQNLrpxBS7LoN+794ouQUYmy6lf0rTqzG3iTZHtIDwC+piZSdTl4XjEVMg==,
       }
     hasBin: true
     requiresBuild: true
     optionalDependencies:
-      turbo-darwin-64: 1.0.24
-      turbo-darwin-arm64: 1.0.24
-      turbo-freebsd-64: 1.0.24
-      turbo-freebsd-arm64: 1.0.24
-      turbo-linux-32: 1.0.24
-      turbo-linux-64: 1.0.24
-      turbo-linux-arm: 1.0.24
-      turbo-linux-arm64: 1.0.24
-      turbo-linux-mips64le: 1.0.24
-      turbo-linux-ppc64le: 1.0.24
-      turbo-windows-32: 1.0.24
-      turbo-windows-64: 1.0.24
+      turbo-darwin-64: 1.1.2
+      turbo-darwin-arm64: 1.1.2
+      turbo-freebsd-64: 1.1.2
+      turbo-freebsd-arm64: 1.1.2
+      turbo-linux-32: 1.1.2
+      turbo-linux-64: 1.1.2
+      turbo-linux-arm: 1.1.2
+      turbo-linux-arm64: 1.1.2
+      turbo-linux-mips64le: 1.1.2
+      turbo-linux-ppc64le: 1.1.2
+      turbo-windows-32: 1.1.2
+      turbo-windows-64: 1.1.2
     dev: true
 
   /type-check/0.3.2:
@@ -23444,7 +23504,7 @@ packages:
       graceful-fs: 4.2.8
       neo-async: 2.6.2
     optionalDependencies:
-      chokidar: 3.5.2
+      chokidar: 3.5.3
       watchpack-chokidar2: 2.0.1
     dev: true
 

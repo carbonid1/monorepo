@@ -15,7 +15,9 @@ interface FormData {
 const SettingsPage: NextPage = () => {
   const { profile } = useProfile()
   const { updateProfile, loading } = useUpdateProfile()
-  const { register, handleSubmit } = useForm<FormData>({ defaultValues: { name: profile?.name } })
+  const { register, handleSubmit } = useForm<FormData>({
+    defaultValues: { name: profile?.name },
+  })
   const onSubmit = handleSubmit(variables => {
     updateProfile({ variables })
   })
