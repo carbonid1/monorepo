@@ -11,6 +11,5 @@ updates:
       - carbonid1
     commit-message:
       prefix: 'build: '
-      include: scope
     labels:
       - Build
