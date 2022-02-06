@@ -80,7 +80,7 @@
     "chromatic": "6.0.5",
     "config": "workspace:*",
     "msw": "0.35.0",
-    "msw-storybook-addon": "1.4.1",
+    "msw-storybook-addon": "1.6.0",
     "next-compose-plugins": "^2.2.1",
     "next-transpile-modules": "9.0.0",
     "postcss": "8.3.11",
