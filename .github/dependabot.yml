@@ -1,0 +1,15 @@
+# https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/configuration-options-for-dependency-updates
+
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: '/'
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 1
+    reviewers:
+      - carbonid1
+    commit-message:
+      prefix: 'build: '
+    labels:
+      - Build
