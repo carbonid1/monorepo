@@ -13,6 +13,6 @@ jobs:
         with:
           node-version: '14'
       - name: Install dependencies
-        run: npx pnpm i -r
+        run: npx pnpm i -r --no-frozen-lockfile
       - name: Run linter
         run: npx pnpm lint
