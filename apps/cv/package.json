@@ -1,0 +1,30 @@
+{
+  "name": "cv",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "ts": "tsc --noEmit",
+    "lint": "next lint --fix"
+  },
+  "dependencies": {
+    "@splitbee/web": "^0.3.0",
+    "classnames": "^2.3.1",
+    "next": "12.0.4",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.9",
+    "@types/react": "^17.0.36",
+    "@types/react-dom": "^17.0.11",
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.3.11",
+    "tailwindcss": "^2.2.19",
+    "typescript": "4.5.2",
+    "tsconfig": "workspace:*",
+    "config": "workspace:*"
+  },
+  "license": "MIT"
+}
