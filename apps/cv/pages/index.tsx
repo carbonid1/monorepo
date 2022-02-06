@@ -1,4 +1,4 @@
-import NextImage from 'next/image'
+/* eslint-disable @next/next/no-img-element */
 import AboutMe from '../components/AboutMe'
 import Contacts from '../components/Contacts'
 import Education from '../components/Education'
@@ -15,7 +15,8 @@ const IndexPage = () => (
     <Title />
     <Contacts />
     <SocialNetworks />
-    <NextImage
+    <img
+      alt="Andrew"
       src="/avatar.jpg"
       className="self-center col-span-8 col-start-3 rounded sm:col-start-4 sm:col-span-6 md:col-start-1 md:col-span-3"
     />
