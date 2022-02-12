@@ -53,7 +53,7 @@ importers:
       chromatic: 6.0.5
       classnames: 2.3.1
       config: workspace:*
-      date-fns: 2.25.0
+      date-fns: 2.28.0
       express: 4.17.1
       graphql: 15.5.1
       graphql-iso-date: 3.6.1
@@ -97,7 +97,7 @@ importers:
       '@use-gesture/react': 10.2.4_react@17.0.2
       apollo-server-micro: 2.19.2_graphql@15.5.1
       classnames: 2.3.1
-      date-fns: 2.25.0
+      date-fns: 2.28.0
       express: 4.17.1
       graphql: 15.5.1
       graphql-iso-date: 3.6.1_graphql@15.5.1
@@ -8813,8 +8813,8 @@ packages:
     resolution: {integrity: sha512-hBSVCvSmWC+QypYObzwGOd9wqdDpOt+0wl0KbU+R+uuZBS1jN8VsD1ss3irQDknRj5NvxiTF6oj/nDRnN/UQNw==}
     dev: true
 
-  /date-fns/2.25.0:
-    resolution: {integrity: sha512-ovYRFnTrbGPD4nqaEqescPEv1mNwvt+UTqI3Ay9SzNtey9NZnYu6E2qCcBBgJ6/2VF1zGGygpyTDITqpQQ5e+w==}
+  /date-fns/2.28.0:
+    resolution: {integrity: sha512-8d35hViGYx/QH0icHYCeLmsLmMUheMmTyV9Fcm6gvNwdw31yXXH+O85sOBJ+OLnLQMKZowvpKb6FgMIQjcpvQw==}
     engines: {node: '>=0.11'}
     dev: false
 
