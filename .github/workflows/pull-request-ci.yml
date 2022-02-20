@@ -22,6 +22,6 @@ jobs:
           node-version: ${{ env.node_version }}
           cache: pnpm
       - name: Install dependencies
-        run: npx pnpm ci
+        run: npx pnpm i
       - name: Run linter
         run: npx pnpm lint
