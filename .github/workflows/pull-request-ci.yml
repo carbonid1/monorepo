@@ -10,7 +10,7 @@ jobs:
     if: ${{ github.event.pull_request.draft == false }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout2
         uses: actions/checkout@v2
       - name: Set pnpm
         uses: pnpm/action-setup@v2.1.0
