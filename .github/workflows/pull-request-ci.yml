@@ -23,7 +23,7 @@ jobs:
           node-version: ${{ env.node_version }}
           cache: pnpm
       - name: Install dependencies
-        if: steps.set_node.cache.outputs.cache-hit != 'true'
+        if: steps.set_node.outputs.cache-hit != 'true'
         run: npx pnpm i
       - name: Run linter
         run: npx pnpm lint
