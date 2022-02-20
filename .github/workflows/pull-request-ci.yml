@@ -6,7 +6,7 @@ env:
   node_version: 14
 jobs:
   lint:
-    if: github.event.pull_request.draft == false
+    if: ${{ github.event.pull_request.draft == false }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
