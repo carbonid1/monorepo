@@ -17,12 +17,11 @@ jobs:
         with:
           version: ${{ env.pnpm_version }}
       - name: Set Node.js
-        id: set_node
         uses: actions/setup-node@v2
         with:
           node-version: ${{ env.node_version }}
           cache: pnpm
       - name: Install dependencies
-        run: npx pnpm i
+        run: npx pnpm ci
       - name: Run linter
         run: npx pnpm lint
