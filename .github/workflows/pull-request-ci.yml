@@ -7,10 +7,10 @@ env:
   pnpm_version: 6.30.1
 jobs:
   lint:
-    if: ${{ github.event.pull_request.draft == false }}
+    if: github.event.pull_request.draft == "false"
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout2
+      - name: Checkout
         uses: actions/checkout@v2
       - name: Set pnpm
         uses: pnpm/action-setup@v2.1.0
