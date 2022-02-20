@@ -16,12 +16,13 @@ jobs:
         uses: pnpm/action-setup@v2.1.0
         with:
           version: ${{ env.pnpm_version }}
+          run_install: true
       - name: Set Node.js
         uses: actions/setup-node@v2
         with:
           node-version: ${{ env.node_version }}
           cache: pnpm
-      - name: Install dependencies
-        run: npx pnpm i
+      # - name: Install dependencies
+      #   run: npx pnpm i
       - name: Run linter
         run: npx pnpm lint
