@@ -12,18 +12,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Set Node.js
-        id: set-node
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ env.node_version }}
-          cache: pnpm
       - name: Set pnpm
         uses: pnpm/action-setup@v2.1.0
         with:
           version: ${{ env.pnpm_version }}
-          run_install: steps.set-node.cache.outputs.cache-hit != 'true'
-      # - name: Install dependencies
-      #   run: npx pnpm i
+      - name: Set Node.js
+        id: set_node
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ env.node_version }}
+          cache: pnpm
+      - name: Install dependencies
+        if: steps.set_node.cache.outputs.cache-hit != 'true'
+        run: npx pnpm i
       - name: Run linter
         run: npx pnpm lint
