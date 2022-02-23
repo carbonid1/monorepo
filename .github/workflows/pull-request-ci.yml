@@ -10,8 +10,6 @@ jobs:
     permissions:
       checks: write
       contents: write
-      deployments: write
-      issues: write
     if: ${{ github.event.pull_request.draft == false }}
     runs-on: ubuntu-latest
     env:
