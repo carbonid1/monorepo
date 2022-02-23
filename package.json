@@ -10,7 +10,7 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
-    "format": "prettier --write \"**/*.{js,ts,tsx,md,mdx}\" --ignore-unknown",
+    "format": "prettier --write \"**/*.{js,ts,tsx,md,mdx,yaml,yml}\" --ignore-unknown",
     "lint": "turbo run lint",
     "prepare": "husky install"
   },
