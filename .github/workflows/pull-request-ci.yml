@@ -4,18 +4,43 @@ on:
     types: [synchronize, opened, reopened]
 env:
   node_version: 14
+  pnpm_version: 6.31.0
 jobs:
   lint:
+    permissions:
+      contents: write
     if: ${{ github.event.pull_request.draft == false }}
     runs-on: ubuntu-latest
+    env:
+      isDependabotPr: "${{ github.actor == 'dependabot[bot]' }}"
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Set Node.js version
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
+      - name: Set pnpm
+        uses: pnpm/action-setup@v2.1.0
+        with:
+          version: ${{ env.pnpm_version }}
+      - name: Set Node.js
         uses: actions/setup-node@v2
         with:
           node-version: ${{ env.node_version }}
+          cache: pnpm
+      - name: Install dependencies and update the lock file
+        if: ${{ env.isDependabotPr }}
+        run: npx pnpm i --no-frozen-lockfile
+      - name: Commit the lock file
+        if: ${{ env.isDependabotPr }}
+        uses: EndBug/add-and-commit@v8
+        with:
+          message: Update pnpm lock file
+          author_name: carbonid1
+          author_email: carboni1@gmail.com
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - name: Install dependencies
-        run: npx pnpm i -r
+        if: ${{ !env.isDependabotPr }}
+        run: npx pnpm i
       - name: Run linter
         run: npx pnpm lint
