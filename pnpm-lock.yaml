@@ -70,7 +70,7 @@ importers:
       react: 17.0.2
       react-dom: 17.0.2
       react-hook-form: 7.19.5
-      react-hot-toast: 2.1.1
+      react-hot-toast: 2.2.0
       react-markdown: 7.1.0
       react-spring: 9.3.0
       sass: 1.43.4
@@ -108,7 +108,7 @@ importers:
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       react-hook-form: 7.19.5_react@17.0.2
-      react-hot-toast: 2.1.1_react-dom@17.0.2+react@17.0.2
+      react-hot-toast: 2.2.0_react-dom@17.0.2+react@17.0.2
       react-markdown: 7.1.0_cfedea9b3ed0faf0dded75c187406c5e
       react-spring: 9.3.0_react-dom@17.0.2+react@17.0.2
       slugify: 1.6.1
@@ -19276,10 +19276,10 @@ packages:
       react: 17.0.2
     dev: false
 
-  /react-hot-toast/2.1.1_react-dom@17.0.2+react@17.0.2:
+  /react-hot-toast/2.2.0_react-dom@17.0.2+react@17.0.2:
     resolution:
       {
-        integrity: sha512-Odrp4wue0fHh0pOfZt5H+9nWCMtqs3wdlFSzZPp7qsxfzmbE26QmGWIh6hG43CukiPeOjA8WQhBJU8JwtWvWbQ==,
+        integrity: sha512-248rXw13uhf/6TNDVzagX+y7R8J183rp7MwUMNkcrBRyHj/jWOggfXTGlM8zAOuh701WyVW+eUaWG2LeSufX9g==,
       }
     engines: { node: '>=10' }
     peerDependencies:
