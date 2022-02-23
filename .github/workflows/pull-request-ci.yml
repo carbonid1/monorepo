@@ -17,7 +17,6 @@ jobs:
         with:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           ref: ${{ github.event.pull_request.head.ref }}
-          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Set pnpm
         uses: pnpm/action-setup@v2.1.0
         with:
@@ -35,6 +34,8 @@ jobs:
         uses: EndBug/add-and-commit@v8
         with:
           message: Update pnpm lock file
+          author_name: carbonid1
+          author_email: carboni1@gmail.com
       - name: Install dependencies
         if: ${{ !env.isDependabotPr }}
         run: npx pnpm i
