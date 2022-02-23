@@ -10,6 +10,6 @@ updates:
     reviewers:
       - carbonid1
     commit-message:
-      prefix: 'build: (bot)'
+      prefix: 'build: '
     labels:
       - Build
