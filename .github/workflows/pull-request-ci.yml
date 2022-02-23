@@ -8,7 +8,6 @@ env:
 jobs:
   lint:
     permissions:
-      checks: write
       contents: write
     if: ${{ github.event.pull_request.draft == false }}
     runs-on: ubuntu-latest
