@@ -9,9 +9,14 @@ jobs:
   lint:
     if: ${{ github.event.pull_request.draft == false }}
     runs-on: ubuntu-latest
+    env:
+      isDependabotPr: "${{ startsWith(github.event.pull_request.title, 'build: (bot)') == true }}"
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
       - name: Set pnpm
         uses: pnpm/action-setup@v2.1.0
         with:
@@ -21,7 +26,16 @@ jobs:
         with:
           node-version: ${{ env.node_version }}
           cache: pnpm
+      - name: Install dependencies and update the lock file
+        if: ${{ env.isDependabotPr }}
+        run: npx pnpm i --no-frozen-lockfile
+      - name: Commit the lock file
+        if: ${{ env.isDependabotPr }}
+        uses: EndBug/add-and-commit@v8
+        with:
+          message: Update pnpm lock file
       - name: Install dependencies
+        if: ${{ !env.isDependabotPr }}
         run: npx pnpm i
       - name: Run linter
         run: npx pnpm lint
