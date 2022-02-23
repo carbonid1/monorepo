@@ -70,7 +70,7 @@
     "@types/graphql-iso-date": "3.4.0",
     "@types/jest": "27.0.2",
     "@types/node": "16.11.6",
-    "@types/react": "17.0.37",
+    "@types/react": "17.0.39",
     "@types/tailwindcss": "3.0.7",
     "autoprefixer": "10.4.0",
     "babel-loader": "8.2.3",
