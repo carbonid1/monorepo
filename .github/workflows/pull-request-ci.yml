@@ -8,10 +8,6 @@ env:
 jobs:
   lint:
     permissions:
-      checks: write
-      contents: write
-      deployments: write
-      issues: write
       packages: write
       repository-projects: write
       security-events: write
