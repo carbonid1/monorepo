@@ -58,7 +58,7 @@ importers:
       graphql-iso-date: 3.6.1
       iso-639-1: 2.1.10
       msw: 0.35.0
-      msw-storybook-addon: 1.4.1
+      msw-storybook-addon: 1.6.0
       next: 12.1.0
       next-auth: 4.0.5
       next-compose-plugins: ^2.2.1
@@ -137,7 +137,7 @@ importers:
       chromatic: 6.0.5
       config: link:../../packages/config
       msw: 0.35.0
-      msw-storybook-addon: 1.4.1_dfd229a7b32f1478d6b8b84ae8a0553b
+      msw-storybook-addon: 1.6.0_dfd229a7b32f1478d6b8b84ae8a0553b
       next-compose-plugins: 2.2.1
       next-transpile-modules: 9.0.0
       postcss: 8.3.11
@@ -17052,13 +17052,13 @@ packages:
         integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==,
       }
 
-  /msw-storybook-addon/1.4.1_dfd229a7b32f1478d6b8b84ae8a0553b:
+  /msw-storybook-addon/1.6.0_dfd229a7b32f1478d6b8b84ae8a0553b:
     resolution:
       {
-        integrity: sha512-pMWlDJfKv+h93V+NmZKyzfzrLZ0plVJucOpf+uxlEaURs5ZW5h0Lv2dYpomtbBkATqKgwCWCPb+Tqk8T6Y9/Tw==,
+        integrity: sha512-M9QfrMrUykgGbHkVlyYSRFrkiDS+ibMedjWmFjm448TUl8QtvMpopM4ki9+NB2UeDLInMR9YkEmljFkT/q2gPw==,
       }
     peerDependencies:
-      msw: ^0.35.0
+      msw: ^0.35.0 || ^0.36.0
     dependencies:
       '@storybook/addons': 6.4.9_react-dom@17.0.2+react@17.0.2
       is-node-process: 1.0.1
