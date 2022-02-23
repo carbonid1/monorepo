@@ -8,10 +8,10 @@ env:
 jobs:
   lint:
     permissions:
-      packages: write
-      repository-projects: write
-      security-events: write
-      statuses: write
+      checks: write
+      contents: write
+      deployments: write
+      issues: write
     if: ${{ github.event.pull_request.draft == false }}
     runs-on: ubuntu-latest
     env:
