@@ -7,21 +7,12 @@ env:
   pnpm_version: 6.31.0
 jobs:
   lint:
-    permissions:
-      actions: write
-      checks: write
-      contents: write
-      deployments: write
-      issues: write
-      packages: write
-      pull-requests: write
-      repository-projects: write
-      security-events: write
-      statuses: write
     if: ${{ github.event.pull_request.draft == false }}
     runs-on: ubuntu-latest
     env:
       isDependabotPr: "${{ github.actor == 'dependabot[bot]' }}"
+    permissions:
+      pull-requests: write
     steps:
       - name: Checkout
         uses: actions/checkout@v2
