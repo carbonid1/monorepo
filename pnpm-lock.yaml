@@ -79,7 +79,7 @@ importers:
       tailwindcss: 3.0.18
       ts-node: 10.4.0
       tsconfig: workspace:*
-      zustand: 3.6.3
+      zustand: 3.7.0
     dependencies:
       '@apollo/client': 3.4.16_graphql@15.5.1+react@17.0.2
       '@headlessui/react': 1.4.1_react-dom@17.0.2+react@17.0.2
@@ -112,7 +112,7 @@ importers:
       react-markdown: 7.1.0_cfedea9b3ed0faf0dded75c187406c5e
       react-spring: 9.4.3_react-dom@17.0.2+react@17.0.2
       slugify: 1.6.5
-      zustand: 3.6.3_react@17.0.2
+      zustand: 3.7.0_react@17.0.2
     devDependencies:
       '@graphql-codegen/cli': 2.2.2_4da3822c347ce5d9e423dd32ea5d7be5
       '@graphql-codegen/named-operations-object': 2.2.1_graphql@15.5.1
@@ -24113,10 +24113,10 @@ packages:
       }
     dev: false
 
-  /zustand/3.6.3_react@17.0.2:
+  /zustand/3.7.0_react@17.0.2:
     resolution:
       {
-        integrity: sha512-TJ6QbRxRDiMfiBqEqzgrj1wvtcEiu3sQt5HKFA8IhqPJZNjW+nlJXqVELmaj2vTcMAT4VQ90x8yC+MP1TRWqig==,
+        integrity: sha512-USzVzLGrvZ8VK1/sEsOAmeqa8N7D3OBdZskVaL7DL89Q4QLTYD053iIlZ5KDidyZ+Od80Dttin/f8ZulOLFFDQ==,
       }
     engines: { node: '>=12.7.0' }
     peerDependencies:
