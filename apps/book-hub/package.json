@@ -52,7 +52,7 @@
     "react-markdown": "7.1.0",
     "react-spring": "9.4.3",
     "slugify": "1.6.5",
-    "zustand": "3.6.3"
+    "zustand": "3.7.0"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "2.2.2",
