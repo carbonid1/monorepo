@@ -56,7 +56,7 @@ importers:
       express: 4.17.3
       graphql: 15.5.1
       graphql-iso-date: 3.6.1
-      iso-639-1: 2.1.10
+      iso-639-1: 2.1.13
       msw: 0.35.0
       msw-storybook-addon: 1.6.0
       next: 12.1.0
@@ -100,7 +100,7 @@ importers:
       express: 4.17.3
       graphql: 15.5.1
       graphql-iso-date: 3.6.1_graphql@15.5.1
-      iso-639-1: 2.1.10
+      iso-639-1: 2.1.13
       next: 12.1.0_0c41f19aae22112e9f1896e888ec7296
       next-auth: 4.0.5_react-dom@17.0.2+react@17.0.2
       next-pwa: 5.4.4_next@12.1.0
@@ -15450,10 +15450,10 @@ packages:
   /isexe/2.0.0:
     resolution: { integrity: sha1-6PvzdNxVb/iUehDcsFctYz8s+hA= }
 
-  /iso-639-1/2.1.10:
+  /iso-639-1/2.1.13:
     resolution:
       {
-        integrity: sha512-89AlNqZGxV1zSzwb5H2mfQF8cJz8+TxhpFtCCO7FmVySuwkuvVG2N2MoyhrXHOpRhz9G6qjciO5DfVwOxV3Xgg==,
+        integrity: sha512-stYt3u6OnVDNcK4IWARGXmTOOY5Wa5g4bUmBsttZp/55ZiEjDUibR3C59ZnorKoSS0tfJmFuGMST3ksnY1zu7Q==,
       }
     engines: { node: '>=6.0' }
     dev: false
