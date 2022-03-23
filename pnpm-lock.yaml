@@ -16,7 +16,7 @@ importers:
   apps/book-hub:
     specifiers:
       '@apollo/client': 3.4.16
-      '@graphql-codegen/cli': 2.2.2
+      '@graphql-codegen/cli': 2.6.2
       '@graphql-codegen/named-operations-object': 2.2.1
       '@graphql-codegen/typescript': 2.3.0
       '@graphql-codegen/typescript-operations': 2.3.4
@@ -114,7 +114,7 @@ importers:
       slugify: 1.6.5
       zustand: 3.7.0_react@17.0.2
     devDependencies:
-      '@graphql-codegen/cli': 2.2.2_4da3822c347ce5d9e423dd32ea5d7be5
+      '@graphql-codegen/cli': 2.6.2_4da3822c347ce5d9e423dd32ea5d7be5
       '@graphql-codegen/named-operations-object': 2.2.1_graphql@15.5.1
       '@graphql-codegen/typescript': 2.3.0_graphql@15.5.1
       '@graphql-codegen/typescript-operations': 2.3.4_graphql@15.5.1
@@ -3431,17 +3431,17 @@ packages:
       }
     dev: true
 
-  /@graphql-codegen/cli/2.2.2_4da3822c347ce5d9e423dd32ea5d7be5:
+  /@graphql-codegen/cli/2.6.2_4da3822c347ce5d9e423dd32ea5d7be5:
     resolution:
       {
-        integrity: sha512-QTijlvgmzBkSQ/7+VTxQbkcEoSfX/qpX2yg6xXQPISU71Q+6k2dGvYfRrjchwGu7/cNeSaYfgh8S/MhkmNg7Uw==,
+        integrity: sha512-UO75msoVgvLEvfjCezM09cQQqp32+mR8Ma1ACsBpr7nroFvHbgcu2ulx1cMovg4sxDBCsvd9Eq/xOOMpARUxtw==,
       }
     hasBin: true
     peerDependencies:
-      graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
+      graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
     dependencies:
-      '@graphql-codegen/core': 2.3.0_graphql@15.5.1
-      '@graphql-codegen/plugin-helpers': 2.3.2_graphql@15.5.1
+      '@graphql-codegen/core': 2.5.1_graphql@15.5.1
+      '@graphql-codegen/plugin-helpers': 2.4.2_graphql@15.5.1
       '@graphql-tools/apollo-engine-loader': 7.2.1_graphql@15.5.1
       '@graphql-tools/code-file-loader': 7.2.3_graphql@15.5.1
       '@graphql-tools/git-loader': 7.1.2_graphql@15.5.1
@@ -3455,7 +3455,7 @@ packages:
       ansi-escapes: 4.3.2
       chalk: 4.1.2
       change-case-all: 1.0.14
-      chokidar: 3.5.2
+      chokidar: 3.5.3
       common-tags: 1.8.2
       cosmiconfig: 7.0.1
       debounce: 1.2.1
@@ -3465,14 +3465,14 @@ packages:
       globby: 11.0.4
       graphql: 15.5.1
       graphql-config: 4.1.0_4da3822c347ce5d9e423dd32ea5d7be5
-      inquirer: 7.3.3
+      inquirer: 8.2.0
       is-glob: 4.0.3
       json-to-pretty-yaml: 1.2.2
       latest-version: 5.1.0
       listr: 0.14.3
       listr-update-renderer: 0.5.0_listr@0.14.3
       log-symbols: 4.1.0
-      minimatch: 3.0.4
+      minimatch: 4.2.1
       mkdirp: 1.0.4
       string-env-interpolation: 1.0.1
       ts-log: 2.2.4
@@ -3490,15 +3490,15 @@ packages:
       - zen-observable
     dev: true
 
-  /@graphql-codegen/core/2.3.0_graphql@15.5.1:
+  /@graphql-codegen/core/2.5.1_graphql@15.5.1:
     resolution:
       {
-        integrity: sha512-dGBd5DEOB1hJ3Ddd6l+3U4cbDZ91e0BIJQGTyZPLRYyffqJP+Y7IEYm4lMaBNY9m6qVXeGq+fgCS2SXlXEzJoA==,
+        integrity: sha512-alctBVl2hMnBXDLwkgmnFPrZVIiBDsWJSmxJcM4GKg1PB23+xuov35GE47YAyAhQItE1B1fbYnbb1PtGiDZ4LA==,
       }
     peerDependencies:
-      graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
+      graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
     dependencies:
-      '@graphql-codegen/plugin-helpers': 2.4.0_graphql@15.5.1
+      '@graphql-codegen/plugin-helpers': 2.4.2_graphql@15.5.1
       '@graphql-tools/schema': 8.3.1_graphql@15.5.1
       '@graphql-tools/utils': 8.5.5_graphql@15.5.1
       graphql: 15.5.1
@@ -3541,6 +3541,23 @@ packages:
     resolution:
       {
         integrity: sha512-bQ2EwVU34wkTrWM4/LbXS4t+ROYFM3qzwrRX6aFNYwAPho/fubryBHmNuUTh4evACFMx1ymQ6QLnvOUAoXYZSQ==,
+      }
+    peerDependencies:
+      graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
+    dependencies:
+      '@graphql-tools/utils': 8.5.5_graphql@15.5.1
+      change-case-all: 1.0.14
+      common-tags: 1.8.2
+      graphql: 15.5.1
+      import-from: 4.0.0
+      lodash: 4.17.21
+      tslib: 2.3.1
+    dev: true
+
+  /@graphql-codegen/plugin-helpers/2.4.2_graphql@15.5.1:
+    resolution:
+      {
+        integrity: sha512-LJNvwAPv/sKtI3RnRDm+nPD+JeOfOuSOS4FFIpQCMUCyMnFcchV/CPTTv7tT12fLUpEg6XjuFfDBvOwndti30Q==,
       }
     peerDependencies:
       graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
@@ -10527,24 +10544,6 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /chokidar/3.5.2:
-    resolution:
-      {
-        integrity: sha512-ekGhOnNVPgT77r4K/U3GDhu+FQ2S8TnK/s2KbIGXi0SZWuwkZ2QNyfWdZW+TVfn84DpEP7rLeCt2UI6bJ8GwbQ==,
-      }
-    engines: { node: '>= 8.10.0' }
-    dependencies:
-      anymatch: 3.1.2
-      braces: 3.0.2
-      glob-parent: 5.1.2
-      is-binary-path: 2.1.0
-      is-glob: 4.0.3
-      normalize-path: 3.0.0
-      readdirp: 3.6.0
-    optionalDependencies:
-      fsevents: 2.3.2
-    dev: true
-
   /chokidar/3.5.3:
     resolution:
       {
@@ -14708,28 +14707,6 @@ packages:
         integrity: sha512-7NXolsK4CAS5+xvdj5OMMbI962hU/wvwoxk+LWR9Ek9bVtyuuYScDN6eS0rUm6TxApFpw7CX1o4uJzcd4AyD3Q==,
       }
 
-  /inquirer/7.3.3:
-    resolution:
-      {
-        integrity: sha512-JG3eIAj5V9CwcGvuOmoo6LB9kbAYT8HXffUl6memuszlwDC/qvFAJw49XJ5NROSFNPxp3iQg1GqkFhaY/CR0IA==,
-      }
-    engines: { node: '>=8.0.0' }
-    dependencies:
-      ansi-escapes: 4.3.2
-      chalk: 4.1.2
-      cli-cursor: 3.1.0
-      cli-width: 3.0.0
-      external-editor: 3.1.0
-      figures: 3.2.0
-      lodash: 4.17.21
-      mute-stream: 0.0.8
-      run-async: 2.4.1
-      rxjs: 6.6.7
-      string-width: 4.2.3
-      strip-ansi: 6.0.1
-      through: 2.3.8
-    dev: true
-
   /inquirer/8.2.0:
     resolution:
       {
@@ -14747,7 +14724,7 @@ packages:
       mute-stream: 0.0.8
       ora: 5.4.1
       run-async: 2.4.1
-      rxjs: 7.5.1
+      rxjs: 7.5.2
       string-width: 4.2.3
       strip-ansi: 6.0.1
       through: 2.3.8
@@ -17119,6 +17096,16 @@ packages:
       }
     dependencies:
       brace-expansion: 1.1.11
+
+  /minimatch/4.2.1:
+    resolution:
+      {
+        integrity: sha512-9Uq1ChtSZO+Mxa/CL1eGizn2vRn3MlLgzhT0Iz8zaY8NdvxvB0d5QdPFmCKf7JKA9Lerx5vRrnwO03jsSfGG9g==,
+      }
+    engines: { node: '>=10' }
+    dependencies:
+      brace-expansion: 1.1.11
+    dev: true
 
   /minimist/1.2.5:
     resolution:
@@ -20440,15 +20427,6 @@ packages:
       tslib: 1.14.1
     dev: true
 
-  /rxjs/7.5.1:
-    resolution:
-      {
-        integrity: sha512-KExVEeZWxMZnZhUZtsJcFwz8IvPvgu4G2Z2QyqjZQzUGr32KDYuSxrEYO4w3tFFNbfLozcrKUTvTPi+E9ywJkQ==,
-      }
-    dependencies:
-      tslib: 2.3.1
-    dev: true
-
   /rxjs/7.5.2:
     resolution:
       {
@@ -21562,6 +21540,7 @@ packages:
       {
         integrity: sha512-8D4C6DIH5tGiAIpp5I0wD/xRlNiZAPGHygzCe7VzyzUoxHtawzjNAY9SUTXU05/EY2NMY9/9GF0ycizkXr1CWQ==,
       }
+    deprecated: The `subscriptions-transport-ws` package is no longer maintained. We recommend you use `graphql-ws` instead. For help migrating Apollo software to `graphql-ws`, see https://www.apollographql.com/docs/apollo-server/data/subscriptions/#switching-from-subscriptions-transport-ws    For general help using `graphql-ws`, see https://github.com/enisdenjo/graphql-ws/blob/master/README.md
     peerDependencies:
       graphql: ^15.7.2 || ^16.0.0
     dependencies:
@@ -21581,6 +21560,7 @@ packages:
       {
         integrity: sha512-dxdemxFFB0ppCLg10FTtRqH/31FNRL1y1BQv8209MK5I4CwALb7iihQg+7p65lFcIl8MHatINWBLOqpgU4Kyyw==,
       }
+    deprecated: The `subscriptions-transport-ws` package is no longer maintained. We recommend you use `graphql-ws` instead. For help migrating Apollo software to `graphql-ws`, see https://www.apollographql.com/docs/apollo-server/data/subscriptions/#switching-from-subscriptions-transport-ws    For general help using `graphql-ws`, see https://github.com/enisdenjo/graphql-ws/blob/master/README.md
     peerDependencies:
       graphql: '>=0.10.0'
     dependencies:
