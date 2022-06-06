@@ -1,8 +1,7 @@
 name: pull request comment
 on:
   issue_comment:
-    types: [created, edited, deleted]
-
+    types: [created]
 jobs:
   pr_commented:
     name: PR comment
@@ -15,4 +14,3 @@ jobs:
         env:
           NUMBER: ${{ github.event.issue.number }}
           BODY: ${{ github.event.comment.body }}
-          IS_TRIGGER: ${{ contains(github.event.comment.body, '/deploy') }}
