@@ -17,6 +17,7 @@ jobs:
           NUMBER: ${{ github.event.issue.number }}
           BODY: ${{ github.event.comment.body }}
           IS_TRIGGER: ${{ contains(github.event.comment.body, '/deploy') }}
+          # test
   job01:
     if: contains(github.event.comment.html_url, '/pull/') # check if the comments come from pull request, exclude those from issue.
     runs-on: ubuntu-latest
