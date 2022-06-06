@@ -14601,6 +14601,7 @@ packages:
       postcss: 7.0.39
       schema-utils: 3.1.1
       semver: 7.3.5
+      webpack: 4.46.0
     dev: true
 
   /postcss-modules-extract-imports/2.0.0:
