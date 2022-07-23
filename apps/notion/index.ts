@@ -15,7 +15,7 @@ const app = express()
 const { PORT } = process.env
 
 app.listen(PORT, () => {
-  cron.schedule('0 5 * * *', createJournalEntry)
+  cron.schedule('24 1 * * *', createJournalEntry)
   if (process.env.NODE_ENV === 'development') {
     console.log(`⚡️ [server]: Server is running at https://localhost:${PORT}`)
   }
