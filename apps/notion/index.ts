@@ -4,12 +4,12 @@ import express from 'express'
 import cron from 'node-cron'
 import { createJournalEntry } from './src/modules/createJournalEntry'
 
-createJournalEntry()
-  .then(() => process.exit(0))
-  .catch(err => {
-    console.error(err)
-    process.exit(1)
-  })
+// createJournalEntry()
+//   .then(() => process.exit(0))
+//   .catch(err => {
+//     console.error(err)
+//     process.exit(1)
+//   })
 
 const app = express()
 const { PORT } = process.env
