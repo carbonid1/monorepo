@@ -1,0 +1,31 @@
+name: pull request comment
+on:
+  issue_comment:
+    types: [created, edited, deleted]
+
+jobs:
+  pr_commented:
+    name: PR comment
+    if: ${{ github.event.issue.pull_request }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo A comment on PR $NUMBER
+          echo Body is $BODY
+          echo Trigger is $TRIGGER
+        env:
+          NUMBER: ${{ github.event.issue.number }}
+          BODY: ${{ github.event.comment.body }}
+          IS_TRIGGER: ${{ contains(github.event.comment.body, '/deploy') }}
+  job01:
+    if: contains(github.event.comment.html_url, '/pull/') # check if the comments come from pull request, exclude those from issue.
+    runs-on: ubuntu-latest
+    steps:
+      - name: say hello
+        if: contains(github.event.comment.body, '/deploy') # check the comment if it contains the keywords
+        run: |
+          echo deployed!
+      - name: test
+        if: contains(github.event.comment.body, '/test') # check the comment if it contains the keywords
+        run: |
+          echo test
