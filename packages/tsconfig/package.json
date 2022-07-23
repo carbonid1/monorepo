@@ -6,9 +6,10 @@
   "files": [
     "base.json",
     "nextjs.json",
+    "nodejs.json",
     "react-library.json"
   ],
   "dependencies": {
-    "typescript": "^4.5.4"
+    "typescript": "^4.7.4"
   }
 }
