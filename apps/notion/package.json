@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "main": "index.js",
   "scripts": {
-    "build": "npx tsc",
+    "build": "tsc",
     "start": "node build/index.js",
-    "dev": "npm run build && concurrently \"npx tsc --watch\" \"nodemon -q build/index.js\""
+    "dev": "npm run build && concurrently \"tsc --watch\" \"nodemon -q build/index.js\""
   },
   "dependencies": {
     "@notionhq/client": "^2.1.0",
