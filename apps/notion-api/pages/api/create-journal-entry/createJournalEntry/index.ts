@@ -1,7 +1,9 @@
 import { createPage } from './helpers/createPage'
 import { fetchTodoList } from './helpers/fetchTodoList'
+import { getWorkTodos } from './helpers/getWorkTodos'
 
 export const createJournalEntry = async () => {
   const todos = await fetchTodoList()
-  return createPage(todos)
+  const workTodos = getWorkTodos()
+  return createPage(todos, workTodos)
 }
