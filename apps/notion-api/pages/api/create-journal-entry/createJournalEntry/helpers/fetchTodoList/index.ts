@@ -1,7 +1,7 @@
 import type { DatePropertyItemObjectResponse } from '@notionhq/client/build/src/api-endpoints'
+import { MyNotion } from 'consts'
 import { isBefore, parseISO, startOfTomorrow } from 'date-fns'
-import { MyNotion } from '../../../../consts'
-import { notionClient } from '../../../../lib/notion-client'
+import { notionClient } from 'lib/notion-client'
 
 interface ToDoBase {
   id: string

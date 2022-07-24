@@ -1,6 +1,6 @@
+import { MyNotion } from 'consts'
 import { formatISO } from 'date-fns'
-import { MyNotion } from '../../../../consts'
-import { notionClient } from '../../../../lib/notion-client'
+import { notionClient } from 'lib/notion-client'
 import { ToDo } from '../fetchTodoList'
 
 export const createPage = (toDos: ToDo[]) =>
