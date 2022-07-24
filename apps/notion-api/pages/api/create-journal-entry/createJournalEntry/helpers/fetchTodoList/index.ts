@@ -8,47 +8,52 @@ interface ToDoBase {
   properties: {
     dateId: string
     statusId: string
+    nextStepId: string
   }
 }
 interface ToDoWithDate extends ToDoBase {
   date: DatePropertyItemObjectResponse['date']
 }
+
 interface ToDoWithStatus extends ToDoWithDate {
   status: 'to-do' | 'permanent' | 'doing' | null
 }
 
-export type ToDo = ToDoWithStatus
+interface ToDoWithNextStep extends ToDoWithStatus {
+  nextStep: string | null
+}
+
+export type ToDo = ToDoWithNextStep
 
 export const fetchTodoList = async (): Promise<ToDo[]> => {
-  const baseToDos: ToDoBase[] = await notionClient.databases
-    .query({
-      database_id: MyNotion.db.betterThanYesterday.id,
-      filter: {
-        or: [
-          { property: 'Status', select: { equals: 'To Do' } },
-          { property: 'Status', select: { equals: 'Doing' } },
-          { property: 'Status', select: { equals: 'Permanent' } },
-        ],
-      },
-    })
-    .then(res =>
-      res.results.map(page => {
-        if ('properties' in page) {
-          return {
-            id: page.id,
-            properties: {
-              dateId: page.properties.Date.id,
-              statusId: page.properties.Status.id,
-            },
-          }
-        }
+  const fetchedList = await notionClient.databases.query({
+    database_id: MyNotion.db.betterThanYesterday.id,
+    filter: {
+      or: [
+        { property: 'Status', select: { equals: 'To Do' } },
+        { property: 'Status', select: { equals: 'Doing' } },
+        { property: 'Status', select: { equals: 'Permanent' } },
+      ],
+    },
+  })
 
-        throw new Error('ToDo has no properties')
-      }),
-    )
+  const basetodos: ToDoBase[] = fetchedList.results.map(page => {
+    if ('properties' in page) {
+      return {
+        id: page.id,
+        properties: {
+          dateId: page.properties.Date.id,
+          statusId: page.properties.Status.id,
+          nextStepId: page.properties['Next Step'].id,
+        },
+      }
+    }
 
-  const toDosWithDate: ToDoWithDate[] = await Promise.all(
-    baseToDos.map(async page => {
+    throw new Error('ToDo has no properties')
+  })
+
+  const todosWithDate: ToDoWithDate[] = await Promise.all(
+    basetodos.map(async page => {
       const property = await notionClient.pages.properties.retrieve({
         page_id: page.id,
         property_id: page.properties.dateId,
@@ -62,8 +67,8 @@ export const fetchTodoList = async (): Promise<ToDo[]> => {
     }),
   )
 
-  const toDosWithStatus: ToDoWithStatus[] = await Promise.all(
-    toDosWithDate.map(async page => {
+  const todosWithStatus: ToDoWithStatus[] = await Promise.all(
+    todosWithDate.map(async page => {
       const property = await notionClient.pages.properties.retrieve({
         page_id: page.id,
         property_id: page.properties.statusId,
@@ -83,7 +88,7 @@ export const fetchTodoList = async (): Promise<ToDo[]> => {
     }),
   )
 
-  const toDos = toDosWithStatus.filter(page => {
+  const todosBeforeTomorrow = todosWithStatus.filter(page => {
     if (page.status === 'to-do') {
       if (page.date?.start) {
         return isBefore(parseISO(page.date?.start), startOfTomorrow())
@@ -93,5 +98,24 @@ export const fetchTodoList = async (): Promise<ToDo[]> => {
     return true
   })
 
-  return toDos
+  const todosWithNextStep: ToDoWithNextStep[] = await Promise.all(
+    todosBeforeTomorrow.map(async page => {
+      const property = await notionClient.pages.properties.retrieve({
+        page_id: page.id,
+        property_id: page.properties.nextStepId,
+      })
+
+      if (property.type === 'property_item') {
+        const firstResult = property.results[0]
+        if (firstResult?.type === 'rich_text') {
+          firstResult.rich_text.plain_text
+          return { ...page, nextStep: firstResult.rich_text.plain_text ?? null }
+        }
+      }
+
+      return { ...page, nextStep: null }
+    }),
+  )
+
+  return todosWithNextStep
 }
