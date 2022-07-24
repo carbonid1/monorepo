@@ -1,7 +1,7 @@
-import { MyNotion } from 'consts'
 import { formatISO } from 'date-fns'
 import { notionClient } from 'lib/notion-client'
 import { ToDo } from '../fetchTodoList'
+import { MyNotion } from 'consts'
 
 export const createPage = (toDos: ToDo[]) =>
   notionClient.pages.create({

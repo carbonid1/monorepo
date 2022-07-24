@@ -23,7 +23,7 @@
     "postcss": "^8.3.11",
     "tailwindcss": "^2.2.19",
     "tsconfig": "workspace:*",
-    "config": "workspace:*",
+    "lint-config": "workspace:*",
     "typescript": "^4.7.4"
   },
   "license": "MIT"

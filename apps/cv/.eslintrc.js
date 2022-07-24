@@ -1,4 +1,4 @@
-const config = require('config/eslint-preset')
+const config = require('lint-config/eslint-preset')
 
 module.exports = {
   ...config,

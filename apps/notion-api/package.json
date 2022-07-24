@@ -3,7 +3,9 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "ts": "tsc --noEmit",
+    "lint": "next lint --fix"
   },
   "dependencies": {
     "@notionhq/client": "^2.1.0",
@@ -18,7 +20,7 @@
     "@types/node": "^18.0.6",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
-    "config": "workspace:*",
+    "lint-config": "workspace:*",
     "tsconfig": "workspace:*",
     "typescript": "^4.7.4"
   }
