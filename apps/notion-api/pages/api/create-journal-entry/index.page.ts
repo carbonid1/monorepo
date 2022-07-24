@@ -13,7 +13,23 @@ function runMiddleware(req: NextApiRequest, res: NextApiResponse, fn: typeof cor
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   await runMiddleware(req, res, cors)
-  const page = await createJournalEntry()
 
-  res.json({ message: 'url' in page ? page.url : page.id })
+  if (req.method === 'POST') {
+    try {
+      const { authorization } = req.headers
+
+      if (authorization === `Bearer ${process.env.API_SECRET_KEY}`) {
+        const page = await createJournalEntry()
+        res.json({ message: 'url' in page ? page.url : page.id })
+      } else {
+        res.status(401).json({ success: false })
+      }
+    } catch (err) {
+      // @ts-expect-error message is always present on eror
+      res.status(500).json({ statusCode: 500, message: err.message })
+    }
+  } else {
+    res.setHeader('Allow', 'POST')
+    res.status(405).end('Method Not Allowed')
+  }
 }
