@@ -1,5 +1,3 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # dependencies
 node_modules
 .pnp
@@ -9,10 +7,10 @@ node_modules
 coverage
 
 # next.js
-.vercel/
 .next/
 out/
 build
+.vercel
 
 # misc
 .DS_Store

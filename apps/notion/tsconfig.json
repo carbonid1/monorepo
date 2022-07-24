@@ -1,9 +1,0 @@
-{
-  "extends": "tsconfig/nodejs.json",
-  "compilerOptions": {
-    "baseUrl": ".",
-    "outDir": "build"
-  },
-  "include": ["**/*.ts"],
-  "exclude": ["node_modules", "build"]
-}
