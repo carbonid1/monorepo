@@ -1,5 +1,5 @@
 {
-  "name": "notion",
+  "name": "notion-api",
   "version": "0.1.0",
   "private": true,
   "scripts": {
