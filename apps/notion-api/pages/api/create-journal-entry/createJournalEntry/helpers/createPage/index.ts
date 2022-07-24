@@ -1,9 +1,13 @@
+import { CreatePageParameters } from '@notionhq/client/build/src/api-endpoints'
 import { formatISO } from 'date-fns'
 import { notionClient } from 'lib/notion-client'
 import { ToDo } from '../fetchTodoList'
 import { MyNotion } from 'consts'
 
-export const createPage = (todos: ToDo[]) =>
+export const createPage = (
+  todos: ToDo[],
+  children: NonNullable<CreatePageParameters['children']>,
+) =>
   notionClient.pages.create({
     parent: { database_id: MyNotion.db.journal.id, type: 'database_id' },
     icon: { type: 'emoji', emoji: '⁉' },
@@ -65,23 +69,6 @@ export const createPage = (todos: ToDo[]) =>
             })),
         },
       },
-      {
-        type: 'toggle',
-        toggle: {
-          rich_text: [
-            {
-              type: 'text',
-              text: { content: '🧑‍💻 Work' },
-              annotations: { bold: true },
-            },
-          ],
-          children: [
-            {
-              type: 'to_do',
-              to_do: { rich_text: [] },
-            },
-          ],
-        },
-      },
+      ...children,
     ],
   })
