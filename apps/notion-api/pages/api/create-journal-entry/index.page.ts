@@ -13,7 +13,7 @@ function runMiddleware(req: NextApiRequest, res: NextApiResponse, fn: typeof cor
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   await runMiddleware(req, res, cors)
-  await createJournalEntry()
+  const page = await createJournalEntry()
 
-  res.json({ message: 'Success!' })
+  res.json({ message: 'url' in page ? page.url : page.id })
 }
