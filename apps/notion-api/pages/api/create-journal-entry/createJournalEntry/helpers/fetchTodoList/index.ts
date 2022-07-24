@@ -37,7 +37,7 @@ export const fetchTodoList = async (): Promise<ToDo[]> => {
     },
   })
 
-  const basetodos: ToDoBase[] = fetchedList.results.map(page => {
+  const baseTodos: ToDoBase[] = fetchedList.results.map(page => {
     if ('properties' in page) {
       return {
         id: page.id,
@@ -53,7 +53,7 @@ export const fetchTodoList = async (): Promise<ToDo[]> => {
   })
 
   const todosWithDate: ToDoWithDate[] = await Promise.all(
-    basetodos.map(async page => {
+    baseTodos.map(async page => {
       const property = await notionClient.pages.properties.retrieve({
         page_id: page.id,
         property_id: page.properties.dateId,
