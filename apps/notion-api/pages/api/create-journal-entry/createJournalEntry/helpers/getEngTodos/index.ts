@@ -10,22 +10,26 @@ export const getEngTodos = async (): Promise<NonNullable<CreatePageParameters['c
     },
   })
 
-  return [
-    {
-      type: 'toggle',
-      toggle: {
-        rich_text: [
-          {
-            type: 'text',
-            text: { content: '👨‍🏭 Eng Projects' },
-            annotations: { bold: true },
+  const { results } = fetchedList
+
+  return results.length === 0
+    ? []
+    : [
+        {
+          type: 'toggle',
+          toggle: {
+            rich_text: [
+              {
+                type: 'text',
+                text: { content: '👨‍🏭 Eng Projects' },
+                annotations: { bold: true },
+              },
+            ],
+            children: results.map(page => ({
+              type: 'to_do',
+              to_do: { rich_text: [{ type: 'mention', mention: { page: { id: page.id } } }] },
+            })),
           },
-        ],
-        children: fetchedList.results.map(page => ({
-          type: 'to_do',
-          to_do: { rich_text: [{ type: 'mention', mention: { page: { id: page.id } } }] },
-        })),
-      },
-    },
-  ]
+        },
+      ]
 }
