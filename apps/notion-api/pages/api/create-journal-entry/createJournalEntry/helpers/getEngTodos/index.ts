@@ -6,7 +6,10 @@ export const getEngTodos = async (): Promise<NonNullable<CreatePageParameters['c
   const fetchedList = await notionClient.databases.query({
     database_id: MyNotion.db.engProjects.id,
     filter: {
-      or: [{ property: 'Status', select: { equals: 'Doing' } }],
+      or: [
+        { property: 'Status', select: { equals: 'Doing' } },
+        { property: 'Status', select: { equals: 'To Do' } },
+      ],
     },
   })
 
