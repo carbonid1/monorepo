@@ -1,4 +1,7 @@
-import type { DatePropertyItemObjectResponse } from '@notionhq/client/build/src/api-endpoints'
+import type {
+  CreatePageParameters,
+  DatePropertyItemObjectResponse,
+} from '@notionhq/client/build/src/api-endpoints'
 import { isBefore, parseISO, startOfTomorrow } from 'date-fns'
 import { notionClient } from 'lib/notion-client'
 import { MyNotion } from 'consts'
@@ -16,7 +19,7 @@ interface ToDoWithDate extends ToDoBase {
 }
 
 interface ToDoWithStatus extends ToDoWithDate {
-  status: 'to-do' | 'permanent' | 'doing' | null
+  status: 'to-do' | 'doing' | null
 }
 
 interface ToDoWithNextStep extends ToDoWithStatus {
@@ -25,16 +28,34 @@ interface ToDoWithNextStep extends ToDoWithStatus {
 
 export type ToDo = ToDoWithNextStep
 
-export const fetchTodoList = async (): Promise<ToDo[]> => {
+export const getPersonalTodos = async (): Promise<
+  NonNullable<CreatePageParameters['children']>
+> => {
   const fetchedList = await notionClient.databases.query({
     database_id: MyNotion.db.betterThanYesterday.id,
     filter: {
-      or: [
-        { property: 'Status', select: { equals: 'To Do' } },
-        { property: 'Status', select: { equals: 'Doing' } },
-        { property: 'Status', select: { equals: 'Permanent' } },
+      and: [
+        { property: 'Tags', multi_select: { does_not_contain: 'Habit' } },
+        {
+          or: [
+            {
+              property: 'Status',
+              select: { equals: 'To Do' },
+            },
+            {
+              property: 'Status',
+              select: { equals: 'Doing' },
+            },
+          ],
+        },
       ],
     },
+    sorts: [
+      { property: 'Status', direction: 'ascending' },
+      { property: 'Date', direction: 'ascending' },
+      { property: 'Deadline', direction: 'ascending' },
+      { property: 'Date Created', direction: 'descending' },
+    ],
   })
 
   const baseTodos: ToDoBase[] = fetchedList.results.map(page => {
@@ -80,8 +101,6 @@ export const fetchTodoList = async (): Promise<ToDo[]> => {
             return { ...page, status: 'to-do' }
           case 'Doing':
             return { ...page, status: 'doing' }
-          case 'Permanent':
-            return { ...page, status: 'permanent' }
         }
       }
       return { ...page, status: null }
@@ -117,5 +136,35 @@ export const fetchTodoList = async (): Promise<ToDo[]> => {
     }),
   )
 
-  return todosWithNextStep
+  return todosWithNextStep.length === 0
+    ? []
+    : [
+        {
+          type: 'toggle',
+          toggle: {
+            rich_text: [
+              {
+                type: 'text',
+                text: { content: '👣 Personal' },
+                annotations: { bold: true },
+              },
+            ],
+            children: todosWithNextStep.map(page => ({
+              type: 'to_do',
+              to_do: {
+                rich_text: [
+                  { type: 'mention', mention: { page: { id: page.id } } },
+                  page.nextStep
+                    ? {
+                        type: 'text',
+                        annotations: { bold: true },
+                        text: { content: `: ${page.nextStep}` },
+                      }
+                    : { type: 'text', text: { content: '' } },
+                ],
+              },
+            })),
+          },
+        },
+      ]
 }
