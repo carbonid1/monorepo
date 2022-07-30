@@ -19,14 +19,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const { authorization } = req.headers
 
       if (authorization === `Bearer ${process.env.API_SECRET_KEY}`) {
-        const page = await createJournalEntry()
-        res.json({ message: 'url' in page ? page.url : page.id })
+        await createJournalEntry()
+        res.json({ message: 'Done!' })
       } else {
         res.status(401).json({ success: false })
       }
     } catch (err) {
       // @ts-expect-error message is always present on eror
-      res.status(500).json({ statusCode: 500, message: err.message })
+      res.status(err.code).json({ statusCode: err.code, message: err.message })
     }
   } else {
     res.setHeader('Allow', 'POST')
