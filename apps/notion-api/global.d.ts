@@ -5,5 +5,6 @@ declare namespace NodeJS {
     SEND_GRID_API_KEY: string
     SEND_EMAIL_FROM: string
     SEND_EMAIL_TO: string
+    VERCEL_ENV: 'production' | 'development' | 'preview'
   }
 }
