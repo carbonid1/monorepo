@@ -5,6 +5,8 @@ import { getHabits } from './helpers/getHabits'
 import { getWorkTodos } from './helpers/getWorkTodos'
 import { sendEmail } from './helpers/sendEmail'
 
+const { VERCEL_ENV } = process.env
+
 export const createJournalEntry = async () => {
   const personalTodos = await getPersonalTodos()
   const workTodos = await getWorkTodos()
@@ -16,7 +18,10 @@ export const createJournalEntry = async () => {
     ...engTodos,
     ...workTodos,
   ])
-  await sendEmail('url' in createPageResponse ? createPageResponse.url : null)
+
+  if (VERCEL_ENV === 'production') {
+    await sendEmail('url' in createPageResponse ? createPageResponse.url : null)
+  }
 
   return createPageResponse
 }
