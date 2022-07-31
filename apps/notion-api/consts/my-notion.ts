@@ -1,4 +1,4 @@
-export const MyNotion = {
+export const myNotion = {
   db: {
     journal: {
       id: 'a2284fc6-17d6-41bd-83c3-17dd6ba1a067',

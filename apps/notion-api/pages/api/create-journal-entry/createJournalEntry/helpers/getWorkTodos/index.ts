@@ -1,11 +1,11 @@
 import { CreatePageParameters } from '@notionhq/client/build/src/api-endpoints'
 import { isWeekend } from 'date-fns'
 import { notionClient } from 'lib/notion-client'
-import { MyNotion } from 'consts'
+import { myNotion } from 'consts'
 
 export const getWorkTodos = async (): Promise<NonNullable<CreatePageParameters['children']>> => {
   const fetchedList = await notionClient.databases.query({
-    database_id: MyNotion.db.workTodo.id,
+    database_id: myNotion.db.workTodo.id,
     filter: {
       or: [
         { property: 'Status', select: { equals: 'Doing' } },
