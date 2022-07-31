@@ -1,28 +1,14 @@
-import type {
-  CreatePageParameters,
-  DatePropertyItemObjectResponse,
-} from '@notionhq/client/build/src/api-endpoints'
-import { isBefore, parseISO, startOfTomorrow } from 'date-fns'
+import type { CreatePageParameters } from '@notionhq/client/build/src/api-endpoints'
 import { notionClient } from 'lib/notion-client'
 import { myNotion } from 'consts'
 
 interface ToDoBase {
   id: string
   properties: {
-    dateId: string
-    statusId: string
     nextStepId: string
   }
 }
-interface ToDoWithDate extends ToDoBase {
-  date: DatePropertyItemObjectResponse['date']
-}
-
-interface ToDoWithStatus extends ToDoWithDate {
-  status: 'to-do' | 'doing' | null
-}
-
-interface ToDoWithNextStep extends ToDoWithStatus {
+interface ToDoWithNextStep extends ToDoBase {
   nextStep: string | null
 }
 
@@ -36,6 +22,7 @@ export const getPersonalTodos = async (): Promise<
     filter: {
       and: [
         { property: 'Tags', multi_select: { does_not_contain: 'Habit' } },
+        { property: 'Date', date: { on_or_before: new Date().toISOString() } },
         {
           or: [
             {
@@ -63,8 +50,6 @@ export const getPersonalTodos = async (): Promise<
       return {
         id: page.id,
         properties: {
-          dateId: page.properties.Date.id,
-          statusId: page.properties.Status.id,
           nextStepId: page.properties['Next Step'].id,
         },
       }
@@ -73,52 +58,8 @@ export const getPersonalTodos = async (): Promise<
     throw new Error('ToDo has no properties')
   })
 
-  const todosWithDate: ToDoWithDate[] = await Promise.all(
-    baseTodos.map(async page => {
-      const property = await notionClient.pages.properties.retrieve({
-        page_id: page.id,
-        property_id: page.properties.dateId,
-      })
-
-      if (property.type === 'date') {
-        return { ...page, date: property.date }
-      }
-
-      return { ...page, date: null }
-    }),
-  )
-
-  const todosWithStatus: ToDoWithStatus[] = await Promise.all(
-    todosWithDate.map(async page => {
-      const property = await notionClient.pages.properties.retrieve({
-        page_id: page.id,
-        property_id: page.properties.statusId,
-      })
-
-      if (property.type === 'select') {
-        switch (property.select?.name) {
-          case 'To Do':
-            return { ...page, status: 'to-do' }
-          case 'Doing':
-            return { ...page, status: 'doing' }
-        }
-      }
-      return { ...page, status: null }
-    }),
-  )
-
-  const todosBeforeTomorrow = todosWithStatus.filter(page => {
-    if (page.status === 'to-do') {
-      if (page.date?.start) {
-        return isBefore(parseISO(page.date?.start), startOfTomorrow())
-      }
-      return false
-    }
-    return true
-  })
-
   const todosWithNextStep: ToDoWithNextStep[] = await Promise.all(
-    todosBeforeTomorrow.map(async page => {
+    baseTodos.map(async page => {
       const property = await notionClient.pages.properties.retrieve({
         page_id: page.id,
         property_id: page.properties.nextStepId,
