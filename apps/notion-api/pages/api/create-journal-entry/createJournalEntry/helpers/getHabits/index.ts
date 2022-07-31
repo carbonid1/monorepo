@@ -1,10 +1,10 @@
 import { CreatePageParameters } from '@notionhq/client/build/src/api-endpoints'
 import { notionClient } from 'lib/notion-client'
-import { MyNotion } from 'consts'
+import { myNotion } from 'consts'
 
 export const getHabits = async (): Promise<NonNullable<CreatePageParameters['children']>> => {
   const fetchedList = await notionClient.databases.query({
-    database_id: MyNotion.db.betterThanYesterday.id,
+    database_id: myNotion.db.betterThanYesterday.id,
     filter: {
       and: [
         { property: 'Status', select: { equals: 'Doing' } },

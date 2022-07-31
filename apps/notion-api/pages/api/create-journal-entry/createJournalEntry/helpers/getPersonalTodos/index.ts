@@ -4,7 +4,7 @@ import type {
 } from '@notionhq/client/build/src/api-endpoints'
 import { isBefore, parseISO, startOfTomorrow } from 'date-fns'
 import { notionClient } from 'lib/notion-client'
-import { MyNotion } from 'consts'
+import { myNotion } from 'consts'
 
 interface ToDoBase {
   id: string
@@ -32,7 +32,7 @@ export const getPersonalTodos = async (): Promise<
   NonNullable<CreatePageParameters['children']>
 > => {
   const fetchedList = await notionClient.databases.query({
-    database_id: MyNotion.db.betterThanYesterday.id,
+    database_id: myNotion.db.betterThanYesterday.id,
     filter: {
       and: [
         { property: 'Tags', multi_select: { does_not_contain: 'Habit' } },
