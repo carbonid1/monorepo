@@ -1,5 +1,6 @@
 import { CreatePageParameters } from '@notionhq/client/build/src/api-endpoints'
 import axios, { AxiosResponse } from 'axios'
+import { formatRFC3339 } from 'date-fns'
 import { pipedreamAPI } from 'consts/pipedream'
 
 interface PipedreamArgs {
@@ -15,14 +16,14 @@ interface PipedreamResponse {
 }
 
 export const getCelebrations = async (): Promise<NonNullable<CreatePageParameters['children']>> => {
+  const eventTimeMin = formatRFC3339(new Date().setHours(12, 0))
+  const eventTimeMax = formatRFC3339(new Date().setHours(12, 1))
+
   const {
     data: { calendar_events },
   } = await axios.post<PipedreamArgs, AxiosResponse<PipedreamResponse>>(
     pipedreamAPI.getCelebrationsCalendar,
-    {
-      eventTimeMin: '2022-07-29T00:00:00+03:00',
-      eventTimeMax: '2022-07-29T00:01:00+03:00',
-    },
+    { eventTimeMin, eventTimeMax },
   )
 
   return calendar_events.length === 0
