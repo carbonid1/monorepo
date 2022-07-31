@@ -1,7 +1,7 @@
 import { CreatePageParameters } from '@notionhq/client/build/src/api-endpoints'
 import axios, { AxiosResponse } from 'axios'
 import { formatRFC3339 } from 'date-fns'
-import { pipedreamAPI } from 'consts/pipedream'
+import { pipedreamAPI } from 'consts'
 
 interface PipedreamArgs {
   eventTimeMin: string
