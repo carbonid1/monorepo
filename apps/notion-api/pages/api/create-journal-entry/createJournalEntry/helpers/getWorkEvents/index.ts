@@ -22,6 +22,7 @@ export const getWorkEvents = async (
               to_do: {
                 rich_text: [
                   { type: 'text', text: { content: event.name, link: { url: event.url } } },
+                  { type: 'text', text: { content: ' ' } },
                   {
                     type: 'mention',
                     mention: { date: { start: event.date.start, end: event.date.end } },

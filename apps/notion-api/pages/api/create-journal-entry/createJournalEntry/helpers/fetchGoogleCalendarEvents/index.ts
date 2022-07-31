@@ -31,7 +31,7 @@ export const fetchGoogleCalendarEvents = async () => {
       data: { celebrationEvents, settleEvents },
     } = await axios.post<PipedreamArgs, AxiosResponse<PipedreamResponse>>(
       pipedreamAPI.getCelebrationsCalendar,
-      { eventTimeMin: '2022-07-29T00:00:00Z', eventTimeMax: '2022-07-29T23:59:00Z', timeZone },
+      { eventTimeMin, eventTimeMax, timeZone },
     )
 
     return {
