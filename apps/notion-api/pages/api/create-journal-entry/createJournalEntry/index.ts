@@ -4,22 +4,19 @@ import { getEngTodos } from './helpers/getEngTodos'
 import { getHabits } from './helpers/getHabits'
 import { getWorkTodos } from './helpers/getWorkTodos'
 import { sendEmail } from './helpers/sendEmail'
-
-const { VERCEL_ENV } = process.env
+import { getCelebrations } from './helpers/getCelebrations'
+import { isProduction } from 'consts'
 
 export const createJournalEntry = async () => {
-  const personalTodos = await getPersonalTodos()
-  const workTodos = await getWorkTodos()
-  const engTodos = await getEngTodos()
-  const habits = await getHabits()
   const createPageResponse = await createPage([
-    ...habits,
-    ...personalTodos,
-    ...engTodos,
-    ...workTodos,
+    ...(await getHabits()),
+    ...(await getPersonalTodos()),
+    ...(isProduction ? await getCelebrations() : []),
+    ...(await getEngTodos()),
+    ...(await getWorkTodos()),
   ])
 
-  if (VERCEL_ENV === 'production') {
+  if (isProduction) {
     await sendEmail('url' in createPageResponse ? createPageResponse.url : null)
   }
 
