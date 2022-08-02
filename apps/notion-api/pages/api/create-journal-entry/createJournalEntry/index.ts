@@ -1,3 +1,4 @@
+import { RequestBody } from '../intefaces'
 import { createPage } from './helpers/createPage'
 import { getPersonalTodos } from './helpers/getPersonalTodos'
 import { getEngTodos } from './helpers/getEngTodos'
@@ -6,12 +7,14 @@ import { getWorkTodos } from './helpers/getWorkTodos'
 import { getWorkEvents } from './helpers/getWorkEvents'
 import { sendEmail } from './helpers/sendEmail'
 import { getCelebrations } from './helpers/getCelebrations'
-import { fetchGoogleCalendarEvents } from './helpers/fetchGoogleCalendarEvents'
 import { isProduction } from 'consts'
 
-export const createJournalEntry = async () => {
-  const { celebrationEvents, settleEvents } = await fetchGoogleCalendarEvents()
+type CreateJournalEntry = (params: RequestBody) => ReturnType<typeof createPage>
 
+export const createJournalEntry: CreateJournalEntry = async ({
+  settleEvents,
+  celebrationEvents,
+}) => {
   const createPageResponse = await createPage([
     ...(await getHabits()),
     ...(await getPersonalTodos()),

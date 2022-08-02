@@ -1,5 +1,5 @@
 import { CreatePageParameters } from '@notionhq/client/build/src/api-endpoints'
-import { CalendarEvent } from '../fetchGoogleCalendarEvents'
+import { CalendarEvent } from 'pages/api/create-journal-entry/intefaces'
 
 export const getWorkEvents = async (
   events: CalendarEvent[],

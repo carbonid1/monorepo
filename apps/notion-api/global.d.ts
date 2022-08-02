@@ -6,5 +6,6 @@ declare namespace NodeJS {
     SEND_EMAIL_FROM: string
     SEND_EMAIL_TO: string
     VERCEL_ENV: 'production' | 'development' | 'preview'
+    VERCEL_URL: string
   }
 }

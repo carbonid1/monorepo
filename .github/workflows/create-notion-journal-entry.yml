@@ -10,5 +10,5 @@ jobs:
       - name: Call the API route
         run: |
           curl --request POST \
-          --url 'https://andrew-notion-api.vercel.app/api/create-journal-entry' \
+          --url 'https://andrew-notion-api.vercel.app/api/trigger-journal-entry-creation' \
           --header 'Authorization: Bearer ${{ secrets.NOTION_API_SECRET_KEY }}'
