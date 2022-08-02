@@ -24,6 +24,7 @@ interface PipedreamResponse {
 export const fetchGoogleCalendarEvents = async () => {
   if (isProduction) {
     const timeZone = 'Europe/Kiev'
+    process.env.TZ = timeZone
     const eventTimeMin = formatRFC3339(new Date().setHours(0, 0, 0, 0))
     const eventTimeMax = formatRFC3339(new Date().setHours(23, 59, 59, 999))
 
