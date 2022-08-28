@@ -42,7 +42,7 @@ export const getPersonalTodos = async (): Promise<
             rich_text: [
               {
                 type: 'text',
-                text: { content: '👣 Personal' },
+                text: { content: '👣 Personal' },
                 annotations: { bold: true },
               },
             ],

@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { cors } from 'lib/cors'
-import { createJournalEntry } from './createJournalEntry'
+import { formInputs } from './formInputs'
 
 function runMiddleware(req: NextApiRequest, res: NextApiResponse, fn: typeof cors) {
   return new Promise((resolve, reject) => {
@@ -13,14 +13,12 @@ function runMiddleware(req: NextApiRequest, res: NextApiResponse, fn: typeof cor
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   await runMiddleware(req, res, cors)
-
-  if (req.method === 'POST') {
+  if (req.method === 'GET') {
     try {
       const { authorization } = req.headers
 
       if (authorization === `Bearer ${process.env.API_SECRET_KEY}`) {
-        await createJournalEntry()
-        res.json({ message: 'Done!' })
+        res.json(formInputs(req.body))
       } else {
         res.status(401).json({ success: false })
       }
@@ -29,7 +27,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       res.status(err.code).json({ statusCode: err.code, message: err.message })
     }
   } else {
-    res.setHeader('Allow', 'POST')
+    res.setHeader('Allow', 'GET')
     res.status(405).end('Method Not Allowed')
   }
 }
