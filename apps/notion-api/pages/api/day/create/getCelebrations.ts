@@ -1,9 +1,10 @@
 import { CreatePageParameters } from '@notionhq/client/build/src/api-endpoints'
-import { CalendarEvent } from '../fetchGoogleCalendarEvents'
+import { GoogleCalendarsResponse } from 'lib/interfaces'
 
-export const getCelebrations = async (
-  events: CalendarEvent[],
-): Promise<NonNullable<CreatePageParameters['children']>> => {
+export const getCelebrations = (
+  list: GoogleCalendarsResponse,
+): NonNullable<CreatePageParameters['children']> => {
+  const events = list.items
   return events.length === 0
     ? []
     : [
@@ -21,7 +22,7 @@ export const getCelebrations = async (
               type: 'to_do',
               to_do: {
                 rich_text: [
-                  { type: 'text', text: { content: event.name, link: { url: event.url } } },
+                  { type: 'text', text: { content: event.summary, link: { url: event.htmlLink } } },
                 ],
               },
             })),

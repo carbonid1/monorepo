@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { cors } from 'lib/cors'
-import { createJournalEntry } from './createJournalEntry'
+import { create } from './create'
 
 function runMiddleware(req: NextApiRequest, res: NextApiResponse, fn: typeof cors) {
   return new Promise((resolve, reject) => {
@@ -19,7 +19,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const { authorization } = req.headers
 
       if (authorization === `Bearer ${process.env.API_SECRET_KEY}`) {
-        await createJournalEntry()
+        await create(req.body)
         res.json({ message: 'Done!' })
       } else {
         res.status(401).json({ success: false })
