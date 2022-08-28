@@ -3,6 +3,10 @@ import { sendEmail } from './sendEmail'
 import { createNotionPage } from './createNotionPage'
 import { getCelebrations } from './getCelebrations'
 import { getWorkEvents } from './getWorkEvents'
+import { getHabits } from './getHabits'
+import { getEngTodos } from './getEngTodos'
+import { getWorkTodos } from './getWorkTodos'
+import { getPersonalTodos } from './getPersonalTodos'
 import { isProduction } from 'consts'
 
 interface CreateParams {
@@ -12,12 +16,12 @@ interface CreateParams {
 
 export const create = async ({ celebrationEvents, workEvents }: CreateParams) => {
   const createPageResponse = await createNotionPage([
-    // ...(await getHabits()),
-    // ...(await getPersonalTodos()),
+    ...(await getHabits()),
+    ...(await getPersonalTodos()),
     ...getCelebrations(celebrationEvents),
-    // ...(await getEngTodos()),
+    ...(await getEngTodos()),
     ...getWorkEvents(workEvents),
-    // ...(await getWorkTodos()),
+    ...(await getWorkTodos()),
   ])
 
   if (isProduction) {
