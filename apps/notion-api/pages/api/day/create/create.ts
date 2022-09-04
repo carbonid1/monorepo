@@ -9,14 +9,15 @@ import { getWorkTodos } from './getWorkTodos'
 import { getPersonalTodos } from './getPersonalTodos'
 import { isProduction } from 'consts'
 
-interface CreateParams {
-  celebrationEvents: GoogleCalendarsResponse
+export interface CreateParams {
   workEvents: GoogleCalendarsResponse
+  celebrationEvents: GoogleCalendarsResponse
+  dayName: 'Monday' | 'Tuesday' | 'Wednesday' | 'Thursday' | 'Friday' | 'Saturday' | 'Sunday'
 }
 
-export const create = async ({ celebrationEvents, workEvents }: CreateParams) => {
+export const create = async ({ celebrationEvents, workEvents, dayName }: CreateParams) => {
   const createPageResponse = await createNotionPage([
-    ...(await getHabits()),
+    ...(await getHabits({ dayName })),
     ...(await getPersonalTodos()),
     ...getCelebrations(celebrationEvents),
     ...(await getEngTodos()),
