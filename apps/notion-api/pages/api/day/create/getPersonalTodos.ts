@@ -11,6 +11,7 @@ export const getPersonalTodos = async (): Promise<
       and: [
         { property: 'Tags', multi_select: { does_not_contain: 'Habit' } },
         { property: 'Date', date: { on_or_before: new Date().toISOString() } },
+        { property: 'Tasks', relation: { is_empty: true } },
         {
           or: [
             {
