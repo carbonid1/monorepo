@@ -1,13 +1,10 @@
 import { CreatePageParameters } from '@notionhq/client/build/src/api-endpoints'
+import { format } from 'date-fns'
 import { notionClient } from 'lib/notion-client'
-import type { CreateParams } from './create'
 import { myNotion } from 'consts'
 
-type Params = Pick<CreateParams, 'dayName'>
-
-export const getHabits = async ({
-  dayName,
-}: Params): Promise<NonNullable<CreatePageParameters['children']>> => {
+export const getHabits = async (): Promise<NonNullable<CreatePageParameters['children']>> => {
+  const dayName = format(new Date(), 'EEEE')
   const fetchedList = await notionClient.databases.query({
     database_id: myNotion.db.betterThanYesterday.id,
     filter: {

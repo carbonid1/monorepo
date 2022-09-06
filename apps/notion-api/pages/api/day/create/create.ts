@@ -12,12 +12,14 @@ import { isProduction } from 'consts'
 export interface CreateParams {
   workEvents: GoogleCalendarsResponse
   celebrationEvents: GoogleCalendarsResponse
-  dayName: 'Monday' | 'Tuesday' | 'Wednesday' | 'Thursday' | 'Friday' | 'Saturday' | 'Sunday'
+  timezone: string
 }
 
-export const create = async ({ celebrationEvents, workEvents, dayName }: CreateParams) => {
+export const create = async ({ celebrationEvents, workEvents, timezone }: CreateParams) => {
+  process.env.TZ = timezone
+
   const createPageResponse = await createNotionPage([
-    ...(await getHabits({ dayName })),
+    ...(await getHabits()),
     ...(await getPersonalTodos()),
     ...getCelebrations(celebrationEvents),
     ...(await getEngTodos()),

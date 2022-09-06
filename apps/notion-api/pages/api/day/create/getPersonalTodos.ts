@@ -1,4 +1,5 @@
 import type { CreatePageParameters } from '@notionhq/client/build/src/api-endpoints'
+import { formatISO } from 'date-fns'
 import { notionClient } from 'lib/notion-client'
 import { myNotion } from 'consts'
 
@@ -10,7 +11,10 @@ export const getPersonalTodos = async (): Promise<
     filter: {
       and: [
         { property: 'Tags', multi_select: { does_not_contain: 'Habit' } },
-        { property: 'Date', date: { on_or_before: new Date().toISOString() } },
+        {
+          property: 'Date',
+          date: { on_or_before: formatISO(new Date().setHours(23, 59, 59, 999)) },
+        },
         { property: 'Tasks', relation: { is_empty: true } },
         {
           or: [
