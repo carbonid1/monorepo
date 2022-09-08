@@ -185,7 +185,7 @@ importers:
 
   apps/notion-api:
     specifiers:
-      '@notionhq/client': ^2.1.0
+      '@notionhq/client': ^2.2.0
       '@sendgrid/mail': ^7.7.0
       '@types/cors': ^2.8.12
       '@types/node': ^18.0.6
@@ -200,7 +200,7 @@ importers:
       tsconfig: workspace:*
       typescript: ^4.7.4
     dependencies:
-      '@notionhq/client': 2.1.0
+      '@notionhq/client': 2.2.0
       '@sendgrid/mail': 7.7.0
       cors: 2.8.5
       date-fns: 2.29.1
@@ -4214,7 +4214,7 @@ packages:
     dependencies:
       '@types/istanbul-lib-coverage': 2.0.4
       '@types/istanbul-reports': 3.0.1
-      '@types/node': 17.0.5
+      '@types/node': 18.0.6
       '@types/yargs': 15.0.14
       chalk: 4.1.2
     dev: true
@@ -4732,10 +4732,10 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.13.0
 
-  /@notionhq/client/2.1.0:
+  /@notionhq/client/2.2.0:
     resolution:
       {
-        integrity: sha512-EQx0n8aVoAwfQdHoqq1VyL82G4+TZwR3WCBNZhm5Qke+yMFK15g/jDX/Y67f6rOmWAOphCJcm4SFx0TkWVHwGg==,
+        integrity: sha512-wJwGajJjdy3GDI5HpomulhYuxo5j8t1Conm9HkpHqkHnj4qrc+6N//qRXrogsUU2sn60kSHpRcPB4P6L0799tg==,
       }
     engines: { node: '>=12' }
     dependencies:
@@ -7694,7 +7694,7 @@ packages:
         integrity: sha512-jOdnI/3qTpHABjM5cx1Hc0sKsPoYCp+DP/GJRGtDlPd7fiV9oXGGIcjW/ZOxLIvjGz8MA+uMZI9metHlgqbgwQ==,
       }
     dependencies:
-      '@types/node': 17.0.5
+      '@types/node': 18.0.6
     dev: false
 
   /@types/body-parser/1.19.2:
@@ -7762,7 +7762,7 @@ packages:
       '@types/connect': 3.4.35
       '@types/express': 4.17.13
       '@types/keygrip': 1.0.2
-      '@types/node': 17.0.5
+      '@types/node': 18.0.6
     dev: false
 
   /@types/cors/2.8.12:
@@ -7817,7 +7817,7 @@ packages:
         integrity: sha512-FKVPOCFbhCvZxpVAMhdBdTfVfXUpsh15wFHgqOKxh9N9vzWZVuWCSijZ5T4U34XYNnuj2oduh6xcs1i+LPI+BQ==,
       }
     dependencies:
-      '@types/node': 17.0.5
+      '@types/node': 18.0.6
     dev: false
 
   /@types/glob-base/0.3.0:
@@ -7831,7 +7831,7 @@ packages:
       }
     dependencies:
       '@types/minimatch': 3.0.5
-      '@types/node': 17.0.5
+      '@types/node': 18.0.6
 
   /@types/graceful-fs/4.1.5:
     resolution:
@@ -7839,7 +7839,7 @@ packages:
         integrity: sha512-anKkLmZZ+xm4p8JWBf4hElkM4XR+EZeA2M9BAkkTldmcyDY4mbdIJnRghDJH3Ov5ooY7/UAoENtmdMSkaAd7Cw==,
       }
     dependencies:
-      '@types/node': 17.0.5
+      '@types/node': 18.0.6
     dev: true
 
   /@types/graphql-iso-date/3.4.0:
@@ -7972,7 +7972,7 @@ packages:
         integrity: sha512-+P3O/xC7nzVizIi5VbF34YtqSonFsdnbXBnWUCYRiKOi1f9gA4sEFvXkrGr/QVV23IbMYvcoerI7nnhDUiWXRQ==,
       }
     dependencies:
-      '@types/node': 17.0.5
+      '@types/node': 18.0.6
     dev: true
 
   /@types/keygrip/1.0.2:
@@ -7988,7 +7988,7 @@ packages:
         integrity: sha512-BQ5aZNSCpj7D6K2ksrRCTmKRLEpnPvWDiLPfoGyhZ++8YtiK9d/3DBKPJgry359X/P1PfruyYwvnvwFjuEiEIg==,
       }
     dependencies:
-      '@types/node': 17.0.5
+      '@types/node': 18.0.6
     dev: true
 
   /@types/koa-compose/3.2.5:
@@ -8013,7 +8013,7 @@ packages:
       '@types/http-errors': 1.8.1
       '@types/keygrip': 1.0.2
       '@types/koa-compose': 3.2.5
-      '@types/node': 17.0.5
+      '@types/node': 18.0.6
     dev: false
 
   /@types/long/4.0.1:
@@ -8117,6 +8117,7 @@ packages:
       {
         integrity: sha512-w3mrvNXLeDYV1GKTZorGJQivK6XLCoGwpnyJFbJVK/aTBQUxOCaa/GlFAAN3OTDFcb7h5tiFG+YXCO2By+riZw==,
       }
+    dev: true
 
   /@types/node/18.0.6:
     resolution:
@@ -8258,7 +8259,7 @@ packages:
         integrity: sha512-yy7HuzQhj0dhGpD8RLXSZWEkLsV9ibvxvi6EiJ3bkqLAO1RGo0WbkWQiwpRlSFymTJRz0d3k5LM3kkx8ArDbLw==,
       }
     dependencies:
-      '@types/node': 17.0.5
+      '@types/node': 18.0.6
     dev: false
 
   /@types/responselike/1.0.0:
@@ -8267,7 +8268,7 @@ packages:
         integrity: sha512-85Y2BjiufFzaMIlvJDvTTB8Fxl2xfLo4HgmHzVBz08w4wDePCTjYw66PdrolO0kzli3yam/YCgRufyo1DdQVTA==,
       }
     dependencies:
-      '@types/node': 17.0.5
+      '@types/node': 18.0.6
     dev: true
 
   /@types/scheduler/0.16.2:
@@ -8292,7 +8293,7 @@ packages:
         integrity: sha512-fBZgytwhYAUkj/jC/FAV4RQ5EerRup1YQsXQCh8rZfiHkc4UahC192oH0smGwsXol3cL3A5oETuAHeQHmhXM4w==,
       }
     dependencies:
-      '@types/node': 17.0.5
+      '@types/node': 18.0.6
     dev: true
 
   /@types/source-list-map/0.1.2:
@@ -8322,7 +8323,7 @@ packages:
         integrity: sha512-FvnCJljyxhPM3gkRgWmxmDZyAQSiBQQWLI0A0VFL0K7W1oRUrPJSqNO0NvTnLkBcotdlp3lKvaT0JrnyRDkzOg==,
       }
     dependencies:
-      '@types/node': 17.0.5
+      '@types/node': 18.0.6
     dev: true
 
   /@types/trusted-types/2.0.2:
@@ -8360,7 +8361,7 @@ packages:
         integrity: sha512-Ft7YH3lEVRQ6ls8k4Ff1oB4jN6oy/XmU6tQISKdhfh+1mR+viZFphS6WL0IrtDOzvefmJg5a0s7ZQoRXwqTEFg==,
       }
     dependencies:
-      '@types/node': 17.0.5
+      '@types/node': 18.0.6
       '@types/source-list-map': 0.1.2
       source-map: 0.7.3
     dev: true
@@ -8371,7 +8372,7 @@ packages:
         integrity: sha512-cb+0ioil/7oz5//7tZUSwbrSAN/NWHrQylz5cW8G0dWTcF/g+/dSdMlKVZspBYuMAN1+WnwHrkxiRrLcwd0Heg==,
       }
     dependencies:
-      '@types/node': 17.0.5
+      '@types/node': 18.0.6
       '@types/tapable': 1.0.8
       '@types/uglify-js': 3.13.1
       '@types/webpack-sources': 3.2.0
@@ -8385,7 +8386,7 @@ packages:
         integrity: sha512-qn1LkcFEKK8RPp459jkjzsfpbsx36BBt3oC3pITYtkoBw/aVX+EZFa5j3ThCRTNpLFvIMr5dSTD4RaMdilIOpA==,
       }
     dependencies:
-      '@types/node': 17.0.5
+      '@types/node': 18.0.6
     dev: true
 
   /@types/ws/7.4.7:
@@ -8394,7 +8395,7 @@ packages:
         integrity: sha512-JQbbmxZTZehdc2iszGKs5oC3NFnjeay7mtAWrdt7qNtAVK0g19muApzAy4bm9byz79xa2ZnO/BOBC2R8RC5Lww==,
       }
     dependencies:
-      '@types/node': 17.0.5
+      '@types/node': 18.0.6
     dev: false
 
   /@types/ws/8.2.2:
@@ -8403,7 +8404,7 @@ packages:
         integrity: sha512-NOn5eIcgWLOo6qW8AcuLZ7G8PycXu0xTxxkS6Q18VWFxgPUSOwV0pBj2a/4viNZVu25i7RIB7GttdkAIUUXOOg==,
       }
     dependencies:
-      '@types/node': 17.0.5
+      '@types/node': 18.0.6
     dev: true
 
   /@types/yargs-parser/20.2.1:
@@ -16300,7 +16301,7 @@ packages:
     dependencies:
       '@jest/types': 26.6.2
       '@types/graceful-fs': 4.1.5
-      '@types/node': 17.0.5
+      '@types/node': 18.0.6
       anymatch: 3.1.2
       fb-watchman: 2.0.1
       graceful-fs: 4.2.8
@@ -16345,7 +16346,7 @@ packages:
       }
     engines: { node: '>= 10.14.2' }
     dependencies:
-      '@types/node': 17.0.5
+      '@types/node': 18.0.6
       graceful-fs: 4.2.8
     dev: true
 
@@ -16357,7 +16358,7 @@ packages:
     engines: { node: '>= 10.14.2' }
     dependencies:
       '@jest/types': 26.6.2
-      '@types/node': 17.0.5
+      '@types/node': 18.0.6
       chalk: 4.1.2
       graceful-fs: 4.2.8
       is-ci: 2.0.0
@@ -16371,7 +16372,7 @@ packages:
       }
     engines: { node: '>= 10.13.0' }
     dependencies:
-      '@types/node': 17.0.5
+      '@types/node': 18.0.6
       merge-stream: 2.0.0
       supports-color: 7.2.0
 
@@ -16382,7 +16383,7 @@ packages:
       }
     engines: { node: '>= 10.13.0' }
     dependencies:
-      '@types/node': 17.0.5
+      '@types/node': 18.0.6
       merge-stream: 2.0.0
       supports-color: 8.1.1
     dev: false
@@ -20229,6 +20230,12 @@ packages:
         integrity: sha512-dx0LvIGHcOPtKbeiSUM4jqpBl3TcY7CDjZdfOIcKeznE7BWr9dg0iPG90G5yfVQ+p/rGNMXdbfStvzQZEVEi4A==,
       }
     engines: { node: '>=10' }
+    peerDependencies:
+      typescript: '>=2.7'
+      webpack: '>=4'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
     dependencies:
       '@babel/code-frame': 7.10.4
       address: 1.1.2
@@ -20254,12 +20261,12 @@ packages:
       shell-quote: 1.7.2
       strip-ansi: 6.0.0
       text-table: 0.2.0
+      typescript: 4.7.4
+      webpack: 4.46.0
     transitivePeerDependencies:
       - eslint
       - supports-color
-      - typescript
       - vue-template-compiler
-      - webpack
     dev: true
 
   /react-docgen-typescript/2.2.2_typescript@4.7.4:
@@ -23132,7 +23139,10 @@ packages:
       }
 
   /tr46/1.0.1:
-    resolution: { integrity: sha1-qLE/1r/SSJUZZ0zN5VujaTtwbQk= }
+    resolution:
+      {
+        integrity: sha512-dTpowEjclQ7Kgx5SdBkqRzVhERQXov8/l9Ft9dVM9fmg0W0KQSVaXX9T4i6twCPNtYiZM53lpSSUAwJbFPOHxA==,
+      }
     dependencies:
       punycode: 2.1.1
     dev: false
@@ -23693,6 +23703,7 @@ packages:
         integrity: sha512-vx2Z0vY+a3YoTj8+pttM3tiJHCwY5UFbYdiWrwBEbHmK8pvsPj2rtAX2BFfgXen8T39CJWblWRDT4L5WGXtDdg==,
       }
     dependencies:
+      '@types/unist': 2.0.6
       bail: 1.0.5
       extend: 3.0.2
       is-buffer: 2.0.5

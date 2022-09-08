@@ -9,7 +9,7 @@ export const getHabits = async (): Promise<NonNullable<CreatePageParameters['chi
     database_id: myNotion.db.betterThanYesterday.id,
     filter: {
       and: [
-        { property: 'Status', select: { equals: 'Doing' } },
+        { property: 'Status', status: { equals: 'Doing' } },
         { property: 'Tags', multi_select: { contains: 'Habit' } },
         {
           or: [
@@ -19,6 +19,7 @@ export const getHabits = async (): Promise<NonNullable<CreatePageParameters['chi
         },
       ],
     },
+    sorts: [{ property: 'Project', direction: 'ascending' }],
   })
 
   const { results } = fetchedList

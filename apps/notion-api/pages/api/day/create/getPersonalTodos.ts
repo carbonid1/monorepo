@@ -17,14 +17,8 @@ export const getPersonalTodos = async (): Promise<
         },
         {
           or: [
-            {
-              property: 'Status',
-              select: { equals: 'To Do' },
-            },
-            {
-              property: 'Status',
-              select: { equals: 'Doing' },
-            },
+            { property: 'Status', status: { equals: 'To Do' } },
+            { property: 'Status', status: { equals: 'Doing' } },
           ],
         },
       ],
@@ -34,6 +28,7 @@ export const getPersonalTodos = async (): Promise<
       { property: 'Date', direction: 'ascending' },
       { property: 'Deadline', direction: 'ascending' },
       { property: 'Date Created', direction: 'descending' },
+      { property: 'Project', direction: 'ascending' },
     ],
   })
 

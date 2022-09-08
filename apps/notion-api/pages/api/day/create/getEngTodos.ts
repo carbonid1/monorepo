@@ -7,8 +7,8 @@ export const getEngTodos = async (): Promise<NonNullable<CreatePageParameters['c
     database_id: myNotion.db.engProjects.id,
     filter: {
       or: [
-        { property: 'Status', select: { equals: 'Doing' } },
-        { property: 'Status', select: { equals: 'To Do' } },
+        { property: 'Status', status: { equals: 'Doing' } },
+        { property: 'Status', status: { equals: 'To Do' } },
       ],
     },
   })
