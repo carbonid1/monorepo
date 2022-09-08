@@ -15,7 +15,6 @@ export const getPersonalTodos = async (): Promise<
           property: 'Date',
           date: { on_or_before: formatISO(new Date().setHours(23, 59, 59, 999)) },
         },
-        { property: 'Tasks', relation: { is_empty: true } },
         {
           or: [
             {
