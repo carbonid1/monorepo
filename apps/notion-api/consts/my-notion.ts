@@ -13,4 +13,17 @@ export const myNotion = {
       id: '6a814b09fe6e448a97809c76a9db4190',
     },
   },
+  page: {
+    currencies: {
+      uah: {
+        id: 'd7a9423acb1d4be4951bdd2da61d9047',
+      },
+      gbp: {
+        id: 'cd020b59658340058d1677425d28c051',
+      },
+      eur: {
+        id: 'f85faa0106ef4ea59909a6b366df5b7b',
+      },
+    },
+  },
 } as const
