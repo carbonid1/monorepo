@@ -15,6 +15,7 @@ module.exports = {
   extends: [
     'next/core-web-vitals',
     'next',
+    'turbo',
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',

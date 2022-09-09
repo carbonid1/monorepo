@@ -8,6 +8,7 @@
     "packages/*"
   ],
   "scripts": {
+    "build": "turbo run build",
     "build:notion-api": "turbo run build --filter=notion-api",
     "build:book-hub": "turbo run build --filter=book-hub",
     "build:cv": "turbo run build --filter=cv",
