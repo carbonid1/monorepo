@@ -9,13 +9,13 @@ import { getWorkTodos } from './getWorkTodos'
 import { getPersonalTodos } from './getPersonalTodos'
 import { isProduction } from 'consts'
 
-export interface CreateParams {
+interface Params {
   workEvents: GoogleCalendarsResponse
   celebrationEvents: GoogleCalendarsResponse
   timezone: string
 }
 
-export const create = async ({ celebrationEvents, workEvents, timezone }: CreateParams) => {
+export const createDailyEntry = async ({ celebrationEvents, workEvents, timezone }: Params) => {
   process.env.TZ = timezone
 
   const createPageResponse = await createNotionPage([

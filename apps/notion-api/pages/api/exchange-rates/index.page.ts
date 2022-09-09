@@ -13,7 +13,7 @@ function runMiddleware(req: NextApiRequest, res: NextApiResponse, fn: typeof cor
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   await runMiddleware(req, res, cors)
-  if (req.method === 'POST') {
+  if (req.method === 'PATCH') {
     try {
       const { authorization } = req.headers
 
@@ -28,7 +28,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       res.status(err.code).json({ statusCode: err.code, message: err.message })
     }
   } else {
-    res.setHeader('Allow', 'POST')
+    res.setHeader('Allow', 'PATCH')
     res.status(405).end('Method Not Allowed')
   }
 }
