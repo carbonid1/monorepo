@@ -8,20 +8,20 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "turbo run build",
-    "build:notion-api": "turbo run build --filter=notion-api",
-    "build:book-hub": "turbo run build --filter=book-hub",
-    "build:cv": "turbo run build --filter=cv",
-    "dev": "turbo run dev --parallel",
+    "build": "turbo build",
+    "build:notion-api": "turbo build --filter=notion-api",
+    "build:book-hub": "turbo build --filter=book-hub",
+    "build:cv": "turbo build --filter=cv",
+    "dev": "turbo dev --parallel",
     "format": "prettier --write \"**/*.{js,ts,tsx,md,mdx,yaml,yml}\" --ignore-unknown",
-    "lint": "turbo run lint",
+    "lint": "turbo lint",
     "prepare": "husky install"
   },
   "devDependencies": {
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
-    "turbo": "^1.4.5"
+    "turbo": "^1.5.3"
   },
   "engines": {
     "npm": ">=7.0.0",
