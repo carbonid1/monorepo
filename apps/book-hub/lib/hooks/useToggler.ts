@@ -6,5 +6,4 @@ export const useToggler = (initialState = false): [boolean, () => void] => {
   const toggleValue = useCallback(() => setValue(prev => !prev), [])
 
   return [value, toggleValue]
-  // TODO: return [value, toggleValue, setValue]
 }
