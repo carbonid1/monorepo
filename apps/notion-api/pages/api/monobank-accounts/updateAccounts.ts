@@ -48,7 +48,7 @@ export const updateAccounts: UpdateAccounts = async ({ accounts }) => {
       properties: { Amount: { number: fopUAHBalance / 100 } },
     }),
     notionClient.pages.update({
-      page_id: myNotion.page.bankAccounts.monobank.fopUAH,
+      page_id: myNotion.page.bankAccounts.monobank.fopUSD,
       properties: { Amount: { number: fopUSDBalance / 100 } },
     }),
   ])
