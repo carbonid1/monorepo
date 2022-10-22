@@ -7,15 +7,18 @@
     },
     "build:cv": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**"]
+      "outputs": [".next/**"],
+      "cache": false
     },
     "build:book-hub": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**"]
+      "outputs": [".next/**"],
+      "cache": false
     },
     "build:notion-api": {
       "dependsOn": ["^build"],
       "outputs": [".next/**"],
+      "cache": true,
       "env": [
         "TZ",
         "API_SECRET_KEY",
