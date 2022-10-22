@@ -4,6 +4,7 @@ import Typography from './Typography'
 interface ISection {
   className?: string
   title: string
+  children: React.ReactNode
 }
 const Section: FC<ISection> = ({ className, children, title }) => {
   return (

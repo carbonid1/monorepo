@@ -7,6 +7,7 @@ interface INetwork {
   nickname: string
   link: string
   className?: string
+  children: React.ReactNode
 }
 const Network: FC<INetwork> = ({ children, nickname, link, className }) => (
   <a
@@ -31,9 +32,9 @@ const SocialNetworks: FC = () => {
     <div
       className="
         social-networks
-        col-span-12 justify-self-stretch gap-y-2 
-        md:gap-y-0 md:gap-x-4 md:my-4 py-4 md:py-0 md:px-4 
-        grid md:grid-cols-10 
+        col-span-12 justify-self-stretch gap-y-2
+        md:gap-y-0 md:gap-x-4 md:my-4 py-4 md:py-0 md:px-4
+        grid md:grid-cols-10
         border-t-2 border-b-2 border-gray-900
       "
     >

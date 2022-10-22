@@ -20,6 +20,7 @@ const getClassNames = (type: TTypography | undefined): string => {
 interface ITypography {
   type?: TTypography
   className?: string
+  children: React.ReactNode
 }
 const Typography: FC<ITypography> = ({ children, type, className }) => {
   return <div className={cn(getClassNames(type), className)}>{children}</div>
@@ -30,6 +31,7 @@ interface ILinkTypography {
   type?: TTypography
   className?: string
   onClick?: JSX.IntrinsicElements['a']['onClick']
+  children: React.ReactNode
 }
 export const LinkTypography: FC<ILinkTypography> = ({
   href,

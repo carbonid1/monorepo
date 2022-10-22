@@ -1,16 +1,17 @@
-import { FC } from 'react'
 import trackingService from '../services/tracking.service'
 import Typography, { LinkTypography } from './Typography'
 
-const ContactItem: FC = ({ children }) => (
+const ContactItem: React.FC<{
+  children: React.ReactNode
+}> = ({ children }) => (
   <div className="grid auto-cols-max grid-flow-col gap-2 items-center">{children}</div>
 )
 
-const Contacts: FC = () => {
+const Contacts: React.FC = () => {
   return (
     <div
       className="
-        grid gap-y-4 justify-items-start col-span-12 
+        grid gap-y-4 justify-items-start col-span-12
         md:col-span-8 md:justify-self-end
       "
     >
