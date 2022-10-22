@@ -7,5 +7,5 @@ module.exports = {
     tsconfigRootDir: __dirname,
     project: './tsconfig.json',
   },
-  ignorePatterns: [],
+  ignorePatterns: ['pages/api/nexus-typegen.ts', 'lib/generated/**/*'],
 }

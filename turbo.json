@@ -5,24 +5,20 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**", ".next/**"]
     },
+    "build:cv": {
+      "dependsOn": ["^build"],
+      "outputs": [".next/**"],
+      "cache": true
+    },
     "build:book-hub": {
       "dependsOn": ["^build"],
       "outputs": [".next/**"],
-      "env": [
-        "NODE_ENV",
-        "GOOGLE_AUTH_ID",
-        "GOOGLE_AUTH_SECRET",
-        "GITHUB_AUTH_ID",
-        "TWITTER_AUTH_ID",
-        "TWITTER_AUTH_SECRET",
-        "NEXT_PUBLIC_VERCEL_ENV",
-        "NEXT_PUBLIC_VERCEL_URL",
-        "GITHUB_AUTH_SECRET"
-      ]
+      "cache": true
     },
     "build:notion-api": {
       "dependsOn": ["^build"],
       "outputs": [".next/**"],
+      "cache": true,
       "env": [
         "TZ",
         "API_SECRET_KEY",

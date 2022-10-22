@@ -4,5 +4,5 @@
     "baseUrl": "."
   },
   "include": ["**/*.ts", "**/*.tsx", "**/*.js", ".eslintrc.js"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "pages/api/nexus-typegen.ts", "lib/generated/**/*"]
 }
