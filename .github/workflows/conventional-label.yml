@@ -9,6 +9,16 @@ jobs:
       - name: Validate labels
         uses: bcoe/conventional-release-labels@v1
         with:
-          type_labels: '{"feat": "Feature", "fix": "Fix", "ci": "CI", "docs": "Documentation", "test": "Tests", "refactor": "Refactoring", "perf": "Performance Improvements", "build": "Build", "chore": "Chore"}'
+          type_labels: '{
+            "feat": "Feature",
+            "fix": "Fix",
+            "ci": "CI",
+            "docs": "Documentation",
+            "test": "Tests",
+            "refactor": "Refactoring",
+            "perf": "Performance Improvements",
+            "build": "Build",
+            "chore": "Chore"
+            }'
           ignored_types: '["revert", "release"]'
           ignore_label: Ignore For Release
