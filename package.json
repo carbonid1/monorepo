@@ -11,6 +11,7 @@
     "build": "turbo build",
     "build:notion-api": "turbo build --filter=notion-api",
     "build:cv": "turbo build --filter=cv",
+    "build:book-hub": "turbo build --filter=book-hub",
     "dev": "turbo dev --parallel",
     "format": "prettier --write \"**/*.{js,ts,tsx,md,mdx,yaml,yml}\" --ignore-unknown",
     "lint": "turbo lint",

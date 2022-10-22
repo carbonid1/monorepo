@@ -5,6 +5,10 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**", ".next/**"]
     },
+    "build:cv": {
+      "dependsOn": ["^build"],
+      "outputs": [".next/**"]
+    },
     "build:book-hub": {
       "dependsOn": ["^build"],
       "outputs": [".next/**"]
