@@ -8,12 +8,12 @@
     "build:cv": {
       "dependsOn": ["^build"],
       "outputs": [".next/**"],
-      "cache": false
+      "cache": true
     },
     "build:book-hub": {
       "dependsOn": ["^build"],
       "outputs": [".next/**"],
-      "cache": false
+      "cache": true
     },
     "build:notion-api": {
       "dependsOn": ["^build"],
