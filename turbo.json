@@ -6,32 +6,32 @@
       "outputs": ["dist/**", ".next/**"]
     },
     "build:book-hub": {
-      "dependsOn": [
-        "^build",
-        "$NODE_ENV",
-        "$GOOGLE_AUTH_ID",
-        "$GOOGLE_AUTH_SECRET",
-        "$GITHUB_AUTH_ID",
-        "$TWITTER_AUTH_ID",
-        "$TWITTER_AUTH_SECRET",
-        "$NEXT_PUBLIC_VERCEL_ENV",
-        "$NEXT_PUBLIC_VERCEL_URL",
-        "$GITHUB_AUTH_SECRET"
-      ],
-      "outputs": [".next/**"]
+      "dependsOn": ["^build"],
+      "outputs": [".next/**"],
+      "env": [
+        "NODE_ENV",
+        "GOOGLE_AUTH_ID",
+        "GOOGLE_AUTH_SECRET",
+        "GITHUB_AUTH_ID",
+        "TWITTER_AUTH_ID",
+        "TWITTER_AUTH_SECRET",
+        "NEXT_PUBLIC_VERCEL_ENV",
+        "NEXT_PUBLIC_VERCEL_URL",
+        "GITHUB_AUTH_SECRET"
+      ]
     },
     "build:notion-api": {
-      "dependsOn": [
-        "^build",
-        "$TZ",
-        "$API_SECRET_KEY",
-        "$SEND_EMAIL_FROM",
-        "$SEND_EMAIL_TO",
-        "$SEND_GRID_API_KEY",
-        "$NOTION_TOKEN",
-        "$VERCEL_ENV"
-      ],
-      "outputs": [".next/**"]
+      "dependsOn": ["^build"],
+      "outputs": [".next/**"],
+      "env": [
+        "TZ",
+        "API_SECRET_KEY",
+        "SEND_EMAIL_FROM",
+        "SEND_EMAIL_TO",
+        "SEND_GRID_API_KEY",
+        "NOTION_TOKEN",
+        "VERCEL_ENV"
+      ]
     },
     "lint": {
       "outputs": []
