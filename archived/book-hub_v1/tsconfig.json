@@ -1,0 +1,8 @@
+{
+  "extends": "tsconfig/nextjs.json",
+  "compilerOptions": {
+    "baseUrl": "."
+  },
+  "include": ["**/*.ts", "**/*.tsx", "**/*.js", ".eslintrc.js"],
+  "exclude": ["node_modules", "pages/api/nexus-typegen.ts", "lib/generated/**/*"]
+}
