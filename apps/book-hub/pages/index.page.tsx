@@ -5,7 +5,9 @@ const Home: NextPage = () => {
   return (
     <>
       <Header />
-      <h1 className="text-3xl font-bold underline text-red-500">Index Page</h1>
+      <div className="prose">
+        <h1>Index Page</h1>
+      </div>
     </>
   )
 }

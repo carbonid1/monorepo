@@ -1,11 +1,15 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 export const Header: React.FC = () => {
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1">
         <Link href="/">
-          <a className="btn btn-ghost normal-case text-xl">Book Hub</a>
+          <a className="btn btn-ghost normal-case text-xl text-primary">
+            <span>Book</span>
+            <span className="text-base-content">Hub</span>
+          </a>
         </Link>
       </div>
       <div className="flex-none gap-2">
@@ -15,7 +19,7 @@ export const Header: React.FC = () => {
         <div className="dropdown dropdown-end">
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
-              <img src="https://placeimg.com/80/80/people" />
+              <Image src="https://placeimg.com/80/80/people" alt="avatar" width={40} height={40} />
             </div>
           </label>
           <ul
