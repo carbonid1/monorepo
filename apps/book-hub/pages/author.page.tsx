@@ -3,10 +3,12 @@ import { Header } from './components/Header/Header'
 
 const Home: NextPage = () => {
   return (
-    <>
+    <div className="max-w-7xl mx-auto">
       <Header />
-      <h1 className="text-3xl font-bold underline text-red-500">Author page</h1>
-    </>
+      <div className="prose">
+        <h1>Author Page</h1>
+      </div>
+    </div>
   )
 }
 
