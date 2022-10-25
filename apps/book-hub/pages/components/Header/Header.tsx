@@ -5,11 +5,9 @@ export const Header: React.FC = () => {
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1">
-        <Link href="/">
-          <a className="btn btn-ghost normal-case text-xl text-primary">
-            <span>Book</span>
-            <span className="text-base-content">Hub</span>
-          </a>
+        <Link href="/" className="btn btn-ghost normal-case text-xl text-primary">
+          <span>Book</span>
+          <span className="text-base-content">Hub</span>
         </Link>
       </div>
       <div className="flex-none gap-2">
