@@ -43,6 +43,7 @@ importers:
       next-auth: 4.15.0_r5sq4deac3rmm2d5onhwvomqve
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
+      tailwindcss: 3.2.1_postcss@8.4.18
     devDependencies:
       '@types/node': 18.11.7
       '@types/react': 18.0.24
@@ -51,7 +52,6 @@ importers:
       lint-config: link:../../packages/lint-config
       postcss: 8.4.18
       prisma: 4.5.0
-      tailwindcss: 3.2.1_postcss@8.4.18
       tsconfig: link:../../packages/tsconfig
       typescript: 4.8.4
 
