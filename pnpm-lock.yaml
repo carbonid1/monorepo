@@ -19,13 +19,13 @@ importers:
       '@next-auth/prisma-adapter': ^1.0.5
       '@prisma/client': ^4.5.0
       '@tailwindcss/typography': ^0.5.7
-      '@types/node': 18.11.5
-      '@types/react': 18.0.23
-      '@types/react-dom': 18.0.7
-      autoprefixer: ^10.4.12
-      daisyui: ^2.33.0
+      '@types/node': 18.11.7
+      '@types/react': 18.0.24
+      '@types/react-dom': 18.0.8
+      autoprefixer: ^10.4.13
+      daisyui: ^2.36.1
       lint-config: workspace:*
-      next: 13.0.0
+      next: ^13.0.0
       next-auth: ^4.15.0
       postcss: ^8.4.18
       prisma: ^4.5.0
@@ -38,16 +38,16 @@ importers:
       '@next-auth/prisma-adapter': 1.0.5_lbkeu45xi35sokilhivpvmhs3m
       '@prisma/client': 4.5.0_prisma@4.5.0
       '@tailwindcss/typography': 0.5.7_tailwindcss@3.2.1
-      daisyui: 2.33.0_xkowlklhtk6sfvtndbucb3hfiy
+      daisyui: 2.36.1_lycaqaeny3mp632atgvyvqdgwe
       next: 13.0.0_biqbaboplfbrettd7655fr4n2y
       next-auth: 4.15.0_r5sq4deac3rmm2d5onhwvomqve
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     devDependencies:
-      '@types/node': 18.11.5
-      '@types/react': 18.0.23
-      '@types/react-dom': 18.0.7
-      autoprefixer: 10.4.12_postcss@8.4.18
+      '@types/node': 18.11.7
+      '@types/react': 18.0.24
+      '@types/react-dom': 18.0.8
+      autoprefixer: 10.4.13_postcss@8.4.18
       lint-config: link:../../packages/lint-config
       postcss: 8.4.18
       prisma: 4.5.0
@@ -715,7 +715,7 @@ packages:
   /@types/node-fetch/2.5.12:
     resolution: {integrity: sha512-MKgC4dlq4kKNa/mYrwpKfzQMB5X3ee5U6fSprkKpToBqBmX4nFZL9cW5jl6sWn+xpRJ7ypWh2yyqqr8UUCstSw==}
     dependencies:
-      '@types/node': 18.11.5
+      '@types/node': 18.11.7
       form-data: 3.0.1
     dev: false
 
@@ -727,8 +727,8 @@ packages:
     resolution: {integrity: sha512-fNjDQzzOsZeKZu5NATgXUPsaFaTxeRgFXoosrHivTl8RGeV733OLawXsGfEk9a8/tySyZUyiZ6E8LcjPFZ2y1A==}
     dev: true
 
-  /@types/node/18.11.5:
-    resolution: {integrity: sha512-3JRwhbjI+cHLAkUorhf8RnqUbFXajvzX4q6fMn5JwkgtuwfYtRQYI3u4V92vI6NJuTsbBQWWh3RZjFsuevyMGQ==}
+  /@types/node/18.11.7:
+    resolution: {integrity: sha512-LhFTglglr63mNXUSRYD8A+ZAIu5sFqNJ4Y2fPuY7UlrySJH87rRRlhtVmMHplmfk5WkoJGmDjE9oiTfyX94CpQ==}
 
   /@types/prop-types/15.7.4:
     resolution: {integrity: sha512-rZ5drC/jWjrArrS8BR6SIr4cWpW09RNTYt9AMZo3Jwwif+iacXAqgVjm0B0Bv/S1jhDXKHqRVNCbACkJ89RAnQ==}
@@ -737,19 +737,19 @@ packages:
   /@types/react-dom/17.0.11:
     resolution: {integrity: sha512-f96K3k+24RaLGVu/Y2Ng3e1EbZ8/cVJvypZWd7cy0ofCBaf2lcM46xNhycMZ2xGwbBjRql7hOlZ+e2WlJ5MH3Q==}
     dependencies:
-      '@types/react': 18.0.23
+      '@types/react': 18.0.24
     dev: true
 
   /@types/react-dom/18.0.6:
     resolution: {integrity: sha512-/5OFZgfIPSwy+YuIBP/FgJnQnsxhZhjjrnxudMddeblOouIodEQ75X14Rr4wGSG/bknL+Omy9iWlLo1u/9GzAA==}
     dependencies:
-      '@types/react': 18.0.23
+      '@types/react': 18.0.24
     dev: true
 
-  /@types/react-dom/18.0.7:
-    resolution: {integrity: sha512-HaXc+BbqAZE1RdsK3tC8SbkFy6UL2xF76lT9rQs5JkPrJg3rWA3Ou/Lhw3YJQzEDkBpmJ79nBsfnd05WrBd2QQ==}
+  /@types/react-dom/18.0.8:
+    resolution: {integrity: sha512-C3GYO0HLaOkk9dDAz3Dl4sbe4AKUGTCfFIZsz3n/82dPNN8Du533HzKatDxeUYWu24wJgMP1xICqkWk1YOLOIw==}
     dependencies:
-      '@types/react': 18.0.23
+      '@types/react': 18.0.24
     dev: true
 
   /@types/react/17.0.38:
@@ -776,8 +776,8 @@ packages:
       csstype: 3.0.10
     dev: true
 
-  /@types/react/18.0.23:
-    resolution: {integrity: sha512-R1wTULtCiJkudAN2DJGoYYySbGtOdzZyUWAACYinKdiQC8auxso4kLDUhQ7AJ2kh3F6A6z4v69U6tNY39hihVQ==}
+  /@types/react/18.0.24:
+    resolution: {integrity: sha512-wRJWT6ouziGUy+9uX0aW4YOJxAY0bG6/AOk5AW5QSvZqI7dk6VBIbXvcVgIw/W5Jrl24f77df98GEKTJGOLx7Q==}
     dependencies:
       '@types/prop-types': 15.7.4
       '@types/scheduler': 0.16.2
@@ -1079,6 +1079,22 @@ packages:
       picocolors: 1.0.0
       postcss: 8.4.18
       postcss-value-parser: 4.2.0
+    dev: true
+
+  /autoprefixer/10.4.13_postcss@8.4.18:
+    resolution: {integrity: sha512-49vKpMqcZYsJjwotvt4+h/BCjJVnhGwcLpDt5xkcaOG3eLrG/HUYLagrihYsQ+qrIBgIzX1Rw7a6L8I/ZA1Atg==}
+    engines: {node: ^10 || ^12 || >=14}
+    hasBin: true
+    peerDependencies:
+      postcss: ^8.1.0
+    dependencies:
+      browserslist: 4.21.4
+      caniuse-lite: 1.0.30001427
+      fraction.js: 4.2.0
+      normalize-range: 0.1.2
+      picocolors: 1.0.0
+      postcss: 8.4.18
+      postcss-value-parser: 4.2.0
 
   /axe-core/4.3.5:
     resolution: {integrity: sha512-WKTW1+xAzhMS5dJsxWkliixlO/PqC4VhmO9T4juNYcaTg9jzWiJsou6m5pxWYGfigWbwzJWeFY6z47a+4neRXA==}
@@ -1123,7 +1139,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001423
+      caniuse-lite: 1.0.30001427
       electron-to-chromium: 1.4.284
       node-releases: 2.0.6
       update-browserslist-db: 1.0.10_browserslist@4.21.4
@@ -1150,6 +1166,9 @@ packages:
 
   /caniuse-lite/1.0.30001423:
     resolution: {integrity: sha512-09iwWGOlifvE1XuHokFMP7eR38a0JnajoyL3/i87c8ZjRWRrdKo1fqjNfugfBD0UDBIOz0U+jtNhJ0EPm1VleQ==}
+
+  /caniuse-lite/1.0.30001427:
+    resolution: {integrity: sha512-lfXQ73oB9c8DP5Suxaszm+Ta2sr/4tf8+381GkIm1MLj/YdLf+rEDyDSRCzeltuyTVGm+/s18gdZ0q+Wmp8VsQ==}
 
   /chalk/4.1.2:
     resolution: {integrity: sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==}
@@ -1296,13 +1315,13 @@ packages:
     resolution: {integrity: sha512-2u44ZG2OcNUO9HDp/Jl8C07x6pU/eTR3ncV91SiK3dhG9TWvRVsCoJw14Ckx5DgWkzGA3waZWO3d7pgqpUI/XA==}
     dev: true
 
-  /daisyui/2.33.0_xkowlklhtk6sfvtndbucb3hfiy:
-    resolution: {integrity: sha512-NviwGs9oC9NW7IEZiLexHtxkpzP38AKxb9GTUCqUa0qoU8NHKQGqJUzQWZwWSZakU57KsQLblFVe0xMhqw4TlA==}
+  /daisyui/2.36.1_lycaqaeny3mp632atgvyvqdgwe:
+    resolution: {integrity: sha512-l43iibOsfYAYfRMIsCfobSk4ygV2/OiQMX98zLFrafWt5zoSed7I4b4tRlKeP6xhnfVe6Xkv/84nFfapHI0B2A==}
     peerDependencies:
       autoprefixer: ^10.0.2
       postcss: ^8.1.6
     dependencies:
-      autoprefixer: 10.4.12_postcss@8.4.18
+      autoprefixer: 10.4.13_postcss@8.4.18
       color: 4.2.3
       css-selector-tokenizer: 0.8.0
       postcss: 8.4.18
@@ -2612,7 +2631,7 @@ packages:
     dependencies:
       '@next/env': 13.0.0
       '@swc/helpers': 0.4.11
-      caniuse-lite: 1.0.30001423
+      caniuse-lite: 1.0.30001427
       postcss: 8.4.14
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
