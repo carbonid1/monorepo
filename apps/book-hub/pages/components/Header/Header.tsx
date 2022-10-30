@@ -1,13 +1,22 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { useSession } from 'next-auth/react'
 
 export const Header: React.FC = () => {
+  const { data: session, status } = useSession()
+
+  // eslint-disable-next-line no-console
+  console.log(session, status)
+
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1">
         <Link href="/" className="btn btn-ghost normal-case text-xl text-primary">
           <span>Book</span>
           <span className="text-base-content">Hub</span>
+        </Link>
+        <Link href="/author" className="btn btn-ghost normal-case">
+          <span>Author</span>
         </Link>
       </div>
       <div className="flex-none gap-2">
@@ -25,16 +34,9 @@ export const Header: React.FC = () => {
             className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
           >
             <li>
-              <a className="justify-between">
-                Profile
-                <span className="badge">New</span>
-              </a>
-            </li>
-            <li>
-              <a>Settings</a>
-            </li>
-            <li>
-              <a>Logout</a>
+              <Link href="/api/auth/signin">
+                <span>Log in</span>
+              </Link>
             </li>
           </ul>
         </div>

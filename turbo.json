@@ -12,9 +12,10 @@
       "cache": true
     },
     "build:book-hub": {
+      "cache": true,
       "dependsOn": ["^build"],
       "outputs": [".next/**"],
-      "cache": true
+      "env": ["NODE_ENV", "GOOGLE_AUTH_ID", "GOOGLE_AUTH_SECRET"]
     },
     "build:notion-api": {
       "dependsOn": ["^build"],

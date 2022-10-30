@@ -38,6 +38,7 @@ module.exports = {
       1,
       { pathGroups: [{ pattern: 'lib/**', group: 'external', position: 'after' }] },
     ],
+    'turbo/no-undeclared-env-vars': 2,
   },
   ignorePatterns: ['**/*.json', 'node_modules', '.turbo', '.next'],
 }
