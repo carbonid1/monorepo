@@ -1,13 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { useSession } from 'next-auth/react'
 
 export const Header: React.FC = () => {
-  const { data: session, status } = useSession()
-
-  // eslint-disable-next-line no-console
-  console.log(session, status)
-
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1">
