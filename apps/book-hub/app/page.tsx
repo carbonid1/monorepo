@@ -1,7 +1,7 @@
 const Page = () => {
   return (
-    <div className="prose">
-      <h1>Index Page</h1>
+    <div className="prose h-full flex items-center justify-center m-auto">
+      <h1>Welcome!</h1>
     </div>
   )
 }
