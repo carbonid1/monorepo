@@ -1,9 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  pageExtensions: ['page.tsx', 'page.ts'],
   images: {
     domains: ['placeimg.com'],
+  },
+  experimental: {
+    appDir: true,
   },
 }
 

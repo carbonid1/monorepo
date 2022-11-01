@@ -9,8 +9,8 @@ export const Header: React.FC = () => {
           <span>Book</span>
           <span className="text-base-content">Hub</span>
         </Link>
-        <Link href="/author" className="btn btn-ghost normal-case">
-          <span>Author</span>
+        <Link href="/authors" className="btn btn-ghost normal-case">
+          <span>Authors</span>
         </Link>
       </div>
       <div className="flex-none gap-2">
