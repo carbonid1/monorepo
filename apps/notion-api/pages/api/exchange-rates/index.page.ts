@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { cors } from 'lib/cors'
-import { updateExchangeRates } from './updateExchangeRates'
+import { updateExchangeRates } from './updateExchangeRates/updateExchangeRates'
 
 function runMiddleware(req: NextApiRequest, res: NextApiResponse, fn: typeof cors) {
   return new Promise((resolve, reject) => {

@@ -12,15 +12,17 @@ export const updateExchangeRates: UpdateExchangeRates = async ({ rates }) => {
   return Promise.all([
     notionClient.pages.update({
       page_id: myNotion.page.currencies.uah,
-      properties: { Rate: { number: Number(rates.UAH.rate) } },
+      properties: { Rate: { number: formatRate(rates.UAH.rate) } },
     }),
     notionClient.pages.update({
       page_id: myNotion.page.currencies.gbp,
-      properties: { Rate: { number: Number(rates.GBP.rate) } },
+      properties: { Rate: { number: formatRate(rates.GBP.rate) } },
     }),
     notionClient.pages.update({
       page_id: myNotion.page.currencies.eur,
-      properties: { Rate: { number: Number(rates.EUR.rate) } },
+      properties: { Rate: { number: formatRate(rates.EUR.rate) } },
     }),
   ])
 }
+
+const formatRate = (rate: Rate['rate']) => Math.floor(Number(rate) * 10) / 10
