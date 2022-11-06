@@ -15,6 +15,7 @@
     "dev": "turbo dev --parallel",
     "format": "prettier --write \"**/*.{js,ts,tsx,md,mdx,yaml,yml}\" --ignore-unknown",
     "lint": "turbo lint",
+    "test:run:ct": "turbo test:run:ct",
     "prepare": "husky install"
   },
   "devDependencies": {
