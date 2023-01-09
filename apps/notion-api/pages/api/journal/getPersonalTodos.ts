@@ -21,6 +21,10 @@ export const getPersonalTodos = async (): Promise<
             { property: 'Status', status: { equals: 'Doing' } },
           ],
         },
+        {
+          property: 'Sub-item',
+          relation: { is_empty: true },
+        },
       ],
     },
     sorts: [
@@ -28,7 +32,6 @@ export const getPersonalTodos = async (): Promise<
       { property: 'Date', direction: 'ascending' },
       { property: 'Deadline', direction: 'ascending' },
       { property: 'Date Created', direction: 'descending' },
-      { property: 'Project', direction: 'ascending' },
     ],
   })
 

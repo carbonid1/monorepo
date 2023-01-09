@@ -19,7 +19,6 @@ export const getHabits = async (): Promise<NonNullable<CreatePageParameters['chi
         },
       ],
     },
-    sorts: [{ property: 'Project', direction: 'ascending' }],
   })
 
   const { results } = fetchedList
