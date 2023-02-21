@@ -1,11 +1,13 @@
 import type { CreatePageParameters } from '@notionhq/client/build/src/api-endpoints'
-import { formatISO } from 'date-fns'
+import { formatISO, isLastDayOfMonth } from 'date-fns'
 import { notionClient } from 'lib/notion-client'
 import { myNotion } from 'consts'
 
 export const getPersonalTodos = async (): Promise<
   NonNullable<CreatePageParameters['children']>
 > => {
+  const today = new Date().setHours(23, 59, 59, 999)
+
   const { results } = await notionClient.databases.query({
     database_id: myNotion.db.betterThanYesterday.id,
     filter: {
@@ -13,7 +15,7 @@ export const getPersonalTodos = async (): Promise<
         { property: 'Tags', multi_select: { does_not_contain: 'Habit' } },
         {
           property: 'Date',
-          date: { on_or_before: formatISO(new Date().setHours(23, 59, 59, 999)) },
+          date: { on_or_before: formatISO(today) },
         },
         {
           or: [
@@ -35,7 +37,14 @@ export const getPersonalTodos = async (): Promise<
     ],
   })
 
-  return results.length === 0
+  const pageIds = (() => {
+    return [
+      ...results.map(page => page.id),
+      ...(isLastDayOfMonth(today) ? [myNotion.page.kyivstar] : []),
+    ]
+  })()
+
+  return pageIds.length === 0
     ? []
     : [
         {
@@ -48,10 +57,10 @@ export const getPersonalTodos = async (): Promise<
                 annotations: { bold: true },
               },
             ],
-            children: results.map(page => ({
+            children: pageIds.map(pageId => ({
               type: 'to_do',
               to_do: {
-                rich_text: [{ type: 'mention', mention: { page: { id: page.id } } }],
+                rich_text: [{ type: 'mention', mention: { page: { id: pageId } } }],
               },
             })),
           },
