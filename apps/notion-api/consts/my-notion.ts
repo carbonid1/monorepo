@@ -20,5 +20,6 @@ export const myNotion = {
         fopUSD: '588f32f7cf6746b88621620c70e7ed2e',
       },
     },
+    kyivstar: '200e71ab17cf480e913c969aeb22b55a',
   },
 } as const
