@@ -45,7 +45,14 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ env.node_version }}
-          cache: pnpm
+      - name: Cache node modules
+        id: cache-node-modules
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cache/Cypress
+            node_modules
+          key: node-modules-${{ hashFiles('./pnpm-lock.yaml') }}
       - name: Install dependencies
         run: pnpm i
       - name: Run component tests
