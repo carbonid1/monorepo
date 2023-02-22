@@ -8,6 +8,8 @@ describe('updateExchangeRates', () => {
       EUR: { rate: '1.013' },
     }
 
+    cy.log('**updateExchangeRates**')
+
     cy.intercept('**/pages/d7a9423acb1d4be4951bdd2da61d9047', [])
       .as('updateUAH')
       .intercept('/v1/pages/cd020b59658340058d1677425d28c051', [])
