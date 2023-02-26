@@ -4,7 +4,7 @@ import { getCelebrations } from './getCelebrations'
 import { getWorkEvents } from './getWorkEvents'
 import { getHabits } from './getHabits'
 import { getEngTodos } from './getEngTodos'
-import { getWorkTodos } from './getWorkTodos'
+import { getWorkTodos } from './getWorkTodos/getWorkTodos'
 import { getPersonalTodos } from './getPersonalTodos/getPersonalTodos'
 
 interface Params {
