@@ -15,7 +15,7 @@
       "cache": true,
       "dependsOn": ["^build"],
       "outputs": [".next/**"],
-      "env": ["NODE_ENV", "GOOGLE_AUTH_ID", "GOOGLE_AUTH_SECRET", "NEXTAUTH_SECRET"]
+      "env": ["NODE_ENV", "GOOGLE_AUTH_ID", "GOOGLE_AUTH_SECRET", "NEXTAUTH_SECRET", "VERCEL_URL"]
     },
     "build:notion-api": {
       "cache": true,
