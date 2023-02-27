@@ -1,8 +1,33 @@
-const Page = () => {
+import prisma from 'lib/prisma'
+
+type FetchAuthors = () => Promise<ReturnType<typeof prisma.author.findMany>>
+
+const fetchAuthors: FetchAuthors = async () => {
+  const res = await fetch('http://localhost:3000/api/authors')
+  const { authors } = await res.json()
+  return authors
+}
+
+const Page = async () => {
+  const authors = await fetchAuthors()
+
   return (
-    <div className="prose">
-      <h1>Authors Page</h1>
-    </div>
+    <table className="table w-full mt-8">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        {authors.map((author, index) => (
+          <tr key={author.id}>
+            <th>{index}</th>
+            <td>{author.name}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   )
 }
 
