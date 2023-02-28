@@ -3,12 +3,9 @@
     {
       "command": "multiCommand.format_lint_save",
       "interval": 500,
-      "sequence": [
-        "eslint.executeAutofix",
-        "workbench.action.files.saveWithoutFormatting"
-      ]
+      "sequence": ["eslint.executeAutofix", "workbench.action.files.saveWithoutFormatting"]
     }
   ],
-  "typescript.enablePromptUseWorkspaceTsdk": true,
-  "typescript.tsdk": "..\\..\\node_modules\\.pnpm\\typescript@4.9.4\\node_modules\\typescript\\lib"
+  "typescript.tsdk": "..\\..\\node_modules\\.pnpm\\typescript@4.9.4\\node_modules\\typescript\\lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true
 }

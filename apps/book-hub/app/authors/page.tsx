@@ -2,14 +2,12 @@ import prisma from 'lib/prisma'
 
 type FetchAuthors = () => Promise<ReturnType<typeof prisma.author.findMany>>
 
-const fetchAuthors: FetchAuthors = async () => {
-  const res = await fetch(`https://${process.env.VERCEL_URL}/api/authors`)
-  const { authors } = await res.json()
-  return authors
+const getAuthors: FetchAuthors = async () => {
+  return await prisma.author.findMany()
 }
 
 const Page = async () => {
-  const authors = await fetchAuthors()
+  const authors = await getAuthors()
 
   return (
     <table className="table w-full mt-8">
