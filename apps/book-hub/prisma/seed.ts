@@ -9,8 +9,8 @@ const load = async () => {
     await prisma.session.deleteMany()
     await prisma.account.deleteMany()
     await prisma.verificationToken.deleteMany()
-    await prisma.author.deleteMany()
     await prisma.book.deleteMany()
+    await prisma.author.deleteMany()
     await prisma.author.createMany({ data: authors })
     await prisma.book.createMany({ data: books })
   } catch (e) {

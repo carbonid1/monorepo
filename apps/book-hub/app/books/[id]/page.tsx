@@ -1,31 +1,31 @@
 import { notFound } from 'next/navigation'
 import prisma from 'lib/prisma'
 
-const getAuthor = async ({ id }) => {
-  const author = await prisma.author.findUnique({ where: { id } })
+const getBook = async ({ id }) => {
+  const book = await prisma.book.findUnique({ where: { id } })
 
-  if (!author) {
+  if (!book) {
     notFound()
   }
 
-  return author
+  return book
 }
 
 const Page = async ({ params }) => {
-  const author = await getAuthor({ id: params.id })
+  const book = await getBook({ id: params.id })
 
   return (
     <div className="prose m-auto">
-      <h1>{author.name}</h1>
+      <h1>{book.title}</h1>
     </div>
   )
 }
 
 export const generateMetadata = async ({ params }) => {
-  const author = await getAuthor({ id: params.id })
+  const book = await getBook({ id: params.id })
 
   return {
-    title: author.name,
+    title: book.title,
   }
 }
 
