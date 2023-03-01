@@ -14,4 +14,8 @@ const Layout = ({ children }) => {
   )
 }
 
+export const metadata = {
+  title: 'BookHub',
+}
+
 export default Layout

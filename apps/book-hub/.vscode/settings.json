@@ -6,6 +6,6 @@
       "sequence": ["eslint.executeAutofix", "workbench.action.files.saveWithoutFormatting"]
     }
   ],
-  "typescript.tsdk": "..\\..\\node_modules\\.pnpm\\typescript@4.9.4\\node_modules\\typescript\\lib",
+  "typescript.tsdk": "node_modules\\typescript\\lib",
   "typescript.enablePromptUseWorkspaceTsdk": true
 }
