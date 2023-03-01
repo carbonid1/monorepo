@@ -5,7 +5,10 @@ export const getWorkEvents = (
   list: GoogleCalendarsResponse,
 ): NonNullable<CreatePageParameters['children']> => {
   const events = list.items
-  const acceptedEvents = events.filter(({ attendees, organizer }) => {
+
+  const acceptedEvents = events.filter(({ attendees, organizer, start }) => {
+    if (!start.dateTime) return false
+
     const { responseStatus } = attendees?.find(attendee => attendee.self) ?? {}
     return responseStatus === 'accepted' || organizer.self
   })
