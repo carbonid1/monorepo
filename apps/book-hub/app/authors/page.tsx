@@ -1,10 +1,6 @@
 import prisma from 'lib/prisma'
 
-type FetchAuthors = () => Promise<ReturnType<typeof prisma.author.findMany>>
-
-const getAuthors: FetchAuthors = async () => {
-  return await prisma.author.findMany()
-}
+const getAuthors = async () => prisma.author.findMany()
 
 const Page = async () => {
   const authors = await getAuthors()
