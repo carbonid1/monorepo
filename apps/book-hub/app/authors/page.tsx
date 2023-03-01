@@ -1,6 +1,6 @@
 import prisma from 'lib/prisma'
 
-const getAuthors = async () => prisma.author.findMany()
+const getAuthors = () => prisma.author.findMany()
 
 const Page = async () => {
   const authors = await getAuthors()
