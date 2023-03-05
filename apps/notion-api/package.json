@@ -8,8 +8,8 @@
     "start": "next start",
     "ts": "tsc --noEmit",
     "lint": "next lint --fix",
-    "test:run:ct": "cypress run --component",
-    "test:open:ct": "cypress open --component"
+    "ct:run": "cypress run --component",
+    "ct:open": "cypress open --component"
   },
   "dependencies": {
     "@notionhq/client": "^2.2.3",

@@ -1,38 +1,22 @@
 {
   "$schema": "https://turborepo.org/schema.json",
   "pipeline": {
-    "build": {
-      "cache": true,
-      "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".next/**"]
-    },
+    "build": {},
     "build:cv": {
-      "cache": true,
       "dependsOn": ["^build"],
-      "outputs": [".next/**"]
+      "outputs": [".next/**", "!.next/cache/**"]
     },
     "build:book-hub": {
-      "cache": true,
       "dependsOn": ["^build"],
-      "outputs": [".next/**"],
+      "outputs": [".next/**", "!.next/cache/**"],
       "env": ["NODE_ENV", "GOOGLE_AUTH_ID", "GOOGLE_AUTH_SECRET", "NEXTAUTH_SECRET"]
     },
     "build:notion-api": {
-      "cache": true,
       "dependsOn": ["^build"],
-      "outputs": [".next/**"],
+      "outputs": [".next/**", "!.next/cache/**"],
       "env": ["TZ", "API_SECRET_KEY", "NOTION_TOKEN", "VERCEL_ENV"]
     },
-    "lint": {
-      "cache": true,
-      "outputs": []
-    },
-    "test:run:ct": {
-      "cache": true,
-      "outputs": []
-    },
-    "dev": {
-      "cache": false
-    }
+    "lint": {},
+    "ct:run": {}
   }
 }

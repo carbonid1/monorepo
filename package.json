@@ -2,27 +2,25 @@
   "name": "monorepo",
   "version": "0.0.0",
   "private": true,
-  "packageManager": "pnpm@6.29.1",
+  "packageManager": "pnpm@7.28.0",
   "workspaces": [
     "apps/*",
     "packages/*"
   ],
   "scripts": {
-    "build": "turbo build",
-    "build:notion-api": "turbo build --filter=notion-api",
     "build:cv": "turbo build --filter=cv",
     "build:book-hub": "turbo build --filter=book-hub",
-    "dev": "turbo dev --parallel",
-    "format": "prettier --write \"**/*.{js,ts,tsx,md,mdx,yaml,yml}\" --ignore-unknown",
+    "build:notion-api": "turbo build --filter=notion-api",
     "lint": "turbo lint",
-    "test:run:ct": "turbo test:run:ct",
+    "ct:run": "turbo ct:run --filter=notion-api",
+    "format": "prettier --write \"**/*.{js,ts,tsx,md,mdx,yaml,yml}\" --ignore-unknown",
     "prepare": "husky install"
   },
   "devDependencies": {
-    "husky": "^8.0.1",
-    "lint-staged": "^13.0.3",
-    "prettier": "^2.7.1",
-    "turbo": "^1.6.1"
+    "husky": "^8.0.3",
+    "lint-staged": "^13.1.2",
+    "prettier": "^2.8.4",
+    "turbo": "^1.8.3"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": "eslint --fix",

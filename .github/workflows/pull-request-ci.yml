@@ -50,4 +50,4 @@ jobs:
       - name: Install dependencies
         run: pnpm i
       - name: Run component tests
-        run: pnpm test:run:ct
+        run: pnpm ct:run
