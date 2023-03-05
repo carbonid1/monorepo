@@ -8,13 +8,12 @@
     "packages/*"
   ],
   "scripts": {
-    "build:cv": "turbo build --filter=cv",
-    "build:book-hub": "turbo build --filter=book-hub",
-    "build:notion-api": "turbo build --filter=notion-api",
+    "build": "turbo build",
     "lint": "turbo lint",
-    "ct:run": "turbo ct:run --filter=notion-api",
+    "ct:run": "turbo ct:run",
     "format": "prettier --write \"**/*.{js,ts,tsx,md,mdx,yaml,yml}\" --ignore-unknown",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "update:turbo": "npx @turbo/codemod migrate"
   },
   "devDependencies": {
     "husky": "^8.0.3",
