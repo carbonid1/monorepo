@@ -9,13 +9,6 @@
     ],
     "strictNullChecks": true
   },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.js",
-    ".eslintrc.js",
-    ".next/types/**/*.ts",
-    "C:\\Users\\carbo\\Documents\\reps\\monorepo\\apps\\book-hub\\.next/types/**/*.ts"
-  ],
+  "include": ["**/*.ts", "**/*.tsx", "**/*.js", ".eslintrc.js", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
 }
