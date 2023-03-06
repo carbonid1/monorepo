@@ -5,7 +5,6 @@ const SaveAsPDFBtn: FC = () => {
   return (
     <button
       title="Print"
-      area-label="Print"
       className="hidden print:hidden lg:block fixed right-8 bottom-8 text-blue-400 rounded-full border-gray-900 border-2 p-6 focus:ring-2 focus:outline-none ring-blue-400 z-10"
       onClick={() => {
         window?.print()

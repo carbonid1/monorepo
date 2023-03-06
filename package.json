@@ -8,9 +8,11 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "turbo build",
+    "dev": "turbo dev",
     "lint": "turbo lint",
+    "build": "turbo build",
     "ct:run": "turbo ct:run",
+    "db:push": "turbo db:generate db:push",
     "format": "prettier --write \"**/*.{js,ts,tsx,md,mdx,yaml,yml}\" --ignore-unknown",
     "prepare": "husky install",
     "update:turbo": "npx @turbo/codemod migrate"
