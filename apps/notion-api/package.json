@@ -8,8 +8,8 @@
     "start": "next start",
     "ts": "tsc --noEmit",
     "lint": "next lint --fix",
-    "test:run:ct": "cypress run --component",
-    "test:open:ct": "cypress open --component"
+    "ct:run": "cypress run --component",
+    "ct:open": "cypress open --component"
   },
   "dependencies": {
     "@notionhq/client": "^2.2.3",
@@ -27,6 +27,6 @@
     "@types/react-dom": "^18.0.10",
     "lint-config": "workspace:*",
     "tsconfig": "workspace:*",
-    "typescript": "^4.9.4"
+    "typescript": "^4.9.5"
   }
 }
