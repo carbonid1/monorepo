@@ -2,7 +2,7 @@ import { GoogleCalendarsResponse } from 'lib/interfaces'
 import { createNotionPage } from './createNotionPage'
 import { getCelebrations } from './getCelebrations'
 import { getWorkEvents } from './getWorkEvents'
-import { getHabits } from './getHabits'
+import { getRecuringTasks } from './getRecuringTasks/getRecuringTasks'
 import { getEngTodos } from './getEngTodos'
 import { getWorkTodos } from './getWorkTodos/getWorkTodos'
 import { getPersonalTodos } from './getPersonalTodos/getPersonalTodos'
@@ -17,7 +17,7 @@ export const createDailyEntry = async ({ celebrationEvents, workEvents, timezone
   process.env.TZ = timezone
 
   await createNotionPage([
-    ...(await getHabits()),
+    ...(await getRecuringTasks()),
     ...(await getPersonalTodos()),
     ...getCelebrations(celebrationEvents),
     ...(await getEngTodos()),

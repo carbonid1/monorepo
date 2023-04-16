@@ -1,5 +1,5 @@
 import { notionClient } from 'lib/notion-client'
-import { myNotion } from 'consts'
+import { myNotionIds } from 'consts'
 
 type Rate = { rate: string }
 type Params = {
@@ -11,15 +11,15 @@ type UpdateExchangeRates = (params: Params) => Promise<Array<object>>
 export const updateExchangeRates: UpdateExchangeRates = async ({ rates }) => {
   return Promise.all([
     notionClient.pages.update({
-      page_id: myNotion.page.currencies.uah,
+      page_id: myNotionIds.page.currencies.uah,
       properties: { Rate: { number: formatRate(rates.UAH.rate) } },
     }),
     notionClient.pages.update({
-      page_id: myNotion.page.currencies.gbp,
+      page_id: myNotionIds.page.currencies.gbp,
       properties: { Rate: { number: formatRate(rates.GBP.rate) } },
     }),
     notionClient.pages.update({
-      page_id: myNotion.page.currencies.eur,
+      page_id: myNotionIds.page.currencies.eur,
       properties: { Rate: { number: formatRate(rates.EUR.rate) } },
     }),
   ])
