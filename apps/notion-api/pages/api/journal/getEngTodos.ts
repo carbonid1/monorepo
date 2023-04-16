@@ -1,10 +1,10 @@
 import { CreatePageParameters } from '@notionhq/client/build/src/api-endpoints'
 import { notionClient } from 'lib/notion-client'
-import { myNotion } from 'consts'
+import { myNotionIds } from 'consts'
 
 export const getEngTodos = async (): Promise<NonNullable<CreatePageParameters['children']>> => {
   const fetchedList = await notionClient.databases.query({
-    database_id: myNotion.db.engProjects.id,
+    database_id: myNotionIds.db.engProjects,
     filter: {
       or: [
         { property: 'Status', status: { equals: 'Doing' } },

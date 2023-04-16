@@ -1,5 +1,5 @@
 import { notionClient } from 'lib/notion-client'
-import { currencyCodes, myNotion } from 'consts'
+import { currencyCodes, myNotionIds } from 'consts'
 
 type Account = {
   currencyCode: number
@@ -32,23 +32,23 @@ export const updateAccounts: UpdateAccounts = async ({ accounts }) => {
 
   return Promise.all([
     notionClient.pages.update({
-      page_id: myNotion.page.bankAccounts.monobank.blackUAH,
+      page_id: myNotionIds.page.bankAccounts.monobank.blackUAH,
       properties: { Amount: { number: blackUAHBalance / 100 } },
     }),
     notionClient.pages.update({
-      page_id: myNotion.page.bankAccounts.monobank.blackUSD,
+      page_id: myNotionIds.page.bankAccounts.monobank.blackUSD,
       properties: { Amount: { number: blackUSDBalance / 100 } },
     }),
     notionClient.pages.update({
-      page_id: myNotion.page.bankAccounts.monobank.blackEUR,
+      page_id: myNotionIds.page.bankAccounts.monobank.blackEUR,
       properties: { Amount: { number: blackEURBalance / 100 } },
     }),
     notionClient.pages.update({
-      page_id: myNotion.page.bankAccounts.monobank.fopUAH,
+      page_id: myNotionIds.page.bankAccounts.monobank.fopUAH,
       properties: { Amount: { number: fopUAHBalance / 100 } },
     }),
     notionClient.pages.update({
-      page_id: myNotion.page.bankAccounts.monobank.fopUSD,
+      page_id: myNotionIds.page.bankAccounts.monobank.fopUSD,
       properties: { Amount: { number: fopUSDBalance / 100 } },
     }),
   ])

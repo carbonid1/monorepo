@@ -1,15 +1,14 @@
 import type { CreatePageParameters } from '@notionhq/client/build/src/api-endpoints'
-import { formatISO, isLastDayOfMonth } from 'date-fns'
+import { formatISO } from 'date-fns'
 import { notionClient } from 'lib/notion-client'
-import { myNotion } from 'consts'
+import { myNotionIds } from 'consts'
 
 export const getPersonalTodos = async (): Promise<
   NonNullable<CreatePageParameters['children']>
 > => {
   const today = new Date().setHours(23, 59, 59, 999)
-
   const { results } = await notionClient.databases.query({
-    database_id: myNotion.db.betterThanYesterday.id,
+    database_id: myNotionIds.db.betterThanYesterday,
     filter: {
       and: [
         { property: 'Tags', multi_select: { does_not_contain: 'Habit' } },
@@ -37,13 +36,7 @@ export const getPersonalTodos = async (): Promise<
     ],
   })
 
-  const pageIds = (() => {
-    return [
-      ...results.map(page => page.id),
-      ...(isLastDayOfMonth(today) ? [myNotion.page.kyivstar] : []),
-    ]
-  })()
-
+  const pageIds = results.map(page => page.id)
   return pageIds.length === 0
     ? []
     : [
