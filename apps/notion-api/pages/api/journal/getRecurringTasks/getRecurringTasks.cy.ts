@@ -1,4 +1,4 @@
-import { getRecuringTasks } from './getRecuringTasks'
+import { getRecurringTasks } from './getRecurringTasks'
 
 describe('getRecuringTasks', () => {
   it('applies usual filters', () => {
@@ -7,7 +7,7 @@ describe('getRecuringTasks', () => {
 
     cy.intercept('https://api.notion.com/**', { results: [] })
       .as('notionApi')
-      .then(getRecuringTasks)
+      .then(getRecurringTasks)
 
     cy.wait('@notionApi').then(({ request }) => {
       expect(request)
@@ -25,7 +25,7 @@ describe('getRecuringTasks', () => {
 
     cy.intercept('https://api.notion.com/**', { results: [] })
       .as('notionApi')
-      .then(getRecuringTasks)
+      .then(getRecurringTasks)
 
     cy.wait('@notionApi').then(({ request }) => {
       expect(
@@ -107,7 +107,7 @@ describe('getRecuringTasks', () => {
     cy.intercept('https://api.notion.com/**', { results: response })
       .as('notionApi')
       .then(async () => {
-        const todos = await getRecuringTasks()
+        const todos = await getRecurringTasks()
         expect(todos[0]).to.have.nested.property(
           'toggle.children[0].to_do.rich_text[0].mention.page.id',
           '1',

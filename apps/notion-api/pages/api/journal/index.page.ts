@@ -25,7 +25,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         res.status(401).json({ success: false })
       }
     } catch (err) {
-      // @ts-expect-error message is always present on eror
+      // @ts-expect-error message is always present on error
       res.status(err.code).json({ statusCode: err.code, message: err.message })
     }
   } else {
