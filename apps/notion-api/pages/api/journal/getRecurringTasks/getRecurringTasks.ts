@@ -3,7 +3,7 @@ import { format, isLastDayOfMonth } from 'date-fns'
 import { notionClient } from 'lib/notion-client'
 import { myNotionIds } from 'consts'
 
-export const getRecuringTasks = async (): Promise<
+export const getRecurringTasks = async (): Promise<
   NonNullable<CreatePageParameters['children']>
 > => {
   const today = new Date().setHours(23, 59, 59, 999)
