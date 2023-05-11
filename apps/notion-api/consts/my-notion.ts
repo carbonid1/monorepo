@@ -11,6 +11,7 @@ export const myNotionIds = {
       uah: 'd7a9423acb1d4be4951bdd2da61d9047',
       gbp: 'cd020b59658340058d1677425d28c051',
       eur: 'f85faa0106ef4ea59909a6b366df5b7b',
+      pln: '20850c53907446de871f8e5b5e815d7d',
     },
     bankAccounts: {
       monobank: {

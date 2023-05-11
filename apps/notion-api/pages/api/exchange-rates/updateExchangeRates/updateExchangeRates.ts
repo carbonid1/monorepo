@@ -3,7 +3,7 @@ import { myNotionIds } from 'consts'
 
 type Rate = { rate: string }
 type Params = {
-  rates: Record<'UAH' | 'GBP' | 'EUR', Rate>
+  rates: Record<'UAH' | 'GBP' | 'EUR' | 'PLN', Rate>
 }
 
 type UpdateExchangeRates = (params: Params) => Promise<Array<object>>
@@ -21,6 +21,10 @@ export const updateExchangeRates: UpdateExchangeRates = async ({ rates }) => {
     notionClient.pages.update({
       page_id: myNotionIds.page.currencies.eur,
       properties: { Rate: { number: formatRate(rates.EUR.rate) } },
+    }),
+    notionClient.pages.update({
+      page_id: myNotionIds.page.currencies.pln,
+      properties: { Rate: { number: formatRate(rates.PLN.rate) } },
     }),
   ])
 }
