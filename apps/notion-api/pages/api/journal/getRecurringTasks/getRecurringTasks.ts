@@ -11,6 +11,7 @@ export const getRecurringTasks = async (): Promise<
 
   const fetchedList = await notionClient.databases.query({
     database_id: myNotionIds.db.recurrentTasks,
+    sorts: [{ property: 'Order', direction: 'ascending' }],
     filter: {
       and: [
         { property: 'Status', status: { equals: 'Doing' } },
@@ -27,31 +28,7 @@ export const getRecurringTasks = async (): Promise<
     },
   })
 
-  const sorted = fetchedList.results.sort((pageA, pageB) => {
-    // @ts-expect-error it's fine!
-    const multiselectA = pageA.properties.Time.multi_select
-    // @ts-expect-error it's fine!
-    const multiselectB = pageB.properties.Time.multi_select
-
-    const isAMorning = multiselectA.some(({ name }) => name === 'Morning')
-    const isAEvening = multiselectA.some(({ name }) => name === 'Evening')
-    const isANone = !isAMorning && !isAEvening
-    const isBMorning = multiselectB.some(({ name }) => name === 'Morning')
-    const isBEvening = multiselectB.some(({ name }) => name === 'Evening')
-    const isBNone = !isBMorning && !isBEvening
-
-    // sort by morning, none, evening
-    if (isAMorning && !isBMorning) return -1
-    if (!isAMorning && isBMorning) return 1
-    if (isANone && !isBNone) return -1
-    if (!isANone && isBNone) return 1
-    if (isAEvening && !isBEvening) return -1
-    if (!isAEvening && isBEvening) return 1
-
-    return 0
-  })
-
-  return sorted.length === 0
+  return fetchedList.results.length === 0
     ? []
     : [
         {
@@ -64,7 +41,7 @@ export const getRecurringTasks = async (): Promise<
                 annotations: { bold: true },
               },
             ],
-            children: sorted.map(page => ({
+            children: fetchedList.results.map(page => ({
               type: 'to_do',
               to_do: { rich_text: [{ type: 'mention', mention: { page: { id: page.id } } }] },
             })),
