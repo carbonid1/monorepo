@@ -31,7 +31,6 @@ export const getPersonalTodos = async (): Promise<
     sorts: [
       { property: 'Status', direction: 'ascending' },
       { property: 'Date', direction: 'ascending' },
-      { property: 'Deadline', direction: 'ascending' },
       { property: 'Date Created', direction: 'descending' },
     ],
   })
