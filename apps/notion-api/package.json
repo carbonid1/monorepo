@@ -12,21 +12,21 @@
     "ct:open": "cypress open --component"
   },
   "dependencies": {
-    "@notionhq/client": "^2.2.3",
+    "@notionhq/client": "^2.2.6",
     "cors": "^2.8.5",
-    "date-fns": "^2.29.3",
-    "next": "^13.1.1",
+    "date-fns": "^2.30.0",
+    "next": "^13.4.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "cypress": "^12.3.0",
+    "cypress": "^12.16.0",
     "@types/cors": "^2.8.13",
-    "@types/node": "^18.11.18",
-    "@types/react": "^18.0.26",
-    "@types/react-dom": "^18.0.10",
+    "@types/node": "^20.3.3",
+    "@types/react": "^18.2.14",
+    "@types/react-dom": "^18.2.6",
     "lint-config": "workspace:*",
     "tsconfig": "workspace:*",
-    "typescript": "^4.9.5"
+    "typescript": "^5.1.6"
   }
 }
