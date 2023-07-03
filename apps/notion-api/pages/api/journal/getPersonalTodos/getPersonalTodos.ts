@@ -11,7 +11,6 @@ export const getPersonalTodos = async (): Promise<
     database_id: myNotionIds.db.betterThanYesterday,
     filter: {
       and: [
-        { property: 'Tags', multi_select: { does_not_contain: 'Habit' } },
         {
           property: 'Date',
           date: { on_or_before: formatISO(today) },
@@ -23,7 +22,11 @@ export const getPersonalTodos = async (): Promise<
           ],
         },
         {
-          property: 'Sub-item',
+          property: 'Items',
+          relation: { is_empty: true },
+        },
+        {
+          property: 'Blocked by',
           relation: { is_empty: true },
         },
       ],
