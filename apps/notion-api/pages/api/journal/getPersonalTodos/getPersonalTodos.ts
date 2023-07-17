@@ -25,10 +25,6 @@ export const getPersonalTodos = async (): Promise<
           property: 'Items',
           relation: { is_empty: true },
         },
-        {
-          property: 'Blocked by',
-          relation: { is_empty: true },
-        },
       ],
     },
     sorts: [
