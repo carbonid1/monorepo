@@ -35,26 +35,24 @@ export const getPersonalTodos = async (): Promise<
   })
 
   const pageIds = results.map(page => page.id)
-  return pageIds.length === 0
-    ? []
-    : [
-        {
-          type: 'toggle',
-          toggle: {
-            rich_text: [
-              {
-                type: 'text',
-                text: { content: '👣 Personal' },
-                annotations: { bold: true },
-              },
-            ],
-            children: pageIds.map(pageId => ({
-              type: 'to_do',
-              to_do: {
-                rich_text: [{ type: 'mention', mention: { page: { id: pageId } } }],
-              },
-            })),
+  return [
+    {
+      type: 'toggle',
+      toggle: {
+        rich_text: [
+          {
+            type: 'text',
+            text: { content: '👣 Personal' },
+            annotations: { bold: true },
           },
-        },
-      ]
+        ],
+        children: pageIds.map(pageId => ({
+          type: 'to_do',
+          to_do: {
+            rich_text: [{ type: 'mention', mention: { page: { id: pageId } } }],
+          },
+        })),
+      },
+    },
+  ]
 }
