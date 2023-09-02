@@ -29,4 +29,4 @@ export const updateExchangeRates: UpdateExchangeRates = async ({ rates }) => {
   ])
 }
 
-const formatRate = (rate: Rate['rate']) => Math.floor(Number(rate) * 10) / 10
+const formatRate = (rate: Rate['rate']) => Number(rate)
