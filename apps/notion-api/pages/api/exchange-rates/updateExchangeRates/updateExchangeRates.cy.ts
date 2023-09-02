@@ -3,10 +3,10 @@ import { updateExchangeRates } from './updateExchangeRates'
 describe('updateExchangeRates', () => {
   it('calls Notion API with correct rates', () => {
     const rates = {
-      UAH: { rate: '36.5686' },
-      GBP: { rate: '0.8861' },
-      EUR: { rate: '1.013' },
-      PLN: { rate: '0.232' },
+      UAH: '36.5686',
+      GBP: '0.8861',
+      EUR: '1.013',
+      PLN: '0.232',
     }
 
     cy.intercept('/v1/pages/d7a9423acb1d4be4951bdd2da61d9047', [])
