@@ -30,7 +30,7 @@
     "@types/react-dom": "18.0.11",
     "autoprefixer": "^10.4.13",
     "lint-config": "workspace:*",
-    "postcss": "^8.4.21",
+    "postcss": "^8.4.31",
     "prisma": "^4.11.0",
     "ts-node": "^10.9.1",
     "tsconfig": "workspace:*",
