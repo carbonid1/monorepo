@@ -3,7 +3,6 @@ import { createNotionPage } from './createNotionPage'
 import { getCelebrations } from './getCelebrations'
 import { getWorkEvents } from './getWorkEvents'
 import { getRecurringTasks } from './getRecurringTasks/getRecurringTasks'
-import { getEngTodos } from './getEngTodos'
 import { getWorkTodos } from './getWorkTodos/getWorkTodos'
 import { getPersonalTodos } from './getPersonalTodos/getPersonalTodos'
 import { getMemo } from './getMemo/getMemo'
@@ -21,7 +20,6 @@ export const createDailyEntry = async ({ celebrationEvents, workEvents, timezone
     ...(await getRecurringTasks()),
     ...(await getPersonalTodos()),
     ...getCelebrations(celebrationEvents),
-    ...(await getEngTodos()),
     ...getWorkEvents(workEvents),
     ...(await getWorkTodos()),
     ...getMemo(),

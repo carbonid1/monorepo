@@ -2,7 +2,7 @@ import { CreatePageParameters } from '@notionhq/client/build/src/api-endpoints'
 import { notionClient } from 'lib/notion-client'
 import { myNotionIds } from 'consts'
 
-export const getEngTodos = async (): Promise<NonNullable<CreatePageParameters['children']>> => {
+export const getEngToDos = async (): Promise<NonNullable<CreatePageParameters['children']>> => {
   const fetchedList = await notionClient.databases.query({
     database_id: myNotionIds.db.engProjects,
     filter: {
