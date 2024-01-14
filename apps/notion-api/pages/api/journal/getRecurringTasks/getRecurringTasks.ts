@@ -1,5 +1,5 @@
 import { CreatePageParameters } from '@notionhq/client/build/src/api-endpoints'
-import { format, isLastDayOfMonth } from 'date-fns'
+import { format } from 'date-fns'
 import { notionClient } from 'lib/notion-client'
 import { myNotionIds } from 'consts'
 
@@ -19,9 +19,6 @@ export const getRecurringTasks = async (): Promise<
           or: [
             { property: 'Time', multi_select: { contains: 'Every day' } },
             { property: 'Time', multi_select: { contains: dayName } },
-            ...(isLastDayOfMonth(today)
-              ? [{ property: 'Time', multi_select: { contains: 'Last day of month' } }]
-              : []),
           ],
         },
       ],
