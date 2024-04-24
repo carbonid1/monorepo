@@ -23,9 +23,6 @@ export const updateAccounts: UpdateAccounts = async ({ accounts }) => {
   const blackEURBalance =
     accounts.find(account => account.type === 'black' && account.currencyCode === currencyCodes.eur)
       ?.balance ?? 0
-  const fopUAHBalance =
-    accounts.find(account => account.type === 'fop' && account.currencyCode === currencyCodes.uah)
-      ?.balance ?? 0
   const fopUSDBalance =
     accounts.find(account => account.type === 'fop' && account.currencyCode === currencyCodes.usd)
       ?.balance ?? 0
@@ -42,10 +39,6 @@ export const updateAccounts: UpdateAccounts = async ({ accounts }) => {
     notionClient.pages.update({
       page_id: myNotionIds.page.bankAccounts.monobank.blackEUR,
       properties: { Amount: { number: blackEURBalance / 100 } },
-    }),
-    notionClient.pages.update({
-      page_id: myNotionIds.page.bankAccounts.monobank.fopUAH,
-      properties: { Amount: { number: fopUAHBalance / 100 } },
     }),
     notionClient.pages.update({
       page_id: myNotionIds.page.bankAccounts.monobank.fopUSD,

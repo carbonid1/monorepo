@@ -18,7 +18,6 @@ export const myNotionIds = {
         blackUAH: 'd0d992c147ac4ce8aa25b2d1e794657c',
         blackUSD: 'f31fca1ea544440ead9bae648717888e',
         blackEUR: '53f7a6ffd2d64c4a9c349a20842943ee',
-        fopUAH: '5403b58d48ab4a98a3a73a5d3f5efdfc',
         fopUSD: '588f32f7cf6746b88621620c70e7ed2e',
       },
     },
