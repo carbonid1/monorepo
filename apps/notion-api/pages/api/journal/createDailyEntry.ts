@@ -1,7 +1,7 @@
 import { GoogleCalendarsResponse } from 'lib/interfaces'
 import { createNotionPage } from './createNotionPage'
 import { getCelebrations } from './getCelebrations'
-import { getWorkEvents } from './getWorkEvents'
+import { getWorkEvents } from './getWorkEvents/getWorkEvents'
 import { getRecurringTasks } from './getRecurringTasks/getRecurringTasks'
 import { getWorkTodos } from './getWorkTodos/getWorkTodos'
 import { getPersonalTodos } from './getPersonalTodos/getPersonalTodos'

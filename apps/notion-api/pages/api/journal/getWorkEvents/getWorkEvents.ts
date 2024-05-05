@@ -1,5 +1,16 @@
 import { CreatePageParameters } from '@notionhq/client/build/src/api-endpoints'
+import { format, parseISO } from 'date-fns'
 import { GoogleCalendarsResponse } from 'lib/interfaces'
+
+export const getFormattedDates = (start: string, end: string) => {
+  const startDate = parseISO(start)
+  const endDate = parseISO(end)
+
+  const formattedStart = format(startDate, 'HH:mm')
+  const formattedEnd = format(endDate, 'HH:mm')
+
+  return `${formattedStart} - ${formattedEnd}`
+}
 
 export const getWorkEvents = (
   list: GoogleCalendarsResponse,
@@ -33,8 +44,8 @@ export const getWorkEvents = (
                   { type: 'text', text: { content: event.summary, link: { url: event.htmlLink } } },
                   { type: 'text', text: { content: ' ' } },
                   {
-                    type: 'mention',
-                    mention: { date: { start: event.start.dateTime, end: event.end.dateTime } },
+                    type: 'text',
+                    text: { content: getFormattedDates(event.start.dateTime, event.end.dateTime) },
                   },
                 ],
               },
