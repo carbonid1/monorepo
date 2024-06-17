@@ -18,4 +18,20 @@ describe('getRecurringTasks', () => {
         ])
     })
   })
+
+  it.only('filters by last day of month', () => {
+    const now = new Date(2023, 3, 30) // 30th of April 2023, Sunday
+    cy.clock(now)
+
+    cy.intercept('https://api.notion.com/**', { results: [] })
+      .as('notionApi')
+      .then(getRecurringTasks)
+
+    cy.wait('@notionApi').then(({ request }) => {
+      cy.wrap(request.body.filter.and[1].or[2].multi_select.contains).should(
+        'equal',
+        'Last day of month',
+      )
+    })
+  })
 })
